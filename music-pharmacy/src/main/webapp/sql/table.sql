@@ -11,6 +11,23 @@ create table member_level(
  icon varchar2(150)
 );
 
+create table member_detail (
+ mem_num not null primary key,
+ nick varchar2(20) not null,
+ name varchar2(15) not null,
+ passwd varchar2(15) not null,
+ cell varchar2(15) not null,
+ email varchar2(50) not null,
+ zipcode varchar2(5) not null,
+ addr1 varchar2(100) not null,
+ addr2 varchar2(100),
+ reg_date date default sysdate not null,
+ music varchar2(20),
+ birthday date,
+ route varchar2(150),
+ photo varchar2(150)
+);
+
 create table theme_board(
  the_num number not null primary key,
  the_title varchar2(50) not null,
@@ -25,9 +42,7 @@ create table theme_board(
  the_genre varchar2(10),
  the_recommend number default 0 not null,
  the_hits number default 0 not null,
-
 );
-create sequence theme_seq;
 
 create table free_board(
  free_num number not null primary key,
@@ -42,7 +57,6 @@ create table free_board(
  free_code number not null
 );
 
-create sequence free_seq;
 
 create table inquiry_board(
  inq_num number not null primary key,
@@ -53,8 +67,6 @@ create table inquiry_board(
  inq_modify_date date,
  inq_img varchar2(150)
 );
-
-create sequence inquiry_seq;
 
 create table notice_board(
  not_num number not null primary key,
@@ -67,4 +79,8 @@ create table notice_board(
  not_hits number default 0
 );
 
+create sequence member_seq;
+create sequence theme_seq;
+create sequence free_seq;
+create sequence inquiry_seq;
 create sequence notice_seq;
