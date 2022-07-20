@@ -12,7 +12,7 @@ create table member_level(
 );
 
 create table member_detail (
- mem_num not null primary key,
+ mem_num number not null primary key,
  nick varchar2(20) not null,
  name varchar2(15) not null,
  passwd varchar2(15) not null,
