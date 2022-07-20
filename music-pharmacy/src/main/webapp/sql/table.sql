@@ -136,12 +136,8 @@ create table playlist(
 );
 
 create sequence member_seq;
-create sequence theme_seq;
-create sequence free_seq;
-create sequence inquiry_seq;
+create sequence board_seq;
+create sequence board_comment;
 create sequence notice_seq;
-create sequence theme_comment_seq;
-create sequence inquiry_comment_seq;
-create sequence free_comment_seq;
 create sequence music_seq;
 create sequence playlist_seq;
