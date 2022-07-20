@@ -79,8 +79,69 @@ create table notice_board(
  not_hits number default 0
 );
 
+create table theme_comment(
+treply_num number not null primary key,
+the_num number not null,
+treply_writer varchar2(20) not null,
+treply_content clob not null,
+treply_date date default sysdate not null,
+trepla_modify_date,
+constraint theme_comment_fk foreign key (the_num) 
+                             references theme_board (the_num)
+);
+
+create table inquiry_comment(
+ireply_num number not null primary key,
+inq_num number not null,
+ireply_writer varchar2(20) not null,
+ireply_content clob not null,
+ireply_date date default sysdate not null,
+irepla_modify_date,
+constraint inquiry_comment_fk foreign key (inq_num) 
+                             references inquiry_board (inq_num)
+);
+
+create table free_comment(
+ frely_num number not null primary key,
+ free_num number not null,
+ frely_writer varchar2(20) not null,
+ frely_content clob not null,
+ frely_date date default sysdate not null,
+ frely_modify_date date,
+ constraint free_comment_fk foreign key (free_num) references free_board (free_num)
+);
+
+create table music (
+ mus_num number primary key,
+ the_num number not null,
+ mus_img varchar2(150),
+ mus_album varchar2(20),
+ mus_title varchar2(50) not null,
+ mus_genre varchar2(10),
+ mus_singer varchar2(20) not null,
+ mus_date date,
+ mus_composer varchar2(20),
+ mus_songwriter varchar2(20),
+ mus_recommend number default 0 not null,
+ mus_hits number not default 0 null
+ constraint music_fk foreign key (the_num) references theme_board (the_num)
+);
+
+create table playlist(
+ pl_num number not null primary key,
+ mem_num number not null,
+ mus_num number not null,
+ constraint playlist_fk foreign key(mem_num) references member (mem_num),
+ constraint playlist_fk2 foreign key(mus_num) references music (mus_num)
+);
+
 create sequence member_seq;
 create sequence theme_seq;
 create sequence free_seq;
 create sequence inquiry_seq;
 create sequence notice_seq;
+create sequence theme_comment_seq;
+create sequence inquiry_comment_seq;
+create sequence free_comment_seq;
+create sequence music_seq;
+create sequence playlist_seq;
