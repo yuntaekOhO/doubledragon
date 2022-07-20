@@ -28,3 +28,18 @@ create table theme_board(
 
 );
 create sequence theme_seq;
+
+create table free_board(
+ free_num number not null primary key,
+ free_title varchar2(50) not null,
+ free_writer varchar2(20) not null,
+ free_content clob not null,
+ free_date date default sysdate not null,
+ free_modify_date date,
+ free_img varchar2(150),
+ free_recommend number default 0 not null,
+ free_hits number default 0 not null,
+ free_code number not null
+);
+
+create sequence free_seq;
