@@ -43,3 +43,28 @@ create table free_board(
 );
 
 create sequence free_seq;
+
+create table inquiry_board(
+ inq_num number not null primary key,
+ inq_title varchar2(50) not null,
+ inq_writer varchar2(20) not null,
+ inq_content clob not null, 
+ inq_date date default sysdate not null,
+ inq_modify_date date,
+ inq_img varchar2(150)
+);
+
+create sequence inquiry_seq;
+
+create table notice_board(
+ not_num number not null primary key,
+ not_title varchar2(50) not null,
+ not_writer varchar2(20) not null,
+ not_content clob not null,
+ not_date date default sysdate not null,
+ not_modify_date date,
+ not_img varchar2(150),
+ not_hits number default 0
+);
+
+create sequence notice_seq;
