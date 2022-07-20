@@ -10,9 +10,28 @@
 <div id="main_nav">
 	<ul>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
+			<a href="${pageContext.request.contextPath}/board/list.do">공지사항</a>
+		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/board/list.do">저잣거리</a>
+		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/board/list.do">동의보감</a>
+		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/board/list.do">상소문</a>
+		</li>
+		<c:if test="${!empty user_num && user_auth == 2}">
+		<li>
+			<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
+		</li>
+		</c:if>
+		<li class="align-left">
+			<input type="button" value="" id="">
+			<input type="text" name="" id="">
 		</li>
 		
+		<!--
 		<c:if test="${!empty user_num && user_auth == 3}">
 		<li>
 			<a href="${pageContext.request.contextPath}/member/memberList.do">회원관리</a>
@@ -24,7 +43,7 @@
 			<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
 		</li>
 		</c:if>
-		
+		-->
 		<c:if test="${!empty user_num && !empty user_photo}">
 		<li class="menu-profile">
 			<img src="${pageContext.request.contextPath}/upload/${user_photo}" width="25" height="25" class="my-photo">
@@ -36,7 +55,7 @@
 			<img src="${pageContext.request.contextPath}/images/face.png" width="25" height="25" class="my-photo">
 		</li>
 		</c:if>
-		
+		<!--
 		<c:if test="${!empty user_num}">
 		<li class="menu-logout">
 			[<span>${user_id}</span>]
@@ -52,6 +71,7 @@
 			<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
 		</li>
 		</c:if>
+		 -->
 	</ul>
 </div>
 <!-- header 끝 -->
