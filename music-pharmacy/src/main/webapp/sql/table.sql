@@ -1,3 +1,16 @@
+create table member(
+ mem_num number not null primary key,
+ id varchar2(20) unique not null,
+ auth number(1) default 2 not null,
+);
+
+create table member_level(
+ mem_num number not null primary key,
+ level number(4) default 0 not null,
+ point number default 0 not null,
+ icon varchar2(150)
+);
+
 create table theme_board(
  the_num number not null primary key,
  the_title varchar2(50) not null,
