@@ -9,11 +9,12 @@ public class MemberVO {
 	private String nick;
 	private String name;
 	private String passwd;
+	private String cell;
 	private String email;
 	private String zipcode;
 	private String addr1;
 	private String addr2;
-	private Date date;
+	private Date reg_date;
 	private String music;
 	private Date birthday;
 	private String route;
@@ -22,6 +23,13 @@ public class MemberVO {
 	private int point;
 	private String icon;
 	
+	
+	public String getCell() {
+		return cell;
+	}
+	public void setCell(String cell) {
+		this.cell = cell;
+	}
 	public int getMem_num() {
 		return mem_num;
 	}
@@ -82,11 +90,12 @@ public class MemberVO {
 	public void setAddr2(String addr2) {
 		this.addr2 = addr2;
 	}
-	public Date getDate() {
-		return date;
+	
+	public Date getReg_date() {
+		return reg_date;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
 	}
 	public String getMusic() {
 		return music;

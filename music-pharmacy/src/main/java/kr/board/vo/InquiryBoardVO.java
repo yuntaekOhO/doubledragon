@@ -6,15 +6,12 @@ public class InquiryBoardVO {
 	private int inq_num;
 	private String inq_title;
 	private String inq_writer;
-	private String inq_content;
+	private String inq_question;
+	private String inq_answer;
 	private Date inq_date;
 	private Date inq_modify_date;
 	private String inq_img;
-	private int ireply_num;
-	private String ireply_writer;
-	private String ireply_content;
-	private Date ireply_date;
-	private Date ireply_modify_date;
+	
 	
 	public int getInq_num() {
 		return inq_num;
@@ -34,11 +31,18 @@ public class InquiryBoardVO {
 	public void setInq_writer(String inq_writer) {
 		this.inq_writer = inq_writer;
 	}
-	public String getInq_content() {
-		return inq_content;
+	
+	public String getInq_question() {
+		return inq_question;
 	}
-	public void setInq_content(String inq_content) {
-		this.inq_content = inq_content;
+	public void setInq_question(String inq_question) {
+		this.inq_question = inq_question;
+	}
+	public String getInq_answer() {
+		return inq_answer;
+	}
+	public void setInq_answer(String inq_answer) {
+		this.inq_answer = inq_answer;
 	}
 	public Date getInq_date() {
 		return inq_date;
@@ -57,36 +61,6 @@ public class InquiryBoardVO {
 	}
 	public void setInq_img(String inq_img) {
 		this.inq_img = inq_img;
-	}
-	public int getIreply_num() {
-		return ireply_num;
-	}
-	public void setIreply_num(int ireply_num) {
-		this.ireply_num = ireply_num;
-	}
-	public String getIreply_writer() {
-		return ireply_writer;
-	}
-	public void setIreply_writer(String ireply_writer) {
-		this.ireply_writer = ireply_writer;
-	}
-	public String getIreply_content() {
-		return ireply_content;
-	}
-	public void setIreply_content(String ireply_content) {
-		this.ireply_content = ireply_content;
-	}
-	public Date getIreply_date() {
-		return ireply_date;
-	}
-	public void setIreply_date(Date ireply_date) {
-		this.ireply_date = ireply_date;
-	}
-	public Date getIreply_modify_date() {
-		return ireply_modify_date;
-	}
-	public void setIreply_modify_date(Date ireply_modify_date) {
-		this.ireply_modify_date = ireply_modify_date;
 	}
 	
 	
