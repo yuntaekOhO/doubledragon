@@ -123,7 +123,7 @@ create table music (
  mus_composer varchar2(20),
  mus_songwriter varchar2(20),
  mus_recommend number default 0 not null,
- mus_hits number not default 0 null
+ mus_hits number default 0 not null,
  constraint music_fk foreign key (the_num) references theme_board (the_num)
 );
 
