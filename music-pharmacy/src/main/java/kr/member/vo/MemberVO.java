@@ -3,9 +3,11 @@ package kr.member.vo;
 import java.sql.Date;
 
 public class MemberVO {
+	//member 테이블 컬럼
 	private int mem_num;
 	private String id;
 	private int auth;
+	//member_detail 테이블 컬럼
 	private String nick;
 	private String name;
 	private String passwd;
@@ -19,8 +21,9 @@ public class MemberVO {
 	private Date birthday;
 	private String route;
 	private String photo;
-	private int level;
-	private int point;
+	//member_level 테이블 컬럼
+	private int mem_level;
+	private int mem_point;
 	private String icon;
 	
 	
@@ -121,17 +124,17 @@ public class MemberVO {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	public int getLevel() {
-		return level;
+	public int getMem_level() {
+		return mem_level;
 	}
-	public void setLevel(int level) {
-		this.level = level;
+	public void setMem_level(int mem_level) {
+		this.mem_level = mem_level;
 	}
-	public int getPoint() {
-		return point;
+	public int getMem_point() {
+		return mem_point;
 	}
-	public void setPoint(int point) {
-		this.point = point;
+	public void setMem_point(int mem_point) {
+		this.mem_point = mem_point;
 	}
 	public String getIcon() {
 		return icon;
