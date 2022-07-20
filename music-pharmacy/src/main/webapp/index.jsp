@@ -2,10 +2,5 @@
     pageEncoding="UTF-8"%>
 <%
 	response.sendRedirect(
-<<<<<<< HEAD
 			    request.getContextPath()+"/main/main.do");		
 %>	        
-=======
-			    request.getContextPath()+"/main/main.do");
-%>
->>>>>>> branch 'main' of https://github.com/yuntaekOhO/music-pharmacy.git
