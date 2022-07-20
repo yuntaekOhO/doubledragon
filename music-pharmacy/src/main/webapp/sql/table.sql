@@ -6,7 +6,7 @@ create table member(
 
 create table member_level(
  mem_num number not null primary key,
- mem_level number(4) default 0 not null,
+ mem_level number default 0 not null,
  mem_point number default 0 not null,
  icon varchar2(150)
 );
