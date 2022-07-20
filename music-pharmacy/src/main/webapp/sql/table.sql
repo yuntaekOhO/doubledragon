@@ -62,7 +62,8 @@ create table inquiry_board(
  inq_num number not null primary key,
  inq_title varchar2(50) not null,
  inq_writer varchar2(20) not null,
- inq_content clob not null, 
+ inq_question clob not null, 
+ inq_answer clob not null,
  inq_date date default sysdate not null,
  inq_modify_date date,
  inq_img varchar2(150)
@@ -88,17 +89,6 @@ treply_date date default sysdate not null,
 trepla_modify_date,
 constraint theme_comment_fk foreign key (the_num) 
                              references theme_board (the_num)
-);
-
-create table inquiry_comment(
-ireply_num number not null primary key,
-inq_num number not null,
-ireply_writer varchar2(20) not null,
-ireply_content clob not null,
-ireply_date date default sysdate not null,
-irepla_modify_date,
-constraint inquiry_comment_fk foreign key (inq_num) 
-                             references inquiry_board (inq_num)
 );
 
 create table free_comment(
