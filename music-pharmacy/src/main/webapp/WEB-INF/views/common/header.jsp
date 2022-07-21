@@ -32,7 +32,7 @@
 <div id="main_nav">
 	<ul>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/list.do">공지사항</a>
+			<a href="${pageContext.request.contextPath}/board/notice.do">공지사항</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/board/list.do">저잣거리</a>
