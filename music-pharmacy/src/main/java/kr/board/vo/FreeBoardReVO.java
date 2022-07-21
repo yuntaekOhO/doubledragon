@@ -9,7 +9,7 @@ public class FreeBoardReVO {
 	private String freply_content;
 	private Date freply_date;
 	private Date freply_modify_date;
-	
+	 
 	public int getFreply_num() {
 		return freply_num;
 	}

@@ -1,7 +1,7 @@
 package kr.board.vo;
 
 import java.sql.Date;
-
+ 
 public class ThemeBoardVO {
 	private int the_num;
 	private String the_title;
@@ -17,7 +17,7 @@ public class ThemeBoardVO {
 	private int the_recommend;
 	private int the_hits;
 	
-	 
+	
 	public int getThe_num() {
 		return the_num;
 	}

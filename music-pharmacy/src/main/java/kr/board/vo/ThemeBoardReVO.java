@@ -3,7 +3,7 @@ package kr.board.vo;
 import java.sql.Date;
 
 public class ThemeBoardReVO {
-	
+	 
 	private int treply_num;
 	private int theme_num;
 	private String treply_writer;
