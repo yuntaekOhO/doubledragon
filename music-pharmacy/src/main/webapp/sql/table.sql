@@ -63,7 +63,7 @@ create table inquiry_board(
  inq_title varchar2(50) not null,
  inq_writer varchar2(20) not null,
  inq_question clob not null, 
- inq_answer clob not null,
+ inq_answer clob,
  inq_date date default sysdate not null,
  inq_modify_date date,
  inq_img varchar2(150)
@@ -77,7 +77,7 @@ create table notice_board(
  not_date date default sysdate not null,
  not_modify_date date,
  not_img varchar2(150),
- not_hits number default 0
+ not_hits number default 0 not null
 );
 
 create table theme_comment(
