@@ -13,8 +13,7 @@ public class ThemeBoardVO {
 	private int the_code;
 	private String the_video;
 	private String the_url;
-	private String mus_genre; //이거요
-	private int the_recommend;
+	private String mus_genre;
 	private int the_hits;
 	
 	
@@ -83,12 +82,6 @@ public class ThemeBoardVO {
 	}
 	public void setMus_genre(String mus_genre) {
 		this.mus_genre = mus_genre;
-	}
-	public int getThe_recommend() {
-		return the_recommend;
-	}
-	public void setThe_recommend(int the_recommend) {
-		this.the_recommend = the_recommend;
 	}
 	public int getThe_hits() {
 		return the_hits;

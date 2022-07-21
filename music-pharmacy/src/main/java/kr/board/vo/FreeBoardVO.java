@@ -10,7 +10,6 @@ public class FreeBoardVO {
 	private Date free_date;
 	private Date free_modify_date;
 	private String free_img;
-	private int free_recommend;
 	private int free_hits;
 	private int free_code;
 	
@@ -55,12 +54,6 @@ public class FreeBoardVO {
 	}
 	public void setFree_img(String free_img) {
 		this.free_img = free_img;
-	}
-	public int getFree_recommend() {
-		return free_recommend;
-	}
-	public void setFree_recommend(int free_recommend) {
-		this.free_recommend = free_recommend;
 	}
 	public int getFree_hits() {
 		return free_hits;

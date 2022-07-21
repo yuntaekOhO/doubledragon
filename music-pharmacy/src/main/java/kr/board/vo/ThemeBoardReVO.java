@@ -5,7 +5,7 @@ import java.sql.Date;
 public class ThemeBoardReVO {
 	 
 	private int treply_num;
-	private int theme_num;
+	private int the_num;
 	private String treply_writer;
 	private String treply_content;
 	private Date treply_date;
@@ -17,11 +17,11 @@ public class ThemeBoardReVO {
 	public void setTreply_num(int treply_num) {
 		this.treply_num = treply_num;
 	}
-	public int getTheme_num() {
-		return theme_num;
+	public int getThe_num() {
+		return the_num;
 	}
-	public void setTheme_num(int theme_num) {
-		this.theme_num = theme_num;
+	public void setThe_num(int the_num) {
+		this.the_num = the_num;
 	}
 	public String getTreply_writer() {
 		return treply_writer;

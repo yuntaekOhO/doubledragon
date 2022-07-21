@@ -5,16 +5,23 @@ import java.sql.Date;
 public class FreeBoardReVO {
 	 
 	private int freply_num;
+	private int free_num;
 	private String freply_writer;
 	private String freply_content;
 	private Date freply_date;
 	private Date freply_modify_date;
-	 
+	
 	public int getFreply_num() {
 		return freply_num;
 	}
 	public void setFreply_num(int freply_num) {
 		this.freply_num = freply_num;
+	}
+	public int getFree_num() {
+		return free_num;
+	}
+	public void setFree_num(int free_num) {
+		this.free_num = free_num;
 	}
 	public String getFreply_writer() {
 		return freply_writer;
@@ -40,6 +47,5 @@ public class FreeBoardReVO {
 	public void setFreply_modify_date(Date freply_modify_date) {
 		this.freply_modify_date = freply_modify_date;
 	}
-	
 	
 }
