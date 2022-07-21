@@ -63,7 +63,7 @@ create table inquiry_board(
  inq_title varchar2(50) not null,
  inq_writer varchar2(20) not null,
  inq_question clob not null, 
- inq_answer clob not null,
+ inq_answer clob,
  inq_date date default sysdate not null,
  inq_modify_date date,
  inq_img varchar2(150)
