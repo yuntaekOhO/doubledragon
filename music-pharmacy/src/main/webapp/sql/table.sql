@@ -40,7 +40,6 @@ create table theme_board(
  the_video varchar2(150),
  the_url varchar2(150),
  the_genre varchar2(10),
- the_recommend number default 0 not null,
  the_hits number default 0 not null
 );
 
@@ -52,7 +51,6 @@ create table free_board(
  free_date date default sysdate not null,
  free_modify_date date,
  free_img varchar2(150),
- free_recommend number default 0 not null,
  free_hits number default 0 not null,
  free_code number not null
 );
@@ -125,9 +123,20 @@ create table playlist(
  constraint playlist_fk2 foreign key(mus_num) references music (mus_num)
 );
 
+create table board_fav(
+ fav_num number not null primary key,
+ the_num number,
+ free_num number,
+ mem_num number not null,
+ constraint board_fav_fk1 foreign key (the_num) references theme_board (the_num),
+ constraint board_fav_fk2 foreign key (free_num) references free_board (free_num),
+ constraint board_fav_fk3 foreign key (mem_num) references member (mem_num)
+);
+
 create sequence member_seq;
 create sequence board_seq;
 create sequence board_comment;
 create sequence notice_seq;
 create sequence music_seq;
 create sequence playlist_seq;
+create sequence boardfav_seq;
