@@ -152,12 +152,14 @@ input[id="zipcode"]{
 	float:right;
 }
 .align-left{
-	text-align:left;
+	float:left;
+	margin-left:20px;
+	line-height:0.2em;
 }
 #main2_nav ul{
 	list-style:none;
 	margin:0;
-	padding:0;
+	padding:10px;
 }
 #main2_nav ul li{
 	display:inline-block;
