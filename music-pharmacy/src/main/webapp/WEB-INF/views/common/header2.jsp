@@ -2,15 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- header2 시작 -->
-
 <div id="main2_logo">
-	<li class="menu-profile">
+	<div class="menu-profile">
 			<img src="${pageContext.request.contextPath}/images/face.png" width="25" height="25" class="my-photo">
-	</li>
+	</div>
+	<div>
 	<h1 class="align-left"> 
 		<a href="${pageContext.request.contextPath}/main/main.do">음약방</a>
 	</h1>
-</div>
+	</div>
+
 <div id="main2_nav">
 	<ul>
 		<li>
@@ -41,9 +42,7 @@
 		<li>
 			<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
 		</li>
-		<li>
-			<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
-		</li>
+		
 		</c:if>
 	</ul>
 </div>
