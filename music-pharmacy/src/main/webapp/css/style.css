@@ -146,6 +146,9 @@ input[id="zipcode"]{
 #main2_logo{
 	padding-top:20px;
 }
+#main2_logo div h1 a{
+	color:#6e4e39;
+}
 #main2_nav{
 	padding:2px 10px 20px 10px;
 	height:20px;
@@ -167,6 +170,9 @@ input[id="zipcode"]{
 	text-align:center;
 	vertical-align: middle;
 	padding-top:5px;
+}
+#main2_nav ul li a {
+	color:#9e8d71;
 }
 
 
