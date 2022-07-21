@@ -8,7 +8,7 @@ create table member_level(
  mem_num number not null primary key,
  mem_level number default 0 not null,
  mem_point number default 0 not null,
- icon varchar2(150)
+ mem_icon varchar2(150)
 );
 
 create table member_detail (
