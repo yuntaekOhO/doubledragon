@@ -17,7 +17,7 @@ public class ThemeBoardVO {
 	private int the_recommend;
 	private int the_hits;
 	
-	
+	 
 	public int getThe_num() {
 		return the_num;
 	}

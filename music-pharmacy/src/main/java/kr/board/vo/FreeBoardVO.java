@@ -1,7 +1,7 @@
 package kr.board.vo;
 
 import java.sql.Date;
-
+ 
 public class FreeBoardVO {
 	private int free_num;
 	private String free_title;

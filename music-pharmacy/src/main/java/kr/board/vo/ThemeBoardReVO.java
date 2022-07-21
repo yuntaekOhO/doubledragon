@@ -10,7 +10,7 @@ public class ThemeBoardReVO {
 	private String treply_content;
 	private Date treply_date;
 	private Date treply_modify_date;
-	
+	 
 	public int getTreply_num() {
 		return treply_num;
 	}

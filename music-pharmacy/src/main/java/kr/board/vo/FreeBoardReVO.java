@@ -3,7 +3,7 @@ package kr.board.vo;
 import java.sql.Date;
 
 public class FreeBoardReVO {
-	
+	 
 	private int freply_num;
 	private String freply_writer;
 	private String freply_content;
