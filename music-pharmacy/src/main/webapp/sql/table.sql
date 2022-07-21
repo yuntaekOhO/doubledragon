@@ -86,7 +86,7 @@ the_num number not null,
 treply_writer varchar2(20) not null,
 treply_content clob not null,
 treply_date date default sysdate not null,
-trepla_modify_date date,
+treply_modify_date date,
 constraint theme_comment_fk foreign key (the_num) 
                              references theme_board (the_num)
 );
