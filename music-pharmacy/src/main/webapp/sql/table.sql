@@ -77,7 +77,7 @@ create table notice_board(
  not_date date default sysdate not null,
  not_modify_date date,
  not_img varchar2(150),
- not_hits number default 0
+ not_hits number default 0 not null
 );
 
 create table theme_comment(
