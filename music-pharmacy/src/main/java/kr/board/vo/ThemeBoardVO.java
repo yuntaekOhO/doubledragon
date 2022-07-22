@@ -15,6 +15,10 @@ public class ThemeBoardVO {
 	private String the_url;
 	private String mus_genre;
 	private int the_hits;
+	private int mem_num;
+	
+	private String id;//회원 아이디
+	private String photo;//회원 프로필 사진
 	
 	
 	public int getThe_num() {
@@ -88,6 +92,24 @@ public class ThemeBoardVO {
 	}
 	public void setThe_hits(int the_hits) {
 		this.the_hits = the_hits;
+	}
+	public int getMem_num() {
+		return mem_num;
+	}
+	public void setMem_num(int mem_num) {
+		this.mem_num = mem_num;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 	
