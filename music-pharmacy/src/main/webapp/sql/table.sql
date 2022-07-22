@@ -23,7 +23,7 @@ create table member_detail (
  addr2 varchar2(100),
  reg_date date default sysdate not null,
  music varchar2(20),
- birthday date,
+ birthday varchar2(100),
  route varchar2(150),
  photo varchar2(150)
 );
