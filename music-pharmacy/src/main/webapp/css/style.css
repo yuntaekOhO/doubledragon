@@ -3,26 +3,45 @@ body{
 	margin:0;
 	padding:0;
 }
+.page{
+	background:white;
+	margin:80px 100px 100px 100px;
+	min-height:700px;
+	padding:30px;
+
+}
+#main_logo{
+	padding-top:20px;
+}
+.page a{
+    color:#6e4e39;
+	font-size:20px;
+	font-weight:bold;
+	text-decoration-line: none;
+}
+.page p{
+	font-size:15px;
+	text-decoration-line: none;
+}
 ul{
 	list-style:none;
 }
-.align-center{
-	text-align:center;
-}
-.align-right{
-	text-align:right;
-}
+.align-center{ text-align:center; }
+.align-right{ text-align:right; }
+.floating-left{ float:left; }
+.floating-right{ float:right; }
+.floating-clear{ clear:both; }
 a:link{
 	text-decoration:none;
-	color:#000000;
+	/*color:white;*/
 }
 a:visited{
 	text-decoration:none;
-	color:#000000;
+	/*color:white;*/
 }
 a:hover{
 	text-decoration:none;
-	color:#6C6C6C;
+	/*color:#6C6C6C;*/
 }
 /* 헤더1 */
 .header{
@@ -38,26 +57,50 @@ a:hover{
 .banner h1{
 	width:200px;
 }
-.banner .content{
+.banner > h1 > a{
+	color:#6e4e39;
+}
+.banner > h1 > a:hover{
+	color:#6e4e39;
+}
+.banner > h1 > a:visited{
+	color:#6e4e39;
+}
+.banner > h1 > a:link{
+	color:#6e4e39;
+}
+.banner .header-content{
 	margin-left:100px;
 	width:100%;
 }
-.banner .content b{
+.banner .header-content b{
 	font-size:2em;
 }
-.banner .content div{
+.banner .header-content div{
 	border-radius:3px;
 	background:#af794b;
 	width:150px;
 	height:30px;
 	margin-top:20px;
 	height:40px;
+	cursor:pointer;
 }
-.banner .content span{
+.banner .header-content span{
 	padding-top:10px;
 	padding-left:20px;
 	text-align:center;
 	vertical-align:middle;
+}
+.banner .header-content a:{
+	color:white;
+}
+.banner .header-content a:link{
+	color:white;
+}
+.banner .header-content a:hover{
+	color:white;
+}
+.banner .header-content a:visited{
 	color:white;
 }
 .banner-img{
@@ -69,6 +112,15 @@ a:hover{
 	display:inline-block;
 	float:right;
 }
+.banner-btns a:link{
+	color:white;
+}
+.banner-btns a:hover{
+	color:white;
+}
+.banner-btns a:visited{
+	color:white;
+}
 .banner-btns div{
 	display:inline-block;
 	border-radius:5px;
@@ -79,8 +131,6 @@ a:hover{
 .banner-btns .btn-signup{ background:#af794b; }
 .banner-btns .btn-login{ background:#6e4e39; }
 #main_nav{
-	padding:2px 10px 20px 10px;
-	height:20px;
 	background-color:#9e8d71;
 }
 #main_nav ul{
@@ -88,26 +138,141 @@ a:hover{
 	margin:0;
 	padding:0;
 }
-#main_nav ul > li{
+#main_nav ul a{
+	color:white;
+}
+#main_nav .myMenu{
+	margin-left:0;
+}
+#main_nav .myMenu > li{
 	display:inline-block;
 	width:15%;
+	height:30px;
 	text-align:center;
-	vertical-align:middle;
+	position:relative;
+}
+#main_nav .myMenu .menu-theme div{
+	height:30px;
+}
+#main_nav .myMenu li .submenu{
+	display:none;
+	position:absolute;
+	background-color:#9e8d71;
+	width:100%;
+}
+#main_nav .myMenu li:hover{
+	background-color:#c1a980;
+}
+#main_nav .myMenu .other-li:hover{
+	background-color:#9e8d71;
+}
+#main_nav .myMenu li:hover .submenu{
+	display:block;
+}
+#main_nav .myMenu li .submenu li{
+	display:inline-block;
+	width:100%;
+	height:30px;
+	padding:0 0 0 0;
+	text-align:center;
+}
+#main_nav .myMenu li .submenu li:hover{
+	background-color:#af794b;
+}
+#main_nav .myMenu .other-li{
+	width:400px;
+}
+#main_nav .other-li .search{
+	width:100%;
+	height:100%;
+}
+#main_nav .other-li .search form{
+	height:100%;
+	padding-top:2px;
+}
+#main_nav .myMenu .other-li .search form > input[type="button"]{
+	height:87%;
+	border:0;
+	border-radius:15px 0 0 15px;
+}
+#main_nav .myMenu .other-li .search form > input[type="text"]{
+	width:90%;
+	height:80%;
+	border:0;
+	border-radius:0 15px 15px 0;
+}
+
+/* header2 CSS */
+#main2_logo{
+	padding-top:20px;
+}
+#main2_logo div h1 a{
+	color:#6e4e39;
+	text-decoration-line: none;
+}
+#main2_nav{
+
+	padding:2px 10px 20px 10px;
+	height:20px;
+	float:right;
+}
+.left{
+	float:left;
+	margin-left:20px;
+	line-height:0.2em;
+	
+}
+#main2_nav ul{
+	list-style:none;
+	margin:0;
+	padding:10px;
+}
+#main2_nav ul li{
+	display:inline-block;
+	width:100px;
+	text-align:center;
+	vertical-align: middle;
 	padding-top:5px;
 }
-#main_nav ul > .menu-theme{
-	/*position:absolute;*/
+#main2_nav ul li a {
+	color:#9e8d71;
+	text-decoration-line: none;
 }
-#main_nav ul > .menu-theme > .menu-submenu{
-	/*display:none;*/
-	/*position:relative;*/
+
+/*검색 양식 추가하기(내비게이션 내부 검색)*/
+.search-bar{
+	height:35px;
+	padding:7px;
 }
-#main_nav ul .menu-theme .menu-submenu li{
-	/*display:block;*/
-}
-/*#main_nav ul .menu-theme:hover{
+.input-search{
 	display:block;
-}*/
+	float:right;
+	background-color:#FFFFFF;
+	border:1px solid #CCCCCC;
+	/*            상좌 상우 하우 하좌*/
+	border-radius:0 15px 15px 0;
+	box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+	width:200px;
+	height:35px;
+	padding:0 0 0 10px;
+	font-size:12px;
+	color:#555555;
+}
+.input-search:focus{
+	border-color:rgba(82,168,236,0.8);
+	/*border 바깥 외곽선*/
+	outline:0;
+	box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+}
+.input-search-submit{
+	float:right;
+	width:50px;
+	height:35px;
+	border-radius:15px 0 0 15px;
+	border:1px solid #CCCCCC;
+	margin-left:-1px;
+}
+
 /* 메인 본문 */
 #content{
 	width:100%;
@@ -133,12 +298,7 @@ a:hover{
 	width:33%;
 	text-align:center;
 }
-.floating-left{ float:left; }
-.floating-right{ float:right; }
-.floating-clear{ clear:both; }
 .mini-notice{
-	/*float:right;*/
-	/*width:100%;*/
 	padding:15px;
 	background-color:#684f3c;
 	color:white;
