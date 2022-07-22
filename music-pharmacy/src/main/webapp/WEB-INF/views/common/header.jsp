@@ -35,13 +35,13 @@
 			<a href="${pageContext.request.contextPath}/board/notice.do">공지사항</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/list.do">저잣거리</a>
+			<a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/list.do">동의보감</a>
+			<a href="${pageContext.request.contextPath}/board/themeBoard.do">동의보감</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/list.do">상소문</a>
+			<a href="${pageContext.request.contextPath}/board/inquiryBoard.do">상소문</a>
 		</li>
 		<c:if test="${!empty user_num && user_auth == 2}">
 		<li>
