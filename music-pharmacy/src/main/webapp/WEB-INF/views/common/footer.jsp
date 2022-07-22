@@ -1,46 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>푸터</title>
-<style type="text/css">
-	h4{
-		line-height:0.5em;
-		font-color: white;
-	}
-	p{
-		line-height:0.5em;
-		font-size:12px;
-	}
-	a{
-		font-size:12px;
-	}
-	#logo{
-		margin-left:50px;
-		padding:0px 0px 10px 0px;
-		float:left;
-	}
-	#category{
-		float:right;
-		margin-right:50px;
-	}
-	#category a{
-		color:white;
-	}
-	footer{
-		clear:both;
-		height:200px;
-		background:#d4c09f;
-		color:#fff;
-	}
-</style>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
-</head>
-<body>
-<!-- footer 시작 -->
+
 	<footer>
 		<div id="footer">
 			<div id="logo">
@@ -65,5 +26,3 @@
 			</div>
 		</div>
 	</footer>
-</body>
-</html>

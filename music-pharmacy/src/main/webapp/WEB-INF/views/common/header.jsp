@@ -2,30 +2,31 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- header 시작 -->
-<div style="display:inline-block;position:relative;top:-70px;left:10px">
-	<h1 style="width:200px;">
+<div class="header">
+<div class="banner">
+	<h1>
 		<img src="${pageContext.request.contextPath}/images/face.png" width="50px">
 		<a href="${pageContext.request.contextPath}/main/main.do">음약방</a>
 	</h1>
-	<div style="margin-left:100px;">
+	<div class="content">
 		<p>
-			국가가 허락한 유일한 보약,<b style="font-size:2em;"> 음악</b><br>
+			국가가 허락한 유일한 보약,<b> 음악</b><br>
 			끊임없이 멜로디를 찾고,듣고,부르는 우리들<br>
-			Music is MyLife..★의 삶을 <b>음약방</b>을 통해 만나보세요
+			Music is MyLife..★의 삶을 <strong>음약방</strong>을 통해 만나보세요
 		</p>
-		<div style="border-radius:3px;background:orange;width:150px;height:30px;">
-		<span style="padding-left:20px;text-align:center;color:white;">sign up for free</span>
+		<div class="banner-sign">
+		<span>sign up for free</span>
 		</div>
 	</div>
 </div>
-<div style="display:inline-block;margin:50px 0 50px 110px;">
+<div class="banner-img">
 	<img src="${pageContext.request.contextPath}/images/face.png">
 </div>
-<div style="margin:20px 20px 0 20px;display:inline-block;float:right;">
-	<div style="display:inline-block;border-radius:5px;background:red;">
+<div class="banner-btns">
+	<div class="btn-signup">
 		회원가입
 	</div>
-	<div style="display:inline-block;border-radius:5px;background:pink;">
+	<div class="btn-login">
 		로그인
 	</div>
 </div>
@@ -37,8 +38,14 @@
 		<li>
 			<a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
 		</li>
-		<li>
-			<a href="${pageContext.request.contextPath}/board/themeBoard.do">동의보감</a>
+		<li style="postion:relative;">
+			동의보감
+			<ul class="menu_submenu" style="display:none;position:absolute;">
+            	<li style="display:block;"><a>희</a></li>
+            	<li style="display:block;"><a>노</a></li>
+            	<li style="display:block;"><a>애</a></li>
+            	<li style="display:block;"><a>락</a></li>
+       		</ul>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/board/inquiryBoard.do">상소문</a>
@@ -101,6 +108,7 @@
 		</c:if>
 		 -->
 	</ul>
+</div>
 </div>
 <!-- header 끝 -->
 

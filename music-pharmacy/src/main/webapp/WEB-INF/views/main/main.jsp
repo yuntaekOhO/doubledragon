@@ -9,46 +9,85 @@
 </head>
 <body>
 
-<div>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div style="margin: 30px; padding: 5px; text-align: center; border-radius: 50px; background-color: #684f3c; width: 90px; color: white">
-			<h5>BEST보약</h5>
-	</div>
-	<div style="float: left; width: 50%; padding:10px;">
-		<a>
-		<div style="float: left; width: 33%; text-align:center">
-			<img src=".jpg" width="120", height="120" vspace="10" hspace="20"/>
-			<br>
-			이달의 소리꾼1
-			<br>
-			1
-		</div>
-		</a>
-		
-		<a>
-		<div style="float: left; width: 33%; text-align:center">
-			<img src=".jpg" width="120", height="120" vspace="10" hspace="20"/>
-			<br>
-			이달의 소리꾼2
-			<br>
-			2
-		</div>
-		</a>
-		
-		<a>
-			<div style="float: left; width: 33%; text-align:center">
-			<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
-			<br>
-			이달의 소리꾼3
-			<br>
-			3
-		</div>
-		</a>
+	<div id="content">
+	
+	<div class="best-boyak">
+			<span>BEST보약</span>
 	</div>
 	
-	<div style="float: right; width: 40%; padding:15px; background-color: #684f3c; color: white; line-height: 150%">
+	<div style="float:left;width:50%;">
+	
+	<div class="month-rank">
+		<div class="rank-detail">
+			<a>
+				<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
+				<br>
+				이달의 소리꾼1<!-- 이름 -->
+				<br>
+				1<!-- 순위 -->
+			</a>
+		</div>
+		
+		<div class="rank-detail">
+			<a>
+				<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
+				<br>
+				이달의 소리꾼2
+				<br>
+				2
+			</a>
+		</div>
+		
+		<div class="rank-detail">
+			<a>
+				<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
+				<br>
+				이달의 소리꾼3
+				<br>
+				3
+			</a>
+		</div>
+	</div>
+	
+	<div class="month-rank">
+		<div class="rank-detail">
+		<a>
+			<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
+			<br>
+			이달의 명의1
+			<br>
+			1
+		</a>
+		</div>
+		
+		<div class="rank-detail">
+		<a>
+			<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
+			<br>
+			이달의 명의2
+			<br>
+			2
+		</a>
+		</div>
+		
+		<div class="rank-detail">
+		<a>
+			<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
+			<br>
+			이달의 명의3
+			<br>
+			3
+		</a>
+		</div>
+	</div>
+	
+	</div>
+	
+	<div style="float:right;width:50%;">
+	<div class="mini-notice">
 		<h5>어명이오</h5>
-		<div style="width: 90%; height:2px; background-color: white"></div>
+		<div></div>
 		<br>
 		<a>text1</a><br>
 		<a>text2</a><br>
@@ -56,54 +95,27 @@
 		<a>text4</a><br>
 		<a>text5</a>
 	</div>
-	
-	<div style="float: left; width: 50%; padding:10px;">
-		<a>
-		<div style="float: left; width: 33%; text-align:center">
-			<img src=".jpg" width="120", height="120" vspace="10" hspace="20"/>
-			<br>
-			이달의 명의1
-			<br>
-			1
-		</div>
-		</a>
-		
-		<a>
-		<div style="float: left; width: 33%; text-align:center">
-			<img src=".jpg" width="120", height="120" vspace="10" hspace="20"/>
-			<br>
-			이달의 명의2
-			<br>
-			2
-		</div>
-		</a>
-		
-		<a>
-		<div style="float: left; width: 33%; text-align:center">
-			<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
-			<br>
-			이달의 명의3
-			<br>
-			3
-		</div>
-		</a>
-	</div>
-	
-	<div style="float: right; width: 20%; height: 190px; padding:15px; background-color: #d0c2a8; color: white; line-height: 150%">
+	<div class="mini-content-square1">
 		<h5>고객센터</h5>
-		<div style="width: 90%; height:2px; background-color: white; font-size: small"></div>
+		<div></div>
 		<h5>kakao ID |<br>musicpharamacy
 		<br>
 		Mail | musicpharamacy@naver.com
 		</h5>
 	</div>
 	
-	<div style="float: right; width: 16.65%; height: 190px; padding:15px; color: white; background-color: #e3dbcc; line-height: 150%">
-		
+	<div class="mini-content-square2">
+		<h5>고객센터</h5>
+		<div></div>
+		<h5>kakao ID |<br>musicpharamacy
+		<br>
+		Mail | musicpharamacy@naver.com
+		</h5>
+	</div>
 	</div>
 	
+	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-</div>
 </body>
 </html>
 
