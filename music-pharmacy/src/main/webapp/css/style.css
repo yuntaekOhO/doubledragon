@@ -33,12 +33,14 @@ a:hover{
 	position:relative;
 	top:-30px;
 	left:30px;
+	width:50%;
 }
 .banner h1{
 	width:200px;
 }
 .banner .content{
 	margin-left:100px;
+	width:100%;
 }
 .banner .content b{
 	font-size:2em;
@@ -48,18 +50,19 @@ a:hover{
 	background:#af794b;
 	width:150px;
 	height:30px;
-}
-.banner-sign{
 	margin-top:20px;
+	height:40px;
 }
 .banner .content span{
+	padding-top:10px;
 	padding-left:20px;
 	text-align:center;
+	vertical-align:middle;
 	color:white;
 }
 .banner-img{
 	display:inline-block;
-	margin:50px 0 50px 110px;
+	margin:50px 0 50px 300px;
 }
 .banner-btns{
 	margin:20px 20px 0 20px;
@@ -69,6 +72,9 @@ a:hover{
 .banner-btns div{
 	display:inline-block;
 	border-radius:5px;
+	width:90px;
+	height:30px;
+	color:white;
 }
 .banner-btns .btn-signup{ background:#af794b; }
 .banner-btns .btn-login{ background:#6e4e39; }
@@ -82,14 +88,26 @@ a:hover{
 	margin:0;
 	padding:0;
 }
-#main_nav ul li{
+#main_nav ul > li{
 	display:inline-block;
-	width:100px;
+	width:15%;
 	text-align:center;
 	vertical-align:middle;
 	padding-top:5px;
 }
-
+#main_nav ul > .menu-theme{
+	/*position:absolute;*/
+}
+#main_nav ul > .menu-theme > .menu-submenu{
+	/*display:none;*/
+	/*position:relative;*/
+}
+#main_nav ul .menu-theme .menu-submenu li{
+	/*display:block;*/
+}
+/*#main_nav ul .menu-theme:hover{
+	display:block;
+}*/
 /* 메인 본문 */
 #content{
 	width:100%;

@@ -14,7 +14,7 @@
 			끊임없이 멜로디를 찾고,듣고,부르는 우리들<br>
 			Music is MyLife..★의 삶을 <strong>음약방</strong>을 통해 만나보세요
 		</p>
-		<div class="banner-sign">
+		<div>
 		<span>sign up for free</span>
 		</div>
 	</div>
@@ -23,28 +23,28 @@
 	<img src="${pageContext.request.contextPath}/images/face.png">
 </div>
 <div class="banner-btns">
-	<div class="btn-signup">
+	<div class="btn-signup align-center">
 		회원가입
 	</div>
-	<div class="btn-login">
+	<div class="btn-login align-center">
 		로그인
 	</div>
 </div>
-<div id="main_nav">
-	<ul>
-		<li>
+<div id="main_nav"> 
+	<ul>			
+		<li>		
 			<a href="${pageContext.request.contextPath}/board/notice.do">공지사항</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
 		</li>
-		<li style="postion:relative;">
+		<li class="menu-theme"> 
 			동의보감
-			<ul class="menu_submenu" style="display:none;position:absolute;">
-            	<li style="display:block;"><a>희</a></li>
-            	<li style="display:block;"><a>노</a></li>
-            	<li style="display:block;"><a>애</a></li>
-            	<li style="display:block;"><a>락</a></li>
+			<ul class="menu-submenu"> 
+            	<li><a>희</a></li>
+            	<li><a>노</a></li>
+            	<li><a>애</a></li>
+            	<li><a>락</a></li>
        		</ul>
 		</li>
 		<li>
