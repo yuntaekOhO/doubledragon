@@ -12,11 +12,11 @@
 <!-- header2 시작 -->
 <div>
 	<div id="main2_logo">
-		<div class="align-left">
+		<div class="left">
 				<img src="${pageContext.request.contextPath}/images/face.png" width="25" height="25" vspace="10" class="my-photo">
 		</div>
 		<div>
-		<h1 class="align-left"> 
+		<h1 class="left"> 
 			<a href="${pageContext.request.contextPath}/main/main.do">음약방</a>
 		</h1>
 		</div>
