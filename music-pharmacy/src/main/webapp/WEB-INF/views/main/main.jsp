@@ -101,6 +101,8 @@
 	<div style="float: right; width: 16.65%; height: 190px; padding:15px; color: white; background-color: #e3dbcc; line-height: 150%">
 		
 	</div>
+	
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </div>
 </body>
 </html>
