@@ -18,7 +18,7 @@ public class MemberVO {
 	private String addr2;
 	private Date reg_date;
 	private String music;
-	private Date birthday;
+	private String birthday;
 	private String route;
 	private String photo;
 	//member_level 테이블 컬럼
@@ -106,10 +106,10 @@ public class MemberVO {
 	public void setMusic(String music) {
 		this.music = music;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	public String getRoute() {
