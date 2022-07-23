@@ -94,7 +94,15 @@ body{
 	border:1px solid #CCCCCC;
 	margin-left:-1px;
 }
-
+.result-display{ /* 공지사항에 아무것도 없을때 css */
+	width:600px;
+	height:400px;
+	margin:50px auto;
+	border:1px solid #000;
+	display:flex;	/*하위요소를 수직으로 쌓을 수 있는 공간을 만듬*/
+	align-items:center;/*세로 정렬*/
+	justify-content:center;/*가로 정렬*/
+}
 
 
 
