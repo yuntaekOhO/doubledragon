@@ -49,7 +49,7 @@
 			<a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
 		</li>
 		<li class="menu-theme">
-			<div><a>동의보감</a></div>
+			<div><a href="${pageContext.request.contextPath}/board/themeBoard.do">동의보감</a></div>
 			<ul class="submenu">
             	<li><a>희</a></li>
             	<li><a>노</a></li>
