@@ -262,29 +262,43 @@ public class FreeBoardDAO {
 		}
 	}
 	//글수정
-	/*
-	 * public void updateBoard(FreeBoardVO board)throws Exception{ Connection conn =
-	 * null; PreparedStatement pstmt = null; String sql = null; String sub_sql = "";
-	 * int cnt = 0;
-	 * 
-	 * try { //커넥션풀로부터 커넥션 할당 conn = DBUtil.getConnection();
-	 * 
-	 * if(board.getFilename()!=null) { //업로드한 파일이 있는 경우 sub_sql = ",filename=?"; }
-	 * 
-	 * sql = "UPDATE zboard SET title=?,content=?," + "modify_date=SYSDATE" +
-	 * sub_sql + ",ip=? WHERE board_num=?";
-	 * 
-	 * //PreparedStatement 객체 생성 pstmt = conn.prepareStatement(sql); //?에 데이터 바인딩
-	 * pstmt.setString(++cnt, board.getTitle()); pstmt.setString(++cnt,
-	 * board.getContent()); if(board.getFilename()!=null) { pstmt.setString(++cnt,
-	 * board.getFilename()); } pstmt.setString(++cnt, board.getIp());
-	 * pstmt.setInt(++cnt, board.getBoard_num());
-	 * 
-	 * //SQL문 실행 pstmt.executeUpdate(); }catch(Exception e) { throw new
-	 * Exception(e); }finally { //자원정리 DBUtil.executeClose(null, pstmt, conn); }
-	 * 
-	 * }
-	 */
+	
+	  public void updateBoard(FreeBoardVO board)throws Exception{ Connection conn =
+	  null; PreparedStatement pstmt = null; String sql = null; String sub_sql = "";
+	  int cnt = 0;
+
+	  try { 
+		  //커넥션풀로부터 커넥션 할당 
+		  conn = DBUtil.getConnection();
+	  
+
+	  if(board.getFree_img()!=null) { //업로드한 파일이 있는 경우 
+		  sub_sql = ",filename=?"; 
+
+	  }
+
+	  sql = "UPDATE zboard SET title=?,content=?," + "modify_date=SYSDATE" +
+			  sub_sql + ",ip=? WHERE board_num=?";
+
+	  //PreparedStatement 객체 생성 
+	  pstmt = conn.prepareStatement(sql); 
+	  //?에 데이터 바인딩
+	  pstmt.setString(++cnt, board.getFree_title()); 
+	  pstmt.setString(++cnt,board.getFree_content()); 
+	  if(board.getFree_img()!=null) { 
+		pstmt.setString(++cnt,board.getFree_img()); } 
+		pstmt.setInt(++cnt, board.getFree_num());
+      //SQL문 실행 
+			 pstmt.executeUpdate(); 
+	   
+	  }catch(Exception e) { 
+		  throw new Exception(e); 
+	  }finally { 
+		//자원정리
+			DBUtil.executeClose(null, pstmt, conn); }
+		}
+				  
+	
 	//글삭제
 	public void deleteBoard(int free_num)throws Exception{
 		Connection conn = null;
