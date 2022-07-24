@@ -12,7 +12,7 @@ public class ThemeBoardAction implements Action {
 		// TODO Auto-generated method stub
 		
 		
-		return "/WEB-INF/views/board/theme.jsp";
+		return "/WEB-INF/views/board/themeBoard.jsp";
 	}
 
 }

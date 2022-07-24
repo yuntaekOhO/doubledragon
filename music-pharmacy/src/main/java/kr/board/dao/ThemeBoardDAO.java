@@ -23,7 +23,7 @@ public class ThemeBoardDAO {
 	private ThemeBoardDAO() {}
 	
 	// 글등록
-	public void insertThemeBoard(ThemeBoardVO board)throws Exception{
+	public void insertBoard(ThemeBoardVO board)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
@@ -57,7 +57,7 @@ public class ThemeBoardDAO {
 	}
 	
 	//총 레코드 수(검색 레코드 수)
-	public int getThemeBoardCount(String keyfield, String keyword) throws Exception{
+	public int getBoardCount(String keyfield, String keyword) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -140,7 +140,7 @@ public class ThemeBoardDAO {
 				board.setThe_hits(rs.getInt("the_hits"));
 				board.setThe_date(rs.getDate("the_date"));
 				board.setThe_modify_date(rs.getDate("the_modify_date"));
-				//board.setMem_num(rs.getInt("mem_num"));
+				board.setMem_num(rs.getInt("mem_num"));
 				board.setId(rs.getString("id"));
 				board.setPhoto(rs.getString("photo"));
 				
@@ -185,9 +185,9 @@ public class ThemeBoardDAO {
 				board.setThe_hits(rs.getInt("the_hits"));
 				board.setThe_date(rs.getDate("the_date"));
 				board.setThe_modify_date(rs.getDate("the_modify_date"));
-				//board.setMem_num(rs.getInt("mem_num"));
-				//board.setId(rs.getString("id"));
-				//board.setPhoto(rs.getString("photo"));
+				board.setMem_num(rs.getInt("mem_num"));
+				board.setId(rs.getString("id"));
+				board.setPhoto(rs.getString("photo"));
 			}
 		}catch(Exception e) {
 			throw new Exception(e);
