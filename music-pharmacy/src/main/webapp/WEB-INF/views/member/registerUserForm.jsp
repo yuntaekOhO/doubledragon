@@ -12,7 +12,10 @@
 <body>
 <div>
 	<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
-	<div>
+</div>
+<div class="page">
+	
+	<div class="content-main">
 		<h3>회원가입</h3>
 		<form id="register_form" action="registerUser.do" method="post">
 			<ul>
@@ -46,7 +49,7 @@
 				<li>
 					<label for="zipcode">우편번호</label>
 					<input type="text" name="zipcode" id="zipcode" maxlength="5" autocomplete="off">
-					<input type="button" onclick="sample2_execDaumPostCode()" value="우편번호 찾기">
+					<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기">
 				</li>
 				<li>
 					<label for="addr1">주소</label>
@@ -57,30 +60,36 @@
 					<input type="text" name="addr2" id="addr2" maxlength="30">
 				</li>
 				<li>
-					<label for="music">선호하는 음악 장르</label>
-					<div id="music-genre">
-					<input type="radio" name="music" id="music" value="댄스">댄스
-					<input type="radio" name="music" id="music" value="발라드">발라드
-					<input type="radio" name="music" id="music" value="K-pop">K-pop
-					<input type="radio" name="music" id="music" value="트로트">트로트
-					</div>
-					<div id="music-genre">
-					<input type="radio" name="music" id="music" value="재즈">재즈
-					<input type="radio" name="music" id="music" value="힙합">힙합
-					<input type="radio" name="music" id="music" value="락">락
-					<input type="radio" name="music" id="music" value="인디">인디
-					</div>
-					<input type="reset" value="다시 선택하기"><input type="submit" value="등록">
+					<label for="birthday">생년월일</label>
+					<input type="text" name="birthday" id="birthday" maxlength="10"><br>
 				</li>
 				<li>
-					<label for="route">가입경로</label>
-					<input type="radio" name="route" id="route" value="인터넷">인터넷 검색
-					<input type="radio" name="route" id="route" value="인터넷 커뮤니티">인터넷 커뮤니티
-					<input type="radio" name="route" id="route" value="친구 추천">친구 추천
-					<input type="radio" name="route" id="route" value="기타">기타
+					<label for="music">선호하는 음악 장르</label><br><br>
+					<div id="align-center">
+					<label><input type="checkbox" name="music" id="music1" value="댄스">댄스</label>
+					<label><input type="checkbox" name="music" id="music2" value="발라드">발라드</label>
+					<label><input type="checkbox" name="music" id="music3" value="K-pop">K-pop</label>
+					<label><input type="checkbox" name="music" id="music4" value="트로트">트로트</label>
+					</div>
+					<div id="align-center">
+					<label><input type="checkbox" name="music" id="music5" value="재즈">재즈</label>
+					<label><input type="checkbox" name="music" id="music6" value="힙합">힙합</label>
+					<label><input type="checkbox" name="music" id="music7" value="락">락</label>
+					<label><input type="checkbox" name="music" id="music8" value="인디">인디</label><br>
+					</div>
+					<div class="align-right">
+					<input type="reset" value="다시 선택하기">
+					</div>
+				</li>
+				<li>
+					<label for="route">가입경로</label><br><br>
+					<label><input type="radio" name="route" id="route" value="인터넷">인터넷 검색</label>
+					<label><input type="radio" name="route" id="route" value="인터넷 커뮤니티">인터넷 커뮤니티</label>
+					<label><input type="radio" name="route" id="route" value="친구 추천">친구 추천</label>
+					<label><input type="radio" name="route" id="route" value="기타">기타</label><br>
 				</li>
 			</ul>
-			<div>
+			<div class="align-center">
 				<input type="submit" value="가입">
 				<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 			</div>

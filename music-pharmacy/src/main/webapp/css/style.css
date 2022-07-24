@@ -1,4 +1,4 @@
-/* °ø¿ë */
+/* ï¿½ï¿½ï¿½ï¿½ */
 body{
 	margin:0;
 	padding:0;
@@ -8,11 +8,47 @@ body{
 	margin:80px 100px 100px 100px;
 	min-height:700px;
 	padding:30px;
-
+}
+.content-main{
+	padding:10px 20px;
+}
+form{
+	width:600px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 10px 30px;
 }
 #main_logo{
 	padding-top:20px;
 }
+/*íšŒì›ê°€ì…*/
+input[type="text"],input[type="password"],input[type="email"]{
+	width:200px;
+}
+#register_form input[id="id"]{
+	width:113px;
+}
+input[id="zipcode"]{
+	width:95px;
+}
+.form-notice{
+	margin-left:130px;
+}
+ul{
+	list-style:none;
+}
+label{
+	width:130px;
+	float:left;/*íƒœê·¸ë¥¼ ì™¼ìª½ìœ¼ë¡œ ì •ë ¬*/
+}
+.music_genre input{
+	text-align:center;
+}
+input[type="checkbox"]{
+	width:20px;
+	text-align:center;
+}
+/*íšŒì›ê°€ì… ë*/
 .page a{
     color:#6e4e39;
 	font-size:20px;
@@ -22,9 +58,6 @@ body{
 .page p{
 	font-size:15px;
 	text-decoration-line: none;
-}
-ul{
-	list-style:none;
 }
 .align-center{ text-align:center; }
 .align-right{ text-align:right; }
@@ -43,7 +76,7 @@ a:hover{
 	text-decoration:none;
 	/*color:#6C6C6C;*/
 }
-/* Çì´õ1 */
+/* ï¿½ï¿½ï¿½1 */
 .header{
 	background-color:#c1a980;
 }
@@ -239,7 +272,7 @@ a:hover{
 	text-decoration-line: none;
 }
 
-/*°Ë»ö ¾ç½Ä Ãß°¡ÇÏ±â(³»ºñ°ÔÀÌ¼Ç ³»ºÎ °Ë»ö)*/
+/*ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï±ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½)*/
 .search-bar{
 	height:35px;
 	padding:7px;
@@ -249,7 +282,7 @@ a:hover{
 	float:right;
 	background-color:#FFFFFF;
 	border:1px solid #CCCCCC;
-	/*            »óÁÂ »ó¿ì ÇÏ¿ì ÇÏÁÂ*/
+	/*            ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½*/
 	border-radius:0 15px 15px 0;
 	box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
 	width:200px;
@@ -260,7 +293,7 @@ a:hover{
 }
 .input-search:focus{
 	border-color:rgba(82,168,236,0.8);
-	/*border ¹Ù±ù ¿Ü°û¼±*/
+	/*border ï¿½Ù±ï¿½ ï¿½Ü°ï¿½ï¿½ï¿½*/
 	outline:0;
 	box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
 }
@@ -273,7 +306,7 @@ a:hover{
 	margin-left:-1px;
 }
 
-/* ¸ŞÀÎ º»¹® */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 #content{
 	width:100%;
 	height:535px;
