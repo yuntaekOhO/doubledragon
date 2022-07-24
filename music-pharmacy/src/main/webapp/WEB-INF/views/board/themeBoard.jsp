@@ -19,6 +19,7 @@
 <div class="page">
  	<a href="${pageContext.request.contextPath}/board/themeBoard.do">동의보감</a>
  	
+ 	
 </div>
 <div>
 	
