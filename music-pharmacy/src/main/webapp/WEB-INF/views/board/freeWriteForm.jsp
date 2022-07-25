@@ -18,20 +18,33 @@
 		   method="post" enctype="multipart/form-data">
 			<ul>
 				<li>
-					<label for="title">제목</label>
-					<input type="text" name="title" 
-					      id="title" maxlength="50">
+					<label for="free_title">제목</label>
+					<input type="text" name="free_title" 
+					      id="free_title" maxlength="50">
 				</li>
 				<li>
-					<label for="content">내용</label>
-					<textarea rows="5" cols="30" name="content"
-					     id="content"></textarea>
+					<label for="free_writer">작성자</label>
+					<input type="text" name="free_writer" 
+					      id="free_writer" maxlength="50">
 				</li>
 				<li>
-					<label for="filename">파일</label>
-					<input type="file" name="filename" 
-					 id="filename" 
+					<label for="free_content">내용</label>
+					<textarea rows="5" cols="30" name="free_content"
+					     id="free_content"></textarea>
+				</li>
+				<li>
+					<label for="free_img">파일</label>
+					<input type="file" name="free_img" 
+					 id="free_img" 
 					 accept="image/gif,image/png,image/jpeg">
+				</li>
+			<li>
+					<label for="free_code">게시판 선택</label>
+					<br/>
+					<select name="free_code" id="free_code">
+					      <option value="1">자유게시판</option>
+					      <option value="2">음악추천받아요</option>
+					</select>
 				</li>
 			</ul>
 			<div class="align-center">

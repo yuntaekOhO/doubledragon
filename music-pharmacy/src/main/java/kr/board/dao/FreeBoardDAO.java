@@ -32,20 +32,19 @@ public class FreeBoardDAO {
 			conn = DBUtil.getConnection();
 			//SQL문 작성
 			sql = "INSERT INTO free_board (free_num,free_title,free_writer"
-					+ "free_content,free_date,free_modify_date,free_img,free_hits"
-					+ "free_code) VALUES ("
-					+ "board_seq.nextval,?,?,?,?,?,?,?,?)";
+					+ ",free_content,free_date,free_img,"
+					+ "free_code,mem_num) VALUES ("
+					+ "board_seq.nextval,?,?,?,SYSDATE,?,?,?)";
 			//JDBC 수행 3단계 : PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			//?에 데이터 바인딩
 			pstmt.setString(1, board.getFree_title());
 			pstmt.setString(2, board.getFree_writer());
 			pstmt.setString(3, board.getFree_content());
-			pstmt.setDate(4, board.getFree_date());
-			pstmt.setDate(5, board.getFree_modify_date());
-			pstmt.setString(6, board.getFree_img());
-			pstmt.setInt(7, board.getFree_hits());
-			pstmt.setInt(8, board.getFree_code());
+			pstmt.setString(4, board.getFree_img());
+			pstmt.setInt(5, board.getFree_code());
+			pstmt.setInt(6, board.getMem_num());
+			
 
 			//JDBC 수행 4단계 : SQL문 실행
 			pstmt.executeUpdate();

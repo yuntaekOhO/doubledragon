@@ -27,8 +27,10 @@ public class FreeWriteAction implements Action{
 		MultipartRequest multi = FileUtil.createFile(request);
 		FreeBoardVO board = new FreeBoardVO();
 		board.setFree_title(multi.getParameter("free_title"));
+		board.setFree_writer(multi.getParameter("free_writer"));
 		board.setFree_content(multi.getParameter("free_content"));
 		board.setFree_img(multi.getFilesystemName("free_img"));
+		board.setFree_code(Integer.parseInt(multi.getParameter("free_code")));
 		board.setMem_num(user_num);
 		
 		FreeBoardDAO dao = FreeBoardDAO.getInstance();
