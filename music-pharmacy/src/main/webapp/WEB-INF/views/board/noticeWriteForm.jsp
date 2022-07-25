@@ -8,13 +8,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/noticeWrite.js"></script>
 </head>
 <body>
 <div>
 	<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
 </div>
-
 <div class="page">
 	<a href="${pageContext.request.contextPath}/board/noticeList.do">어명이오</a>
 	<p>공지사항 게시판</p><br>

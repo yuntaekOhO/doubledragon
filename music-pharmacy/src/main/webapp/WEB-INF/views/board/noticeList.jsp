@@ -6,11 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 
 </head>
 <body>
@@ -33,8 +32,8 @@
 	</div>
 	<!-- 검색 끝 -->
  	<div class="list-space align-right">
- 	<!-- 로그인되어있으면 글쓰기가보임, 나중에 관리자 로그인시에만으로 바꿔야함 -->
- 		<c:if test="${empty user_num}"> <!--로그인 안됨-->
+ 	<!-- 관리자만 글쓰기 가능 -->
+ 		<c:if test="${!empty user_auth==3}"> 
  		<input type="button" value="글쓰기" onclick="location.href='noticeWriteForm.do'">
  		</c:if>
  	</div><br><br><br>
@@ -65,9 +64,28 @@
  	</c:if>
  	<c:if test="${count > 0}">
  	<!-- 공지사항있을때 html 넣어야함 -->
- 	
+ 	<table>
+			<tr>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성일</th>
+				<th>조회</th>
+			</tr>
+			<c:forEach var="board" items="${list}">
+			<tr>
+				<td>${board.not_num}</td>
+				<td><a href="detail.do?board_num=${board.not_num}">${board.not_title}</a></td>
+				<td>${board.not_id}</td>
+				<td>${board.not_date}</td>
+				<td>${board.not_hits}</td>
+			</tr>
+			</c:forEach>
+		</table>
+		<div class="align-center">
+			${page}
+		</div>
  	</c:if>
-
 </div>
 <div>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

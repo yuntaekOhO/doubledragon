@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<!-- 공지사항 등록시 나타나는 창 -->
+<script>
+ alert('글쓰기 완료!');
+ location.href='noticeList.do';
+</script>
