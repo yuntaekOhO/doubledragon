@@ -26,13 +26,15 @@ public class InquiryBoardDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "INSERT INTO inquiry_board (inq_num,inq_title,inq_writer,inq_question,inq_answer,inq_date) "
-					+ "VALUES (inq_seq.nextval,?,?,?,?,SYSDATE)";
+			sql = "INSERT INTO inquiry_board (inq_num,inq_title,inq_writer,inq_question,inq_answer,inq_date,inq_modify_date,mem_num,inq_img) "
+					+ "VALUES (inq_seq.nextval,?,?,?,?,SYSDATE,null,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getInq_title());
 			pstmt.setString(2, board.getInq_writer());
 			pstmt.setString(3, board.getInq_question());
 			pstmt.setString(4, board.getInq_answer());
+			pstmt.setInt(5, board.getMem_num());
+			pstmt.setString(6, board.getInq_img());
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			throw new Exception(e);
@@ -54,7 +56,7 @@ public class InquiryBoardDAO {
 			if(keyword!=null && !"".equals(keyword)) {
 				if(keyfield.equals("1")) sub_sql = "WHERE inq_title LIKE ?";
 				if(keyfield.equals("2")) sub_sql = "WHERE inq_question LIKE ?";
-				if(keyfield.equals("3")) sub_sql = "WHERE inq_answer title LIKE ?";
+				if(keyfield.equals("3")) sub_sql = "WHERE inq_answer LIKE ?";
 			}
 			sql = "SELECT COUNT(*) FROM inquiry_board " + sub_sql;
 			
@@ -88,13 +90,13 @@ public class InquiryBoardDAO {
 		try {
 			conn = DBUtil.getConnection();
 			if(keyword!=null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql = "WHERE title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql = "WHERE nick LIKE ?";
-				else if(keyfield.equals("3")) sub_sql = "WHERE content LIKE ?";
+				if(keyfield.equals("1")) sub_sql = "WHERE inq_title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "WHERE inq_question LIKE ?";
+				else if(keyfield.equals("3")) sub_sql = "WHERE inq_answer LIKE ?";
 			}
 			
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM inquiry_board b JOIN member m "
-					+ "USING (mem_num) JOIN member_detail d USING (mem_num) " + sub_sql + " ORDER BY d.inq_num desc)a) "
+					+ "USING (mem_num) JOIN member_detail d USING (mem_num) " + sub_sql + " ORDER BY b.inq_num desc)a) "
 							+ "WHERE rnum >= ? AND rnum <= ?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -116,6 +118,8 @@ public class InquiryBoardDAO {
 				board.setInq_date(rs.getDate("inq_date"));
 				board.setInq_modify_date(rs.getDate("inq_modify_date"));
 				board.setInq_img(rs.getString("inq_img"));
+				
+				list.add(board);
 			}
 			
 		}catch(Exception e) {

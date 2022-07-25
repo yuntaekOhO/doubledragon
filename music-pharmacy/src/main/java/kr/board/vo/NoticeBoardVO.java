@@ -11,7 +11,21 @@ public class NoticeBoardVO {
 	private Date not_modify_date;
 	private String not_img;
 	private int not_hits;
+	private String not_photo; //관리자 프로필 사진
+	private int mem_num;
 	
+	public int getMem_num() {
+		return mem_num;
+	}
+	public void setMem_num(int mem_num) {
+		this.mem_num = mem_num;
+	}
+	public String getNot_photo() {
+		return not_photo;
+	}
+	public void setNot_photo(String not_photo) {
+		this.not_photo = not_photo;
+	}
 	public int getNot_num() {
 		return not_num;
 	}
