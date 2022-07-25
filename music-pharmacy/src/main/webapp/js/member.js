@@ -114,4 +114,19 @@ $(function(){
 			return false;
 		}
 	});
+	
+	//로그인 이벤트 연결
+	$('#login_form').submit(function(){
+		if($('#id').val().trim()==''){
+			alert('아이디를 입력하세요!');
+			$('#id').val('').focus();
+			return false;
+		}
+		if($('#passwd').val().trim()==''){
+			alert('비밀번호를 입력하세요!');
+			$('#passwd').val('').focus();
+			return false;
+		}
+	});
+	
 });
