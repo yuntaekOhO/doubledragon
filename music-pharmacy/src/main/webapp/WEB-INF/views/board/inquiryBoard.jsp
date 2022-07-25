@@ -77,13 +77,12 @@
 		</c:if>
 		<hr width="90%">
 		
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</div>
 	
 	<div>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	</div>
-
 </div>
 	</div>
 </body>
