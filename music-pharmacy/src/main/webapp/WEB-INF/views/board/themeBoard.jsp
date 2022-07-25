@@ -19,7 +19,35 @@
 
 <div class="page">
  	<a href="${pageContext.request.contextPath}/board/themeBoard.do">동의보감</a>
- 	<input type="button" value="글쓰기"
+ </div>
+ <div>
+ 	<c:if test="${count == 0}">
+		<div class="result-display">
+			표시할 게시물이 없습니다.
+		</div>
+		</c:if>
+		<c:if test="${count > 0}">
+	<br>
+	<table>
+			<tr>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성일</th>
+				<th>조회</th>
+			</tr>
+			<c:forEach var="board" items="${list}">
+			<tr>
+				<td>${board.the_num}</td>
+				<td>${board.the_title}</td>
+				<td>${board.the_date}</td>
+				<td>${board.the_hits}</td>
+			</tr>
+			</c:forEach>
+			
+		</table>
+		</c:if>
+	<input type="button" value="글쓰기"
 			   onclick="location.href='themeWriteForm.do'">
 
 </div>
@@ -31,24 +59,7 @@
 </div>
 
 
-		<table>
-			<tr>
-				<th>글번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>조회</th>
-			</tr>
-			
-			<tr>
-				<td>the_num</td>
-				<td>theme_board.the_title</a></td>
-				<td>theme_board.the_date</td>
-				<td>theme_board.the_hits</td>
-			</tr>
-
-		</table>
-
+		
 <div>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </div>
