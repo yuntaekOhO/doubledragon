@@ -34,7 +34,7 @@ public class ThemeBoardDAO {
 			// SQL 문 작성
 			sql = "INSERT INTO theme_board(the_num,the_title,the_writer,the_content,the_date,the_img,"
 					+ "the_code,the_video,the_url, mem_num) VALUES "
-					+ "(theme_seq.nextval,?,?,?,SYSDATE,?,?,?,?,?)";
+					+ "(board_seq.nextval,?,?,?,SYSDATE,?,?,?,?,?)";
 			// JDBC 수행 3단계
 			pstmt = conn.prepareStatement(sql);
 			// ?에 데이터 바인딩

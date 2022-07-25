@@ -11,7 +11,7 @@ import kr.controller.Action;
 import kr.util.PagingUtil;
 
 public class ThemeListAction implements Action{
-//공지사항 메인
+
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -25,7 +25,7 @@ public class ThemeListAction implements Action{
 		int count = dao.getBoardCount(keyfield, keyword);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 20,10,"themeBoard.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 20,10,"themeList.do");
 		
 		List<ThemeBoardVO> list = null;
 		if(count > 0) {
