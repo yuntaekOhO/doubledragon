@@ -27,15 +27,16 @@
 		</div>
 	</div>
 	<!-- 검색 끝 -->
-	
+	<c:if test="${!empty user_num && user_auth==3}">
+		<div>
+			<form class="floating-right" action="writeInqForm.do">
+				<input type="submit" value="글작성">
+			</form>
+		</div>
+	</c:if>
 	<div class="floating-clear">
 		<h3>자주 묻는 질문</h3>
 		<%-- 관리자 전용 글작성 버튼 --%>
-		<c:if test="${!empty user_num && user_auth==3}">
-		<div>
-			<button>글 작성</button>
-		</div>
-		</c:if>
 		<div style="padding:0 70px">
 			<strong>Q</strong> <span>질문 내용</span><br><br>
 			<strong>A</strong> <span>답변 내용</span><br><br>
