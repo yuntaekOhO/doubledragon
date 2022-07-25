@@ -44,6 +44,7 @@
 			       onclick="location.href='themeList.do'"> 
     
 		</div>
+		
 		<c:if test="${count == 0}">
 		<div class="result-display">
 			표시할 게시물이 없습니다.
@@ -58,13 +59,12 @@
 				<th>작성일</th>
 				<th>조회</th>
 			</tr>
-			<c:forEach var="board" items="${list}">
+			<c:forEach var="theme_board" items="${list}">
 			<tr>
-				<td>${board.board_num}</td>
-				<td><a href="detail.do?board_num=${theme_board.the_num}">${theme_board.title}</a></td>
-				<td>${theme_board.id}</td>
-				<td>${theme_board.reg_date}</td>
-				<td>${theme_board.hits}</td>
+				<td>${theme_board.the_num}</td>
+				<td><a href="detail.do?the_num=${theme_board.the_num}">${theme_board.the_title}</a></td>
+				<td>${theme_board.the_date}</td>
+				<td>${theme_board.the_hits}</td>
 			</tr>
 			</c:forEach>
 		</table>

@@ -32,17 +32,21 @@ public class ThemeBoardDAO {
 			// JDBC 수행 1,2단계
 			conn = DBUtil.getConnection();
 			// SQL 문 작성
-			sql = "INSERT INTO theme_board(the_num,the_title,the_writer,the_content,the_img,the_code,the_video,the_url) VALUES (theme_seq.nextval,?,?,?,?,?,?,?)";
+			sql = "INSERT INTO theme_board(the_num,the_title,the_writer,the_content,the_date,the_img,"
+					+ "the_code,the_video,the_url, mem_num) VALUES "
+					+ "(theme_seq.nextval,?,?,?,SYSDATE,?,?,?,?,?)";
 			// JDBC 수행 3단계
 			pstmt = conn.prepareStatement(sql);
 			// ?에 데이터 바인딩
 			pstmt.setString(1, board.getThe_title());
 			pstmt.setString(2, board.getThe_writer());
 			pstmt.setString(3, board.getThe_content());
-			pstmt.setString(4, board.getThe_img());
-			pstmt.setInt(5, board.getThe_code());
-			pstmt.setString(6, board.getThe_video());
-			pstmt.setString(7, board.getThe_url());
+			pstmt.setDate(4, board.getThe_date());
+			pstmt.setString(5, board.getThe_img());
+			pstmt.setInt(6, board.getThe_code());
+			pstmt.setString(7, board.getThe_video());
+			pstmt.setString(8, board.getThe_url());
+			pstmt.setInt(9, board.getMem_num());
 			//pstmt.setString(8, board.getMus_genre());
 			
 			// JDBC 수행 4단계

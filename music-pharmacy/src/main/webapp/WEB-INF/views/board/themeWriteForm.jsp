@@ -19,28 +19,27 @@
 <div class="page">
 	
 	<h4>동의보감 글쓰기</h4>
-		<form id="write_form" action="write.do" 
+		<form id="write_form" action="themeWrite.do" 
 		   method="post" enctype="multipart/form-data">
 			<ul>
 				<li>
 					<label for="the_title">제목</label>
-					<input type="text" name="title" 
-					      id="title" maxlength="50">
+					<input type="text" name="the_title" 
+					      id="the_title" maxlength="50">
 				</li>
 				<li>
 					<label for="the_content">내용</label>
-					<textarea rows="5" cols="30" name="content"
-					     id="content"></textarea>
+					<textarea rows="5" cols="30" name="the_content"
+					     id="the_content"></textarea>
 				</li>
 				<li>
 					<label for="the_img">파일</label>
-					<input type="file" name="filename" 
-					 id="filename" 
+					<input type="file" name="the_img" 
+					 id="the_img" 
 					 accept="image/gif,image/png,image/jpeg">
 				</li>
 				<li>
 					<label for="the_code">게시판 선택</label>
-					<br/>
 					<select name="the_code" id="the_code">
 					      <option value="">--게시판 선택--</option>
 					      <option value="1">희喜</option>
@@ -51,15 +50,20 @@
 				</li>
 				<li>
 					<label for="the_video">관련 영상</label>
-					<input type="file" name="filename" 
-					 id="filename" 
-					 accept="image/gif,image/png,image/jpeg">
+					<input type="file" name="the_video" 
+					 id="the_video" 
+					 accept="video/mp4,video/avi,image/wmv">
 				</li>
+				<li>
+					<label for="the_url">영상 링크</label>
+					<input type="url" name="the_url" id="the_url">
+				</li>
+				
 			</ul>
 			<div class="align-center">
 				<input type="submit" value="등록">
 				<input type="button" value="목록" 
-				             onclick="location.href='list.do'">
+				             onclick="location.href='themeBoard.do'">
 			</div>
 		</form>
 	<div>

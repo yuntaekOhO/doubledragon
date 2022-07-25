@@ -25,7 +25,7 @@ public class ThemeListAction implements Action{
 		int count = dao.getBoardCount(keyfield, keyword);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 20,10,"themeList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 20,10,"themeBoard.do");
 		
 		List<ThemeBoardVO> list = null;
 		if(count > 0) {
@@ -35,7 +35,7 @@ public class ThemeListAction implements Action{
 		request.setAttribute("list", list);
 		request.setAttribute("page", page.getPage());
 		
-		return "/WEB-INF/views/board/themeList.jsp";
+		return "/WEB-INF/views/board/themeBoard.jsp";
 	}
 
 }
