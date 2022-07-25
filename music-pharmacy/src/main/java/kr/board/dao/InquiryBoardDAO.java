@@ -88,13 +88,13 @@ public class InquiryBoardDAO {
 		try {
 			conn = DBUtil.getConnection();
 			if(keyword!=null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql = "WHERE title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql = "WHERE nick LIKE ?";
-				else if(keyfield.equals("3")) sub_sql = "WHERE content LIKE ?";
+				if(keyfield.equals("1")) sub_sql = "WHERE inq_title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "WHERE inq_question LIKE ?";
+				else if(keyfield.equals("3")) sub_sql = "WHERE inq_answer LIKE ?";
 			}
 			
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM inquiry_board b JOIN member m "
-					+ "USING (mem_num) JOIN member_detail d USING (mem_num) " + sub_sql + " ORDER BY d.inq_num desc)a) "
+					+ "USING (mem_num) JOIN member_detail d USING (mem_num) " + sub_sql + " ORDER BY b.inq_num desc)a) "
 							+ "WHERE rnum >= ? AND rnum <= ?";
 			
 			pstmt = conn.prepareStatement(sql);
