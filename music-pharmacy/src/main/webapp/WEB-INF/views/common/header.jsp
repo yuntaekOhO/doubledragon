@@ -29,7 +29,7 @@
 		<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
 	</div>
 	<div class="btn-login align-center">
-		<a  href="${pageContext.request.contextPath}/member/login.do">로그인</a>
+		<a  href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
 	</div>
 	</c:if>
 	<%-- 로그인 된 경우 --%>
