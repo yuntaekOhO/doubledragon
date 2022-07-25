@@ -14,7 +14,7 @@ public class NoticeListAction implements Action{
 //공지사항 메인
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
- 
+  
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum==null) pageNum = "1";
 		
