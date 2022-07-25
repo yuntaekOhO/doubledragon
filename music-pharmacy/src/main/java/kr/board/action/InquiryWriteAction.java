@@ -35,8 +35,11 @@ public class InquiryWriteAction implements Action {
 		board.setInq_writer(member.getNick());
 		board.setInq_question(request.getParameter("question"));
 		board.setInq_answer(request.getParameter("answer"));
+		board.setMem_num(user_num);
 		InquiryBoardDAO dao = InquiryBoardDAO.getInstance();
 		dao.insertInquiryBoard(board);
+		
+		System.out.println("글작성 성공");
 		
 		return "/WEB-INF/views/board/inquiryBoard.jsp";
 	}

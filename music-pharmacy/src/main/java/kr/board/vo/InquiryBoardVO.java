@@ -11,10 +11,16 @@ public class InquiryBoardVO {
 	private Date inq_date;
 	private Date inq_modify_date;
 	private String inq_img;
-	
+	private int mem_num;
 	
 	public int getInq_num() {
 		return inq_num;
+	}
+	public int getMem_num() {
+		return mem_num;
+	}
+	public void setMem_num(int mem_num) {
+		this.mem_num = mem_num;
 	}
 	public void setInq_num(int inq_num) {
 		this.inq_num = inq_num;
