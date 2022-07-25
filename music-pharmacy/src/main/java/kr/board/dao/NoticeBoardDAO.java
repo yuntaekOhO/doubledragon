@@ -69,8 +69,7 @@ public class NoticeBoardDAO {
 				else if(keyfield.equals("3")) sub_sql = "WHERE b.content LIKE ?";
 			}
 			
-			sql = "SELECT COUNT(*) FROM notice_board " + sub_sql;
-			// b JOIN member m USING(mem_num)
+			sql = "SELECT COUNT(*) FROM notice_board b JOIN member m USING(mem_num) " + sub_sql;
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			if(keyword!=null && !"".equals(keyword)) { //키워드가있고, 비어있지도않으면

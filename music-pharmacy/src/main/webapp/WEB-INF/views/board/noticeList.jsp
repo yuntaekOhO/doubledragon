@@ -64,7 +64,7 @@
  	</c:if>
  	<c:if test="${count > 0}">
  	<!-- 공지사항있을때 html 넣어야함 -->
- 	<table>
+	<table>
 			<tr>
 				<th>글번호</th>
 				<th>제목</th>
@@ -72,13 +72,13 @@
 				<th>작성일</th>
 				<th>조회</th>
 			</tr>
-			<c:forEach var="board" items="${list}">
+			<c:forEach var="not_board" items="${list}">
 			<tr>
-				<td>${board.not_num}</td>
-				<td><a href="detail.do?board_num=${board.not_num}">${board.not_title}</a></td>
-				<td>${board.not_id}</td>
-				<td>${board.not_date}</td>
-				<td>${board.not_hits}</td>
+				<td>${board.board_num}</td>
+				<td><a href="detail.do?board_num=${not_board.not_num}">${not_board.not_title}</a></td>
+				<td>${not_board.not_writer}</td>
+				<td>${not_board.not_date}</td>
+				<td>${not_board.not_hits}</td>
 			</tr>
 			</c:forEach>
 		</table>
@@ -92,3 +92,10 @@
 </div>
 </body>
 </html>
+
+
+
+
+
+
+

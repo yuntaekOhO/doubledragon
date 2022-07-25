@@ -35,7 +35,7 @@ public class NoticeWriteAction implements Action {
 		 	
 		MultipartRequest multi = FileUtil.createFile(request);
 		
-		
+		//이거왜한거에여??
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		MemberVO member = memberDAO.getMember(user_num);
 		
