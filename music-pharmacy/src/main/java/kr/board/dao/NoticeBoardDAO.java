@@ -29,14 +29,15 @@ public class NoticeBoardDAO {
 			//커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
 			//SQL문 작성 , mem_num?????
-			sql = "INSERT INTO notice_board (not_num, not_title, not_content, not_img, mem_num) VALUES (notice_seq.nextval,?,?,?,?)";
+			sql = "INSERT INTO notice_board (not_num, not_title, not_writer, not_content, not_img, mem_num) VALUES (notice_seq.nextval,?,?,?,?,?)";
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			//?에 데이터 바인딩
 			pstmt.setString(1, notice.getNot_title());
-			pstmt.setString(2, notice.getNot_content());
-			pstmt.setString(3, notice.getNot_img());
-			pstmt.setInt(4, notice.getMem_num());
+			pstmt.setString(2, notice.getNot_writer());
+			pstmt.setString(3, notice.getNot_content());
+			pstmt.setString(4, notice.getNot_img());
+			pstmt.setInt(5, notice.getMem_num());
 			
 			//SQL문 실행, 전송된 내용이 insert
 			pstmt.executeUpdate();

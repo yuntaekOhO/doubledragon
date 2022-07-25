@@ -21,13 +21,13 @@
 	<form id="write_form" action="noticeWrite.do" method="post" enctype="multipart/form-data">
 	<ul>
 		<li>
-			<input type="text" name="notice_title" id="notice_title" maxlength="70">
+			<input type="text" name="not_title" id="not_title" maxlength="70">
 		</li>
 		<li><br>
-			<textarea rows="20" cols="100" name="notice_content" id="notice_content"></textarea>
+			<textarea rows="20" cols="100" name="not_content" id="not_content"></textarea>
 		</li>
 		<li><br>
-			<input type="file" name="notice_filename" id="notice_filename" accept="image/gif,image/png,image/jpeg">
+			<input type="file" name="not_filename" id="not_filename" accept="image/gif,image/png,image/jpeg">
 		</li>
 	</ul>
 	<div class="align-right">
