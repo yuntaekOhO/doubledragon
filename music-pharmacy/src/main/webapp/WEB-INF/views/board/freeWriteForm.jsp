@@ -14,7 +14,7 @@
 	<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
 	<div class="content-main">
 		<h2>게시판 글쓰기</h2>
-		<form id="write_form" action="write.do" 
+		<form id="freeWrite_form" action="freeWrite.do" 
 		   method="post" enctype="multipart/form-data">
 			<ul>
 				<li>
@@ -37,7 +37,7 @@
 			<div class="align-center">
 				<input type="submit" value="등록">
 				<input type="button" value="목록" 
-				             onclick="location.href='list.do'">
+				             onclick="location.href='freeBoard.do'">
 			</div>
 		</form>
 	</div>

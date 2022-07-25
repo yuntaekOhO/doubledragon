@@ -17,9 +17,9 @@ public class FreeWriteAction implements Action{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		HttpSession session = request.getSession();
-		Integer mem_num = 
-				(Integer)session.getAttribute("mem_num");
-		if(mem_num==null) {
+		Integer user_num = 
+				(Integer)session.getAttribute("user_num");
+		if(user_num==null) {
 			return "redirect:/member/loginForm.jsp";
 		}
 		
@@ -29,7 +29,7 @@ public class FreeWriteAction implements Action{
 		board.setFree_title(multi.getParameter("free_title"));
 		board.setFree_content(multi.getParameter("free_content"));
 		board.setFree_img(multi.getFilesystemName("free_img"));
-		board.setMem_num(mem_num);
+		board.setMem_num(user_num);
 		
 		FreeBoardDAO dao = FreeBoardDAO.getInstance();
 		dao.insertBoard(board);

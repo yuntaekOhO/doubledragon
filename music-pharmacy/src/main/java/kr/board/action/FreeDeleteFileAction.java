@@ -22,16 +22,16 @@ public class FreeDeleteFileAction implements Action{
 	             new HashMap<String,String>();
 
 		HttpSession session = request.getSession();
-		Integer mem_num = 
-			(Integer)session.getAttribute("mem_num");
-		if(mem_num==null) {//로그인이 되지 않은 경우
+		Integer user_num = 
+			(Integer)session.getAttribute("user_num");
+		if(user_num==null) {//로그인이 되지 않은 경우
 		mapAjax.put("result", "logout");
 		}else {//로그인 된 경우
 		int free_num = Integer.parseInt(
 				request.getParameter("free_num"));
 		FreeBoardDAO dao = FreeBoardDAO.getInstance();
 		FreeBoardVO db_board = dao.getBoard(free_num);
-		if(mem_num!=db_board.getMem_num()) {
+		if(user_num!=db_board.getMem_num()) {
 			mapAjax.put("result", "wrongAccess");
 		}else {
 			dao.deleteFile(free_num);

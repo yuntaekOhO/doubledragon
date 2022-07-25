@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>저잣거리</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
@@ -19,7 +20,7 @@
 
 <div class="page">
  	<a href="${pageContext.request.contextPath}/board/freeboard.do">저잣거리</a>
- 	<p>공지사항 게시판</p><br>
+ 	<p>자유게시판</p><br>
  	<p style="float:left;">총 27건</p>
 	<!-- 검색 -->
 	<div class="pull-left">
@@ -33,9 +34,12 @@
 	<!-- 검색 끝 -->
  	<div class="list-space align-right">
  	<!-- 로그인되어있으면 글쓰기가보임, 나중에 관리자 로그인시에만으로 바꿔야함 -->
- 		<c:if test="${empty user_num}"> <!--로그인 안됨-->
- 		<input type="button" value="글쓰기" onclick="location.href='freeWriteForm.do'">
- 		</c:if>
+ 		   <c:if test="${!empty user_num}">
+			<input type="button" value="글쓰기"
+			   onclick="location.href='freeWriteForm.do'">
+			</c:if>   
+			<input type="button" value="홈으로"
+			 onclick="location.href='${pageContext.request.contextPath}/main/main.do'">      
  	</div><br><br><br>
  	<c:if test="${count == 0}">
  	<!-- 걍넣어봄 -->
