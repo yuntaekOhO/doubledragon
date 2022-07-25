@@ -33,7 +33,7 @@
 	<!-- 검색 끝 -->
  	<div class="list-space align-right">
  	<!-- 관리자만 글쓰기 가능 -->
- 		<c:if test="${!empty user_num && user_auth==3}"> 
+ 		<c:if test="${!empty user_num && user_auth==3}">
  		<input type="button" value="글쓰기" onclick="location.href='noticeWriteForm.do'">
  		</c:if>
  	</div><br><br><br>
