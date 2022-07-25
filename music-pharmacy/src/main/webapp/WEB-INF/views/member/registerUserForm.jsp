@@ -44,7 +44,7 @@
 				</li>
 				<li>
 					<label for="email">이메일</label>
-					<input type="text" name="email" id="name" maxlength="50">
+					<input type="text" name="email" id="email" maxlength="50">
 				</li>
 				<li>
 					<label for="zipcode">우편번호</label>
@@ -61,10 +61,10 @@
 				</li>
 				<li>
 					<label for="birthday">생년월일</label>
-					<input type="text" name="birthday" id="birthday" maxlength="10"><br>
+					<input type="text" name="birthday" id="birthday" maxlength="10"><br><br>
 				</li>
 				<li>
-					<label for="music">선호하는 음악 장르</label><br><br>
+					<label for="music">선호하는 음악 장르</label><br>
 					<div id="align-center">
 					<label><input type="checkbox" name="music" id="music1" value="댄스">댄스</label>
 					<label><input type="checkbox" name="music" id="music2" value="발라드">발라드</label>
@@ -75,22 +75,22 @@
 					<label><input type="checkbox" name="music" id="music5" value="재즈">재즈</label>
 					<label><input type="checkbox" name="music" id="music6" value="힙합">힙합</label>
 					<label><input type="checkbox" name="music" id="music7" value="락">락</label>
-					<label><input type="checkbox" name="music" id="music8" value="인디">인디</label><br>
-					</div>
-					<div class="align-right">
-					<input type="reset" value="다시 선택하기">
-					</div>
+					<label><input type="checkbox" name="music" id="music8" value="인디">인디</label><br><br>
+					</div><br>
 				</li>
 				<li>
-					<label for="route">가입경로</label><br><br>
+					<label for="route">가입경로</label><br>
+					<div id="align-center">
 					<label><input type="radio" name="route" id="route" value="인터넷">인터넷 검색</label>
 					<label><input type="radio" name="route" id="route" value="인터넷 커뮤니티">인터넷 커뮤니티</label>
 					<label><input type="radio" name="route" id="route" value="친구 추천">친구 추천</label>
 					<label><input type="radio" name="route" id="route" value="기타">기타</label><br>
+					</div>
 				</li>
 			</ul>
 			<div class="align-center">
 				<input type="submit" value="가입">
+				<input type="reset" value="전체 초기화">
 				<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 			</div>
 		</form>
@@ -155,9 +155,9 @@
 	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	                document.getElementById('zipcode').value = data.zonecode;
 	                //(수정) + extraAddr를 추가해서 address1에 참고항목이 보여지도록 수정
-	                document.getElementById("address1").value = addr + extraAddr;
+	                document.getElementById("addr1").value = addr + extraAddr;
 	                // 커서를 상세주소 필드로 이동한다.
-	                document.getElementById("address2").focus();
+	                document.getElementById("addr2").focus();
 	
 	                // iframe을 넣은 element를 안보이게 한다.
 	                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)

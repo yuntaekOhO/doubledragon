@@ -63,14 +63,19 @@ $(function(){
 			$('#name').val('').focus();
 			return false;
 		}
+		if($('#nick').val().trim()==''){
+			alert('닉네임을 입력하세요!');
+			$('#nick').val('').focus();
+			return false;
+		}
 		if($('#passwd').val().trim()==''){
 			alert('비밀번호를 입력하세요!');
 			$('#passwd').val('').focus();
 			return false;
 		}
-		if($('#phone').val().trim()==''){
+		if($('#cell').val().trim()==''){
 			alert('전화번호를 입력하세요!');
-			$('#phone').val('').focus();
+			$('#cell').val('').focus();
 			return false;
 		}
 		if($('#email').val().trim()==''){
@@ -83,16 +88,30 @@ $(function(){
 			$('#zipcode').val('').focus();
 			return false;
 		}
-		if($('#address1').val().trim()==''){
+		if($('#addr1').val().trim()==''){
 			alert('주소를 입력하세요!');
-			$('#address1').val('').focus();
+			$('#addr1').val('').focus();
 			return false;
 		}
-		if($('#address2').val().trim()==''){
+		if($('#addr2').val().trim()==''){
 			alert('나머지 주소를 입력하세요!');
-			$('#address2').val('').focus();
+			$('#addr2').val('').focus();
 			return false;
 		}
-		
+		if($('#birthday').val().trim()==''){
+			alert('생년월일을 입력하세요!');
+			$('#birthday').val('').focus();
+			return false;
+		}
+		if($('#route').val().trim()==''){
+			alert('가입경로를 선택하세요!');
+			$('#route').val('').focus();
+			return false;
+		}
+		if($('#music').val().trim()==''){
+			alert('장르를 선택하세요!');
+			$('#music').val('').focus();
+			return false;
+		}
 	});
 });

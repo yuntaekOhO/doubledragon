@@ -26,6 +26,12 @@ public class MemberVO {
 	private int mem_point;
 	private String icon;
 	
+	public boolean isCheckedPassword(String userPasswd) {
+		if(auth > 1 && passwd.equals(userPasswd)) {
+			return true;
+		}
+		return false;
+	}
 	
 	public String getCell() {
 		return cell;
