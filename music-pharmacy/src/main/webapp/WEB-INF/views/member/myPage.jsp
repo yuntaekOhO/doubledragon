@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>My page</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css2" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css3" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 </head>
@@ -37,10 +39,37 @@
 					</div>
 				</li>
 			</ul>
-			
-			
+			<h3>비밀번호 수정</h3>
+			<ul>
+				<li>
+					<input type="button" value="비밀번호 수정" onclick="location.href='modifyPasswordForm.do'">
+				</li>
+			</ul>
+			<h3>회원탈퇴</h3>
+			<ul>
+				<li>
+					<input type="button" value="회원탈퇴" onclick="location.href='deleteUserForm.do'">
+				</li>
+			</ul>
+		</div>
+		<div class="mypage-div">
+			<h3>회원정보</h3>
+			<ul>
+				<li>이름 : ${member.name}</li>
+				<li>전화번호 : ${member.cell}</li>
+				<li>이메일 : ${member.email}</li>
+				<li>우편번호 : ${member.zipcode}</li>
+				<li>주소 : ${member.addr1} ${member.addr2}</li>
+				<li>생일 : ${member.birthday}</li>
+				<li>선호하는 음악 장르 : ${member.music}</li>
+				<li>가입일 : ${member.reg_date}</li>
+				<li>
+					<input type="button" value="정보수정" onclick="location.href='modifyUserForm.do'">
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

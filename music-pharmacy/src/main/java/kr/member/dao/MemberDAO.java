@@ -155,5 +155,119 @@ public class MemberDAO {
 		return member;
 	}
 	
+	//회원정보수정
+	public void updateMember(MemberVO member)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "UPDATE member_detail SET name=?,cell=?,email=?,zipcode=?,addr1=?,addr2=?,birthday=?,music=? WHERE mem_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member.getName());
+			pstmt.setString(2, member.getCell());
+			pstmt.setString(3, member.getEmail());
+			pstmt.setString(4, member.getZipcode());
+			pstmt.setString(5, member.getAddr1());
+			pstmt.setString(6, member.getAddr2());
+			pstmt.setString(7, member.getBirthday());
+			pstmt.setString(8, member.getMusic());
+			pstmt.setInt(9, member.getMem_num());
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	
+	//비밀번호수정
+	public void updatePassword(String passwd,int mem_num)throws Exception{
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "UPDATE member_detail SET passwd=? WHERE mem_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, passwd);
+			pstmt.setInt(2, mem_num);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	//프로필 사진 수정
+	public void updateMyPhoto(String photo, int mem_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "UPDATE member_detail SET photo=? WHERE mem_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, photo);
+			pstmt.setInt(2, mem_num);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	
+	//탈퇴
+	public void deleteMember(int mem_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			conn.setAutoCommit(false);
+			
+			sql = "UPDATE member SET auth=0 WHERE mem_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mem_num);
+			pstmt.executeUpdate();
+			
+			sql = "DELETE FROM member_detail WHERE mem_num=?";
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setInt(1, mem_num);
+			pstmt2.executeUpdate();
+			
+			conn.commit();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt2, conn);
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	
 	
 }

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/loginstyle.css" type="text/css">
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 </head>
@@ -24,6 +25,6 @@
   	</div>
   	</form>
 </div>
-
+<!--<jsp:include page="/WEB-INF/views/common/footer.jsp"/>-->
 </body>
 </html>
