@@ -123,10 +123,10 @@ public class MemberDAO {
 		try {
 			conn = DBUtil.getConnection();
 			
-			sql = "SELECT * FROM member m JOIN member_detail d + ON m.mem_num=d.mem_num WHERE m.mem_num=?";
+			sql = "SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_num=?";
 			
 			pstmt = conn.prepareStatement(sql);
-			
+			pstmt.setInt(1, mem_num);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				member = new MemberVO();

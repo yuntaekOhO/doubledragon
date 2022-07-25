@@ -41,7 +41,7 @@
 				<li>
 					<label for="the_code">게시판 선택</label>
 					<select name="the_code" id="the_code">
-					      <option value="">--게시판 선택--</option>
+
 					      <option value="1">희喜</option>
 					      <option value="2">노怒</option>
 					      <option value="3">애哀</option>

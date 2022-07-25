@@ -41,12 +41,11 @@ public class ThemeBoardDAO {
 			pstmt.setString(1, board.getThe_title());
 			pstmt.setString(2, board.getThe_writer());
 			pstmt.setString(3, board.getThe_content());
-			pstmt.setDate(4, board.getThe_date());
-			pstmt.setString(5, board.getThe_img());
-			pstmt.setInt(6, board.getThe_code());
-			pstmt.setString(7, board.getThe_video());
-			pstmt.setString(8, board.getThe_url());
-			pstmt.setInt(9, board.getMem_num());
+			pstmt.setString(4, board.getThe_img());
+			pstmt.setInt(5, board.getThe_code());
+			pstmt.setString(6, board.getThe_video());
+			pstmt.setString(7, board.getThe_url());
+			pstmt.setInt(8, board.getMem_num());
 			//pstmt.setString(8, board.getMus_genre());
 			
 			// JDBC 수행 4단계
@@ -55,7 +54,7 @@ public class ThemeBoardDAO {
 			throw new Exception(e);
 		}finally {
 		// 자원 정리
-		DBUtil.executeClose(null, pstmt, conn);
+			DBUtil.executeClose(null, pstmt, conn);
 		}
 	
 	}
