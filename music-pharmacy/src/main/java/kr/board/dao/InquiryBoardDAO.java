@@ -26,8 +26,8 @@ public class InquiryBoardDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "INSERT INTO inquiry_board (inq_num,inq_title,inq_writer,inq_question,inq_answer,inq_date,inq_modify_date,mem_num,inq_img) "
-					+ "VALUES (inq_seq.nextval,?,?,?,?,SYSDATE,null,?,?)";
+			sql = "INSERT INTO inquiry_board (inq_num,inq_title,inq_writer,inq_question,inq_answer,inq_date,mem_num,inq_img) "
+					+ "VALUES (inq_seq.nextval,?,?,?,?,SYSDATE,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getInq_title());
 			pstmt.setString(2, board.getInq_writer());
@@ -79,6 +79,7 @@ public class InquiryBoardDAO {
 	}
 	//게시글 목록
 	public List<InquiryBoardVO> selectList(int start, int end, String keyfield, String keyword)throws Exception{
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -129,5 +130,84 @@ public class InquiryBoardDAO {
 		}
 		
 		return list;
+	}
+	
+	public void deleteImg(int inq_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "UPDATE inquiry_board set filename='' WHERE inq_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, inq_num);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	//게시글 한 건 조회
+	public InquiryBoardVO getBoard(int inq_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		InquiryBoardVO board = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "SELECT * FROM inquiry_board where inq_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, inq_num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				board = new InquiryBoardVO();
+				board.setInq_num(rs.getInt("inq_num"));
+				board.setInq_title(rs.getString("inq_title"));
+				board.setInq_writer(rs.getString("inq_writer"));
+				board.setInq_question(rs.getString("inq_question"));
+				board.setInq_answer(rs.getString("inq_answer"));
+				board.setInq_date(rs.getDate("inq_date"));
+				board.setInq_modify_date(rs.getDate("inq_modify_date"));
+				board.setInq_img(rs.getString("inq_img"));
+				board.setMem_num(rs.getInt("mem_num"));
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		return board;
+	}
+	
+	//한건의 게시글의 앞 뒤 게시글 알아내기
+	public int[] getPreOrNextBoard(int inq_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int[] numArray = new int[2];
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select lag, lead from (select inq_num,inq_title,lag(inq_num,1,0) over (order by inq_num) as lag, lead(inq_num,1,0) over (order by inq_num) as lead from inquiry_board) where inq_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, inq_num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				numArray[0] = rs.getInt(1);
+				numArray[1] = rs.getInt(2);
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		return numArray;
 	}
 }

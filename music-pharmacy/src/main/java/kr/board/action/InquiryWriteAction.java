@@ -4,11 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+
 import kr.board.dao.InquiryBoardDAO;
 import kr.board.vo.InquiryBoardVO;
 import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
+import kr.util.FileUtil;
 
 public class InquiryWriteAction implements Action {
 
@@ -29,17 +32,21 @@ public class InquiryWriteAction implements Action {
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		MemberVO member = memberDAO.getMember(user_num);
 		
+		MultipartRequest multi = FileUtil.createFile(request);
 		
 		InquiryBoardVO board = new InquiryBoardVO();
-		board.setInq_title(request.getParameter("title"));
+		board.setInq_title(multi.getParameter("title"));
 		board.setInq_writer(member.getNick());
-		board.setInq_question(request.getParameter("question"));
-		board.setInq_answer(request.getParameter("answer"));
+		board.setInq_question(multi.getParameter("question"));
+		board.setInq_answer(multi.getParameter("answer"));
+		board.setInq_img(multi.getFilesystemName("inq_img"));
 		board.setMem_num(user_num);
 		InquiryBoardDAO dao = InquiryBoardDAO.getInstance();
 		dao.insertInquiryBoard(board);
 		
 		System.out.println("글작성 성공");
+		
+		
 		
 		return "/WEB-INF/views/board/inquiryBoard.jsp";
 	}

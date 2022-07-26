@@ -8,7 +8,6 @@
 <title>상소문</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
@@ -63,9 +62,9 @@
 			<c:forEach var="board" items="${list}">
 			<tr>
 				<td>${board.inq_num}</td>
-				<td>${board.inq_title}</td>
-				<td>${board.inq_question}</td>
-				<td>${board.inq_answer}</td>
+				<td><a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_title}</a></td>
+				<td><a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_question}</a></td>
+				<td><a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_answer}</a></td>
 				<td>${board.inq_writer}</td>
 				<td>${board.inq_date}</td>
 			</tr>
@@ -80,10 +79,8 @@
 		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</div>
 	
-	<div>
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	</div>
-</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
