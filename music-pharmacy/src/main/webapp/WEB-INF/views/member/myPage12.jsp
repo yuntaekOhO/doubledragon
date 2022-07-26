@@ -7,16 +7,16 @@
 <meta charset="UTF-8">
 <title>My page</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css2" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css3" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 </head>
 <body>
 <div>
-	<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
-	<div>
-		<h2>마이페이지</h2>
+<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
+</div>
+<div>
+	<div class="page">
+		<a href="${pageContext.request.contextPath}/member/myPage.do">마이페이지</a>
 		<hr style="border: solid 1px light-gray;">
 		<div class="mypage-div">
 			<ul>
@@ -30,12 +30,9 @@
 				</li>
 				<li>
 					<div>
-						<input type="button" value="수정" id="photo_btn">
-					</div>
-					<div>
 						<input type="file" id="photo" accept="image/gif,image/png,image/jpeg">
-						<input type="button" value="등록" id="photo_btn">
-						<input type="button" value="취소" id="photo_btn">
+						<input type="button" value="등록" id="photo_submit">
+						<input type="button" value="취소" id="photo_reset">
 					</div>
 				</li>
 			</ul>

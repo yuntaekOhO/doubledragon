@@ -7,101 +7,102 @@
 <meta charset="UTF-8">
 <title>회원정보 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPage.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header2.jsp"/>
-<div>
-	<div class="content-main">
-		<h3>회원정보 수정</h3>
+<div class="page">
+	<div class="mypage-div">
 		<form id="modify_form" action="modifyUser.do" method="post">
-				
-		<div class="page">
-			<a href="${pageContext.request.contextPath}/member/myPage.do">마이페이지</a>
-			<hr style="border: solid 1px light-gray;"><br>
-			<div class="mypage-div">
-				<div class="profile-image">
-					<c:if test="${empty member.photo}">
-					<img src="${pageContext.request.contextPath}/images/face.png" class="my-photo">
-					</c:if>
-					<c:if test="${!empty member.photo}">
-					<img src="${pageContext.request.contextPath}/upload/${member.photo}" class="my-photo">
-					</c:if>
-				</div><br>
-				<div>
-					<input type="file" id="photo" accept="image/gif,image/png,image/jpeg">
-						
-					<button class="photo_submit" id="photo_submit">등록</button>
-					<button class="photo_reset" id="photo_reset">취소</button>
-				</div>
-			</div>
-		</div>
-			<ul>
-				<li>
-					<label for="name">이름</label>
-					<input type="text" value="${member.name}" name="name" id="name" maxlength="10">
-				</li>
-				<li>
-					<label for="nick">닉네임</label>
-					<input type="text" value="${member.nick}" name="nick" id="nick" maxlength="10">
-				</li>
-				<li>
-					<label for="email">이메일</label>
-					<input type="email" value="${member.email}" name="email" id="email" maxlength="50">
-				</li>
-				<li>
-					<label for="cell">전화번호</label>
-					<input type="text" value="${member.cell}" name="cell" id="cell" maxlength="10">
-				</li>
-				<li>
-					<label for="zipcode">우편번호</label>
-					<input type="text" value="${member.zipcode}" name="zipcode" id="zipcode" maxlength="5" autocomplete="off">
-					<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기">
-				</li>
-				<li>
-					<label for="addr1">주소</label>
-					<input type="text" value="${member.addr1}" name="addr1" id="addr1" maxlength="30">
-				</li>
-				<li>
-					<label for="addr2">나머지 주소</label>
-					<input type="text" value="${member.addr2}" name="addr2" id="addr2" maxlength="30">
-				</li>
-				<li>
-					<label for="birthday">생년월일</label>
-					<input type="text" name="birthday" id="birthday" maxlength="10"><br><br>
-				</li>
-				<li>
-					<label for="music">선호하는 음악 장르</label><br>
-					<div id="align-center">
-					<label><input type="checkbox" name="music" id="music1" value="댄스">댄스</label>
-					<label><input type="checkbox" name="music" id="music2" value="발라드">발라드</label>
-					<label><input type="checkbox" name="music" id="music3" value="K-pop">K-pop</label>
-					<label><input type="checkbox" name="music" id="music4" value="트로트">트로트</label>
-					</div>
-					<div id="align-center">
-					<label><input type="checkbox" name="music" id="music5" value="재즈">재즈</label>
-					<label><input type="checkbox" name="music" id="music6" value="힙합">힙합</label>
-					<label><input type="checkbox" name="music" id="music7" value="락">락</label>
-					<label><input type="checkbox" name="music" id="music8" value="인디">인디</label><br><br>
+			<div class="page">
+				<a href="${pageContext.request.contextPath}/member/myPage.do">회원정보 수정</a>
+				<hr style="border: solid 1px light-gray;"><br>
+				<div class="mypage-div">
+					<div class="profile-image">
+						<c:if test="${empty member.photo}">
+						<img src="${pageContext.request.contextPath}/images/face.png" class="my-photo">
+						</c:if>
+						<c:if test="${!empty member.photo}">
+						<img src="${pageContext.request.contextPath}/upload/${member.photo}" class="my-photo">
+						</c:if>
 					</div><br>
-				</li>
-				<li>
-					<label for="route">가입경로</label><br>
-					<div id="align-center">
-					<label><input type="radio" name="route" id="route" value="인터넷">인터넷 검색</label>
-					<label><input type="radio" name="route" id="route" value="인터넷 커뮤니티">인터넷 커뮤니티</label>
-					<label><input type="radio" name="route" id="route" value="친구 추천">친구 추천</label>
-					<label><input type="radio" name="route" id="route" value="기타">기타</label><br>
+					<div class="button-align">
+						<input type="file" id="photo" accept="image/gif,image/png,image/jpeg">
+						<button class="photo_submit" id="photo_submit">등록</button>
+						<button class="photo_reset" id="photo_reset">취소</button>
 					</div>
-				</li>
-			</ul>
-			<div class="align-center">
-				<input type="submit" value="수정">
-				<input type="button" value="마이페이지" onclick="location.href='myPage.do'">
+				</div>
+				<div class="mypage-div">
+					<ul>
+					<li>
+						<label for="name">이름</label>
+						<input type="text" value="${member.name}" name="name" id="name" maxlength="10">
+					</li>
+					<li>
+						<label for="nick">닉네임</label>
+						<input type="text" value="${member.nick}" name="nick" id="nick" maxlength="10">
+					</li>
+					<li>
+						<label for="email">이메일</label>
+						<input type="email" value="${member.email}" name="email" id="email" maxlength="50">
+					</li>
+					<li>
+						<label for="cell">전화번호</label>
+						<input type="text" value="${member.cell}" name="cell" id="cell" maxlength="10">
+					</li>
+					<li>
+						<label for="zipcode">우편번호</label>
+						<input type="text" value="${member.zipcode}" name="zipcode" id="zipcode" maxlength="5" autocomplete="off">
+						<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기">
+					</li>
+					<li>
+						<label for="addr1">주소</label>
+						<input type="text" value="${member.addr1}" name="addr1" id="addr1" maxlength="30">
+					</li>
+					<li>
+						<label for="addr2">나머지 주소</label>
+						<input type="text" value="${member.addr2}" name="addr2" id="addr2" maxlength="30">
+					</li>
+					<li>
+						<label for="birthday">생년월일</label>
+						<input type="text" name="birthday" id="birthday" maxlength="10"><br><br>
+					</li>
+					<li>
+						<label for="music">선호하는 음악 장르</label><br>
+						<div id="align-center">
+						<label><input type="checkbox" name="music" id="music1" value="댄스">댄스</label>
+						<label><input type="checkbox" name="music" id="music2" value="발라드">발라드</label>
+						<label><input type="checkbox" name="music" id="music3" value="K-pop">K-pop</label>
+						<label><input type="checkbox" name="music" id="music4" value="트로트">트로트</label>
+						</div>
+						<div id="align-center">
+						<label><input type="checkbox" name="music" id="music5" value="재즈">재즈</label>
+						<label><input type="checkbox" name="music" id="music6" value="힙합">힙합</label>
+						<label><input type="checkbox" name="music" id="music7" value="락">락</label>
+						<label><input type="checkbox" name="music" id="music8" value="인디">인디</label><br><br>
+						</div><br>
+					</li>
+					<li>
+						<label for="route">가입경로</label><br>
+						<div id="align-center">
+						<label><input type="radio" name="route" id="route" value="인터넷">인터넷 검색</label>
+						<label><input type="radio" name="route" id="route" value="인터넷 커뮤니티">인터넷 커뮤니티</label>
+						<label><input type="radio" name="route" id="route" value="친구 추천">친구 추천</label>
+						<label><input type="radio" name="route" id="route" value="기타">기타</label><br>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="align-center">	
+				<button class="correction_btn">수정</button>
+				<button class="correction_btn" onclick="location.href='myPage.do'">마이페이지</button>
+			</div>
 			</div>
 		</form>
 	</div>
+
 	<!-- 다음 우편번호 찾기 시작 -->
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
