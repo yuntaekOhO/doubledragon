@@ -12,7 +12,7 @@
 <jsp:include page="/WEB-INF/views/common/header2.jsp"/>
 <div class="content-main">
 	<h2>상소문 글작성</h2>
-	<form action="inquiryBoard.do" method="post" enctype="multipart/form-data">
+	<form action="writeInq.do" method="post" enctype="multipart/form-data">
 		<ul>
 			<li>
 				<label for="title">제목</label>

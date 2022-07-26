@@ -91,9 +91,9 @@ public class InquiryBoardDAO {
 		try {
 			conn = DBUtil.getConnection();
 			if(keyword!=null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql = "WHERE inq_title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql = "WHERE inq_question LIKE ?";
-				else if(keyfield.equals("3")) sub_sql = "WHERE inq_answer LIKE ?";
+				if(keyfield.equals("1")) sub_sql = "WHERE b.inq_title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "WHERE b.inq_question LIKE ?";
+				else if(keyfield.equals("3")) sub_sql = "WHERE b.inq_answer LIKE ?";
 			}
 			
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM inquiry_board b JOIN member m "
@@ -131,7 +131,7 @@ public class InquiryBoardDAO {
 		
 		return list;
 	}
-	
+	//이미지 삭제
 	public void deleteImg(int inq_num)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -183,7 +183,6 @@ public class InquiryBoardDAO {
 		
 		return board;
 	}
-	
 	//한건의 게시글의 앞 뒤 게시글 알아내기
 	public int[] getPreOrNextBoard(int inq_num)throws Exception{
 		Connection conn = null;
@@ -209,5 +208,57 @@ public class InquiryBoardDAO {
 		}
 		
 		return numArray;
+	}
+	//게시글 삭제
+	public void deleteInqBoard(int inq_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "DELETE FROM inquiry_board WHERE inq_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, inq_num);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	//글 수정
+	public void updateInqBoard(InquiryBoardVO board)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		String sub_sql = "";
+		int cnt = 0;
+		try {
+			conn = DBUtil.getConnection();
+			
+			if(board.getInq_img()!=null) {
+				sub_sql = ",inq_img=?";
+			}
+			
+			sql = "UPDATE inquiry_board SET inq_title=?,inq_question=?,inq_answer=?,inq_modify_date=SYSDATE"+sub_sql+" WHERE inq_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(++cnt, board.getInq_title());
+			pstmt.setString(++cnt, board.getInq_question());
+			pstmt.setString(++cnt, board.getInq_answer());
+			if(board.getInq_img()!=null) {
+				pstmt.setString(++cnt, board.getInq_img());
+			}
+			pstmt.setInt(++cnt, board.getInq_num());
+			
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
 	}
 }
