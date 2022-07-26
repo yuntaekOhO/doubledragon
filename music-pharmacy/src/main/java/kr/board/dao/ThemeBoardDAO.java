@@ -186,6 +186,7 @@ public class ThemeBoardDAO {
 				board.setThe_num(rs.getInt("the_num"));
 				board.setThe_title(rs.getString("the_title"));
 				board.setThe_content(rs.getString("the_content"));
+				board.setThe_img(rs.getString("the_img"));
 				board.setThe_hits(rs.getInt("the_hits"));
 				board.setThe_date(rs.getDate("the_date"));
 				board.setThe_modify_date(rs.getDate("the_modify_date"));
@@ -243,12 +244,12 @@ public class ThemeBoardDAO {
 				
 				if(board.getThe_img()!=null) {
 					//업로드한 파일이 있는 경우
-					sub_sql = ",filename=?";
+					sub_sql = ",the_img=?";
 				}
 				
-				sql = "UPDATE zboard SET title=?,content=?,"
-					+ "modify_date=SYSDATE" + sub_sql 
-					+ ",ip=? WHERE board_num=?";
+				sql = "UPDATE theme_board SET the_title=?,the_content=?,"
+					+ "the_modify_date=SYSDATE" + sub_sql 
+					+ ",the_code=?,the_url=? WHERE the_num=?";
 				
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
@@ -258,7 +259,8 @@ public class ThemeBoardDAO {
 				if(board.getThe_img()!=null) {
 					pstmt.setString(++cnt, board.getThe_img());
 				}
-				//pstmt.setString(++cnt, board.getIp());
+				pstmt.setInt(++cnt, board.getThe_code());
+				pstmt.setString(++cnt, board.getThe_url());
 				pstmt.setInt(++cnt, board.getThe_num());
 				
 				//SQL문 실행

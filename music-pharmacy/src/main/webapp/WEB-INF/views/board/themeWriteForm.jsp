@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +53,7 @@
 					<label for="the_video">관련 영상</label>
 					<input type="file" name="the_video" 
 					 id="the_video" 
-					 accept="video/mp4,video/avi,image/wmv">
+					 accept="video/mp4,video/avi,video/wmv">
 				</li>
 				<li>
 					<label for="the_url">영상 링크</label>

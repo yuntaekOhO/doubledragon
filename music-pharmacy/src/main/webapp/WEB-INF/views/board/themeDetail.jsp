@@ -26,6 +26,11 @@
 			</li>
 		</ul>
 		<hr size="1" noshade="noshade" width="100%">
+		<c:if test="${!empty board.the_img}">
+		<div class="align-center">
+			<img src="${pageContext.request.contextPath}/upload/${board.the_img}" class="detail-img">
+		</div>
+		</c:if>
 		
 		<p>
 			${board.the_content}
