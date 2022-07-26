@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,27 @@
 	<div class="content-main">
 		<h3>회원정보 수정</h3>
 		<form id="modify_form" action="modifyUser.do" method="post">
+				
+		<div class="page">
+			<a href="${pageContext.request.contextPath}/member/myPage.do">마이페이지</a>
+			<hr style="border: solid 1px light-gray;"><br>
+			<div class="mypage-div">
+				<div class="profile-image">
+					<c:if test="${empty member.photo}">
+					<img src="${pageContext.request.contextPath}/images/face.png" class="my-photo">
+					</c:if>
+					<c:if test="${!empty member.photo}">
+					<img src="${pageContext.request.contextPath}/upload/${member.photo}" class="my-photo">
+					</c:if>
+				</div><br>
+				<div>
+					<input type="file" id="photo" accept="image/gif,image/png,image/jpeg">
+						
+					<button class="photo_submit" id="photo_submit">등록</button>
+					<button class="photo_reset" id="photo_reset">취소</button>
+				</div>
+			</div>
+		</div>
 			<ul>
 				<li>
 					<label for="name">이름</label>

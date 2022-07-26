@@ -203,6 +203,7 @@ $(function(){
 		$('#photo_btn').show();
 	});
 	
+	
 	$('#modify_form').submit(function(){
 		if($('#name').val().trim()==''){
 			alert('이름을 입력하세요!');
