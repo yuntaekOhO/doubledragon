@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>상소문</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/inquirystyle.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -15,20 +16,19 @@
 	<div class="page">
  	<a href="${pageContext.request.contextPath}/board/inquiryBoard.do">상소문</a>
  	<p>자주 묻는 질문 게시판</p><br>
+ 	<hr>
  	<p style="float:left;">${count} 건</p>
 	<!-- 검색 -->
-	<div class="pull-left">
-		<div class="search-bar">
-			<form>
-				<select name="keyfield">
-					<option value="1">제목</option>
-					<option value="2">질문</option>
-					<option value="3">답변</option>
-				</select>
-				<input type="search" class="input-search"> <input
-					type="submit" class="input-search-submit" value="검색">
-			</form>
-		</div>
+	<div class="search-bar">
+		<form id="inq_search_form" action="inquiryBoard.do" method="get">
+			<input type="search" class="input-search" id="keyword" value="${param.keyword}">
+			<select id="keyfield" name="keyfield" style="float:right;height:35px;">
+				<option value="1">제목</option>
+				<option value="2">질문</option>
+				<option value="3">답변</option>
+			</select>
+			<input type="submit" class="input-search-submit" value="검색">
+		</form>
 	</div>
 	<!-- 검색 끝 -->
 	<%-- 관리자 전용 글작성 버튼 --%>
@@ -75,8 +75,7 @@
 		</div>
 		</c:if>
 		<hr width="90%">
-		
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 	</div>
 	
 	</div>
