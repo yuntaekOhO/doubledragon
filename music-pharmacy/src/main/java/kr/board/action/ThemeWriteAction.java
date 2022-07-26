@@ -42,7 +42,7 @@ public class ThemeWriteAction implements Action {
 		board.setThe_writer(member.getNick());
 		board.setThe_content(multi.getParameter("the_content"));
 		board.setThe_img(
-				multi.getParameter("the_img"));
+				multi.getFilesystemName("the_img"));
 		board.setThe_code(Integer.parseInt(multi.getParameter("the_code")));
 		board.setThe_video(multi.getParameter("the_video"));
 		board.setThe_url(multi.getParameter("the_url"));

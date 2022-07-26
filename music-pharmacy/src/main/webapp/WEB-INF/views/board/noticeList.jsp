@@ -74,9 +74,8 @@
 			</tr>
 			<c:forEach var="not_board" items="${list}">
 			<tr>
-				<td>${board.board_num}</td>
-				<td><a href="detail.do?board_num=${not_board.not_num}">${not_board.not_title}</a></td>
-				<td>${not_board.not_writer}</td>
+				<td>${not_board.not_num}</td>
+				<td><a href="detail.do?not_num=${not_board.not_num}">${not_board.not_title}</a></td>
 				<td>${not_board.not_date}</td>
 				<td>${not_board.not_hits}</td>
 			</tr>

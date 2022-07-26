@@ -13,22 +13,39 @@
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main">
-		<h2>${board.title}</h2>
+		<h2>${board.not_title}</h2>
 		<ul class="detail-info">
-			<li>
-				<c:if test="${!empty board.photo}">
-				<img src="${pageContext.request.contextPath}/upload/${board.photo}" width="40" height="40" class="my-photo">
+			<li> <!-- 머야  -->
+				<c:if test="${!empty board.mem_photo}">
+				<img src="${pageContext.request.contextPath}/upload/${board.mem_photo}" width="40" height="40" class="my-photo">
 				</c:if>
-				<c:if test="${empty board.photo}">
+				<c:if test="${empty board.mem_photo}">
 				<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
 				</c:if>
 			</li>
-				${board.id}<br>
-			
+			<li>
+				${board.mem_id}<br>
+				조회 : ${board.not_hits}
+			</li>
 		</ul>
-	</div>
+		<hr size="1" noshade="noshade" width="100%">
+		<c:if test="${!empty board.not_img}">
+		<div class="align-center">
+			<img src="${pageContext.request.contextPath}/upload/${board.filename}" class="detail-img">
+		</div>
+		</c:if>
+		<p>
+			${board.not_content}
+		</p>
+		<hr size="1" noshade="noshade" width="100%">
+
 </div>
 </body>
 </html>
+
+
+
+
+
