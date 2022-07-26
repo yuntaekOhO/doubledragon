@@ -190,6 +190,9 @@ public class ThemeBoardDAO {
 				board.setThe_hits(rs.getInt("the_hits"));
 				board.setThe_date(rs.getDate("the_date"));
 				board.setThe_modify_date(rs.getDate("the_modify_date"));
+				board.setThe_code(rs.getInt("the_code"));
+				board.setThe_video(rs.getString("the_video"));
+				board.setThe_url(rs.getString("the_url"));
 				board.setMem_num(rs.getInt("mem_num"));
 				board.setId(rs.getString("id"));
 				board.setPhoto(rs.getString("photo"));

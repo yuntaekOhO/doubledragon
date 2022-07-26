@@ -22,7 +22,7 @@
 	<h4>동의보감 글수정</h4>
 		<form id="write_form" action="themeUpdate.do" 
 		   method="post" enctype="multipart/form-data">
-		   <input type="hidden" name="board_num" value="${board.the_num}">
+		   <input type="hidden" name="the_num" value="${board.the_num}">
 			<ul>
 				<li>
 					<label for="the_title">제목</label>
@@ -53,7 +53,7 @@
 					<label for="the_video">관련 영상</label>
 					<input type="file" name="the_video" 
 					 id="the_video" 
-					 accept="video/mp4,video/avi,image/wmv">
+					 accept="video/mp4,video/avi,video/wmv">
 				</li>
 				<li>
 					<label for="the_url">영상 링크</label>

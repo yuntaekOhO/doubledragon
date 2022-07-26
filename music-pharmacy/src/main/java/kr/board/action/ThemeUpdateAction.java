@@ -24,10 +24,8 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 			return "redirect:/member/loginForm.do";
 		}
 		
-		MultipartRequest multi = 
-				FileUtil.createFile(request);
-		int the_num = Integer.parseInt(
-				multi.getParameter("the_num"));
+		MultipartRequest multi = FileUtil.createFile(request);
+		int the_num = Integer.parseInt(multi.getParameter("the_num"));
 		String filename = multi.getFilesystemName("the_img");
 		
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
@@ -56,8 +54,7 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 		
 		if(filename!=null) {
 			//새 파일로 교체할 때 원래 파일 제거
-			FileUtil.removeFile(request, 
-					        db_board.getThe_img());
+			FileUtil.removeFile(request, db_board.getThe_img());
 		}
 		
 		return "redirect:/board/themeDetail.do?the_num="+the_num;

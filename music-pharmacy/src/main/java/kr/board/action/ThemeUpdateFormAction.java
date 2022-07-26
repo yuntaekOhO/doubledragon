@@ -22,10 +22,10 @@ public class ThemeUpdateFormAction implements Action {
 		}
 		
 		//로그인이 된 경우
-		int board_num = Integer.parseInt(
+		int the_num = Integer.parseInt(
 				        request.getParameter("the_num"));
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
-		ThemeBoardVO board = dao.getBoard(board_num);
+		ThemeBoardVO board = dao.getBoard(the_num);
 		if(user_num != board.getMem_num()) {
 			//로그인한 회원번호와 작성자 회원번호 불일치
 			return "/WEB-INF/views/common/noticeList.jsp";
