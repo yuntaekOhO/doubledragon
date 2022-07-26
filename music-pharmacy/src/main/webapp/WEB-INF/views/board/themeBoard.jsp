@@ -39,7 +39,7 @@
 			<c:forEach var="board" items="${list}">
 			<tr>
 				<td>${board.the_num}</td>
-				<td>${board.the_title}</td>
+				<td><a href="themeDetail.do?the_num=${board.the_num}">${board.the_title}</a></td>
 				<td>${board.the_date}</td>
 				<td>${board.the_hits}</td>
 			</tr>
