@@ -12,7 +12,7 @@ body{
 .content-main{
 	padding:10px 20px;
 }
-form{
+#register_form{
 	width:600px;
 	margin:0 auto;
 	border:1px solid #000;
