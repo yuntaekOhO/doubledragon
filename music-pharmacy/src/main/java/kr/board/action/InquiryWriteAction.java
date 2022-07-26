@@ -46,9 +46,9 @@ public class InquiryWriteAction implements Action {
 		
 		System.out.println("글작성 성공");
 		
+		request.setAttribute("inq_num",board.getInq_num());
 		
-		
-		return "/WEB-INF/views/board/inquiryBoard.jsp";
+		return "/WEB-INF/views/board/inquiryWrite.jsp";
 	}
 
 }

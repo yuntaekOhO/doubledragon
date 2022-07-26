@@ -8,6 +8,7 @@
 <title>상소문상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/inquiryBoard.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header2.jsp"/>
@@ -15,15 +16,22 @@
 	<div class="page">
 		<h2>${board.inq_title}</h2>
 		<hr>
+		<c:if test="${!empty user_num && user_auth==3}">
+		<div class="floating-right">
+			<input type="button" value="수정" onclick="location.href='inquiryUpdateForm.do?inq_num=${board.inq_num}'">
+			<input id="inquiryDelete_btn" type="button" value="삭제">
+		</div>
+		</c:if>
+		<input type="hidden" id="inq_num" value="${board.inq_num}">
+		<h2>Q.</h2>
+		<p>${board.inq_question}</p>
+		<h2>A.</h2>
+		<p>${board.inq_answer}</p>
 		<c:if test="${!empty board.inq_img}">
 			<div class="align-center">
 				<img src="${pageContext.request.contextPath}/upload/${board.inq_img}">
 			</div>
 		</c:if>
-		<h2>Q.</h2>
-		<p>${board.inq_question}</p>
-		<h2>A.</h2>
-		<p>${board.inq_answer}</p>
 		
 		<div class="align-center">
 		<c:if test="${!empty pre_board.inq_num}">
