@@ -138,7 +138,7 @@ public class NoticeBoardDAO {
 				board.setNot_img(rs.getString("not_img"));
 				board.setNot_hits(rs.getInt("not_hits"));
 				board.setMem_num(rs.getInt("mem_num"));
-				board.setNot_photo(rs.getString("photo"));
+				board.setPhoto(rs.getString("photo"));
 			
 				list.add(board);
 			}
@@ -183,9 +183,10 @@ public class NoticeBoardDAO {
 				board.setNot_date(rs.getDate("not_date"));
 				board.setNot_modify_date(rs.getDate("not_modify_date"));
 				board.setNot_img(rs.getString("not_img"));
-//				board.setnotMem_num(rs.getInt("mem_num"));
-				board.setNot_writer("not_writer");
-				board.setNot_photo(rs.getString("not_photo"));
+//				board.setNot_num(rs.getInt("not_num")); ???
+				board.setMem_num(rs.getInt("mem_num"));
+				board.setId(rs.getString("id"));
+				board.setPhoto(rs.getString("photo"));
 			}
 			
 		}catch(Exception e) {
