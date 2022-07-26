@@ -94,7 +94,20 @@
 						</div>
 					</li>
 				</ul>
+				<p><b>비밀번호 수정</b></p>
+					<ul>
+						<li>
+							<button class="correction_btn" onclick="location.href='modifyPasswordForm.do'">비밀번호 수정</button>
+						</li>
+					</ul>
+					<p><b>회원탈퇴</b></p>
+					<ul>
+						<li>
+							<button class="correction_btn" value="회원탈퇴" onclick="location.href='deleteUserForm.do'">회원탈퇴</button>
+						</li>
+					</ul>
 			</div>
+			
 			<div class="align-center">	
 				<button class="correction_btn">수정</button>
 				<button class="correction_btn" onclick="location.href='myPage.do'">마이페이지</button>

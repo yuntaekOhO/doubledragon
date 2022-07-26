@@ -81,3 +81,7 @@ input[type=file]::file-selector-button:hover {
 	float:left;
 	margin: 15px;
 }
+p{
+	color:#6e4e39;
+	font-size:20px;
+}
