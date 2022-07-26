@@ -76,7 +76,7 @@ public class FreeBoardDAO {
 				else if(keyfield.equals("3")) sub_sql = "WHERE b.content LIKE ?";
 			}
 
-			sql = "SELECT COUNT(*) FROM free_board" + sub_sql;
+			sql = "SELECT COUNT(*) FROM free_board " + sub_sql;
 
 			//JDBC 수행 3단계 : PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
@@ -121,9 +121,9 @@ public class FreeBoardDAO {
 		
 		
 		 sql = "SELECT * FROM (SELECT a.*, rownum rnum " +
-		 "FROM (SELECT * FROM zboard b JOIN zmember m " +
-		 "USING (mem_num) JOIN zmember_detail d " + "USING (mem_num) "+ sub_sql +
-		 " ORDER BY b.board_num DESC)a) " + "WHERE rnum >= ? AND rnum <= ?";
+		 "FROM (SELECT * FROM free_board b JOIN member m " +
+		 "USING (mem_num) JOIN member_detail d " + "USING (mem_num) "+ sub_sql +
+		 " ORDER BY b.free_num DESC)a) " + "WHERE rnum >= ? AND rnum <= ?";
 		 
 		
 		//JDBC 수행 3단계 : PreparedStatement 객체 생성
@@ -172,11 +172,11 @@ public class FreeBoardDAO {
 				//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();
 				//SQL문 작성
-				/*
-				 * sql = "SELECT * FROM zboard b JOIN zmember m " +
-				 * "USING(mem_num) JOIN zmember_detail d " +
-				 * "USING(mem_num) WHERE b.board_num=?";
-				 */
+				
+				 sql = "SELECT * FROM free_board b JOIN member m " +
+				 "USING(mem_num) JOIN member_detail d " +
+				 "USING(mem_num) WHERE b.free_num=?";
+				 
 				//JDBC 수행 3단계 : PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터 바인딩
@@ -218,7 +218,7 @@ public class FreeBoardDAO {
 			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
 			//SQL문 작성 
-			sql = "UPDATE free_board SET hit=hit+1 WHERE free_board_num=?";
+			sql = "UPDATE free_board SET free_hits=free_hits+1 WHERE free_num=?";
 
 			//JDBC 수행 3단계 : PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
@@ -244,7 +244,7 @@ public class FreeBoardDAO {
 			//커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
 			//SQL문 작성
-			sql = "UPDATE free_board SET filename='' WHERE free_num=?";
+			sql = "UPDATE free_board SET free_img='' WHERE free_num=?";
 			
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
@@ -276,8 +276,8 @@ public class FreeBoardDAO {
 
 	  }
 
-	  sql = "UPDATE zboard SET title=?,content=?," + "modify_date=SYSDATE" +
-			  sub_sql + ",ip=? WHERE board_num=?";
+	  sql = "UPDATE free_board SET free_title=?,free_content=?," + "free_modify_date=SYSDATE" +
+			  sub_sql + " WHERE free_num=?";
 
 	  //PreparedStatement 객체 생성 
 	  pstmt = conn.prepareStatement(sql); 
@@ -450,56 +450,35 @@ public class FreeBoardDAO {
 				DBUtil.executeClose(null, pstmt, conn);
 			}
 		}
+		
 		//내가 선택한 좋아요 목록
-		public List<FreeBoardVO> getListBoardFav(int start,int end,
-				                          int mem_num)
-		                            throws Exception{
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			List<FreeBoardVO> list = null;
-			String sql = null;
-			
-			try {
-				//커넥션풀로부터 커넥션 할당
-				conn = DBUtil.getConnection();
-				//SQL문 작성
-				sql = "SELECT * FROM (SELECT a.*, rownum rnum "
-				    + "FROM (SELECT * FROM zboard b JOIN "
-				    + "zmember m USING(mem_num) JOIN zboard_fav f "
-				    + "USING(board_num) WHERE f.mem_num=? "
-				    + "ORDER BY board_num DESC)a) "
-				    + "WHERE rnum >= ? AND rnum<=?";
-				
-				//PreparedStatement 객체 생성
-				pstmt = conn.prepareStatement(sql);
-				//?에 데이터 바인딩
-				pstmt.setInt(1, mem_num);
-				pstmt.setInt(2, start);
-				pstmt.setInt(3, end);
-				
-				//SQL문 실행
-				rs = pstmt.executeQuery();
-				list = new ArrayList<FreeBoardVO>();
-				while(rs.next()) {
-					FreeBoardVO board = new FreeBoardVO();
-					board.setFree_num(rs.getInt("free_num"));
-					board.setFree_title(StringUtil.useNoHtml(
-							           rs.getString("free_title")));
-					board.setFree_date(rs.getDate("free_date"));
-					board.setFree_writer(rs.getString("free_writer"));
-					
-					list.add(board);
-				}
-				
-			}catch(Exception e) {
-				throw new Exception(e);
-			}finally {
-				//자원정리
-				DBUtil.executeClose(rs, pstmt, conn);
-			}
-			return list;
-		}
+		/*
+		 * public List<FreeBoardVO> getListBoardFav(int start,int end, int mem_num)
+		 * throws Exception{ Connection conn = null; PreparedStatement pstmt = null;
+		 * ResultSet rs = null; List<FreeBoardVO> list = null; String sql = null;
+		 * 
+		 * try { //커넥션풀로부터 커넥션 할당 conn = DBUtil.getConnection(); //SQL문 작성 sql =
+		 * "SELECT * FROM (SELECT a.*, rownum rnum " +
+		 * "FROM (SELECT * FROM zboard b JOIN " +
+		 * "zmember m USING(mem_num) JOIN zboard_fav f " +
+		 * "USING(board_num) WHERE f.mem_num=? " + "ORDER BY board_num DESC)a) " +
+		 * "WHERE rnum >= ? AND rnum<=?";
+		 * 
+		 * //PreparedStatement 객체 생성 pstmt = conn.prepareStatement(sql); //?에 데이터 바인딩
+		 * pstmt.setInt(1, mem_num); pstmt.setInt(2, start); pstmt.setInt(3, end);
+		 * 
+		 * //SQL문 실행 rs = pstmt.executeQuery(); list = new ArrayList<FreeBoardVO>();
+		 * while(rs.next()) { FreeBoardVO board = new FreeBoardVO();
+		 * board.setFree_num(rs.getInt("free_num"));
+		 * board.setFree_title(StringUtil.useNoHtml( rs.getString("free_title")));
+		 * board.setFree_date(rs.getDate("free_date"));
+		 * board.setFree_writer(rs.getString("free_writer"));
+		 * 
+		 * list.add(board); }
+		 * 
+		 * }catch(Exception e) { throw new Exception(e); }finally { //자원정리
+		 * DBUtil.executeClose(rs, pstmt, conn); } return list; }
+		 */
 		
 		
 

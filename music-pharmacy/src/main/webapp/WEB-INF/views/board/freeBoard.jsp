@@ -8,7 +8,7 @@
 <title>저잣거리</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 
@@ -21,55 +21,72 @@
 <div class="page">
  	<a href="${pageContext.request.contextPath}/board/freeboard.do">저잣거리</a>
  	<p>자유게시판</p><br>
- 	<p style="float:left;">총 27건</p>
+ 	<p style="float:left;">총 ${count}건</p>
 	<!-- 검색 -->
 	<div class="pull-left">
 		<div class="search-bar" style="float:right;">
 			<form id="search_form" action="noticeList.do" method="get">
-				<input type="search" class="input-search"> <input
-					type="submit" class="input-search-submit" value="검색">
+			<ul class="search">
+				<li>
+					<select name="keyfield">
+						<option value="1">제목</option>
+						<option value="2">작성자</option>
+						<option value="3">내용</option>
+					</select>
+				</li>
+				<li>
+				<input type="search" size="16" 
+					  name="keyword" id="keyword"
+					  2
+					  value="${param.keyword}">
+				</li>
+				<li>
+					<input type="submit" value="검색">
+				</li>
+			</ul>		
 			</form>
+			
 		</div>
 	</div>
 	<!-- 검색 끝 -->
- 	<div class="list-space align-right">
+	<br><br><br>
  	<!-- 로그인되어있으면 글쓰기가보임, 나중에 관리자 로그인시에만으로 바꿔야함 -->
  		   <c:if test="${!empty user_num}">
-			<input type="button" value="글쓰기"
+			<input type="button" value="글쓰기" 
 			   onclick="location.href='freeWriteForm.do'">
 			</c:if>   
 			<input type="button" value="홈으로"
 			 onclick="location.href='${pageContext.request.contextPath}/main/main.do'">      
- 	</div><br><br><br>
+ 	<br><br><br>
  	<c:if test="${count == 0}">
- 	<!-- 걍넣어봄 -->
- 	<div class="container">
-  <div class="main">
-    <div class="quote-container">
-  <i class="pin"></i>
-  <div class="note yellow">
-    <span class="small"></span>
-    <h2>게시된 어명 없음</h2>
-  </div>
-</div>
-
-<div class="quote-container">
-  <i class="pin"></i>
-  <div class="note blue">
-    <span class="small"></span>
-    <h2>게시된 어명 없음</h2>
-    <img src="http://placehold.it/150x150" class="imgleft"><p> <a href="#">Read More</a></p>
-  </div>
-</div>
-
-  </div>
-
-</div>
- 	</c:if>
- 	<c:if test="${count > 0}">
- 	<!-- 공지사항있을때 html 넣어야함 -->
- 	
- 	</c:if>
+		<div>
+			표시할 게시물이 없습니다.
+		</div>
+		</c:if>
+		<c:if test="${count > 0}">
+		<table>
+			<tr>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성일</th>
+				<th>조회</th>
+			</tr>
+		<c:forEach var="free_board" items="${list}">
+			<tr>
+				<td>${free_board.free_num}</td>
+				<td><a href="freeDetail.do?free_num=${free_board.free_num}">${free_board.free_title}</a></td>
+				<td>${free_board.free_title}</td>
+				<td>${free_board.free_writer}</td>
+				<td>${free_board.free_date}</td>
+				<td>${free_board.free_hits}</td>
+			</tr>
+			</c:forEach>
+		</table>
+		<div class="align-center">
+			${page}
+		</div>
+		</c:if>
 
 </div>
 <div>
