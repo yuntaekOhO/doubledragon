@@ -29,7 +29,10 @@
 		<p>${board.inq_answer}</p>
 		<c:if test="${!empty board.inq_img}">
 			<div class="align-center">
-				<img src="${pageContext.request.contextPath}/upload/${board.inq_img}">
+				<form method="post" enctype="multipart/form-data">
+					
+					<img src="${pageContext.request.contextPath}/upload/${board.inq_img}">
+				</form>
 			</div>
 		</c:if>
 		
