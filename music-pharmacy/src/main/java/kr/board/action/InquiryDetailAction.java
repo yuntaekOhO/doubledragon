@@ -3,9 +3,12 @@ package kr.board.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+
 import kr.board.dao.InquiryBoardDAO;
 import kr.board.vo.InquiryBoardVO;
 import kr.controller.Action;
+import kr.util.FileUtil;
 
 public class InquiryDetailAction implements Action {
 
@@ -23,6 +26,11 @@ public class InquiryDetailAction implements Action {
 		
 		//글상세 정보 반환
 		InquiryBoardVO board = dao.getBoard(board_num);
+		
+		//board.setInq_img(board.getInq_img());
+		MultipartRequest multi = FileUtil.createFile(request);
+		
+		board.setInq_img(multi.getFilesystemName(board.getInq_img()));
 		
 		//이전,다음글 정보 반환
 		InquiryBoardVO preBoard = dao.getBoard(arr[0]);
