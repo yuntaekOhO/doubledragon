@@ -251,7 +251,9 @@ public class NoticeBoardDAO {
 				//?에 데이터 바인딩
 				pstmt.setString(++cnt, board.getNot_title());
 				pstmt.setString(++cnt, board.getNot_content());
-				
+				if(board.getNot_img()!=null) {
+					pstmt.setString(++cnt, board.getNot_img());
+				}
 				pstmt.setInt(++cnt, board.getNot_num());
 				
 				//SQL문 실행
@@ -300,8 +302,32 @@ public class NoticeBoardDAO {
 				DBUtil.executeClose(null, pstmt2, null);
 				DBUtil.executeClose(null, pstmt, conn);
 			}
-		}		
-
+		}	
+		
+		//파일 삭제
+		public void deleteFile(int not_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			
+			try {
+				//커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성 , 한건의 레코드 파일네임 지우기
+				sql = "UPDATE notice_board SET filename='' WHERE not_num=?";
+				
+				//PreparedStatement객체 생성
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, not_num);
+				//SQL문 실행
+				pstmt.executeUpdate();
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자ㅣ원정리
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+		}
 				
 				
 				
