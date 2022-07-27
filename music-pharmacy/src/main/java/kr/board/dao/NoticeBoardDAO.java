@@ -152,7 +152,7 @@ public class NoticeBoardDAO {
 	}
 	
 	//공지사항 글 상세 (클릭했을때 보이게할)
-	public NoticeBoardVO getNoticeBoard(int noticeBoard_num) throws Exception{
+	public NoticeBoardVO getNoticeBoard(int not_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -165,12 +165,12 @@ public class NoticeBoardDAO {
 			//SQL문 작성
 			sql = "SELECT * FROM notice_board b JOIN member m "
 					+ "USING(mem_num) JOIN member_detail d "
-					+ "USING(mem_num) WHERE b.noticeBoard_num=?";
+					+ "USING(mem_num) WHERE b.not_num=?";
 		
 			//JDBC 수행 3단계 : PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			//?에 데이터 바인딩
-			pstmt.setInt(1, noticeBoard_num);
+			pstmt.setInt(1, not_num);
 			//JDBC 수행 4단계
 			rs = pstmt.executeQuery();
 			
@@ -208,7 +208,7 @@ public class NoticeBoardDAO {
 				// JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();
 				// SQL문 작성
-				sql = "UPDATE notice_board SET hit=hit+1 WHERE not_num=?";
+				sql = "UPDATE notice_board SET not_hits=not_hits+1 WHERE not_num=?";
 				// JDBC 수행 3단계 : PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				// ?에 데이터 바인딩
