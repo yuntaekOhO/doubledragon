@@ -27,10 +27,10 @@
 				<a href="${pageContext.request.contextPath}/board/noticeList.do"><b>공지사항</b></a>
 			</li>
 			<li>
-				<a href="${pageContext.request.contextPath}/board/free.do"><b>저잣거리</b></a>
+				<a href="${pageContext.request.contextPath}/board/freeBoard.do"><b>저잣거리</b></a>
 			</li>
 			<li style="position:relative;">
-				<a href="${pageContext.request.contextPath}/board/theme.do"><b>동의보감</b></a>
+				<a href="${pageContext.request.contextPath}/board/themeBoard.do"><b>동의보감</b></a>
 				<!-- 하위 메뉴 -->
 					<ul class="menu_submenu" style="display:none;position:absolute;">
 					<li style="display:block;"><a href="#">희</a></li>
@@ -40,7 +40,7 @@
 				</ul>
 			</li>
 			<li>
-				<a href="${pageContext.request.contextPath}/board/inquiry.do"><b>상소문</b></a>
+				<a href="${pageContext.request.contextPath}/board/inquiryBoard.do"><b>상소문</b></a>
 			</li>
 	
 			
@@ -65,7 +65,7 @@
 			<!-- 로그인 안된경우 -->
 			<c:if test="${empty user_num}">
 			<li>
-				<a href="${pageContext.request.contextPath}/member/registerUserForm.do"><b>로그인</b></a>
+				<a href="${pageContext.request.contextPath}/member/loginForm.do"><b>로그인</b></a>
 			</li>
 			
 			</c:if>

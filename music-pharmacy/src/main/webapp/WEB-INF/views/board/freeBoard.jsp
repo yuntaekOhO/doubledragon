@@ -72,7 +72,7 @@
 				</td>
 				<td><a href="freeDetail.do?free_num=${board.free_num}">${board.free_title}</a></td>
 				<td>${board.free_title}</td>
-				<td>${board.free_writer}</td>
+				<td>${board.mem_num}</td>
 				<td>${board.free_date}</td>
 				<td>${board.free_hits}</td>
 			</tr>

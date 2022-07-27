@@ -12,12 +12,14 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 </head>
 <body>
+<div>
 	<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
-	 <a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
+</div>
+<div class="page">
+ 	<a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
  	<p>자유게시판/음악추천받아요</p><br>
-<div class="page-main">
 	<div class="content-main">
-		<br><br><br><br><h2>글쓰기</h2>
+		<h2>글쓰기</h2>
 		<form id="freeWrite_form" action="freeWrite.do" 
 		   method="post" enctype="multipart/form-data">
 			<ul>
@@ -27,29 +29,28 @@
 					      <option value="1">자유게시판</option>
 					      <option value="2">음악추천받아요</option>
 					</select>
-				</li>
-				<li>
-					<label for="free_title">제목</label>
+					<label for="free_title"></label>
 					<input type="text" name="free_title" 
-					      id="free_title" maxlength="50">
+					      id="free_title" maxlength="100" placeholder="제목을 입력하세요.">
+				</li>
+				<br>
+				<li>
+					<label for="free_content"></label>
+					<textarea rows="30" cols="185" name="free_content"
+					     id="free_content" placeholder="내용을 입력하세요."></textarea>
 				</li>
 				<li>
-					<label for="free_content">내용</label>
-					<textarea rows="5" cols="30" name="free_content"
-					     id="free_content"></textarea>
-				</li>
-				<li>
-					<label for="free_img">파일</label>
+					<label for="free_img"></label>
 					<input type="file" name="free_img" 
 					 id="free_img" 
 					 accept="image/gif,image/png,image/jpeg">
 				</li>
 			    
 			</ul>
-			<div class="align-center">
-				<input type="submit" value="등록">
-				<input type="button" value="목록" 
+			<div class="align-right">
+				<input type="button" value="취소" 
 				             onclick="location.href='freeBoard.do'">
+				<input type="submit" value="등록">
 			</div>
 		</form>
 	</div>

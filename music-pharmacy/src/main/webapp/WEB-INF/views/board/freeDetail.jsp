@@ -29,7 +29,6 @@
 				</c:if>
 			</li> 
 			<li>
-				작성자 : ${board.free_writer}<br>
 				<c:if test = "${board.free_code==1}">
 				게시판 종류 : 자유게시판
 				</c:if>

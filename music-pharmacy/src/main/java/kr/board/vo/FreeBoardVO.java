@@ -5,7 +5,6 @@ import java.sql.Date;
 public class FreeBoardVO {
 	private int free_num;
 	private String free_title;
-	private String free_writer;
 	private String free_content;
 	private Date free_date;
 	private Date free_modify_date;
@@ -25,12 +24,6 @@ public class FreeBoardVO {
 	}
 	public void setFree_title(String free_title) {
 		this.free_title = free_title;
-	}
-	public String getFree_writer() {
-		return free_writer;
-	}
-	public void setFree_writer(String free_writer) {
-		this.free_writer = free_writer;
 	}
 	public String getFree_content() {
 		return free_content;
