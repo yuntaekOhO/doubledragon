@@ -31,6 +31,7 @@
 		</div>
 		</c:if>
 		
+		
 		<p>
 			${board.the_content}
 			${board.the_url}
