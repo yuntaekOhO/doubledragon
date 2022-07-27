@@ -28,9 +28,9 @@ public class InquiryDetailAction implements Action {
 		InquiryBoardVO board = dao.getBoard(board_num);
 		
 		//board.setInq_img(board.getInq_img());
-		MultipartRequest multi = FileUtil.createFile(request);
+		//MultipartRequest multi = FileUtil.createFile(request);
 		
-		board.setInq_img(multi.getFilesystemName(board.getInq_img()));
+		//board.setInq_img(multi.getFilesystemName(board.getInq_img()));
 		
 		//이전,다음글 정보 반환
 		InquiryBoardVO preBoard = dao.getBoard(arr[0]);

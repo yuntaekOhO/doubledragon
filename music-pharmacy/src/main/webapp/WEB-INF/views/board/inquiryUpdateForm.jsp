@@ -18,12 +18,12 @@
 		<input type="hidden" name="inq_num" value="${board.inq_num}">
 		<ul>
 			<li>
-				<label for="title">제목</label>
-				<input type="text" name="title" id="title" value="${board.inq_title}">
+				<label for="inq_title">제목</label>
+				<input type="text" name="inq_title" id="inq_title" value="${board.inq_title}">
 			</li>
 			<li>
-				<label for="question">질문</label>
-				<textarea name="question" rows="2" cols="50">${board.inq_question}</textarea>
+				<label for="inq_question">질문</label>
+				<textarea name="inq_question" rows="2" cols="50">${board.inq_question}</textarea>
 			</li>
 			<li>
 				<label for="inq_img">파일</label>
@@ -31,7 +31,7 @@
 				<c:if test="${!empty board.inq_img}">
 					<br>
 					<span id="file_detail">
-						(${board.filename})파일이 등록되어 있습니다.
+						(${board.inq_img})파일이 등록되어 있습니다.
 						다시 파일을 업로드하면 기존 파일은 삭제됩니다.
 						<input type="button" value="파일삭제" id="file_del"><%--ajax--%>
 					</span>
@@ -70,8 +70,8 @@
 				</c:if>
 			</li>
 			<li>
-				<label for="answer">답변</label>
-				<textarea name="answer" rows="5" cols="50">${board.inq_answer}</textarea>
+				<label for="inq_answer">답변</label>
+				<textarea name="inq_answer" rows="5" cols="50">${board.inq_answer}</textarea>
 			</li>
 		</ul>
 		<div class="align-center">
@@ -80,5 +80,6 @@
 		</div>
 	</form>
 </div>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
