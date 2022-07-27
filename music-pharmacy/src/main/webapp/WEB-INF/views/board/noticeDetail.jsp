@@ -19,22 +19,22 @@
 		<h2>${board.not_title}</h2>
 		<ul class="detail-info">
 			<li> <!-- 머야  -->
-				<c:if test="${!empty board.mem_photo}">
+				<c:if test="${!empty board.photo}">
 				<img src="${pageContext.request.contextPath}/upload/${board.mem_photo}" width="40" height="40" class="my-photo">
 				</c:if>
-				<c:if test="${empty board.mem_photo}">
+				<c:if test="${empty board.photo}">
 				<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
 				</c:if>
 			</li>
 			<li>
-				${board.mem_id}<br>
+				${board.id}<br>
 				조회 : ${board.not_hits}
 			</li>
 		</ul>
 		<hr size="1" noshade="noshade" width="100%">
 		<c:if test="${!empty board.not_img}">
 		<div class="align-center">
-			<img src="${pageContext.request.contextPath}/upload/${board.filename}" class="detail-img">
+			<img src="${pageContext.request.contextPath}/upload/${board.not_img}" class="detail-img">
 		</div>
 		</c:if>
 		<p>
@@ -42,6 +42,31 @@
 		</p>
 		<hr size="1" noshade="noshade" width="100%">
 
+		<ul class="detail-sub">
+			<li>
+				<c:if test="${!empty board.not_modify_date}">
+				최근 수정일 : ${board.not_modify_date}
+				</c:if>
+				작성일 : ${board.not_date}
+				<%-- 로그인한 회원번호와 작성자 회원번호가 일치해야 수정,삭제 가능 --%>
+				<c:if test="${user_num == board.mem_num}"> <!-- 관리자만 글 쓸수있으니깐 관리자만 수정삭제버튼 보여요 -->
+				<input type="button" value="수정" 
+				 onclick="location.href='noticeUpdateForm.do?not_num=${board.not_num}'">
+				<input type="button" value="삭제" id="delete_btn">
+				<script type="text/javascript">
+					let delete_btn = document.getElementById('delete_btn');
+					//이벤트 연결
+					delete_btn.onclick=function(){
+						let choice = confirm('삭제하시겠습니까?');
+						if(choice){
+							location.replace('noticeDelete.do?not_num=${board.not_num}');
+						}
+					};
+				</script>
+				</c:if>
+			</li>
+		</ul>
+		
 	</div>
 </div>
 </body>
