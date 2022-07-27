@@ -23,18 +23,24 @@ public class ThemeBoardDAO {
 	private ThemeBoardDAO() {}
 	
 	// 글등록
-	public void insertBoard(ThemeBoardVO board)throws Exception{
+	public void insertBoard(ThemeBoardVO board, MusicVO music)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
 		String sql = null;
+		String sql2 = null;
 		
 		try {
 			// JDBC 수행 1,2단계
 			conn = DBUtil.getConnection();
+			conn.setAutoCommit(false);
 			// SQL 문 작성
 			sql = "INSERT INTO theme_board(the_num,the_title,the_writer,the_content,the_date,the_img,"
 					+ "the_code,the_video,the_url, mem_num) VALUES "
 					+ "(board_seq.nextval,?,?,?,SYSDATE,?,?,?,?,?)";
+			sql2 = "INSERT INTO music(mus_num,the_num,mus_album,mus_singer,mus_title,mus_genre,mus_img,mus_date,"
+					+ "mus_composer,mus_songwriter) VALUES "
+					+ "(music_seq.nextval,?,?,?,?,?,?,?,?,?)";
 			// JDBC 수행 3단계
 			pstmt = conn.prepareStatement(sql);
 			// ?에 데이터 바인딩
@@ -46,11 +52,24 @@ public class ThemeBoardDAO {
 			pstmt.setString(6, board.getThe_video());
 			pstmt.setString(7, board.getThe_url());
 			pstmt.setInt(8, board.getMem_num());
-			//pstmt.setString(8, board.getMus_genre());
+			
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setInt(1, music.getThe_num());
+			pstmt2.setString(2, music.getMus_album());
+			pstmt2.setString(3, music.getMus_singer());
+			pstmt2.setString(4, music.getMus_title());
+			pstmt2.setString(5, music.getMus_genre());
+			pstmt2.setString(6, music.getMus_img());
+			pstmt2.setDate(7, music.getMus_date());
+			pstmt2.setString(8, music.getMus_composer());
+			pstmt2.setString(9, music.getMus_songwriter());
+			
+			
 			
 			// JDBC 수행 4단계
 			pstmt.executeUpdate();	
 		}catch(Exception e) {
+			conn.commit();
 			throw new Exception(e);
 		}finally {
 		// 자원 정리
@@ -58,6 +77,7 @@ public class ThemeBoardDAO {
 		}
 	
 	}
+	
 	
 	//총 레코드 수(검색 레코드 수)
 	public int getBoardCount(String keyfield, String keyword) throws Exception{
