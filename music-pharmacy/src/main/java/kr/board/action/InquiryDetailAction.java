@@ -24,6 +24,8 @@ public class InquiryDetailAction implements Action {
 		//글상세 정보 반환
 		InquiryBoardVO board = dao.getBoard(board_num);
 		
+		board.setInq_img(board.getInq_img());
+		
 		//이전,다음글 정보 반환
 		InquiryBoardVO preBoard = dao.getBoard(arr[0]);
 		InquiryBoardVO nextBoard = dao.getBoard(arr[1]);
