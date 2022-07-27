@@ -39,6 +39,7 @@
 		<ul class="detail-sub">
 			<li>
 				<%-- 좋아요 --%>
+				<input type="hidden" name="the_num" value="${board.the_num}" id="the_num">
 				<img id="output_fav" src="${pageContext.request.contextPath}/images/fav01.gif" width="50">
 				좋아요
 				<span id="output_fcount"></span>
