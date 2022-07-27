@@ -34,6 +34,7 @@
 		
 		<p>
 			${board.the_content}
+			${board.the_url}
 		</p>
 		<hr size="1" noshade="noshade" width="100%">
 		<ul class="detail-sub">
