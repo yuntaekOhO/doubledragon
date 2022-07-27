@@ -27,7 +27,7 @@
 			<textarea rows="20" cols="100" name="not_content" id="not_content"></textarea>
 		</li>
 		<li><br>
-			<input type="file" name="not_filename" id="not_filename" accept="image/gif,image/png,image/jpeg">
+			<input type="file" name="not_img" id="not_img" accept="image/gif,image/png,image/jpeg">
 		</li>
 	</ul>
 	<div class="align-right">
