@@ -25,10 +25,7 @@ public class InquiryUpdateFormAction implements Action {
 		int inq_num = Integer.parseInt(request.getParameter("inq_num"));
 		InquiryBoardDAO dao = InquiryBoardDAO.getInstance();
 		InquiryBoardVO board = dao.getBoard(inq_num);
-		
-		/*if(user_num!=board.getMem_num()) {
-			
-		}*/
+
 		
 		request.setAttribute("board", board);
 		
