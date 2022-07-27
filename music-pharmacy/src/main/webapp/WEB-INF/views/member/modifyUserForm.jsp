@@ -98,22 +98,21 @@
 						</div>
 					</li>
 				</ul><br>
-				
-				<div class="float">
-				<button class="correction2_btn" onclick="location.href='modifyPasswordForm.do'">비밀번호 수정</button>
-				<button class="correction2_btn" value="회원탈퇴" onclick="location.href='deleteUserForm.do'">회원탈퇴</button>
+				<div class="btn-float">
+					<div class="float2">
+					<button type="button" class="correction2_btn" onclick="location.href='modifyPasswordForm.do'">비밀번호 수정</button>	
+					<button class="correction_btn" value="수정">완료</button>
+					</div>
+					
+					<div>
+					<button type="button" class="correction2_btn" value="회원탈퇴" onclick="location.href='deleteUserForm.do'">회원탈퇴</button>
+					</div>	
 				</div>
-				
-				<div class="float2">	
-				<button class="correction_btn">수정</button>
-				<button class="correction_btn" onclick="location.href='myPage.do'">마이페이지</button>
-			</div>
-			</div>
-
+			</div>		
 		</form>
-			
-			
+				
 	</div>
+	
 
 	<!-- 다음 우편번호 찾기 시작 -->
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
