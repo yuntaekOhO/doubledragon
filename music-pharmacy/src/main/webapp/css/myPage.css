@@ -112,7 +112,6 @@ input[type=file]::file-selector-button:hover {
 }
 .float{
 	float:left;
-	clear:both;
 }
 .float2{
 	float:right;
