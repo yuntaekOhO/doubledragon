@@ -369,7 +369,7 @@ public class ThemeBoardDAO {
 				//커넥션풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();
 				//SQL문 작성
-				sql = "INSERT INTO board_fav (fav_num,the_num,mem_num) VALUES (zboardfav_seq.nextval,?,?)";
+				sql = "INSERT INTO board_fav (fav_num,the_num,mem_num) VALUES (boardfav_seq.nextval,?,?)";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터 바인딩
@@ -476,6 +476,30 @@ public class ThemeBoardDAO {
 				//자원정리
 				DBUtil.executeClose(null, pstmt, conn);
 			}
+		}
+		
+		//내가 선택한 좋아요 목록
+		public List<ThemeBoardVO> getListBoardFav(int start,int end, int mem_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<ThemeBoardVO> list = null;
+			String sql = null;
+			
+			try {
+				conn = DBUtil.getConnection();
+				
+				sql = "SELECT * FROM (SELECT a.*, rownum rum FROM "
+						+ "(SELECT * FROM board b JOIN member m USING(mem_num) "
+						+ "JOIN board_fav f USING(the_num) WHERE f.mem_num=? "
+						+ "ORDER BY the_num DESC)a) WHERE rnum >= ? AND rnum<=?";
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return list;
 		}
 }
 
