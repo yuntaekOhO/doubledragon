@@ -12,6 +12,8 @@ public class FreeBoardVO {
 	private int free_hits;
 	private int free_code;
 	private int mem_num;
+	private String id;
+	private String photo;
 	
 	public int getFree_num() {
 		return free_num;
@@ -67,8 +69,16 @@ public class FreeBoardVO {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
-	
-	
-	
-	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 }

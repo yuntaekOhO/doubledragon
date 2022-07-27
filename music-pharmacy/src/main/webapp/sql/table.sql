@@ -96,7 +96,8 @@ create table free_comment(
  frely_content clob not null,
  frely_date date default sysdate not null,
  frely_modify_date date,
- constraint free_comment_fk foreign key (free_num) references free_board (free_num)
+ constraint free_comment_fk foreign key (free_num) references free_board (free_num),
+ mem_num number not null references member (mem_num)
 );
 
 create table music (

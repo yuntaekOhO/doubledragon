@@ -6,39 +6,52 @@
 <head>
 <meta charset="UTF-8">
 <title>글수정</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.fav.js"></script>
 </head>
 <body>
-<div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<div>
+	<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
+</div>
+<div class="page">
+ 	<a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
+ 	<p>자유게시판/음악추천받아요</p><br>
 	<div class="content-main">
 		<h2>게시판 글수정</h2>
-		<form action="update.do" method="post"
+		<form action="freeUpdate.do" method="post"
 		      enctype="multipart/form-data" id="write_form">
-			<input type="hidden" name="board_num" 
-			                       value="${board.board_num}">
-			<ul>
+			<input type="hidden" name="free_num" 
+			                       value="${board.free_num}">
+		<ul>
 				<li>
-					<label for="title">제목</label>
-					<input type="text" name="title" id="title"
-					    value="${board.title}" maxlength="50">
+					<label for="free_code"></label>
+					<select name="free_code" id="free_code">
+					      <option value="1">자유게시판</option>
+					      <option value="2">음악추천받아요</option>
+					</select>
+					<label for="free_title"></label>
+					<input type="text" name="free_title" 
+					      id="free_title" value=" ${board.free_title}" maxlength="100">
+				</li>
+				<br>
+				<li>
+					<label for="free_content"></label>
+					<textarea rows="30" cols="185" name="free_content"
+					     id="free_content">${board.free_content}</textarea>
 				</li>
 				<li>
-					<label for="content">내용</label>
-					<textarea rows="5" cols="30" name="content"
-					   id="content">${board.content}</textarea>
-				</li>
-				<li>
-					<label for="filename">파일</label>
-					<input type="file" name="filename"
-					  id="filename" 
-					  accept="image/gif,image/png,image/jpeg">
-					<c:if test="${!empty board.filename}">
+					<label for="free_img"></label>
+					<input type="file" name="free_img" 
+					 id="free_img" 
+					 accept="image/gif,image/png,image/jpeg">
+					<c:if test="${!empty board.free_img}">
 					<br>
 					<span id="file_detail">
-						(${board.filename})파일이 등록되어 있습니다. 
+						(${board.free_img})파일이 등록되어 있습니다. 
 						다시 파일을 업로드하면 기존 파일은 삭제됩니다.
 						<input type="button" value="파일삭제" id="file_del">
 					</span>
@@ -51,7 +64,7 @@
 								$.ajax({
 									url:'deleteFile.do',
 									type:'post',
-									data:{board_num:${board.board_num}},
+									data:{free_num:${board.free_num}},
 									dataType:'json',
 									cache:false,
 									timeout:30000,
@@ -77,10 +90,10 @@
 					</c:if>  
 				</li>
 			</ul> 
-			<div class="align-center">
+			<div class="align-right">
 				<input type="submit" value="수정">
 				<input type="button" value="목록"
-				         onclick="location.href='list.do'">
+				         onclick="location.href='freeBoard.do'">
 			</div>                      
 		</form>
 	</div>

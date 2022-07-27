@@ -1,0 +1,10 @@
+@charset "UTF-8";
+free_table{
+	padding:2px;
+}
+free_theme{
+	color:#6e4e39;
+	font-size:20px;
+	font-weight:bold;
+	text-decoration-line: none;
+}

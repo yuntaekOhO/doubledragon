@@ -34,14 +34,16 @@ public class FreeUpdateAction implements Action{
 			
 			//업로드된 파일이 있으면 파일 삭제
 			FileUtil.removeFile(request, free_img);
-			return "/WEB-INF/views/common/freeBard.jsp";
+			return "/WEB-INF/views/common/freeBoard.jsp";
 		}
 		//로그인한 회원번호와 작성자 회원번호가 일치
 		FreeBoardVO board = new FreeBoardVO();
 		board.setFree_num(free_num);
 		board.setFree_title(multi.getParameter("free_title"));
-		board.setFree_content(multi.getContentType("free_content"));
-		//board.setFree_img(multi.getFilesystemName(free_img));
+		board.setFree_content(multi.getParameter("free_content"));
+		board.setFree_img(free_img);
+		board.setFree_code(Integer.parseInt(multi.getParameter("free_code")));
+		board.setMem_num(user_num);
 		
 		dao.updateBoard(board);
 		//새 파일로 교체할 때 원래 파일 제거

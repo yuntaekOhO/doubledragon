@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/freestyle.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 
@@ -35,34 +36,19 @@
 		</form>
 	</div>
 	<!-- 검색 끝 -->
-	<br><br><br>
- 	<!-- 로그인되어있으면 글쓰기가보임, 나중에 관리자 로그인시에만으로 바꿔야함 -->
- 		   <c:if test="${!empty user_num}">
-			<input type="button" value="글쓰기" 
-			   onclick="location.href='freeWriteForm.do'">
-			</c:if>   
-			<input type="button" value="홈으로"
-			 onclick="location.href='${pageContext.request.contextPath}/main/main.do'">      
- 	<br><br><br>
+	<br><br><br> 
+
  	<c:if test="${count == 0}">
 		<div>
 			표시할 게시물이 없습니다.
 		</div>
 		</c:if>
 		<c:if test="${count > 0}">
-		<table>
-			<tr>
-				<th>글번호</th>
-				<th>게시판종류</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>조회</th>
-			</tr>
+		<table class="free_table">
+
 		<c:forEach var="board" items="${list}">
 			<tr>
-				<td>${board.free_num}</td>
-				<td>
+				<td class="free_theme">
 					<c:if test = "${board.free_code==1}">
 					자유게시판
 					</c:if>
@@ -71,8 +57,8 @@
 				</c:if>
 				</td>
 				<td><a href="freeDetail.do?free_num=${board.free_num}">${board.free_title}</a></td>
-				<td>${board.free_title}</td>
-				<td>${board.mem_num}</td>
+				<td>${board.free_content}</td>
+				<td>${board.id}</td>
 				<td>${board.free_date}</td>
 				<td>${board.free_hits}</td>
 			</tr>
@@ -82,7 +68,14 @@
 			${page}
 		</div>
 		</c:if>
-
+ 	    <!-- 로그인되어있으면 글쓰기가보임, 나중에 관리자 로그인시에만으로 바꿔야함 -->
+ 	    <div class="align-right">
+ 		   <c:if test="${!empty user_num}">
+			<input type="button" value="글쓰기" 
+			   onclick="location.href='freeWriteForm.do'">
+			</c:if>  
+		</div>
+	
 </div>
 <div>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

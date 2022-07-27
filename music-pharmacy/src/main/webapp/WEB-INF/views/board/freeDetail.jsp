@@ -14,52 +14,36 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.fav.js"></script>
 </head>
 <body>
-
-<div class="page-main">
+<div>
 	<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
+</div>
+<div class="page">
+ 	<a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
+ 	<p>자유게시판/음악추천받아요</p><br>
+
 	<div class="content-main">
-		<h2>${board.free_title}</h2>
 		<ul class="detail-info">
 			<li>
-				<c:if test="${!empty board.free_img}">
-				<img src="${pageContext.request.contextPath}/upload/${board.free_img}" width="40" height="40" class="my-photo">
-				</c:if>
-				<c:if test="${empty board.free_img}">
-				<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
-				</c:if>
-			</li> 
-			<li>
 				<c:if test = "${board.free_code==1}">
-				게시판 종류 : 자유게시판
+				자유게시판>
 				</c:if>
 				<c:if test = "${board.free_code==2}">
-				게시판 종류 : 음악추천받아요
+				음악추천받아요>
 				</c:if><br>
-				조회 : ${board.free_hits}
+				<h2>${board.free_title}</h2> 
+				   
 			</li>
-		</ul>
-		<hr size="1" noshade="noshade" width="100%">
-		<c:if test="${!empty board.free_img}">
-		<div class="align-center">
-			<img src="${pageContext.request.contextPath}/upload/${board.free_img}" class="detail-img">
-		</div>
-		</c:if>
-		<p>
-			${board.free_content}
-		</p>
-		<hr size="1" noshade="noshade" width="100%">
-		<ul class="detail-sub">
-			<li>
-				<%-- 좋아요 --%>
-				<img id="output_fav" src="${pageContext.request.contextPath}/images/fav01.gif" width="50">
-				좋아요
-				<span id="output_fcount"></span>
-			</li>
-			<li>
-				<c:if test="${!empty board.free_modify_date}">
-				최근 수정일 : ${board.modify_date}
+				<li>
+				<c:if test="${!empty board.photo}">
+				<img src="${pageContext.request.contextPath}/upload/${board.photo}" width="40" height="40" class="my-photo">
 				</c:if>
-				작성일 : ${board.free_date}
+				<c:if test="${empty board.photo}">
+				<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
+				</c:if>
+				${board.id}님
+			</li> 
+			<li>
+			<div class="align-right">
 				<%-- 로그인한 회원번호와 작성자 회원번호가 일치해야 수정,삭제 가능 --%>
 				<c:if test="${user_num == board.mem_num}">
 				<input type="button" value="수정" 
@@ -75,18 +59,79 @@
 						}
 					};
 				</script>
+				</c:if><br>
+			<c:if test="${!empty board.free_modify_date}">
+				최근 수정일 : ${board.free_modify_date}
 				</c:if>
-			</li>
+				작성일 : ${board.free_date}<br>
+				view : ${board.free_hits}<br>
+				<%-- 좋아요 --%>
+				<img id="output_fav" src="${pageContext.request.contextPath}/images/fav01.gif" width="50">
+				좋아요
+				<span id="output_fcount"></span>
+			</div>
+			</li>	
 		</ul>
+		<hr size="1" noshade="noshade" width="100%">
+		<c:if test="${!empty board.free_img}">
+		<div class="align-center">
+			<img src="${pageContext.request.contextPath}/upload/${board.free_img}" class="detail-img">
+		</div>
+		</c:if>
+		<p>
+			${board.free_content}
+		</p>
+		<hr size="1" noshade="noshade" width="100%">
+
 		<!-- 댓글 시작 -->
 		<div id="reply_div">
-			<span class="re-title">댓글 달기</span>
+			<span class="re-title"><h3>댓글</h3></span>
 			<form id="re_form">
 				<input type="hidden" name="free_num" value="${board.free_num}" id="free_num">
+				<textarea rows="3" cols="190" name="re_content" 
+				  id="re_content" class="rep-content"  placeholder="댓글을 입력하세요."
+				  <c:if test="${empty user_num}">disabled="disabled"</c:if>
+				  ><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea>
+				<c:if test="${!empty user_num}">
+				<div id="re_first">
+					<span class="letter-count">300/300</span>
+				</div>
+				<div id="re_second" class="align-right">
+					<input type="submit" value="등록" >
+				</div>
+				</c:if>
 			</form>
 		</div>
+		<!-- 댓글 목록 출력 시작 -->
+		<div id="output"></div>
+		<div class="paging-button" style="display:none;">
+			<input type="button" value="다음글 보기">
+		</div>
+		<div id="loading" style="display:none;">
+			<img src="${pageContext.request.contextPath}/images/ajax-loader.gif">
+		</div>
+		<!-- 댓글 목록 출력 끝 -->
 		<!-- 댓글 끝 -->
-	</div>
+		<c:if test="${!empty pre_board.free_num}">
+		<div style="border-top:1px solid #eee;border-bottom:1px solid #eee;">
+			<div>
+				<span class="floating-left">이전글</span>
+				<span><a href="freeDetail.do?free_num=${pre_board.free_num}">${pre_board.free_title}</a></span>
+				<span class="floating-right">${pre_board.mem_id}</span>
+			</div>
+		</div>
+		</c:if>
+		<c:if test="${!empty next_board.free_num}">
+		<div style="border-top:1px solid #eee;border-bottom:1px solid #eee;">
+			<div>
+				<span class="floating-left">다음글</span>
+				<span><a href="freeDetail.do?free_num=${next_board.free_num}">${next_board.free_title}</a></span>
+				<span class="floating-right">${next_board.mem_id}</span>
+			</div>
+		</div>
+		</c:if>
+		</div>
+	
 </div>
 </body>
 </html>
