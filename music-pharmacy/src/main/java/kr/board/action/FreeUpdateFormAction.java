@@ -26,7 +26,7 @@ public class FreeUpdateFormAction implements Action {
 		FreeBoardVO board = dao.getBoard(free_num);
 		if(user_num != board.getMem_num()) {
 			//로그인한 회원번호와 작성자 회원번호 불일치
-			return "/WEB-INF/views/common/notice.jsp";
+			return "/WEB-INF/views/common/freeBoard.jsp";
 		}
 		
 		//로그인이 되어 있고 로그인한 회원번호와 작성자 회원번호 일치

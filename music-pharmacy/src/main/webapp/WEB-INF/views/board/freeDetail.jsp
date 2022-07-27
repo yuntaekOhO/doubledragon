@@ -14,6 +14,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.fav.js"></script>
 </head>
 <body>
+
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
 	<div class="content-main">
@@ -28,8 +29,14 @@
 				</c:if>
 			</li> 
 			<li>
-				${board.free_writer}<br>
-				조회 : ${free_board.free_hits}
+				작성자 : ${board.free_writer}<br>
+				<c:if test = "${board.free_code==1}">
+				게시판 종류 : 자유게시판
+				</c:if>
+				<c:if test = "${board.free_code==2}">
+				게시판 종류 : 음악추천받아요
+				</c:if><br>
+				조회 : ${board.free_hits}
 			</li>
 		</ul>
 		<hr size="1" noshade="noshade" width="100%">
@@ -57,7 +64,7 @@
 				<%-- 로그인한 회원번호와 작성자 회원번호가 일치해야 수정,삭제 가능 --%>
 				<c:if test="${user_num == board.mem_num}">
 				<input type="button" value="수정" 
-				 onclick="location.href='updateForm.do?board_num=${board.free_num}'">
+				 onclick="location.href='freeUpdateForm.do?free_num=${board.free_num}'">
 				<input type="button" value="삭제" id="delete_btn">
 				<script type="text/javascript">
 					let delete_btn = document.getElementById('delete_btn');

@@ -1,14 +1,14 @@
 $(function(){
 	//=============게시판 글쓰기============//
 	$('#write_form').submit(function(){
-		if($('#title').val().trim()==''){
+		if($('#free_title').val().trim()==''){
 			alert('제목을 입력하세요!');
-			$('#title').val('').focus();
+			$('#free_title').val('').focus();
 			return false;
 		}
-		if($('#content').val().trim()==''){
+		if($('#free_content').val().trim()==''){
 			alert('내용을 입력하세요!');
-			$('#content').val('').focus();
+			$('#free_content').val('').focus();
 			return false;
 		}
 	});

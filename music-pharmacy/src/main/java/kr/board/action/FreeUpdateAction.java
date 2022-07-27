@@ -34,7 +34,7 @@ public class FreeUpdateAction implements Action{
 			
 			//업로드된 파일이 있으면 파일 삭제
 			FileUtil.removeFile(request, free_img);
-			return "/WEB-INF/views/common/notice.jsp";
+			return "/WEB-INF/views/common/freeBard.jsp";
 		}
 		//로그인한 회원번호와 작성자 회원번호가 일치
 		FreeBoardVO board = new FreeBoardVO();
@@ -48,7 +48,7 @@ public class FreeUpdateAction implements Action{
 		FileUtil.removeFile(request, 
 				        db_board.getFree_img());
 	
-		return "redirect:/board/Freedetail.do?free_num="+free_num;
+		return "redirect:/board/freeDetail.do?free_num="+free_num;
 	}
 
 }

@@ -31,19 +31,18 @@ public class FreeBoardDAO {
 			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
 			//SQL문 작성
-			sql = "INSERT INTO free_board (free_num,free_title,free_writer"
+			sql = "INSERT INTO free_board (free_num,free_title"
 					+ ",free_content,free_date,free_img,"
 					+ "free_code,mem_num) VALUES ("
-					+ "board_seq.nextval,?,?,?,SYSDATE,?,?,?)";
+					+ "board_seq.nextval,?,?,SYSDATE,?,?,?)";
 			//JDBC 수행 3단계 : PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			//?에 데이터 바인딩
 			pstmt.setString(1, board.getFree_title());
-			pstmt.setString(2, board.getFree_writer());
-			pstmt.setString(3, board.getFree_content());
-			pstmt.setString(4, board.getFree_img());
-			pstmt.setInt(5, board.getFree_code());
-			pstmt.setInt(6, board.getMem_num());
+			pstmt.setString(2, board.getFree_content());
+			pstmt.setString(3, board.getFree_img());
+			pstmt.setInt(4, board.getFree_code());
+			pstmt.setInt(5, board.getMem_num());
 			
 
 			//JDBC 수행 4단계 : SQL문 실행
@@ -142,7 +141,6 @@ public class FreeBoardDAO {
 			FreeBoardVO board = new FreeBoardVO();
 			board.setFree_num(rs.getInt("free_num"));
 			board.setFree_title(StringUtil.useNoHtml(rs.getString("free_title")));
-			board.setFree_writer(rs.getString("free_writer"));
 			board.setFree_content(rs.getString("free_content"));
 			board.setFree_date(rs.getDate("free_date"));
 			board.setFree_modify_date(rs.getDate("free_modify_date"));
@@ -188,13 +186,13 @@ public class FreeBoardDAO {
 					board = new FreeBoardVO();
 					board.setFree_num(rs.getInt("free_num"));
 					board.setFree_title(StringUtil.useNoHtml(rs.getString("free_title")));
-					board.setFree_writer(rs.getString("free_writer"));
 					board.setFree_content(rs.getString("free_content"));
 					board.setFree_date(rs.getDate("free_date"));
 					board.setFree_modify_date(rs.getDate("free_modify_date"));
 					board.setFree_img(rs.getString("free_img"));
 					board.setFree_hits(rs.getInt("free_hits"));
 					board.setFree_code(rs.getInt("free_code"));
+					board.setMem_num(rs.getInt("mem_num"));
 					
 				}
 				
