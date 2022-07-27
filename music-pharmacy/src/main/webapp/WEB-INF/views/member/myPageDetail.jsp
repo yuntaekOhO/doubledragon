@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>My page</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPage.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
@@ -16,41 +17,21 @@
 </div>
 <div>
 	<div class="page">
+		<p id="font-b">회원정보</p>
 		<a href="${pageContext.request.contextPath}/member/myPage.do">마이페이지</a>
-		<hr style="border: solid 1px light-gray;">
 		<div class="mypage-div">
-			<ul>
-				<li>
+		
+				<div class="profile-image2 float">
 				<c:if test="${empty member.photo}">
 				<img src="${pageContext.request.contextPath}/images/face.png" width="120" height="120" class="my-photo">
 				</c:if>
 				<c:if test="${!empty member.photo}">
 				<img src="${pageContext.request.contextPath}/upload/${member.photo}" width="120" height="120" class="my-photo">
 				</c:if>
-				</li>
-				<li>
-					<div>
-						<input type="file" id="photo" accept="image/gif,image/png,image/jpeg">
-						<input type="button" value="등록" id="photo_submit">
-						<input type="button" value="취소" id="photo_reset">
-					</div>
-				</li>
-			</ul>
-			<h3>비밀번호 수정</h3>
-			<ul>
-				<li>
-					<input type="button" value="비밀번호 수정" onclick="location.href='modifyPasswordForm.do'">
-				</li>
-			</ul>
-			<h3>회원탈퇴</h3>
-			<ul>
-				<li>
-					<input type="button" value="회원탈퇴" onclick="location.href='deleteUserForm.do'">
-				</li>
-			</ul>
-		</div>
+				</div>
+		
 		<div class="mypage-div">
-			<h3>회원정보</h3>
+			
 			<ul>
 				<li>이름 : ${member.name}</li>
 				<li>전화번호 : ${member.cell}</li>
@@ -66,6 +47,7 @@
 			</ul>
 		</div>
 	</div>
+</div>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>

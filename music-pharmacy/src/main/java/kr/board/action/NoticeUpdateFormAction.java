@@ -5,9 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.board.dao.NoticeBoardDAO;
-import kr.board.dao.ThemeBoardDAO;
 import kr.board.vo.NoticeBoardVO;
-import kr.board.vo.ThemeBoardVO;
 import kr.controller.Action;
 
 public class NoticeUpdateFormAction implements Action {

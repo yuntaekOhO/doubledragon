@@ -1,4 +1,7 @@
 @charset "UTF-8";
+.total{
+	margin: 30px 220px;
+}
 .page{
 	background:white;
 	margin:80px 100px 100px 100px;
@@ -12,6 +15,14 @@
 	border-radius: 70%;
 	overflow: hidden;
 	margin-top:15px;
+	margin-left: 40px;
+}
+.profile-image2{
+	width: 200px;
+	height:200px;
+	border-radius: 70%;
+	overflow: hidden;
+	margin-top:20px;
 	margin-left: 40px;
 }
 .my-photo{
@@ -69,19 +80,56 @@ input[type=file]::file-selector-button:hover {
   background: #4d4d4d;
   color: #fff;
 }
-
-.mypage-information{
-	clear:both;
-	height:40px;
-	width:100px;
-	background: #c9c9c9;
+.profile{
+  width: 600px;
+  height: 400px;
+  display: inline;
+}
+.float{
+	float:left;
+}
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.div-info{
 	text-align:center;
+	width:1200px;
+	height: 800px;
+	display: inline;
+}
+.mypage-information{
+	height:130px;
+	width:300px;
+	background: #e8e8e8;
+	margin-right:20px;
+	float:left;
+	margin-top:50px;
 }
 .mypage-div{
 	float:left;
 	margin: 15px;
+	margin-top: 85px;
+	margin-left: 80px;
 }
-p{
-	color:#6e4e39;
+.mypoint-div{
+	float:left;
+	margin-top: 55px;
+	margin-left: 80px;
+	text-align:center;
+}
+
+#font-a{
+	color:black;
+	font-size:23px;
+}
+#font-b{
+	color:black;
 	font-size:20px;
+}
+#font{
+	color: black;
+	font-size:20px;
+	vertical-align:middle;
 }

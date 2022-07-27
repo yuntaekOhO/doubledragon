@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.board.vo.NoticeBoardVO;
-import kr.board.vo.ThemeBoardVO;
 import kr.util.DBUtil;
 import kr.util.StringUtil;
 
