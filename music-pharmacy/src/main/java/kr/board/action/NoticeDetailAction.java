@@ -19,7 +19,7 @@ public class NoticeDetailAction implements Action {
 		//조회수 증가
 		dao.updateReadcount(not_num);
 		//글상세 정보 반환
-		NoticeBoardVO board = dao.getNoticeBoard(not_num); 
+		NoticeBoardVO board = dao.getBoard(not_num); 
 		//HTML을 허용하지 않음
 		board.setNot_title(StringUtil.useNoHtml(board.getNot_title()));
 		//HTML을 허용하지 않으면서 줄바꿈 처리

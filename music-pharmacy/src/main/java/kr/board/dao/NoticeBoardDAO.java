@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.board.vo.NoticeBoardVO;
+import kr.board.vo.ThemeBoardVO;
 import kr.util.DBUtil;
 import kr.util.StringUtil;
 
@@ -152,7 +153,7 @@ public class NoticeBoardDAO {
 	}
 	
 	//공지사항 글 상세 (클릭했을때 보이게할)
-	public NoticeBoardVO getNoticeBoard(int not_num) throws Exception{
+	public NoticeBoardVO getBoard(int not_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -224,6 +225,47 @@ public class NoticeBoardDAO {
 
 			}
 		}
+		//글수정
+				public void updateBoard(NoticeBoardVO board)throws Exception{
+					Connection conn = null;
+					PreparedStatement pstmt = null;
+					String sql = null;
+					String sub_sql = "";
+					int cnt = 0;
+					
+					try {
+						//커넥션풀로부터 커넥션 할당
+						conn = DBUtil.getConnection();
+						
+						if(board.getNot_img()!=null) {
+							//업로드한 파일이 있는 경우
+							sub_sql = ",not_img=?";
+						}
+						
+						sql = "UPDATE not_board SET not_title=?,not_content=?,"
+							+ "not_modify_date=SYSDATE" + sub_sql 
+							+ ",not_code=?,not_url=? WHERE not_num=?";
+						
+						//PreparedStatement 객체 생성
+						pstmt = conn.prepareStatement(sql);
+						//?에 데이터 바인딩
+						pstmt.setString(++cnt, board.getNot_title());
+						pstmt.setString(++cnt, board.getNot_content());
+						if(board.getNot_img()!=null) {
+							pstmt.setString(++cnt, board.getNot_img());
+						}
+						pstmt.setInt(++cnt, board.getNot_num());
+						
+						//SQL문 실행
+						pstmt.executeUpdate();
+					}catch(Exception e) {
+						throw new Exception(e);
+					}finally {
+						//자원정리
+						DBUtil.executeClose(null, pstmt, conn);
+					}
+					
+				}
 }
 
 
