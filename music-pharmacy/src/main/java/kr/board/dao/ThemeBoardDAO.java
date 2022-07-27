@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.board.vo.BoardFavVO;
 import kr.board.vo.ThemeBoardVO;
 import kr.music.vo.MusicVO;
 import kr.util.DBUtil;
@@ -27,57 +28,78 @@ public class ThemeBoardDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
+		ResultSet rs = null;
 		String sql = null;
-		String sql2 = null;
+		int num = 0; //시퀀스 번호 저장
 		
 		try {
 			// JDBC 수행 1,2단계
 			conn = DBUtil.getConnection();
+			
+			// 오토 커밋 해제
 			conn.setAutoCommit(false);
+			
+			// the_num 생성
+			sql = "SELECT board_seq.nextval FROM dual";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num = rs.getInt(1);
+			}
+			
 			// SQL 문 작성
 			sql = "INSERT INTO theme_board(the_num,the_title,the_writer,the_content,the_date,the_img,"
 					+ "the_code,the_video,the_url, mem_num) VALUES "
-					+ "(board_seq.nextval,?,?,?,SYSDATE,?,?,?,?,?)";
-			sql2 = "INSERT INTO music(mus_num,the_num,mus_album,mus_singer,mus_title,mus_genre,mus_img,mus_date,"
+					+ "(?,?,?,?,SYSDATE,?,?,?,?,?)";
+			// JDBC 수행 3단계
+			pstmt2 = conn.prepareStatement(sql);
+			// ?에 데이터 바인딩
+			pstmt2.setInt(1, num);
+			pstmt2.setString(2, board.getThe_title());
+			pstmt2.setString(3, board.getThe_writer());
+			pstmt2.setString(4, board.getThe_content());
+			pstmt2.setString(5, board.getThe_img());
+			pstmt2.setInt(6, board.getThe_code());
+			pstmt2.setString(7, board.getThe_video());
+			pstmt2.setString(8, board.getThe_url());
+			pstmt2.setInt(9, board.getMem_num());
+
+			// JDBC 수행 4단계
+			pstmt2.executeUpdate();	
+			
+			sql = "INSERT INTO music(mus_num,the_num,mus_album,mus_singer,mus_title,mus_genre,mus_img,mus_date,"
 					+ "mus_composer,mus_songwriter) VALUES "
 					+ "(music_seq.nextval,?,?,?,?,?,?,?,?,?)";
-			// JDBC 수행 3단계
-			pstmt = conn.prepareStatement(sql);
+			
+			pstmt3 = conn.prepareStatement(sql);
 			// ?에 데이터 바인딩
-			pstmt.setString(1, board.getThe_title());
-			pstmt.setString(2, board.getThe_writer());
-			pstmt.setString(3, board.getThe_content());
-			pstmt.setString(4, board.getThe_img());
-			pstmt.setInt(5, board.getThe_code());
-			pstmt.setString(6, board.getThe_video());
-			pstmt.setString(7, board.getThe_url());
-			pstmt.setInt(8, board.getMem_num());
+
+			pstmt3 = conn.prepareStatement(sql);
+			pstmt3.setInt(1, num);
+			pstmt3.setString(2, music.getMus_album());
+			pstmt3.setString(3, music.getMus_singer());
+			pstmt3.setString(4, music.getMus_title());
+			pstmt3.setString(5, music.getMus_genre());
+			pstmt3.setString(6, music.getMus_img());
+			pstmt3.setString(7, music.getMus_date());
+			pstmt3.setString(8, music.getMus_composer());
+			pstmt3.setString(9, music.getMus_songwriter());
 			
-			pstmt2 = conn.prepareStatement(sql2);
-			pstmt2.setInt(1, music.getThe_num());
-			pstmt2.setString(2, music.getMus_album());
-			pstmt2.setString(3, music.getMus_singer());
-			pstmt2.setString(4, music.getMus_title());
-			pstmt2.setString(5, music.getMus_genre());
-			pstmt2.setString(6, music.getMus_img());
-			pstmt2.setDate(7, music.getMus_date());
-			pstmt2.setString(8, music.getMus_composer());
-			pstmt2.setString(9, music.getMus_songwriter());
+			pstmt3.executeUpdate();
 			
-			
-			
-			// JDBC 수행 4단계
-			pstmt.executeUpdate();	
-		}catch(Exception e) {
 			conn.commit();
+		}catch(Exception e) {
+			conn.rollback();
 			throw new Exception(e);
 		}finally {
 		// 자원 정리
-			DBUtil.executeClose(null, pstmt, conn);
+			DBUtil.executeClose(null, pstmt3, null);
+			DBUtil.executeClose(null, pstmt2, null);
+			DBUtil.executeClose(rs, pstmt, conn);
 		}
 	
 	}
-	
 	
 	//총 레코드 수(검색 레코드 수)
 	public int getBoardCount(String keyfield, String keyword) throws Exception{
@@ -337,4 +359,125 @@ public class ThemeBoardDAO {
 				DBUtil.executeClose(null, pstmt, conn);
 			}
 		}
+
+		// 좋아요 등록 
+		public void insertFav(int the_num, int mem_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+
+			try {
+				//커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = "INSERT INTO board_fav (fav_num,the_num,mem_num) VALUES (zboardfav_seq.nextval,?,?)";
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터 바인딩
+				pstmt.setInt(1, the_num);
+				pstmt.setInt(2, mem_num);
+				//SQL문 실행
+				pstmt.executeUpdate();
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+		}
+		
+		//좋아요 개수
+		public int selectFavCount(int the_num)
+				                        throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int count = 0;
+			
+			try {
+				//커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = "SELECT COUNT(*) FROM board_fav WHERE the_num=?";
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터 바인딩
+				pstmt.setInt(1, the_num);
+				//SQL문 실행
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return count;
+		}
+		
+		//회원번호와 게시물 번호를 이용한 좋아요 정보
+		public BoardFavVO selectFav(int the_num, int mem_num)
+		                                    throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			BoardFavVO fav = null;
+			String sql = null;
+			
+			try {
+				//커넥션풀로부터 커넥션을 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = "SELECT * FROM board_fav WHERE the_num=? AND mem_num=?";
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터를 바인딩
+				pstmt.setInt(1, the_num);
+				pstmt.setInt(2, mem_num);
+				//SQL문 실행
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					fav = new BoardFavVO();
+					fav.setFav_num(rs.getInt("fav_num"));
+					fav.setThe_num(rs.getInt("board_num"));
+					fav.setMem_num(rs.getInt("mem_num"));
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return fav;
+		}
+		
+		//좋아요 삭제
+		public void deleteFav(int fav_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			
+			try {
+				//커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = "DELETE FROM board_fav WHERE fav_num=?";
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터 바인딩
+				pstmt.setInt(1, fav_num);
+				//SQL문 실행
+				pstmt.executeUpdate();
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+		}
 }
+
+

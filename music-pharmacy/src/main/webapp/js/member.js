@@ -248,6 +248,8 @@ $(function(){
 		
 	});
 	
+	
+	
 	//============= 비밀번호수정 ==============//
 	$('#password_form').submit(function(){
 		if($('#id').val().trim()==''){
