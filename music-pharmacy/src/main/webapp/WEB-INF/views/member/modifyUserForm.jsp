@@ -98,16 +98,17 @@
 						</div>
 					</li>
 				</ul><br>
-				<div class="btn-float">
-					<div class="float2">
-					<button type="button" class="correction2_btn" onclick="location.href='modifyPasswordForm.do'">비밀번호 수정</button>	
-					<button class="correction_btn" value="수정">완료</button>
-					</div>
-					
+				
 					<div>
 					<button type="button" class="correction2_btn" value="회원탈퇴" onclick="location.href='deleteUserForm.do'">회원탈퇴</button>
+					<button type="button" class="correction2_btn" onclick="location.href='modifyPasswordForm.do'">비밀번호 수정</button>
+					
+						<div class="float2">	
+						<button class="correction_btn" value="수정">완료</button>
+						</div>
 					</div>	
-				</div>
+					
+			
 			</div>		
 		</form>
 				

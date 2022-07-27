@@ -53,7 +53,7 @@
 				
 				<div class="mypage-information float">
 				<br>
-					<a id="font-a">My playlist</a>
+					<a href="${pageContext.request.contextPath}/member/myPlaylist.do" id="font-a">My playlist</a>
 					<p>환자분이 좋아요 누른 음악들의 <br> 리스트를 확인할 수 있는 공간입니다.</p>
 				</div>
 				
@@ -71,7 +71,7 @@
 					<p>환자분이 작성한 글의 목록을<br> 확인할 수 있는 공간입니다.</p>
 				</div>
 				
-				<div class="mypage-information flaot">
+				<div class="mypage-information float">
 				<br>
 					<a id="font-a">작성한 댓글</a>
 					<p>환자분이 작성한 댓글의 목록을 <br> 확인할 수 있는 공간입니다.</p>
