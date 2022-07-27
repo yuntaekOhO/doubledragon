@@ -25,6 +25,14 @@
 	margin-top:20px;
 	margin-left: 40px;
 }
+.profile-image3{
+	width: 250px;
+	height:250px;
+	border-radius:70%;
+	overflow: hidden;
+	margin-top:20px;
+	margin-left: 40px;
+}
 .my-photo{
 	width: 100%;
 	height: 100%;
@@ -34,6 +42,18 @@
   background:#9e8d71;
   color:#fff;
   display: inline-block;
+}
+.correction{
+  background:#9e8d71;
+  color:#fff;
+  display: inline-block;
+  margin-top:320px;
+  margin-left:-50px;
+}
+.prev_btn{
+  margin-top: -40px;
+  background:#9e8d71;
+  color:#fff;
 }
 
 .photo_reset{
@@ -51,7 +71,12 @@ button{
   outline:0;
 }
 .correction_btn{
-  background:#9e8d71;
+  background:#ae9d92;
+  color:#fff;
+  display: inline-block;
+}
+.correction2_btn{
+  background:#e1d5bf;
   color:#fff;
   display: inline-block;
 }
@@ -88,6 +113,9 @@ input[type=file]::file-selector-button:hover {
 .float{
 	float:left;
 }
+.float2{
+	float:right;
+}
 .clearfix::after {
   content: '';
   display: block;
@@ -110,15 +138,34 @@ input[type=file]::file-selector-button:hover {
 .mypage-div{
 	float:left;
 	margin: 15px;
-	margin-top: 85px;
+	margin-top: 80px;
 	margin-left: 80px;
 }
+.mypage-div2{
+	float:left;
+	margin-left: 80px;
+}
+.mypage-div3{
+	float:left;
+	margin-left: 160px;
+	margin-top:-45px;
+}
+.mypage-div4{
+	float:left;
+	margin-left: 170px;
+}
+.mypage-div5{
+	float:left;
+	margin-left: 80px;
+}
+
 .mypoint-div{
 	float:left;
 	margin-top: 55px;
 	margin-left: 80px;
 	text-align:center;
 }
+
 
 #font-a{
 	color:black;
@@ -128,8 +175,15 @@ input[type=file]::file-selector-button:hover {
 	color:black;
 	font-size:20px;
 }
+#font-c{
+	color:#6e4e39;
+	font-size:18px;
+}
 #font{
 	color: black;
 	font-size:20px;
 	vertical-align:middle;
+}
+ul li{
+	margin-top:10px;
 }

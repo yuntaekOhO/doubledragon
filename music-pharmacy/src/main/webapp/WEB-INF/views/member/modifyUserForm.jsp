@@ -14,13 +14,14 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header2.jsp"/>
 <div class="page">
+	<button class="prev_btn" onclick="location.href='myPage.do'"> &lt; 마이페이지</button>
+	<h3 id="font-c">회원정보</h3>
+	
 	<div class="mypage-div">
 		<form id="modify_form" action="modifyUser.do" method="post">
-			<div class="page">
-				<a href="${pageContext.request.contextPath}/member/myPage.do">회원정보 수정</a>
-				<hr style="border: solid 1px light-gray;"><br>
-				<div class="mypage-div">
-					<div class="profile-image">
+
+				<div class="mypage-div5">
+					<div class="profile-image3">
 						<c:if test="${empty member.photo}">
 						<img src="${pageContext.request.contextPath}/images/face.png" class="my-photo">
 						</c:if>
@@ -34,8 +35,11 @@
 						<button class="photo_reset" id="photo_reset">취소</button>
 					</div>
 				</div>
-				<div class="mypage-div">
+				<div class="mypage-div4">
 					<ul>
+					<li>
+						<p id="font-c"><b>회원정보 수정</b></p>
+					</li>
 					<li>
 						<label for="name">이름</label>
 						<input type="text" value="${member.name}" name="name" id="name" maxlength="10">
@@ -67,7 +71,7 @@
 					</li>
 					<li>
 						<label for="birthday">생년월일</label>
-						<input type="text" name="birthday" id="birthday" maxlength="10"><br><br>
+						<input type="text" value="${member.birthday}" name="birthday" id="birthday" maxlength="10"><br><br>
 					</li>
 					<li>
 						<label for="music">선호하는 음악 장르</label><br>
@@ -93,27 +97,22 @@
 						<label><input type="radio" name="route" id="route" value="기타">기타</label><br>
 						</div>
 					</li>
-				</ul>
-				<p><b>비밀번호 수정</b></p>
-					<ul>
-						<li>
-							<button class="correction_btn" onclick="location.href='modifyPasswordForm.do'">비밀번호 수정</button>
-						</li>
-					</ul>
-					<p><b>회원탈퇴</b></p>
-					<ul>
-						<li>
-							<button class="correction_btn" value="회원탈퇴" onclick="location.href='deleteUserForm.do'">회원탈퇴</button>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="align-center">	
+				</ul><br>
+				
+				<div class="float">
+				<button class="correction2_btn" onclick="location.href='modifyPasswordForm.do'">비밀번호 수정</button>
+				<button class="correction2_btn" value="회원탈퇴" onclick="location.href='deleteUserForm.do'">회원탈퇴</button>
+				</div>
+				
+				<div class="float2">	
 				<button class="correction_btn">수정</button>
 				<button class="correction_btn" onclick="location.href='myPage.do'">마이페이지</button>
 			</div>
 			</div>
+
 		</form>
+			
+			
 	</div>
 
 	<!-- 다음 우편번호 찾기 시작 -->
@@ -215,5 +214,7 @@
 </script>
 	<!-- 다음 우편번호 찾기 끝 -->
 </div>
+
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

@@ -17,8 +17,10 @@
 </div>
 <div>
 	<div class="page">
-		<p id="font-b">회원정보</p>
-		<a href="${pageContext.request.contextPath}/member/myPage.do">마이페이지</a>
+	<button class="prev_btn" onclick="location.href='myPage.do'"> &lt; 마이페이지</button>
+		<h3 id="font-c">회원정보</h3>
+		
+		
 		<div class="mypage-div">
 		
 				<div class="profile-image2 float">
@@ -30,7 +32,7 @@
 				</c:if>
 				</div>
 		
-		<div class="mypage-div">
+		<div class="mypage-div2">
 			
 			<ul>
 				<li>이름 : ${member.name}</li>
@@ -39,12 +41,14 @@
 				<li>우편번호 : ${member.zipcode}</li>
 				<li>주소 : ${member.addr1} ${member.addr2}</li>
 				<li>생일 : ${member.birthday}</li>
-				<li>선호하는 음악 장르 : ${member.music}</li>
+				<br>
 				<li>가입일 : ${member.reg_date}</li>
-				<li>
-					<input type="button" value="정보수정" onclick="location.href='modifyUserForm.do'">
-				</li>
+				<li>선호하는 음악 장르 : ${member.music}</li>
+				<li>가입경로 : ${member.route}</li>
 			</ul>
+		</div>
+		<div class="mypage-div3">
+		<button class="correction" onclick="location.href='modifyUserForm.do'">수정</button>
 		</div>
 	</div>
 </div>
