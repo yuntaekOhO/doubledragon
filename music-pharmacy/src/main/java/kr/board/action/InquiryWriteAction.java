@@ -35,10 +35,10 @@ public class InquiryWriteAction implements Action {
 		MultipartRequest multi = FileUtil.createFile(request);
 		
 		InquiryBoardVO board = new InquiryBoardVO();
-		board.setInq_title(multi.getParameter("title"));
+		board.setInq_title(multi.getParameter("inq_title"));
 		board.setInq_writer(member.getNick());
-		board.setInq_question(multi.getParameter("question"));
-		board.setInq_answer(multi.getParameter("answer"));
+		board.setInq_question(multi.getParameter("inq_question"));
+		board.setInq_answer(multi.getParameter("inq_answer"));
 		board.setInq_img(multi.getFilesystemName("inq_img"));
 		board.setMem_num(user_num);
 		InquiryBoardDAO dao = InquiryBoardDAO.getInstance();

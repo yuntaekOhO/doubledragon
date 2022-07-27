@@ -18,7 +18,7 @@
  	<a href="${pageContext.request.contextPath}/board/inquiryBoard.do">상소문</a>
  	<p>자주 묻는 질문 게시판</p><br>
  	<hr>
- 	<p style="float:left;">total - ${count} 건</p>
+ 	<span style="float:left;">total - ${count} 건</span>
 	<!-- 검색 -->
 	<div class="search-bar">
 		<form id="inq_search_form" action="inquiryBoard.do" method="get">
@@ -51,41 +51,32 @@
 		</div>
 		</c:if>
 		<c:if test="${count > 0}">
-		<table>
-			<tr>
-				<th>글번호</th>
-				<th>제목</th>
-				<th>Q</th>
-				<th>A</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<c:if test="${!empty user_num && user_auth==3}">
-				<th>관리자</th>
-				</c:if>
-			</tr>
-			<c:forEach var="board" items="${list}">
+		<c:forEach var="board" items="${list}">
+		<div style="width:90%;margin:0 auto;">
+		<div>
 			<input type="hidden" id="inq_num" value="${board.inq_num}">
-			<tr>
-				<td>${board.inq_num}</td>
-				<td><a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_title}</a></td>
-				<td><a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_question}</a></td>
-				<td><a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_answer}</a></td>
-				<td>${board.inq_writer}</td>
-				<td>${board.inq_date}</td>
-				<c:if test="${!empty user_num && user_auth==3}">
-				<td>
-					<input type="button" value="수정" onclick="location.href='inquiryUpdateForm.do?inq_num=${board.inq_num}'">
-					<input type="button" value="삭제" id="inquiryDelete_btn">
-				</td>
-				</c:if>
-			</tr>
-			</c:forEach>
-		</table>
+			<!--${board.inq_num}-->
+			<!-- <a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_title}</a><br> -->
+			<strong>Q</strong>  <a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_question}</a>
+			<span class="floating-right">${board.inq_writer}</span><br>
+			<strong>A</strong>  <a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_answer}</a>
+			<span class="floating-right">${board.inq_date}</span>
+		</div>
+			<div class="floating-right">
+			<c:if test="${!empty user_num && user_auth==3}">
+				<input class="floating-right" type="button" value="수정" onclick="location.href='inquiryUpdateForm.do?inq_num=${board.inq_num}'"> 
+				 <input class="floating-right" type="button" value="삭제" id="inquiryDelete_btn">
+			</c:if>
+			</div>
+			<br>
+			<hr width="100%" size="3">
+		</div>
+		</c:forEach>
+
 		<div class="align-center">
 			${page}
 		</div>
 		</c:if>
-		<hr width="90%">
 
 	</div>
 	
