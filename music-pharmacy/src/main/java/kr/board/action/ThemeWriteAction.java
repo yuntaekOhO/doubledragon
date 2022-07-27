@@ -1,5 +1,7 @@
 package kr.board.action;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -50,20 +52,20 @@ public class ThemeWriteAction implements Action {
 		board.setThe_url(multi.getParameter("the_url"));
 		//board.setMus_genre(multi.getParameter("mus_genre"));
 		board.setMem_num(user_num);
+	
 		
-		music.setThe_num(board.getThe_num());
+		//music.setThe_num(board.getThe_num());
 		music.setMus_album(multi.getParameter("mus_album"));
 		music.setMus_singer(multi.getParameter("mus_singer"));
 		music.setMus_title(multi.getParameter("mus_title"));
 		music.setMus_genre(multi.getParameter("mus_genre"));
 		music.setMus_img(multi.getParameter("mus_img"));
-		//music.setMus_date(multi.getParameter("mus_date"));
+		music.setMus_date(multi.getParameter("mus_date"));
 		music.setMus_composer(multi.getParameter("mus_composer"));
 		music.setMus_songwriter(multi.getParameter("mus_songwriter"));
 		
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
-		dao.insertBoard(board,music);
-		//dao.insertMusicBoard(music);
+		dao.insertBoard(board, music);
 		
 		return "/WEB-INF/views/board/themeWrite.jsp";
 	}

@@ -10,7 +10,7 @@ public class MusicVO {
 	private String mus_title;
 	private String mus_genre;
 	private String mus_singer;
-	private Date mus_date;
+	private String mus_date;
 	private String mus_composer;
 	private String mus_songwriter;
 	private int mus_recommend;
@@ -58,10 +58,10 @@ public class MusicVO {
 	public void setMus_singer(String mus_singer) {
 		this.mus_singer = mus_singer;
 	}
-	public Date getMus_date() {
+	public String getMus_date() {
 		return mus_date;
 	}
-	public void setMus_date(Date mus_date) {
+	public void setMus_date(String mus_date) {
 		this.mus_date = mus_date;
 	}
 	public String getMus_composer() {
