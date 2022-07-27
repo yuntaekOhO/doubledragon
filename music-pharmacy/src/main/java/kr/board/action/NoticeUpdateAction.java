@@ -51,6 +51,6 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 			FileUtil.removeFile(request, db_board.getNot_img());
 		}
 		
-		return "redirect:/board/noticeDetail.do?not_num="+not_num;
+		return "redirect:/board/detail.do?not_num="+not_num;
 	}
 }
