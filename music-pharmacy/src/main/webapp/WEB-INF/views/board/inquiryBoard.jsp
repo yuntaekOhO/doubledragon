@@ -16,7 +16,7 @@
 	<div>
 	<div class="page">
  	<a href="${pageContext.request.contextPath}/board/inquiryBoard.do">상소문</a>
- 	<p>자주 묻는 질문 게시판</p><br>
+ 	<p>자주 묻는 질문</p><br>
  	<hr>
  	<span style="float:left;">total - ${count} 건</span>
 	<!-- 검색 -->
@@ -58,7 +58,7 @@
 			<!--${board.inq_num}-->
 			<!-- <a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_title}</a><br> -->
 			<strong>Q</strong>  <a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_question}</a>
-			<span class="floating-right">${board.inq_writer}</span><br>
+			<span class="floating-right">${board.inq_writer}</span><br><br>
 			<strong>A</strong>  <a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_answer}</a>
 			<span class="floating-right">${board.inq_date}</span>
 		</div>

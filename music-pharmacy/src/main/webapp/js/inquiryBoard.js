@@ -19,11 +19,11 @@ $(function(){
 	
 	//글작성
 	$('#inq_write_form').submit(function(){
-		if($('#inq_title').val().trim()==''){
+		/*if($('#inq_title').val().trim()==''){
 			alert('제목을 입력해주세요');
 			$('#inq_title').val('').focus();
 			return false;
-		}
+		}*/
 		if($('#inq_question').val().trim()==''){
 			alert('질문을 입력해주세요');
 			$('#inq_question').val('').focus();
@@ -34,6 +34,7 @@ $(function(){
 			$('#inq_answer').val('').focus();
 			return false;
 		}
-		
 	});
+	
+	
 });
