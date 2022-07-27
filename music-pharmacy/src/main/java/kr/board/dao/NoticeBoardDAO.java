@@ -242,18 +242,16 @@ public class NoticeBoardDAO {
 							sub_sql = ",not_img=?";
 						}
 						
-						sql = "UPDATE not_board SET not_title=?,not_content=?,"
+						sql = "UPDATE notice_board SET not_title=?,not_content=?,"
 							+ "not_modify_date=SYSDATE" + sub_sql 
-							+ ",not_code=?,not_url=? WHERE not_num=?";
+							+ " WHERE not_num=?";
 						
 						//PreparedStatement 객체 생성
 						pstmt = conn.prepareStatement(sql);
 						//?에 데이터 바인딩
 						pstmt.setString(++cnt, board.getNot_title());
 						pstmt.setString(++cnt, board.getNot_content());
-						if(board.getNot_img()!=null) {
-							pstmt.setString(++cnt, board.getNot_img());
-						}
+						
 						pstmt.setInt(++cnt, board.getNot_num());
 						
 						//SQL문 실행

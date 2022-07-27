@@ -19,7 +19,7 @@
 	<p>공지사항 글수정</p><br>
 	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;글쓰기</p>
 	<form id="write_form" action="noticeUpdate.do" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="the_num" value="${board.not_num}">
+	<input type="hidden" name="not_num" value="${board.not_num}">
 	<ul>
 		<li>
 			<input type="text" name="not_title" id="not_title" maxlength="70">
