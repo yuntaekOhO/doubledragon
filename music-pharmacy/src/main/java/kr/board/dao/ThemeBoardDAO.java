@@ -11,7 +11,6 @@ import kr.board.vo.ThemeBoardVO;
 import kr.music.vo.MusicVO;
 import kr.util.DBUtil;
 import kr.util.StringUtil;
-import kr.util.StringUtil;
 
 public class ThemeBoardDAO {
 	//싱글턴 패턴
@@ -493,6 +492,24 @@ public class ThemeBoardDAO {
 						+ "(SELECT * FROM board b JOIN member m USING(mem_num) "
 						+ "JOIN board_fav f USING(the_num) WHERE f.mem_num=? "
 						+ "ORDER BY the_num DESC)a) WHERE rnum >= ? AND rnum<=?";
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, mem_num);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+				
+				rs = pstmt.executeQuery();
+				list = new ArrayList<ThemeBoardVO>();
+				while(rs.next()) {
+					ThemeBoardVO board = new ThemeBoardVO();
+					board.setThe_num(rs.getInt("the_num"));
+					board.setThe_title(StringUtil.useNoHtml(rs.getString("title")));
+					board.setThe_date(rs.getDate("the_date"));
+					board.setId(rs.getString("id"));
+					
+					list.add(board);
+				}
 				
 			}catch(Exception e) {
 				throw new Exception(e);

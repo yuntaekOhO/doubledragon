@@ -27,10 +27,13 @@ public class MyPlaylistAction implements Action{
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberVO member = dao.getMember(user_num);
 		
-		ThemeBoardDAO Dao = ThemeBoardDAO.getInstance();
-		//List<ThemeBoardVO> list = ThemeBoardDAO.
+		ThemeBoardDAO boardDao = ThemeBoardDAO.getInstance();
+		List<ThemeBoardVO> boardList = boardDao.getListBoardFav(1, 5, user_num);
 		
-		return null;
+		request.setAttribute("member", member);
+		request.setAttribute("boardList", boardList);
+		
+		return "/WEB-INF/views/member/myPlaylist.jsp";
 	}
 
 }
