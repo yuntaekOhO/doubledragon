@@ -9,8 +9,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.fav.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.reply.js"></script>
 </head>
 <body>
 <div class="page-main">
@@ -19,10 +17,10 @@
 		<h2>${board.not_title}</h2>
 		<ul class="detail-info">
 			<li> <!-- 머야  -->
-				<c:if test="${!empty board.photo}">
+				<c:if test="${!empty member.photo}">
 				<img src="${pageContext.request.contextPath}/upload/${board.mem_photo}" width="40" height="40" class="my-photo">
 				</c:if>
-				<c:if test="${empty board.photo}">
+				<c:if test="${empty member.photo}">
 				<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
 				</c:if>
 			</li>
@@ -65,10 +63,14 @@
 				</script>
 				</c:if>
 			</li>
+			
+	
+	
 		</ul>
 		
 	</div>
 </div>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
 

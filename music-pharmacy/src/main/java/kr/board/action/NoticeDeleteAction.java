@@ -5,9 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.board.dao.NoticeBoardDAO;
-import kr.board.dao.ThemeBoardDAO;
 import kr.board.vo.NoticeBoardVO;
-import kr.board.vo.ThemeBoardVO;
 import kr.controller.Action;
 import kr.util.FileUtil;
 
@@ -19,6 +17,7 @@ public class NoticeDeleteAction implements Action{
 		HttpSession session = request.getSession();
 		Integer user_num = 
 				(Integer)session.getAttribute("user_num");
+		
 		if(user_num==null) {//로그인이 되지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
