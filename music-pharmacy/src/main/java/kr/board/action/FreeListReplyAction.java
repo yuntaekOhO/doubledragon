@@ -16,7 +16,7 @@ import kr.board.vo.FreeBoardReVO;
 import kr.controller.Action;
 import kr.util.PagingUtil;
 
-public class FreeCommentAction implements Action{
+public class FreeListReplyAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -71,3 +71,5 @@ public class FreeCommentAction implements Action{
 	}
 
 }
+
+

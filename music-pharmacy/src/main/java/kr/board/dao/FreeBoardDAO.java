@@ -9,6 +9,7 @@ import java.util.List;
 import kr.board.vo.BoardFavVO;
 import kr.board.vo.FreeBoardReVO;
 import kr.board.vo.FreeBoardVO;
+
 import kr.util.DBUtil;
 import kr.util.DurationFromNow;
 import kr.util.StringUtil;
@@ -337,8 +338,7 @@ public class FreeBoardDAO {
 		}
 	}
 	//좋아요 등록
-		public void insertFav(int free_num, int mem_num)
-		                                    throws Exception{
+		public void insertFav(int free_num, int mem_num) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			String sql = null;
@@ -347,8 +347,7 @@ public class FreeBoardDAO {
 				//커넥션풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();
 				//SQL문 작성
-				sql = "INSERT INTO board_fav (fav_num,free_num,"
-					+ "mem_num) VALUES (boardfav_seq.nextval,?,?)";
+				sql = "INSERT INTO board_fav (fav_num,free_num,mem_num) VALUES (zboardfav_seq.nextval,?,?)";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터 바인딩
@@ -455,33 +454,46 @@ public class FreeBoardDAO {
 		}
 		
 		//내가 선택한 좋아요 목록
-		/*
-		 * public List<FreeBoardVO> getListBoardFav(int start,int end, int mem_num)
-		 * throws Exception{ Connection conn = null; PreparedStatement pstmt = null;
-		 * ResultSet rs = null; List<FreeBoardVO> list = null; String sql = null;
-		 * 
-		 * try { //커넥션풀로부터 커넥션 할당 conn = DBUtil.getConnection(); //SQL문 작성 sql =
-		 * "SELECT * FROM (SELECT a.*, rownum rnum " +
-		 * "FROM (SELECT * FROM zboard b JOIN " +
-		 * "zmember m USING(mem_num) JOIN zboard_fav f " +
-		 * "USING(board_num) WHERE f.mem_num=? " + "ORDER BY board_num DESC)a) " +
-		 * "WHERE rnum >= ? AND rnum<=?";
-		 * 
-		 * //PreparedStatement 객체 생성 pstmt = conn.prepareStatement(sql); //?에 데이터 바인딩
-		 * pstmt.setInt(1, mem_num); pstmt.setInt(2, start); pstmt.setInt(3, end);
-		 * 
-		 * //SQL문 실행 rs = pstmt.executeQuery(); list = new ArrayList<FreeBoardVO>();
-		 * while(rs.next()) { FreeBoardVO board = new FreeBoardVO();
-		 * board.setFree_num(rs.getInt("free_num"));
-		 * board.setFree_title(StringUtil.useNoHtml( rs.getString("free_title")));
-		 * board.setFree_date(rs.getDate("free_date"));
-		 * board.setFree_writer(rs.getString("free_writer"));
-		 * 
-		 * list.add(board); }
-		 * 
-		 * }catch(Exception e) { throw new Exception(e); }finally { //자원정리
-		 * DBUtil.executeClose(rs, pstmt, conn); } return list; }
-		 */
+		public List<FreeBoardVO> getListBoardFav(int start,int end, int mem_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<FreeBoardVO> list = null;
+			String sql = null;
+			
+			try {
+				conn = DBUtil.getConnection();
+				
+				sql = "SELECT * FROM (SELECT a.*, rownum rum FROM "
+						+ "(SELECT * FROM free_board b JOIN member m USING(mem_num) "
+						+ "JOIN board_fav f USING(the_num) WHERE f.mem_num=? "
+						+ "ORDER BY free_num DESC)a) WHERE rnum >= ? AND rnum<=?";
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, mem_num);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+				
+				rs = pstmt.executeQuery();
+				list = new ArrayList<FreeBoardVO>();
+				while(rs.next()) {
+					FreeBoardVO board = new FreeBoardVO();
+					board.setFree_num(rs.getInt("free_num"));
+					board.setFree_title(StringUtil.useNoHtml(rs.getString("free_title")));
+					board.setFree_date(rs.getDate("free_date"));
+					board.setId(rs.getString("id"));
+					
+					list.add(board);
+				}
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return list;
+		}
 		
 		//댓글 등록
 		public void insertReplyBoard(FreeBoardReVO boardReply)
@@ -494,7 +506,7 @@ public class FreeBoardDAO {
 				//커넥션풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();
 				//SQL문 작성
-				sql = "INSERT INTO zboard_reply (freply_num,"
+				sql = "INSERT INTO free_comment (freply_num,"
 					+ "freply_content,mem_num,freply_num) "
 					+ "VALUES (board_comment_seq.nextval,?,?,?)";
 				//PreparedStatement 객체 생성
