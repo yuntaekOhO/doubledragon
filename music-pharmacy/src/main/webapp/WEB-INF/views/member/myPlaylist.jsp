@@ -32,7 +32,7 @@
 		</div>
 		
 		<div>
-			<p> ${member.nick} 님이 좋아요한 Playlist </p>
+			<p id="font-b"> <b>${member.nick}</b> 님이 좋아요한 <b>Playlist</b> </p>
 		</div>
 		<table>
 			
