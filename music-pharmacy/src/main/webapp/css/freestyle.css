@@ -1,10 +1,11 @@
 @charset "UTF-8";
-free_table{
-	padding:2px;
+table{
+width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
 }
-free_theme{
-	color:#6e4e39;
-	font-size:20px;
-	font-weight:bold;
-	text-decoration-line: none;
+
+th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
 }

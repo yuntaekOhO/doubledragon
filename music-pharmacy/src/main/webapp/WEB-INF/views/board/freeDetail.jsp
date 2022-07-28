@@ -20,7 +20,7 @@
 </div>
 <div class="page">
  	<a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
- 	<p>자유게시판/음악추천받아요</p><br>
+ 	<p>자유게시판/음악추천받아요</p>
 
 	<div class="content-main">
 		<ul class="detail-info">
@@ -30,11 +30,8 @@
 				</c:if>
 				<c:if test = "${board.free_code==2}">
 				음악추천받아요>
-				</c:if><br>
-				<h2>${board.free_title}</h2> 
-				   
-			</li>
-				<li>
+				</c:if>
+				<h4>${board.free_title}</h4> 
 				<c:if test="${!empty board.photo}">
 				<img src="${pageContext.request.contextPath}/upload/${board.photo}" width="40" height="40" class="my-photo">
 				</c:if>
@@ -86,7 +83,7 @@
 
 		<!-- 댓글 시작 -->
 		<div id="reply_div">
-			<span class="re-title"><h3>댓글</h3></span>
+			<span class="re-title"><h4>댓글</h4></span>
 			<form id="re_form">
 				<input type="hidden" name="free_num" value="${board.free_num}" id="free_num">
 				<textarea style="width:99%;" rows="3" cols="50" name="frely_content" 
