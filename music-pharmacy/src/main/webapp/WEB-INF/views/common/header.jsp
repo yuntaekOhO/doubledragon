@@ -14,9 +14,11 @@
 			끊임없이 멜로디를 찾고,듣고,부르는 우리들<br>
 			Music is MyLife..★의 삶을 <strong>음약방</strong>을 통해 만나보세요
 		</p>
+		<c:if test="${empty user_num}">
 		<div>
 		<span><a href="${pageContext.request.contextPath}/member/registerUserForm.do">sign up for free</a></span>
 		</div>
+		</c:if>
 	</div>
 </div>
 <div class="banner-img">
@@ -99,6 +101,7 @@
 </div>
 </div>
 <!-- header 끝 -->
+<!-- 커밋용 -->
 
 
 

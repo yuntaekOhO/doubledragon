@@ -65,12 +65,11 @@ public class NoticeBoardDAO {
 			conn = DBUtil.getConnection();
 			
 			if(keyword!=null && !"".equals(keyword)) { //키워드가 있으면
-				if(keyfield.equals("1")) sub_sql = "WHERE b.title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql = "WHERE m.id LIKE ?";
-				else if(keyfield.equals("3")) sub_sql = "WHERE b.content LIKE ?";
+				if(keyfield.equals("1")) sub_sql = "WHERE not_title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "WHERE not_content LIKE ?";
 			}
 			
-			sql = "SELECT COUNT(*) FROM notice_board b JOIN member m USING(mem_num) " + sub_sql;
+			sql = "SELECT COUNT(*) FROM notice_board " + sub_sql;
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			if(keyword!=null && !"".equals(keyword)) { //키워드가있고, 비어있지도않으면
@@ -105,9 +104,8 @@ public class NoticeBoardDAO {
 			conn = DBUtil.getConnection();
 			
 			if(keyword!=null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql = "WHERE b.title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql = "WHERE m.id LIKE ?";
-				else if(keyfield.equals("3")) sub_sql = "WHERE b.content LIKE ?";
+				if(keyfield.equals("1")) sub_sql = "WHERE b.not_title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "WHERE b.not_content LIKE ?";
 			}
 			
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum "

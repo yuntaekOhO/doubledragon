@@ -1,10 +1,13 @@
 package kr.member.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.board.dao.ThemeBoardDAO;
+import kr.board.vo.ThemeBoardVO;
 import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
@@ -24,10 +27,13 @@ public class MyPlaylistAction implements Action{
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberVO member = dao.getMember(user_num);
 		
-		ThemeBoardDAO themeboardDao = ThemeBoardDAO.getInstance();
-		List<ThemeBoardVO> List = themeBoardDAO.getListBoardFav(1,5, user_num);
+		ThemeBoardDAO boardDao = ThemeBoardDAO.getInstance();
+		List<ThemeBoardVO> boardList = boardDao.getListBoardFav(1, 5, user_num);
 		
-		return null;
+		request.setAttribute("member", member);
+		request.setAttribute("boardList", boardList);
+		
+		return "/WEB-INF/views/member/myPlaylist.jsp";
 	}
 
 }

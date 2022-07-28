@@ -145,7 +145,6 @@ a:hover{
 	padding-top: 5px;
 	padding-bottom: 5px;
 	display:inline-block;
-	float:right;
 }
 .banner-btns a:link{
 	color:white;
@@ -397,3 +396,4 @@ footer{
 	background:#d4c09f;
 	color:#fff;
 }
+/*커밋용*/

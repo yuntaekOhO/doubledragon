@@ -14,7 +14,7 @@
 <jsp:include page="/WEB-INF/views/common/header2.jsp"/>
 <div class="content-main">
 	<h2>상소문 글수정</h2>
-	<form action="updateInq.do" method="post" enctype="multipart/form-data">
+	<form id="inq_write_form"  action="updateInq.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="inq_num" value="${board.inq_num}">
 		<ul>
 			<li>
@@ -23,7 +23,7 @@
 			</li>
 			<li>
 				<label for="inq_question">질문</label>
-				<textarea name="inq_question" rows="2" cols="50">${board.inq_question}</textarea>
+				<textarea id="inq_question" name="inq_question" rows="2" cols="50">${board.inq_question}</textarea>
 			</li>
 			<li>
 				<label for="inq_img">파일</label>
@@ -71,7 +71,7 @@
 			</li>
 			<li>
 				<label for="inq_answer">답변</label>
-				<textarea name="inq_answer" rows="5" cols="50">${board.inq_answer}</textarea>
+				<textarea id="inq_answer" name="inq_answer" rows="5" cols="50">${board.inq_answer}</textarea>
 			</li>
 		</ul>
 		<div class="align-center">
