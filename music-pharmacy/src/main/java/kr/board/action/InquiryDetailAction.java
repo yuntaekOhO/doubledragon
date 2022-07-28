@@ -3,12 +3,11 @@ package kr.board.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-
 import kr.board.dao.InquiryBoardDAO;
 import kr.board.vo.InquiryBoardVO;
 import kr.controller.Action;
-import kr.util.FileUtil;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 
 public class InquiryDetailAction implements Action {
 
@@ -26,6 +25,12 @@ public class InquiryDetailAction implements Action {
 		
 		//글상세 정보 반환
 		InquiryBoardVO board = dao.getBoard(board_num);
+		int mem_num = board.getMem_num();
+		
+		MemberDAO memberDao = MemberDAO.getInstance();
+		MemberVO member = memberDao.getMember(mem_num);
+		
+		
 		
 		//board.setInq_img(board.getInq_img());
 		//MultipartRequest multi = FileUtil.createFile(request);
@@ -38,6 +43,7 @@ public class InquiryDetailAction implements Action {
 		
 		
 		request.setAttribute("board", board);
+		request.setAttribute("member", member);
 		request.setAttribute("pre_board", preBoard);
 		request.setAttribute("next_board", nextBoard);
 		

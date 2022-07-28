@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>상소문상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/inquirystyle.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPage.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/inquiryBoard.js"></script>
 </head>
@@ -23,6 +23,7 @@
 		<span class="floating-right">수정일 ${board.inq_modify_date}</span><br>
 		</c:if>
 		<hr>
+		<div>
 		<c:if test="${!empty user_num && user_auth==3}">
 		<div class="floating-right">
 			<input type="button" value="수정" onclick="location.href='inquiryUpdateForm.do?inq_num=${board.inq_num}'">
@@ -30,6 +31,22 @@
 		</div>
 		</c:if>
 		<input type="hidden" id="inq_num" value="${board.inq_num}">
+		
+		<!-- 프로필 사진 시작 -->
+		<div class="profile-image4" style="display:inline-block;">
+		<c:if test="${!empty member.photo}">
+			<img src="${pageContext.request.contextPath}/upload/${member.photo}" width="80" height="80" class="my-photo">
+			</c:if>
+			<c:if test="${empty member.photo}">
+			<img src="${pageContext.request.contextPath}/images/face.png" width="80" height="80" class="my-photo">
+		</c:if>
+		</div>
+		<!-- 프로필 사진 끝 -->
+		<div style="display:inline-block;margin:0 20px;position:relative;top:-40px;">
+		<span>${member.nick}</span>
+		</div>
+		</div>
+
 		<h2>Q.</h2>
 		<div style="width:90%;margin:0 auto;">
 			<p>${board.inq_question}</p>

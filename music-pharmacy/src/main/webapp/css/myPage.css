@@ -33,6 +33,14 @@
 	margin-top:20px;
 	margin-left: 40px;
 }
+.profile-image4{
+	width: 90px;
+	height:90px;
+	border-radius:70%;
+	overflow: hidden;
+	margin-top:20px;
+	margin-left: 40px;
+}
 .my-photo{
 	width: 100%;
 	height: 100%;
