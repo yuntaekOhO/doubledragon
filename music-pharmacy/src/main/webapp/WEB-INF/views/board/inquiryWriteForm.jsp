@@ -21,17 +21,13 @@
 	<div style="width:90%;margin:0 auto">
 	<form id="inq_write_form" action="writeInq.do" method="post" enctype="multipart/form-data">
 
-			<!-- <li>
-				<label for="inq_title">제목</label>
-				<input type="text" name="inq_title" id="inq_title">
-			</li> -->
 			<div>
-				<textarea name="inq_question" id="inq_question" rows="7" cols="200" placeholder="질문을 입력하세요."
-				style="resize:none;"></textarea><br>
+				<textarea name="inq_question" id="inq_question" rows="7" placeholder="질문을 입력하세요."
+				style="resize:none;width:100%;"></textarea><br>
 			</div>
 			<div>
-				<textarea name="inq_answer" id="inq_answer" rows="15" cols="200" placeholder="답변을 입력하세요."
-				style="resize:none;"></textarea><br>
+				<textarea name="inq_answer" id="inq_answer" rows="15" placeholder="답변을 입력하세요."
+				style="resize:none;width:100%;"></textarea><br>
 			</div>
 			<div>
 				<input type="file" name="inq_img" id="inq_img" accept="image/gif,image/png,image/jpeg" value="첨부파일"><br>

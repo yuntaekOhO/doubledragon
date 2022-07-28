@@ -24,9 +24,8 @@
 		<form id="inq_search_form" action="inquiryBoard.do" method="get">
 			<input type="search" class="input-search" id="keyword" name="keyword" value="${param.keyword}">
 			<select id="keyfield" name="keyfield" style="float:right;height:35px;">
-				<option value="1">제목</option>
-				<option value="2">질문</option>
-				<option value="3">답변</option>
+				<option value="1">질문</option>
+				<option value="2">답변</option>
 			</select>
 			<input type="submit" class="input-search-submit" value="검색">
 		</form>
@@ -55,8 +54,6 @@
 		<div style="width:90%;margin:0 auto;">
 		<div>
 			<input type="hidden" id="inq_num" value="${board.inq_num}">
-			<!--${board.inq_num}-->
-			<!-- <a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_title}</a><br> -->
 			<strong>Q</strong>  <a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_question}</a>
 			<span class="floating-right">${board.inq_writer}</span><br><br>
 			<strong>A</strong>  <a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_answer}</a>

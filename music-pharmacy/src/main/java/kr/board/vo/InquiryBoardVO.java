@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class InquiryBoardVO {
 	private int inq_num;
-	private String inq_title;
 	private String inq_writer;
 	private String inq_question;
 	private String inq_answer;
@@ -24,12 +23,6 @@ public class InquiryBoardVO {
 	}
 	public void setInq_num(int inq_num) {
 		this.inq_num = inq_num;
-	}
-	public String getInq_title() {
-		return inq_title;
-	}
-	public void setInq_title(String inq_title) {
-		this.inq_title = inq_title;
 	}
 	public String getInq_writer() {
 		return inq_writer;

@@ -15,7 +15,6 @@
 <jsp:include page="/WEB-INF/views/common/header2.jsp"/>
 <div>
 	<div class="page">
-		<h2>${board.inq_title}</h2>
 		<c:if test="${empty board.inq_modify_date}">
 		<span class="floating-right">작성일 ${board.inq_date}</span><br>
 		</c:if>
@@ -35,10 +34,10 @@
 		<!-- 프로필 사진 시작 -->
 		<div class="profile-image4" style="display:inline-block;">
 		<c:if test="${!empty member.photo}">
-			<img src="${pageContext.request.contextPath}/upload/${member.photo}" width="80" height="80" class="my-photo">
+			<img src="${pageContext.request.contextPath}/upload/${member.photo}" class="my-photo">
 			</c:if>
 			<c:if test="${empty member.photo}">
-			<img src="${pageContext.request.contextPath}/images/face.png" width="80" height="80" class="my-photo">
+			<img src="${pageContext.request.contextPath}/images/face.png" class="my-photo">
 		</c:if>
 		</div>
 		<!-- 프로필 사진 끝 -->
@@ -69,7 +68,7 @@
 		<div style="border-top:1px solid #999;border-bottom:1px solid #999;">
 			<div>
 				<span class="floating-left">이전글</span>
-				<span><a href="inqDetail.do?inq_num=${pre_board.inq_num}">${pre_board.inq_title}</a></span>
+				<span><a href="inqDetail.do?inq_num=${pre_board.inq_num}">${pre_board.inq_question}</a></span>
 				<span class="floating-right">${pre_board.inq_writer}</span>
 			</div>
 		</div>

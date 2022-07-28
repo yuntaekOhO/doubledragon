@@ -8,6 +8,7 @@ import java.util.List;
 
 import kr.board.vo.InquiryBoardVO;
 import kr.util.DBUtil;
+import kr.util.StringUtil;
 
 public class InquiryBoardDAO {
 	//싱글턴 패턴
@@ -26,15 +27,14 @@ public class InquiryBoardDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "INSERT INTO inquiry_board (inq_num,inq_title,inq_writer,inq_question,inq_answer,inq_date,mem_num,inq_img) "
-					+ "VALUES (inq_seq.nextval,?,?,?,?,SYSDATE,?,?)";
+			sql = "INSERT INTO inquiry_board (inq_num,inq_writer,inq_question,inq_answer,inq_date,mem_num,inq_img) "
+					+ "VALUES (inq_seq.nextval,?,?,?,SYSDATE,?,?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, board.getInq_title());
-			pstmt.setString(2, board.getInq_writer());
-			pstmt.setString(3, board.getInq_question());
-			pstmt.setString(4, board.getInq_answer());
-			pstmt.setInt(5, board.getMem_num());
-			pstmt.setString(6, board.getInq_img());
+			pstmt.setString(1, board.getInq_writer());
+			pstmt.setString(2, board.getInq_question());
+			pstmt.setString(3, board.getInq_answer());
+			pstmt.setInt(4, board.getMem_num());
+			pstmt.setString(5, board.getInq_img());
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			throw new Exception(e);
@@ -54,9 +54,8 @@ public class InquiryBoardDAO {
 		try {
 			conn = DBUtil.getConnection();
 			if(keyword!=null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql = "WHERE inq_title LIKE ?";
-				if(keyfield.equals("2")) sub_sql = "WHERE inq_question LIKE ?";
-				if(keyfield.equals("3")) sub_sql = "WHERE inq_answer LIKE ?";
+				if(keyfield.equals("1")) sub_sql = "WHERE inq_question LIKE ?";
+				if(keyfield.equals("2")) sub_sql = "WHERE inq_answer LIKE ?";
 			}
 			sql = "SELECT COUNT(*) FROM inquiry_board " + sub_sql;
 			
@@ -91,9 +90,8 @@ public class InquiryBoardDAO {
 		try {
 			conn = DBUtil.getConnection();
 			if(keyword!=null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql = "WHERE b.inq_title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql = "WHERE b.inq_question LIKE ?";
-				else if(keyfield.equals("3")) sub_sql = "WHERE b.inq_answer LIKE ?";
+				if(keyfield.equals("1")) sub_sql = "WHERE b.inq_question LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "WHERE b.inq_answer LIKE ?";
 			}
 			
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM inquiry_board b JOIN member m "
@@ -112,10 +110,9 @@ public class InquiryBoardDAO {
 			while(rs.next()) {
 				InquiryBoardVO board = new InquiryBoardVO();
 				board.setInq_num(rs.getInt("inq_num"));
-				board.setInq_title(rs.getString("inq_title"));
 				board.setInq_writer(rs.getString("inq_writer"));
-				board.setInq_question(rs.getString("inq_question"));
-				board.setInq_answer(rs.getString("inq_answer"));
+				board.setInq_question(StringUtil.shortWords(30,rs.getString("inq_question")));
+				board.setInq_answer(StringUtil.shortWords(30,rs.getString("inq_answer")));
 				board.setInq_date(rs.getDate("inq_date"));
 				board.setInq_modify_date(rs.getDate("inq_modify_date"));
 				board.setInq_img(rs.getString("inq_img"));
@@ -166,7 +163,6 @@ public class InquiryBoardDAO {
 			if(rs.next()) {
 				board = new InquiryBoardVO();
 				board.setInq_num(rs.getInt("inq_num"));
-				board.setInq_title(rs.getString("inq_title"));
 				board.setInq_writer(rs.getString("inq_writer"));
 				board.setInq_question(rs.getString("inq_question"));
 				board.setInq_answer(rs.getString("inq_answer"));
@@ -193,7 +189,7 @@ public class InquiryBoardDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select lag, lead from (select inq_num,inq_title,lag(inq_num,1,0) over (order by inq_num) as lag, lead(inq_num,1,0) over (order by inq_num) as lead from inquiry_board) where inq_num=?";
+			sql = "select lag, lead from (select inq_num,lag(inq_num,1,0) over (order by inq_num) as lag, lead(inq_num,1,0) over (order by inq_num) as lead from inquiry_board) where inq_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, inq_num);
 			rs = pstmt.executeQuery();
@@ -243,10 +239,9 @@ public class InquiryBoardDAO {
 				sub_sql = ",inq_img=?";
 			}
 			
-			sql = "UPDATE inquiry_board SET inq_title=?,inq_question=?,inq_answer=?,inq_modify_date=SYSDATE"+sub_sql+" WHERE inq_num=?";
+			sql = "UPDATE inquiry_board SET inq_question=?,inq_answer=?,inq_modify_date=SYSDATE"+sub_sql+" WHERE inq_num=?";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(++cnt, board.getInq_title());
 			pstmt.setString(++cnt, board.getInq_question());
 			pstmt.setString(++cnt, board.getInq_answer());
 			if(board.getInq_img()!=null) {
