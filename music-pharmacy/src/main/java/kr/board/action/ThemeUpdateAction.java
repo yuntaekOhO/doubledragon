@@ -9,6 +9,7 @@ import com.oreilly.servlet.MultipartRequest;
 
 import kr.board.dao.ThemeBoardDAO;
 import kr.board.vo.ThemeBoardVO;
+import kr.music.vo.MusicVO;
 import kr.controller.Action;
 import kr.util.FileUtil;
 import kr.util.StringUtil;
@@ -27,9 +28,10 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 		MultipartRequest multi = FileUtil.createFile(request);
 		int the_num = Integer.parseInt(multi.getParameter("the_num"));
 		String filename = multi.getFilesystemName("the_img");
+		String filename2 = multi.getFilesystemName("mus_img");
 		
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
-		//수정전 데이터
+		//수정전 데이터 - theme 게시글
 		ThemeBoardVO db_board = dao.getBoard(the_num);
 		if(user_num != db_board.getMem_num()) {
 			//로그인한 회원번호와 작성자 회원번호가 불일치
@@ -41,6 +43,9 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 		
 		//로그인한 회원번호와 작성자 회원번호가 일치
 		ThemeBoardVO board = new ThemeBoardVO();
+		MusicVO music = new MusicVO();
+		
+		
 		board.setThe_num(the_num);
 		board.setThe_title(multi.getParameter("the_title"));
 		board.setThe_content(multi.getParameter("the_content"));
@@ -50,7 +55,16 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 		board.setThe_url(multi.getParameter("the_url"));
 		board.setMem_num(user_num);
 		
-		dao.updateBoard(board);
+		music.setMus_album(multi.getParameter("mus_album"));
+		music.setMus_singer(multi.getParameter("mus_singer"));
+		music.setMus_title(multi.getParameter("mus_title"));
+		music.setMus_genre(multi.getParameter("mus_genre"));
+		music.setMus_img(multi.getParameter(filename2));
+		music.setMus_composer(multi.getParameter("mus_composer"));
+		music.setMus_songwriter(multi.getParameter("mus_songwriter"));
+		music.setThe_num(the_num);
+		
+		dao.updateBoard(board,music);
 		
 		if(filename!=null) {
 			//새 파일로 교체할 때 원래 파일 제거

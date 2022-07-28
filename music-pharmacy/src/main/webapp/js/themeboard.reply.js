@@ -3,7 +3,6 @@ $(function(){
 	let count;
 	let rowCount;
 	
-	/*
 	//댓글 목록
 	function selectList(pageNum){
 		currentPage = pageNum;
@@ -31,7 +30,7 @@ $(function(){
 				
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
-					output += '<h4>' + item.id +'</h4>';
+					//output += '<h4>' + item.id +'</h4>';
 					output += '<div class="sub-item">';
 					output += '<p>' + item.treply_content + '</p>';
 					
@@ -77,7 +76,7 @@ $(function(){
 	$('.paging-button input').click(function(){
 		selectList(currentPage + 1);
 	});
-	*/
+	
 	
 	//댓글 등록
 	$('#re_form').submit(function(event){
@@ -106,7 +105,7 @@ $(function(){
 					initForm();
 					//댓글 작성이 성공하면 새로 삽입한 글을 포함해서
 					//첫번째 페이지의 게시글을 다시 호출함
-					//selectList(1);
+					selectList(1);
 				}
 			},
 			error:function(){
@@ -164,40 +163,8 @@ $(function(){
 		
 	});
 	
-	//댓글 삭제
-	$(document).on('click','.delete-btn',function(){
-		//댓글 번호
-		let re_num = $(this).attr('data-renum');
-		
-		$.ajax({
-			url:'deleteReply.do',
-			type:'post',
-			data:{re_num:re_num},
-			dataType:'json',
-			cache:false,
-			timeout:30000,
-			success:function(param){
-				if(param.result == 'logout'){
-					alert('로그인해야 삭제할 수 있습니다.');
-				}else if(param.result == 'success'){
-					alert('삭제 완료');
-					selectList(1);
-				}else if(param.result == 'wrongAccess'){
-					alert('타인의 글을 삭제할 수 없습니다.');
-				}else{
-					alert('삭제시 오류 발생!');
-				}
-			},
-			error:function(){
-				alert('re3네트웤드 오류 발생!');
-			}
-		});
-		
-	});
-	
-	
 	//초기 데이터(목록) 호출
-	//selectList(1);
+	selectList(1);
 	
 });
 

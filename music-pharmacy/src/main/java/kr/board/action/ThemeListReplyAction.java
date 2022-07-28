@@ -1,6 +1,8 @@
 package kr.board.action;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import kr.controller.Action;
+import kr.util.PagingUtil;
 import kr.board.dao.ThemeBoardDAO;
 import kr.board.vo.ThemeBoardReVO;
 
@@ -18,34 +21,53 @@ public class ThemeListReplyAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		Map<String,String> mapAjax = 
-				              new HashMap<String,String>();
+		
+		//전송된 데이터 인코딩 처리
+		request.setCharacterEncoding("utf-8");
+		
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum==null) {
+			pageNum = "1";
+		}
+		
+		int the_num = Integer.parseInt(
+				       request.getParameter("the_num"));
+		
+		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
+		int count = dao.getReplyBoardCount(the_num);
+		
+		/*
+		 * ajax 방식으로 목록을 표시하기 때문에 PagingUtil은 페이지수
+		 * 표시가 목적이 아니라 목록 데이터의 페이지 처리를 위해
+		 * rownum 번호를 구하는 것이 목적임
+		 */
+		int rowCount = 10;
+		
+		PagingUtil page = 
+				new PagingUtil(Integer.parseInt(pageNum),
+						count,rowCount,1,null);
+		
+		List<ThemeBoardReVO> list = null;
+		if(count > 0) {
+			list = dao.getListReplyBoard(page.getStartRow(),
+					            page.getEndRow(),the_num);
+		}else {
+			list = Collections.emptyList();
+		}
 		
 		HttpSession session = request.getSession();
 		Integer user_num = 
 				(Integer)session.getAttribute("user_num");
-		if(user_num==null) {//로그인이 되지 않은 경우
-			mapAjax.put("result", "logout");
-		}else {//로그인 된 경우
-			//전송된 데이터 인코딩 처리
-			request.setCharacterEncoding("utf-8");
-			//전송된 데이터를 반환받아서 VO에 저장
-			ThemeBoardReVO reply = new ThemeBoardReVO();
-			
-			reply.setThe_num(Integer.parseInt(request.getParameter("the_num")));
-			reply.setTreply_writer("testString");
-			//reply.setTreply_writer(request.getParameter("treply_writer"));
-			reply.setTreply_content(request.getParameter("treply_content"));
-			reply.setMem_num(user_num);//회원번호(작성자)
-			
-			ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
-			dao.insertReplyBoard(reply);
-			
-			mapAjax.put("result", "success");
-		}
 		
-		//JSON 데이터 생성
+		Map<String,Object> mapAjax = 
+				new HashMap<String,Object>();
+		mapAjax.put("count", count);
+		mapAjax.put("rowCount", rowCount);
+		mapAjax.put("list", list);
+		//로그인한 회원번호와 작성자 회원번호 일치 여부를 체크하기 위해
+		mapAjax.put("user_num", user_num);
+		
+		//JSON 데이터로 변환
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxData = 
 				mapper.writeValueAsString(mapAjax);

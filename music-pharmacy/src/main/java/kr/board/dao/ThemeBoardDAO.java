@@ -248,6 +248,53 @@ public class ThemeBoardDAO {
 		return board;
 	}
 	
+	// music 상세
+	public MusicVO getMusic(int the_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MusicVO music = null;
+		String sql = null;
+		
+		try {
+			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "SELECT * FROM music m JOIN theme_board USING(the_num) WHERE the_num=?";
+			
+			//JDBC 수행 3단계 : PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setInt(1, the_num);
+			//JDBC 수행 4단계
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				music = new MusicVO();
+				music.setThe_num(rs.getInt("the_num"));
+				music.setMus_num(rs.getInt("mus_num"));
+				music.setMus_title(rs.getString("mus_title"));
+				music.setMus_img(rs.getString("mus_img"));
+				music.setMus_album(rs.getString("mus_album"));
+				music.setMus_title(rs.getString("mus_title"));
+				music.setMus_genre(rs.getString("mus_genre"));
+				music.setMus_singer(rs.getString("mus_singer"));
+				music.setMus_date(rs.getString("mus_date"));
+				music.setMus_composer(rs.getString("mus_composer"));
+				music.setMus_songwriter(rs.getString("mus_songwriter"));
+				music.setMus_recommend(rs.getInt("mus_recommend"));
+				music.setMus_hits(rs.getInt("mus_hits"));
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return music;
+	}
+	
+	
 	//조회수 증가
 	public void updateReadcount(int the_num) throws Exception{
 		Connection conn = null;
@@ -276,16 +323,21 @@ public class ThemeBoardDAO {
 	}
 	
 	//글수정
-		public void updateBoard(ThemeBoardVO board)throws Exception{
+		public void updateBoard(ThemeBoardVO board, MusicVO music)throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
+			PreparedStatement pstmt2 = null;
 			String sql = null;
 			String sub_sql = "";
 			int cnt = 0;
+			int cnt1 = 0;
 			
 			try {
 				//커넥션풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();
+				
+				// 오토 커밋 해제
+				conn.setAutoCommit(false);
 				
 				if(board.getThe_img()!=null) {
 					//업로드한 파일이 있는 경우
@@ -308,12 +360,37 @@ public class ThemeBoardDAO {
 				pstmt.setString(++cnt, board.getThe_url());
 				pstmt.setInt(++cnt, board.getThe_num());
 				
-				//SQL문 실행
 				pstmt.executeUpdate();
+				
+				if(music.getMus_img()!=null) {
+					//업로드한 파일이 있는 경우
+					sub_sql = ",mus_img=?";
+				}
+				
+				sql = "UPDATE music SET mus_album=?,mus_singer=?,mus_title=?,mus_genre=?,"
+						+ sub_sql + "mus_composer=?,mus_songwriter=? WHERE the_num=?";
+						
+				pstmt2 = conn.prepareStatement(sql);
+				pstmt2.setString(++cnt1, music.getMus_album());
+				pstmt2.setString(++cnt1, music.getMus_singer());
+				pstmt2.setString(++cnt1, music.getMus_title());
+				pstmt2.setString(++cnt1, music.getMus_genre());
+				if(music.getMus_img()!=null) {
+					pstmt2.setString(++cnt1, music.getMus_img());
+				}
+				pstmt2.setString(++cnt1, music.getMus_composer());
+				pstmt2.setString(++cnt1, music.getMus_songwriter());
+				pstmt2.setInt(++cnt1, music.getThe_num());
+				
+				//SQL문 실행
+				pstmt2.executeUpdate();
+				
+				conn.commit();
 			}catch(Exception e) {
 				throw new Exception(e);
 			}finally {
 				//자원정리
+				DBUtil.executeClose(null, pstmt2, null);
 				DBUtil.executeClose(null, pstmt, conn);
 			}
 			
@@ -535,7 +612,7 @@ public class ThemeBoardDAO {
 			//SQL문 작성
 			sql = "INSERT INTO theme_comment (treply_num,"
 				+ "the_num,treply_content,treply_date,mem_num) "
-				+ "VALUES (boardcomment_seq.nextval,?,?,SYSDATE,?)";
+				+ "VALUES (board_comment.nextval,?,?,SYSDATE,?)";
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			//?에 데이터 바인딩
@@ -669,7 +746,7 @@ public class ThemeBoardDAO {
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					reply = new ThemeBoardReVO();
-					reply.setTreply_num(rs.getInt("re_num"));
+					reply.setTreply_num(rs.getInt("treply_num"));
 					reply.setMem_num(rs.getInt("mem_num"));
 				}
 			}catch(Exception e) {
@@ -680,5 +757,34 @@ public class ThemeBoardDAO {
 			}
 			
 			return reply;
+		}
+		
+		//댓글 수정
+		public void updateReplyBoard(ThemeBoardReVO reply)
+		                                       throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			
+			try {
+				//커넥션풀로부터 커넥션을 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = "UPDATE theme_comment SET treply_content=?,"
+					+ "treply_modify_date=SYSDATE WHERE treply_num=?";
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터를 바인딩
+				pstmt.setString(1, reply.getTreply_content());
+				pstmt.setInt(2, reply.getTreply_num());
+				//SQL문 실행
+				pstmt.executeUpdate();
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(null, pstmt, conn);
+			}
 		}
 }

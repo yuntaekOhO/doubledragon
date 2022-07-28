@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.board.dao.ThemeBoardDAO;
 import kr.board.vo.ThemeBoardVO;
 import kr.controller.Action;
+import kr.music.vo.MusicVO;
 import kr.util.StringUtil;
 
 public class ThemeDetailAction implements Action {
@@ -27,7 +28,10 @@ public class ThemeDetailAction implements Action {
 		board.setThe_content(StringUtil.useBrNoHtml(
 				board.getThe_content()));
 
+		MusicVO music = dao.getMusic(the_num);
+		
 		request.setAttribute("board", board);
+		request.setAttribute("music", music);
 
 		return "/WEB-INF/views/board/themeDetail.jsp";
 	}
