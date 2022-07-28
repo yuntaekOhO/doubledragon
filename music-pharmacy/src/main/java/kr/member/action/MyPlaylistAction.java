@@ -11,6 +11,8 @@ import kr.board.vo.ThemeBoardVO;
 import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
+import kr.music.vo.MusicVO;
+
 
 public class MyPlaylistAction implements Action{
 
@@ -30,8 +32,11 @@ public class MyPlaylistAction implements Action{
 		ThemeBoardDAO boardDao = ThemeBoardDAO.getInstance();
 		List<ThemeBoardVO> boardList = boardDao.getListBoardFav(1, 10, user_num);
 		
+		MusicVO music = boardDao.getMusicFav(user_num);
+		
 		request.setAttribute("member", member);
 		request.setAttribute("boardList", boardList);
+		request.setAttribute("music", music);
 		
 		return "/WEB-INF/views/member/myPlaylist.jsp";
 	}
