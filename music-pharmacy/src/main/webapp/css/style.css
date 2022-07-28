@@ -256,18 +256,27 @@ a:hover{
 	line-height:0.2em;
 	
 }
-#main2_nav ul{
-	list-style:none;
-	margin:0;
-	padding:10px;
-}
-#main2_nav ul li{
+#main2_nav ul.myMenu > li{
 	display:inline-block;
 	width:100px;
 	text-align:center;
 	vertical-align: middle;
 	padding-top:5px;
+	position:relative;
 }
+#main2_nav .myMenu .menu-theme .submenu{
+	display:none;
+	margin:0;
+	padding:10px;
+	position:absolute;
+}
+#main_nav2 .myMenu li:hover > .submenu{
+	display:block;
+}
+#main2_nav ul.myMenu > li.menu-theme:hover > .submenu{
+	display:block;
+}
+
 #main2_nav ul li a {
 	color:#9e8d71;
 	text-decoration-line: none;

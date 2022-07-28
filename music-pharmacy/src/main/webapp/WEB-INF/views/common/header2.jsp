@@ -22,21 +22,21 @@
 		</div>
 	</div>
 	<div id="main2_nav">
-		<ul>
+		<ul class="myMenu">
 			<li>
 				<a href="${pageContext.request.contextPath}/board/noticeList.do"><b>공지사항</b></a>
 			</li>
 			<li>
 				<a href="${pageContext.request.contextPath}/board/freeBoard.do"><b>저잣거리</b></a>
 			</li>
-			<li style="position:relative;">
-				<a href="${pageContext.request.contextPath}/board/themeBoard.do"><b>동의보감</b></a>
+			<li class="menu-theme">
+				<div><a href="${pageContext.request.contextPath}/board/themeBoard.do"><b>동의보감</b></a></div>
 				<!-- 하위 메뉴 -->
-					<ul class="menu_submenu" style="display:none;position:absolute;">
-					<li style="display:block;"><a href="#">희</a></li>
-					<li style="display:block;"><a href="#">노</a></li>
-					<li style="display:block;"><a href="#">애</a></li>
-					<li style="display:block;"><a href="#">락</a></li>
+				<ul class="submenu">
+					<li><a href="#">희</a></li>
+					<li><a href="#">노</a></li>
+					<li><a href="#">애</a></li>
+					<li><a href="#">락</a></li>
 				</ul>
 			</li>
 			<li>
@@ -47,11 +47,11 @@
 			<!-- 관리자로 로그인할경우 (몰라요) -->
 			
 			<!-- 로그인 된 경우 -->
-			<c:if test="${!empty user_num}">
+			<c:if test="${!empty sessionScope.user_num}">
 			<li>
 				<a href="${pageContext.request.contextPath}/member/myPage.do"><b>마이페이지</b></a>
 					<!-- 하위 메뉴 -->
-				<ul class="menu_submenu" style="display:none;position:absolute;">
+				<ul class="submenu" style="display:none;position:absolute;">
 					<li style="display:block;"><a href="#">회원정보</a></li>
 					<li style="display:block;"><a href="#">My Playlist</a></li>
 					<li style="display:block;"><a href="#">My Point</a></li>
