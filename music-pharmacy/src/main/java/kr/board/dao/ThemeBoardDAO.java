@@ -156,14 +156,14 @@ public class ThemeBoardDAO {
 				
 				sql = "SELECT COUNT(*) FROM board_fav f JOIN member m USING(mem_num) WHERE f.mem_num=?";
 				
+			
 				//JDBC 수행 3단계 : PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
-				if(keyword!=null && !"".equals(keyword)) {
-					pstmt.setString(1, "%"+keyword+"%");
-				}
-				
+			
+				pstmt.setInt(1, rs.getInt("mem_num"));
 				//JDBC 수행 4단계
 				rs = pstmt.executeQuery();
+				
 				if(rs.next()) {
 					count1 = rs.getInt(1);
 				}
