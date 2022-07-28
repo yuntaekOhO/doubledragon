@@ -8,7 +8,7 @@
 <title>저잣거리</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/freestyle.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>

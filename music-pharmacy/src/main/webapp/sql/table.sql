@@ -141,3 +141,4 @@ create sequence notice_seq;
 create sequence music_seq;
 create sequence playlist_seq;
 create sequence boardfav_seq;
+create sequence freecomment_seq;
