@@ -18,10 +18,6 @@
 		<input type="hidden" name="inq_num" value="${board.inq_num}">
 		<ul>
 			<li>
-				<label for="inq_title">제목</label>
-				<input type="text" name="inq_title" id="inq_title" value="${board.inq_title}">
-			</li>
-			<li>
 				<label for="inq_question">질문</label>
 				<textarea id="inq_question" name="inq_question" rows="2" cols="50">${board.inq_question}</textarea>
 			</li>

@@ -43,7 +43,6 @@ public class InquiryUpdateAction implements Action {
 		//로그인한 회원번호와 글 작성 회원번호가 같음
 		InquiryBoardVO board = new InquiryBoardVO();
 		board.setInq_num(inq_num);
-		board.setInq_title(multi.getParameter("inq_title"));
 		board.setInq_writer(multi.getParameter("inq_writer"));
 		board.setInq_question(multi.getParameter("inq_question"));
 		board.setInq_answer(multi.getParameter("inq_answer"));
