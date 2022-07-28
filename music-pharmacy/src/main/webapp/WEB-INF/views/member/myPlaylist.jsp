@@ -48,7 +48,7 @@
 						</c:if>
 					</div>
 				</td>
-				<td>${music.mus_title}</td>
+				<td>${music.mus_title}</td><br>
 				<td>${music.mus_singer} - ${music.mus_album} </td>
 			</tr>
 			</c:forEach>
