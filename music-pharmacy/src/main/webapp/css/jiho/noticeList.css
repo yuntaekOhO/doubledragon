@@ -15,60 +15,12 @@ body{
 #main_logo{
 	padding-top:20px;
 }
-/* .page a{
-    color:#6e4e39;
-	font-size:30px;
-	font-weight:bold;
-	text-decoration-line: none;
-} */
-a.noticeList_content{
-	font-size:15px;
-	/* 여기인가 */
-}
-a.noticeList_title{
-	font-size:30px;
-	font-weight:bold;
-}
-.page p{
-	font-size:15px;
-	text-decoration-line: none;
-}
-/* header2 CSS */
-#main2_logo{
-	padding-top:20px;
-}
-#main2_logo div h1 a{
-	color:#6e4e39;
-	text-decoration-line: none;
-}
-#main2_nav{
 
-	padding:2px 10px 20px 10px;
-	height:20px;
-	float:right;
+.content-main{
+	padding:10px 20px;
 }
-.left{
-	float:left;
-	margin-left:20px;
-	line-height:0.2em;
 
-}
-#main2_nav ul{
-	list-style:none;
-	margin:0;
-	padding:10px;
-}
-#main2_nav ul li{
-	display:inline-block;
-	width:100px;
-	text-align:center;
-	vertical-align: middle;
-	padding-top:5px;
-}
-#main2_nav ul li a {
-	color:#9e8d71;
-	text-decoration-line: none;
-}
+
 /*검색 양식 추가하기(내비게이션 내부 검색)*/
 .search-bar{
 	height:35px;
@@ -110,4 +62,22 @@ a.noticeList_title{
 	display:flex;	/*하위요소를 수직으로 쌓을 수 있는 공간을 만듬*/
 	align-items:center;/*세로 정렬*/
 	justify-content:center;/*가로 정렬*/
+}
+.align-center{ text-align:center; }
+.align-right{ text-align:right; }
+.floating-left{ float:left; }
+.floating-right{ float:right; }
+.floating-clear{ clear:both; }
+
+a:link{
+	text-decoration:none;
+	/*color:white;*/
+}
+a:visited{
+	text-decoration:none;
+	/*color:white;*/
+}
+a:hover{
+	text-decoration:none;
+	/*color:#6C6C6C;*/
 }

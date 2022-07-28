@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/* 푸터 */
+footer h4{
+	line-height:0.5em;
+	color: white;
+}
+footer p{
+	line-height:0.5em;
+	font-size:12px;
+}
+footer a{
+	font-size:12px;
+}
+footer{
+	clear:both;
+	height:200px;
+	background:#d4c09f;
+	color:#fff;
+}
+#logo{
+	margin-left:50px;
+	padding:0px 0px 10px 0px;
+	float:left;
+}
+#category{
+	float:right;
+	margin-right:50px;
+}
+#category a{
+	color:white;
+}
+/* 푸터 끝 */

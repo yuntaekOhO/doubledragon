@@ -6,8 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jiho/noticeList.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jiho/noticsListTitleContentFont.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jiho/footer.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/noticeList.js"></script>
@@ -21,7 +23,7 @@
 <div class="page">
  	<a href="${pageContext.request.contextPath}/board/noticeList.do">어명이오</a>
  	<p>공지사항 게시판</p><br>
- 	<hr>
+ 	<hr class="noticeList_hr">
  	<p style="float:left;">total - ${count} 건</p>
 	<!-- 검색 -->
 	<div class="pull-left">

@@ -131,7 +131,7 @@ public class NoticeBoardDAO {
 				board.setNot_num(rs.getInt("not_num"));
 				board.setNot_title(StringUtil.useNoHtml(rs.getString("not_title")));
 				board.setNot_writer(rs.getString("not_writer"));
-				board.setNot_content(rs.getString("not_content"));
+				board.setNot_content(StringUtil.shortWords(80,rs.getString("not_content")));
 				board.setNot_date(rs.getDate("not_date"));
 				board.setNot_modify_date(rs.getDate("not_modify_date"));
 				board.setNot_img(rs.getString("not_img"));

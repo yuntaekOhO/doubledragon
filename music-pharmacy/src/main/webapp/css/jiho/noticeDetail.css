@@ -1,0 +1,10 @@
+@charset "UTF-8";
+.page-main{
+	margin-left: 100px;
+}
+#main_logo{
+	padding-top:20px;
+}
+ul{
+	list-style:none;
+}

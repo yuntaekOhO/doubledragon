@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/noticeList.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jiho/noticeHeader.css" type="text/css">
 </head>
 <body>
 <!-- header2 시작 -->

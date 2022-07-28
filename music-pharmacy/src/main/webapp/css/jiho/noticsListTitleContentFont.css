@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+
+/* 공지사항리스트 제목,내용의 글씨크기,글씨색 */
+.page a{
+    color:#6e4e39;
+	font-weight:bold;
+	text-decoration-line: none;
+}
+a.noticeList_content{
+	font-size:15px;
+	/* 여기인가 */
+}
+a.noticeList_title{
+	font-size:30px;
+	font-weight:bold;
+}
