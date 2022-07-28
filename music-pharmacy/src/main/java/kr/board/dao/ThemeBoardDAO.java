@@ -294,6 +294,55 @@ public class ThemeBoardDAO {
 		return music;
 	}
 	
+	// music 상세
+		public MusicVO getMusicFav(int mem_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			MusicVO music = null;
+			String sql = null;
+			
+					
+			try {
+				//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = "SELECT * FROM music JOIN board_fav USING(the_num) JOIN member USING(mem_num) WHERE mem_num=?";
+				
+				//JDBC 수행 3단계 : PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터 바인딩
+				pstmt.setInt(1, mem_num);
+				//JDBC 수행 4단계
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					music = new MusicVO();
+					music.setThe_num(rs.getInt("the_num"));
+					music.setMus_num(rs.getInt("mus_num"));
+					music.setMus_title(rs.getString("mus_title"));
+					music.setMus_img(rs.getString("mus_img"));
+					music.setMus_album(rs.getString("mus_album"));
+					music.setMus_title(rs.getString("mus_title"));
+					music.setMus_genre(rs.getString("mus_genre"));
+					music.setMus_singer(rs.getString("mus_singer"));
+					music.setMus_date(rs.getString("mus_date"));
+					music.setMus_composer(rs.getString("mus_composer"));
+					music.setMus_songwriter(rs.getString("mus_songwriter"));
+					music.setMus_recommend(rs.getInt("mus_recommend"));
+					music.setMus_hits(rs.getInt("mus_hits"));
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return music;
+		}
+	
+	
+	
 	
 	//조회수 증가
 	public void updateReadcount(int the_num) throws Exception{

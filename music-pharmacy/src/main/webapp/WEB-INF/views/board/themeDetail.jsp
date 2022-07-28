@@ -31,11 +31,29 @@
 			<img src="${pageContext.request.contextPath}/upload/${board.the_img}" class="detail-img">
 		</div>
 		</c:if>
+		<c:if test="${!empty music.mus_img}">
+		<div class="align-center">
+			<img src="${pageContext.request.contextPath}/upload/${music.the_img}" class="detail-img">
+		</div>
+		</c:if>
 		
 		
 		<p>
 			${board.the_content}
+			<br>
 			${board.the_url}
+			<br>
+			${music.mus_album}
+			<br>
+			${music.mus_title}
+			<br>
+			${music.mus_singer}
+			<br>
+			${music.mus_genre}
+			<br>
+			${music.mus_composer}
+			<br>
+			${music.mus_songwriter}
 		</p>
 		<hr size="1" noshade="noshade" width="100%">
 		<ul class="detail-sub">
