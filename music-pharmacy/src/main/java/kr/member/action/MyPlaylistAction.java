@@ -28,7 +28,7 @@ public class MyPlaylistAction implements Action{
 		MemberVO member = dao.getMember(user_num);
 		
 		ThemeBoardDAO boardDao = ThemeBoardDAO.getInstance();
-		List<ThemeBoardVO> boardList = boardDao.getListBoardFav(1, 5, user_num);
+		List<ThemeBoardVO> boardList = boardDao.getListBoardFav(1, 10, user_num);
 		
 		request.setAttribute("member", member);
 		request.setAttribute("boardList", boardList);
