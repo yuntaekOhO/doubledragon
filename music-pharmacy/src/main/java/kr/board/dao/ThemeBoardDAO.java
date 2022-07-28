@@ -141,37 +141,6 @@ public class ThemeBoardDAO {
 		return count;
 	}
 	
-	//총 레코드 수(검색 레코드 수)
-		public int getFavCount(BoardFavVO board) throws Exception{
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			String sql = null;
-			//String sub_sql = "";
-			int count1 = 0;
-			
-			try {
-				//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
-				conn = DBUtil.getConnection();
-				
-				sql = "SELECT COUNT(*) FROM board_fav f JOIN member m USING(mem_num) WHERE f.mem_num=?";
-				
-			
-				//JDBC 수행 3단계 : PreparedStatement 객체 생성
-				pstmt = conn.prepareStatement(sql);
-			
-				pstmt.setInt(1, board.getMem_num());
-				
-				//JDBC 수행 4단계
-			
-				pstmt.executeUpdate();
-			}catch(Exception e) {
-				throw new Exception(e);
-			}finally {
-				DBUtil.executeClose(rs, pstmt, conn);
-			}
-			return count1;
-		}
 	
 	//글목록(검색글 목록)
 	public List<ThemeBoardVO> getListBoard(int start, int end, String keyfield,String keyword) throws Exception{

@@ -77,10 +77,10 @@
 				<li class="menu-theme">
 					<div><a href="${pageContext.request.contextPath}/board/themeBoard.do">동의보감</a></div>
 					<ul class="submenu">
-		            	<li><a>희</a></li>
-		            	<li><a>노</a></li>
-		            	<li><a>애</a></li>
-		            	<li><a>락</a></li>
+		            	<li><a href="${pageContext.request.contextPath}/board/themeBoard1.do">희</a></li>
+		            	<li><a href="${pageContext.request.contextPath}/board/themeBoard2.do">노</a></li>
+		            	<li><a href="${pageContext.request.contextPath}/board/themeBoard3.do">애</a></li>
+		            	<li><a href="${pageContext.request.contextPath}/board/themeBoard4.do">락</a></li>
 		       		</ul>
 				</li>
 				<li>
