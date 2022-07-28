@@ -22,7 +22,7 @@
 	<input type="hidden" name="not_num" value="${board.not_num}">
 	<ul>
 		<li>
-			<input type="text" name="not_title" id="not_title" maxlength="70">
+			<input type="text" name="not_title" id="not_title" value="${board.not_title}" maxlength="70">
 		</li>
 		<li><br>
 			<textarea rows="20" cols="100" name="not_content" id="not_content">${board.not_content}</textarea>

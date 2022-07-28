@@ -8,6 +8,7 @@
 <title>공지사항</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/noticeListSearchBar.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 
@@ -24,13 +25,18 @@
 	<!-- 검색 -->
 	<div class="pull-left">
 		<div class="search-bar" style="float:right;">
-			<form id="search_form" action="noticeList.do" method="get">
-				<input type="search" class="input-search"> <input
-					type="submit" class="input-search-submit" value="검색">
-			</form>
+			<form id="inq_search_form" action="noticeList.do" method="get">
+			<input type="search" class="input-search" id="keyword" name="keyword" value="${param.keyword}">
+			<select id="keyfield" name="keyfield" style="float:right;height:35px;">
+				<option value="1">제목</option>
+				<option value="2">내용</option>
+			</select>
+			<input type="submit" class="input-search-submit" value="검색">
+		</form>
 		</div>
 	</div>
 	<!-- 검색 끝 -->
+	
  	<div class="list-space align-right">
  	<!-- 관리자만 글쓰기 가능 -->
  		<c:if test="${!empty user_num && user_auth==3}">
