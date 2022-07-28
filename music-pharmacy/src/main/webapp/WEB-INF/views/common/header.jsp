@@ -5,7 +5,7 @@
 <div class="header">
 <div class="banner">
 	<h1>
-		<img src="${pageContext.request.contextPath}/images/face.png" width="50px">
+		<img src="${pageContext.request.contextPath}/images/musicpharmacy.png" width="60px">
 		<a href="${pageContext.request.contextPath}/main/main.do">음약방</a>
 	</h1>
 	<div class="header-content">

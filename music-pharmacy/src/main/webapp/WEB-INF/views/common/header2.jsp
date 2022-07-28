@@ -13,7 +13,7 @@
 <div>
 	<div id="main2_logo">
 		<div class="left">
-				<img src="${pageContext.request.contextPath}/images/face.png" width="25" height="25" vspace="10">
+				<img src="${pageContext.request.contextPath}/images/musicpharmacy.png" width="50" height="50" hspace="5">
 		</div>
 		<div>
 		<h1 class="left"> 
