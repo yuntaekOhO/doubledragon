@@ -490,7 +490,7 @@ public class ThemeBoardDAO {
 			try {
 				conn = DBUtil.getConnection();
 				
-				sql = "SELECT * FROM (SELECT a.*, rownum rum FROM "
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
 						+ "(SELECT * FROM theme_board b JOIN member m USING(mem_num) "
 						+ "JOIN board_fav f USING(the_num) WHERE f.mem_num=? "
 						+ "ORDER BY the_num DESC)a) WHERE rnum >= ? AND rnum<=?";
@@ -534,15 +534,14 @@ public class ThemeBoardDAO {
 			conn = DBUtil.getConnection();
 			//SQL문 작성
 			sql = "INSERT INTO theme_comment (treply_num,"
-				+ "the_num,treply_writer,treply_content,treply_date,mem_num) "
-				+ "VALUES (boardcomment_seq.nextval,?,?,?,SYSDATE,?)";
+				+ "the_num,treply_content,treply_date,mem_num) "
+				+ "VALUES (boardcomment_seq.nextval,?,?,SYSDATE,?)";
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			//?에 데이터 바인딩
 			pstmt.setInt(1, boardReply.getThe_num());
-			pstmt.setString(2, boardReply.getTreply_writer());
-			pstmt.setString(3, boardReply.getTreply_content());
-			pstmt.setInt(4, boardReply.getMem_num());
+			pstmt.setString(2, boardReply.getTreply_content());
+			pstmt.setInt(3, boardReply.getMem_num());
 			//SQL문 실행
 			pstmt.executeUpdate();
 		}catch(Exception e) {
@@ -661,7 +660,7 @@ public class ThemeBoardDAO {
 				//커넥션풀로부터 커넥션을 할당
 				conn = DBUtil.getConnection();
 				//SQL문 작성
-				sql = "SELECT * FROM zboard_reply WHERE re_num=?";
+				sql = "SELECT * FROM theme_comment WHERE treply_num=?";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터를 바인딩
