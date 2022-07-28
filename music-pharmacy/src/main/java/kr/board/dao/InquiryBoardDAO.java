@@ -8,6 +8,7 @@ import java.util.List;
 
 import kr.board.vo.InquiryBoardVO;
 import kr.util.DBUtil;
+import kr.util.StringUtil;
 
 public class InquiryBoardDAO {
 	//싱글턴 패턴
@@ -110,8 +111,8 @@ public class InquiryBoardDAO {
 				InquiryBoardVO board = new InquiryBoardVO();
 				board.setInq_num(rs.getInt("inq_num"));
 				board.setInq_writer(rs.getString("inq_writer"));
-				board.setInq_question(rs.getString("inq_question"));
-				board.setInq_answer(rs.getString("inq_answer"));
+				board.setInq_question(StringUtil.shortWords(30,rs.getString("inq_question")));
+				board.setInq_answer(StringUtil.shortWords(30,rs.getString("inq_answer")));
 				board.setInq_date(rs.getDate("inq_date"));
 				board.setInq_modify_date(rs.getDate("inq_modify_date"));
 				board.setInq_img(rs.getString("inq_img"));

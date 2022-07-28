@@ -8,6 +8,7 @@ import kr.board.vo.InquiryBoardVO;
 import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
+import kr.util.StringUtil;
 
 public class InquiryDetailAction implements Action {
 
@@ -26,6 +27,9 @@ public class InquiryDetailAction implements Action {
 		//글상세 정보 반환
 		InquiryBoardVO board = dao.getBoard(board_num);
 		int mem_num = board.getMem_num();
+
+		board.setInq_question(StringUtil.useBrNoHtml(board.getInq_question()));
+		board.setInq_answer(StringUtil.useBrNoHtml(board.getInq_answer()));
 		
 		MemberDAO memberDao = MemberDAO.getInstance();
 		MemberVO member = memberDao.getMember(mem_num);
