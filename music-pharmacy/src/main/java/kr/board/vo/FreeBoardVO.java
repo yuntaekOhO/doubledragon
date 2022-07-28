@@ -14,6 +14,7 @@ public class FreeBoardVO {
 	private int mem_num;
 	private String id;
 	private String photo;
+	private String nick;
 	
 	public int getFree_num() {
 		return free_num;
@@ -81,4 +82,11 @@ public class FreeBoardVO {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+	
 }
