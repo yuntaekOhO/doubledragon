@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/freestyle.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 
@@ -21,7 +20,7 @@
 
 <div class="page">
  	<a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
- 	<p>자유게시판/음악추천받아요</p><br>
+ 	<p>자유게시판/음악추천받아요</p>
  	<p style="float:left;">총 ${count}건</p>
 <!-- 검색 -->
 	<div class="search-bar">
@@ -36,7 +35,7 @@
 		</form>
 	</div>
 	<!-- 검색 끝 -->
-	<br><br><br> 
+
 
  	<c:if test="${count == 0}">
 		<div>
@@ -44,26 +43,34 @@
 		</div>
 		</c:if>
 		<c:if test="${count > 0}">
-		<table class="free_table">
-
+		
+		<!-- 게시글 시작 -->
+		<hr size="1" noshade="noshade" width="100%">
+		<table class="free_table" cellpadding="10" width="100%">
 		<c:forEach var="board" items="${list}">
-			<tr>
-				<td class="free_theme">
+			<tr >
+				<td class="free_theme" rowspan="2" width="15%" style="border-bottom:1px solid #423207;">
 					<c:if test = "${board.free_code==1}">
 					자유게시판
+					
 					</c:if>
 					<c:if test = "${board.free_code==2}">
 					음악추천받아요
 				</c:if>
 				</td>
-				<td><a href="freeDetail.do?free_num=${board.free_num}">${board.free_title}</a></td>
-				<td>${board.free_content}</td>
-				<td>${board.nick}</td>
-				<td>${board.free_date}</td>
-				<td>${board.free_hits}</td>
+				<td align="left"><a href="freeDetail.do?free_num=${board.free_num}">${board.free_title}</a></td>
+				<!-- <td><span id="output_fcount"></span></td> -->
+				<td align="right">view : ${board.free_hits}</td>
 			</tr>
+			<tr>	
+				<td align="left"  style="border-bottom:1px solid #423207;">${board.free_content}</td>
+				<td align="right" style="border-bottom:1px solid #423207;">${board.nick}님 작성</td>
+			</tr>
+			
 			</c:forEach>
 		</table>
+		<hr size="1" noshade="noshade" width="100%">
+		<!-- 게시글 끝 -->
 		<div class="align-center">
 			${page}
 		</div>
