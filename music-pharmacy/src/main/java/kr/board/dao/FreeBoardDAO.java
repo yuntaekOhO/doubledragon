@@ -150,6 +150,7 @@ public class FreeBoardDAO {
 			board.setFree_hits(rs.getInt("free_hits"));
 			board.setFree_code(rs.getInt("free_code"));
 			board.setId(rs.getString("id"));
+			board.setNick(rs.getString("nick"));
 			list.add(board);				
 			}
 		}catch(Exception e) {
@@ -197,6 +198,7 @@ public class FreeBoardDAO {
 					board.setMem_num(rs.getInt("mem_num"));
 					board.setId(rs.getString("id"));
 					board.setPhoto(rs.getString("photo"));
+					board.setNick(rs.getString("nick"));
 				}
 				
 			}catch(Exception e) {

@@ -1,6 +1,10 @@
 package kr.board.vo;
 
 
+/**
+ * @author easyp
+ *
+ */
 public class FreeBoardReVO {
 	 
 	private int freply_num;
@@ -11,6 +15,7 @@ public class FreeBoardReVO {
 	private String freply_modify_date;
 	private int mem_num;
 	private String id;
+
 	
 	public int getFreply_num() {
 		return freply_num;
@@ -61,5 +66,6 @@ public class FreeBoardReVO {
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	
 }

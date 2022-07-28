@@ -58,7 +58,7 @@
 				</td>
 				<td><a href="freeDetail.do?free_num=${board.free_num}">${board.free_title}</a></td>
 				<td>${board.free_content}</td>
-				<td>${board.id}</td>
+				<td>${board.nick}</td>
 				<td>${board.free_date}</td>
 				<td>${board.free_hits}</td>
 			</tr>
