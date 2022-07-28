@@ -21,7 +21,7 @@
  	<a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
  	<p>자유게시판/음악추천받아요</p><br>
 	<div class="content-main">
-		<h2>게시판 글수정</h2>
+		<h4>게시판 글수정</h4>
 		<form action="freeUpdate.do" method="post"
 		      enctype="multipart/form-data" id="write_form">
 			<input type="hidden" name="free_num" 

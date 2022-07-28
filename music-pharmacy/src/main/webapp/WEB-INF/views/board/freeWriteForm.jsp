@@ -19,7 +19,7 @@
  	<a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
  	<p>자유게시판/음악추천받아요</p><br>
 	<div class="content-main">
-		<h2>글쓰기</h2>
+		<h4>글쓰기</h4>
 		<form id="freeWrite_form" action="freeWrite.do" 
 		   method="post" enctype="multipart/form-data">
 			<ul>
