@@ -48,11 +48,11 @@
 
 		<h2>Q.</h2>
 		<div style="width:90%;margin:0 auto;">
-			<p>${board.inq_question}</p>
+			<p style="width:100%">${board.inq_question}</p>
 		</div>
 		<h2>A.</h2>
 		<div style="width:90%;margin:0 auto;">
-		<p>${board.inq_answer}</p>
+		<p style="word-wrap:break-word">${board.inq_answer}</p>
 		<c:if test="${!empty board.inq_img}">
 			<div class="align-center">
 				<!-- <form method="post" enctype="multipart/form-data">
