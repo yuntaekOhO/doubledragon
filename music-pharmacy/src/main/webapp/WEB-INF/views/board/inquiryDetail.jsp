@@ -77,7 +77,7 @@
 		<div style="border-top:1px solid #999;border-bottom:1px solid #999;">
 			<div>
 				<span class="floating-left">다음글</span>
-				<span><a href="inqDetail.do?inq_num=${next_board.inq_num}">${next_board.inq_title}</a></span>
+				<span><a href="inqDetail.do?inq_num=${next_board.inq_num}">${next_board.inq_question}</a></span>
 				<span class="floating-right">${next_board.inq_writer}</span>
 			</div>
 		</div>

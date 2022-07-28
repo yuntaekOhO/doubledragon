@@ -43,8 +43,14 @@ public class InquiryDetailAction implements Action {
 		
 		//이전,다음글 정보 반환
 		InquiryBoardVO preBoard = dao.getBoard(arr[0]);
-		InquiryBoardVO nextBoard = dao.getBoard(arr[1]);
+		if(preBoard!=null) {
+			preBoard.setInq_question(StringUtil.shortWords(15,preBoard.getInq_question()));
+		}
 		
+		InquiryBoardVO nextBoard = dao.getBoard(arr[1]);
+		if(nextBoard!=null) {
+			nextBoard.setInq_question(StringUtil.shortWords(15,nextBoard.getInq_question()));
+		}
 		
 		request.setAttribute("board", board);
 		request.setAttribute("member", member);
