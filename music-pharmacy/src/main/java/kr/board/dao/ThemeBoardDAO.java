@@ -864,5 +864,31 @@ public class ThemeBoardDAO {
 				DBUtil.executeClose(null, pstmt, conn);
 			}
 		}
+		//한건의 게시글의 앞 뒤 게시글 알아내기
+		public int[] getPreOrNextBoard(int the_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int[] numArray = new int[2];
+			
+			try {
+				conn = DBUtil.getConnection();
+				sql = "select lag, lead from (select the_num,lag(the_num,1,0) over (order by the_num) as lag, lead(the_num,1,0) over (order by the_num) as lead from theme_board) where the_num=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, the_num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					numArray[0] = rs.getInt(1);
+					numArray[1] = rs.getInt(2);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			
+			return numArray;
+		}
 		
 }

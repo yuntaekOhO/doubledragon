@@ -116,6 +116,28 @@
 		</div>
 		<!-- 댓글 목록 출력 끝 -->
 		<!-- 댓글 끝 -->
+		<!-- 이전글 다음글 시작 -->
+		<div class="align-center">
+		<c:if test="${!empty pre_board.the_num}">
+		<div style="border-top:1px solid #eee;border-bottom:1px solid #eee;">
+			<div>
+				<span class="floating-left">이전글</span>
+				<span><a href="themeDetail.do?the_num=${pre_board.the_num}">${pre_board.the_title}</a></span>
+				<span class="floating-right">${pre_board.id}님</span>
+			</div>
+		</div>
+		</c:if>
+		<c:if test="${!empty next_board.the_num}">
+		<div style="border-top:1px solid #eee;border-bottom:1px solid #eee;">
+			<div>
+				<span class="floating-left">다음글</span>
+				<span><a href="themeDetail.do?the_num=${next_board.the_num}">${next_board.the_title}</a></span>
+				<span class="floating-right">${next_board.id}님</span>
+			</div>
+		</div>
+		</c:if>
+		</div>
+		<!-- 이전글 다음글 끝 -->
 	</div>
 </div>
 </body>
