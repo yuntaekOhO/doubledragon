@@ -65,3 +65,49 @@ border-width: 5px;
 .login.buttonafter {
     background:#14a03d;
 }
+
+/* header2 CSS */
+#main2_logo{
+	padding-top:20px;
+}
+#main2_logo div h1 a{
+	color:#6e4e39;
+	text-decoration-line: none;
+}
+#main2_nav{
+
+	padding:2px 10px 20px 10px;
+	height:20px;
+	float:right;
+}
+.left{
+	float:left;
+	margin-left:20px;
+	line-height:0.2em;
+	
+}
+#main2_nav ul.myMenu > li{
+	display:inline-block;
+	width:100px;
+	text-align:center;
+	vertical-align: middle;
+	padding-top:5px;
+	position:relative;
+}
+#main2_nav .myMenu .menu-theme .submenu{
+	display:none;
+	margin:0;
+	padding:10px;
+	position:absolute;
+}
+#main_nav2 .myMenu li:hover > .submenu{
+	display:block;
+}
+#main2_nav ul.myMenu > li.menu-theme:hover > .submenu{
+	display:block;
+}
+
+#main2_nav ul li a {
+	color:#9e8d71;
+	text-decoration-line: none;
+}
