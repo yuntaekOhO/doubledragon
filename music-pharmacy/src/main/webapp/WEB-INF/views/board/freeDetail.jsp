@@ -8,11 +8,11 @@
 <title>글상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/freeboard.fav.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.reply.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/Freeboard.reply.js"></script>
 </head>
 <body>
 <div>
@@ -89,8 +89,8 @@
 			<span class="re-title"><h3>댓글</h3></span>
 			<form id="re_form">
 				<input type="hidden" name="free_num" value="${board.free_num}" id="free_num">
-				<textarea rows="3" cols="190" name="re_content" 
-				  id="re_content" class="rep-content"  placeholder="댓글을 입력하세요."
+				<textarea style="width:99%;" rows="3" cols="50" name="frely_content" 
+				  id="frely_content" class="rep-content"  placeholder="댓글을 입력하세요."
 				  <c:if test="${empty user_num}">disabled="disabled"</c:if>
 				  ><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea>
 				<c:if test="${!empty user_num}">

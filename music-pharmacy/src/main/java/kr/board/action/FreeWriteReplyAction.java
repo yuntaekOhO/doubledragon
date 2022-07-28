@@ -32,7 +32,7 @@ public class FreeWriteReplyAction implements Action{
 			//전송된 데이터를 반환받아서 VO에 저장
 			FreeBoardReVO reply = new FreeBoardReVO();
 			reply.setMem_num(user_num);//회원번호(작성자)
-			reply.setFreply_content(request.getParameter("freply_content"));
+			reply.setFreply_content(request.getParameter("frely_content"));
 			reply.setFree_num(Integer.parseInt(
 					           request.getParameter("free_num")));
 			
