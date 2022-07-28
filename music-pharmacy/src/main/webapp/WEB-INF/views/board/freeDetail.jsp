@@ -110,21 +110,21 @@
 		</div>
 		<!-- 댓글 목록 출력 끝 -->
 		<!-- 댓글 끝 -->
-		<c:if test="${!empty pre_board.free_num}">
+		<c:if test="${!empty pre_free_board.free_num}">
 		<div style="border-top:1px solid #eee;border-bottom:1px solid #eee;">
 			<div>
 				<span class="floating-left">이전글</span>
-				<span><a href="freeDetail.do?free_num=${pre_board.free_num}">${pre_board.free_title}</a></span>
-				<span class="floating-right">${pre_board.mem_id}</span>
+				<span><a href="freeDetail.do?free_num=${pre_free_board.free_num}">${pre_free_board.free_title}</a></span>
+				<span class="floating-right">${pre_board.mem_nick}</span>
 			</div>
 		</div>
 		</c:if>
-		<c:if test="${!empty next_board.free_num}">
+		<c:if test="${!empty next_free_board.free_num}">
 		<div style="border-top:1px solid #eee;border-bottom:1px solid #eee;">
 			<div>
 				<span class="floating-left">다음글</span>
-				<span><a href="freeDetail.do?free_num=${next_board.free_num}">${next_board.free_title}</a></span>
-				<span class="floating-right">${next_board.mem_id}</span>
+				<span><a href="freeDetail.do?free_num=${next_free_board.free_num}">${next_free_board.free_title}</a></span>
+				<span class="floating-right">${next_free_board.mem_nick}</span>
 			</div>
 		</div>
 		</c:if>
