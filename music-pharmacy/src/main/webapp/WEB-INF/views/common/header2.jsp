@@ -47,17 +47,17 @@
 			<!-- 관리자로 로그인할경우 (몰라요) -->
 			
 			<!-- 로그인 된 경우 -->
-			<c:if test="${!empty sessionScope.user_num}">
-			<li>
-				<a href="${pageContext.request.contextPath}/member/myPage.do"><b>마이페이지</b></a>
-					<!-- 하위 메뉴 -->
-				<ul class="submenu" style="display:none;position:absolute;">
-					<li style="display:block;"><a href="#">회원정보</a></li>
-					<li style="display:block;"><a href="#">My Playlist</a></li>
-					<li style="display:block;"><a href="#">My Point</a></li>
-					<li style="display:block;"><a href="#">작성한 글</a></li>
-					<li style="display:block;"><a href="#">작성한 댓글</a></li>
-					<li style="display:block;"><a href="#">등급안내</a></li>
+			<c:if test="${!empty user_num}">
+			<li class="menu-theme">
+				<div><a href="${pageContext.request.contextPath}/member/myPage.do"><b>마이페이지</b></a></div>
+				<!-- 하위 메뉴 -->
+				<ul class="submenu">
+					<li><a href="#">회원정보</a></li>
+					<li><a href="#">My Playlist</a></li>
+					<li><a href="#">My Point</a></li>
+					<li><a href="#">작성한 글</a></li>
+					<li><a href="#">작성한 댓글</a></li>
+					<li><a href="#">등급안내</a></li>
 				</ul>
 			</li>
 			</c:if>
