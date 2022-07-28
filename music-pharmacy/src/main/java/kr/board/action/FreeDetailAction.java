@@ -53,8 +53,8 @@ public class FreeDetailAction implements Action {
 				
 				request.setAttribute("board", board);
 				request.setAttribute("member", member);
-				request.setAttribute("pre_board", preBoard);
-				request.setAttribute("next_board", nextBoard);
+				request.setAttribute("pre_free_board", preBoard);
+				request.setAttribute("next_free_board", nextBoard);
 				
 			
 				return "/WEB-INF/views/board/freeDetail.jsp";

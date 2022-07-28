@@ -110,12 +110,13 @@
 		</div>
 		<!-- 댓글 목록 출력 끝 -->
 		<!-- 댓글 끝 -->
+		<div class="align-center">
 		<c:if test="${!empty pre_free_board.free_num}">
 		<div style="border-top:1px solid #eee;border-bottom:1px solid #eee;">
 			<div>
 				<span class="floating-left">이전글</span>
 				<span><a href="freeDetail.do?free_num=${pre_free_board.free_num}">${pre_free_board.free_title}</a></span>
-				<span class="floating-right">${pre_board.mem_nick}</span>
+				<span class="floating-right">${pre_free_board.nick}님</span>
 			</div>
 		</div>
 		</c:if>
@@ -124,12 +125,12 @@
 			<div>
 				<span class="floating-left">다음글</span>
 				<span><a href="freeDetail.do?free_num=${next_free_board.free_num}">${next_free_board.free_title}</a></span>
-				<span class="floating-right">${next_free_board.mem_nick}</span>
+				<span class="floating-right">${next_free_board.nick}님</span>
 			</div>
 		</div>
 		</c:if>
 		</div>
-	
+	</div>
 </div>
 </body>
 </html>
