@@ -12,7 +12,7 @@ $(function(){
 				displayFav(param);
 			},
 			error:function(){
-				alert('네트워크 오류');
+				alert('1네트워크 오류');
 			}
 		});
 	}
@@ -36,7 +36,7 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류!');
+				alert('2네트워크 오류!');
 			}
 		});
 	});

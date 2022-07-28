@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.board.vo.BoardFavVO;
+import kr.board.vo.ThemeBoardReVO;
 import kr.board.vo.ThemeBoardVO;
 import kr.music.vo.MusicVO;
 import kr.util.DBUtil;
+import kr.util.DurationFromNow;
 import kr.util.StringUtil;
 
 public class ThemeBoardDAO {
@@ -368,7 +370,7 @@ public class ThemeBoardDAO {
 				//커넥션풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();
 				//SQL문 작성
-				sql = "INSERT INTO board_fav (fav_num,the_num,mem_num) VALUES (boardfav_seq.nextval,?,?)";
+				sql = "INSERT INTO board_fav (fav_num,the_num,mem_num) VALUES (zboardfav_seq.nextval,?,?)";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터 바인딩
@@ -440,7 +442,7 @@ public class ThemeBoardDAO {
 				if(rs.next()) {
 					fav = new BoardFavVO();
 					fav.setFav_num(rs.getInt("fav_num"));
-					fav.setThe_num(rs.getInt("board_num"));
+					fav.setThe_num(rs.getInt("the_num"));
 					fav.setMem_num(rs.getInt("mem_num"));
 				}
 			}catch(Exception e) {
@@ -489,7 +491,7 @@ public class ThemeBoardDAO {
 				conn = DBUtil.getConnection();
 				
 				sql = "SELECT * FROM (SELECT a.*, rownum rum FROM "
-						+ "(SELECT * FROM board b JOIN member m USING(mem_num) "
+						+ "(SELECT * FROM theme_board b JOIN member m USING(mem_num) "
 						+ "JOIN board_fav f USING(the_num) WHERE f.mem_num=? "
 						+ "ORDER BY the_num DESC)a) WHERE rnum >= ? AND rnum<=?";
 				
@@ -504,7 +506,7 @@ public class ThemeBoardDAO {
 				while(rs.next()) {
 					ThemeBoardVO board = new ThemeBoardVO();
 					board.setThe_num(rs.getInt("the_num"));
-					board.setThe_title(StringUtil.useNoHtml(rs.getString("title")));
+					board.setThe_title(StringUtil.useNoHtml(rs.getString("the_title")));
 					board.setThe_date(rs.getDate("the_date"));
 					board.setId(rs.getString("id"));
 					
@@ -518,6 +520,166 @@ public class ThemeBoardDAO {
 			}
 			return list;
 		}
+
+
+//댓글 등록
+	public void insertReplyBoard(ThemeBoardReVO boardReply)
+	                                 throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			//커넥션풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "INSERT INTO theme_comment (treply_num,"
+				+ "the_num,treply_writer,treply_content,treply_date,mem_num) "
+				+ "VALUES (boardcomment_seq.nextval,?,?,?,SYSDATE,?)";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setInt(1, boardReply.getThe_num());
+			pstmt.setString(2, boardReply.getTreply_writer());
+			pstmt.setString(3, boardReply.getTreply_content());
+			pstmt.setInt(4, boardReply.getMem_num());
+			//SQL문 실행
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	
+	//댓글 개수
+		public int getReplyBoardCount(int the_num)
+				                            throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int count = 0;
+			
+			try {
+				//커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = "SELECT COUNT(*) FROM theme_comment b "
+					+ "JOIN member m ON b.mem_num=m.mem_num "
+					+ "WHERE b.the_num=?";
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터 바인딩
+				pstmt.setInt(1, the_num);
+				//SQL문 실행
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return count;
+			
+		}
+		
+		//댓글 목록
+		public List<ThemeBoardReVO> getListReplyBoard(int start,
+				                int end, int the_num)
+		                                    throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<ThemeBoardReVO> list = null;
+			String sql = null;
+			
+			try {
+				//커넥션풀로부터 커넥션을 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum "
+					+ "FROM (SELECT * FROM theme_comment b "
+					+ "JOIN member m USING (mem_num) "
+					+ "WHERE b.the_num=? ORDER BY b.treply_num "
+					+ "DESC)a) WHERE rnum >= ? AND rnum <= ?";
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터 바인딩
+				pstmt.setInt(1, the_num);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+				//SQL문 실행
+				rs = pstmt.executeQuery();
+				list = new ArrayList<ThemeBoardReVO>();
+				while(rs.next()) {
+					ThemeBoardReVO reply = new ThemeBoardReVO();
+					reply.setTreply_num(rs.getInt("treply_num"));
+					//날짜 -> 1분전, 1시간전, 1일전 형식의 문자열로 변환
+					reply.setTreply_date(
+						DurationFromNow.getTimeDiffLabel(
+									rs.getString("treply_date")));
+					if(rs.getString("treply_modify_date")!=null) {
+						reply.setTreply_modify_date(
+						 DurationFromNow.getTimeDiffLabel(
+								  rs.getString("treply_modify_date")));
+					}
+					reply.setTreply_content(
+							StringUtil.useBrNoHtml(
+								    rs.getString("treply_content")));
+					reply.setThe_num(rs.getInt("The_num"));
+					reply.setMem_num(rs.getInt("mem_num"));
+					reply.setId(rs.getString("id"));
+					
+					list.add(reply);
+				}
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			
+			return list;
+		}
+		
+		//댓글 상세
+		public ThemeBoardReVO getReplyBoard(int treply_num)
+		                                   throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			ThemeBoardReVO reply = null;
+			String sql = null;
+			
+			try {
+				//커넥션풀로부터 커넥션을 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = "SELECT * FROM zboard_reply WHERE re_num=?";
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터를 바인딩
+				pstmt.setInt(1, treply_num);
+				//SQL문 실행
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					reply = new ThemeBoardReVO();
+					reply.setTreply_num(rs.getInt("re_num"));
+					reply.setMem_num(rs.getInt("mem_num"));
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			
+			return reply;
+		}
 }
-
-
