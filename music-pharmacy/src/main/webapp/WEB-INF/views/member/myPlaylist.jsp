@@ -34,21 +34,26 @@
 		<div>
 			<p> ${member.nick} 님이 좋아요한 Playlist </p>
 		</div>
-		
-		<c:forEach var="playlist" items="${boardList}">
-		
-		<div class="the-img">
-			<div>
-				<c:if test="${empty music.mus_img}">
-				<img src="${pageContext.request.contextPath}/images/album.png" width="100" height="100">
-				</c:if>
-				<c:if test="${!empty music.mus_img}">
-				<img src="${pageContext.request.contextPath}/upload/${music.mus_img}" width="100" height="100">
-				</c:if>
-			</div>
-		</div>
-		
-		</c:forEach>
+		<table>
+			
+			<c:forEach var="playlist" items="${boardList}">
+			<tr class="musicform-align">
+				<td class="the-img">
+					<div>
+						<c:if test="${empty music.mus_img}">
+						<img src="${pageContext.request.contextPath}/images/album.png" width="100" height="100">
+						</c:if>
+						<c:if test="${!empty music.mus_img}">
+						<img src="${pageContext.request.contextPath}/upload/${music.mus_img}" width="100" height="100">
+						</c:if>
+					</div>
+				</td>
+				<td>${music.mus_title}</td>
+				<td>${music.mus_singer} - ${music.mus_album} </td>
+			</tr>
+			</c:forEach>
+			
+		</table>
 </div>
 </body>
 </html>
