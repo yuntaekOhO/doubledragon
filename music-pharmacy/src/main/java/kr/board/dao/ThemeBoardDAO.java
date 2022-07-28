@@ -142,7 +142,7 @@ public class ThemeBoardDAO {
 	}
 	
 	//총 레코드 수(검색 레코드 수)
-		public int getFavCount(String keyfield, String keyword) throws Exception{
+		public int getFavCount(BoardFavVO board) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -160,13 +160,11 @@ public class ThemeBoardDAO {
 				//JDBC 수행 3단계 : PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 			
-				pstmt.setInt(1, rs.getInt("mem_num"));
-				//JDBC 수행 4단계
-				rs = pstmt.executeQuery();
+				pstmt.setInt(1, board.getMem_num());
 				
-				if(rs.next()) {
-					count1 = rs.getInt(1);
-				}
+				//JDBC 수행 4단계
+			
+				pstmt.executeUpdate();
 			}catch(Exception e) {
 				throw new Exception(e);
 			}finally {
