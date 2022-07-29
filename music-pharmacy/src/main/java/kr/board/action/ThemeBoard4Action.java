@@ -18,19 +18,20 @@ public class ThemeBoard4Action implements Action {
 		// TODO Auto-generated method stub
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum==null) pageNum = "1";
+		int code = 4;
 		
 		String keyfield = request.getParameter("keyfield");
 		String keyword = request.getParameter("keyword");
 		
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
-		int count = dao.getSubBoardCount(keyfield, keyword,4);
-		int code = 4;
+		int count = dao.getSubBoardCount(keyfield, keyword, code);
+
 		//페이지 처리
 		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 20,10,"themeBoard4.do");
 		
 		List<ThemeBoardVO> list = null;
 		if(count > 0) {
-			list = dao.getSubListBoard(page.getStartRow(), page.getEndRow(), keyfield, keyword, 4);
+			list = dao.getSubListBoard(page.getStartRow(), page.getEndRow(), keyfield, keyword, code);
 		}
 		request.setAttribute("count", count);
 		request.setAttribute("list", list);
