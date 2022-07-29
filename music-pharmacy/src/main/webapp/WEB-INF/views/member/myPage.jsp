@@ -79,7 +79,7 @@
 				
 				<div class="mypage-information float">
 				<br>
-					<a id="font-a">등급안내</a>
+					<a href="${pageContext.request.contextPath}/member/levelInformation.do"id="font-a">등급안내</a>
 					<p>각 등급의 조건 및 혜택에 <br> 대해 확인할 수 있는 공간입니다.</p>
 				</div>
 			</div>
