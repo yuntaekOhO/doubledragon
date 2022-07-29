@@ -61,8 +61,8 @@
 		</div>
 			<div class="floating-right">
 			<c:if test="${!empty user_num && user_auth==3}">
-				<input class="floating-right" type="button" value="수정" onclick="location.href='inquiryUpdateForm.do?inq_num=${board.inq_num}'"> 
-				 <input class="floating-right" type="button" value="삭제" id="inquiryDelete_btn">
+				<input type="button" value="수정" onclick="location.href='inquiryUpdateForm.do?inq_num=${board.inq_num}'"> 
+				 <input type="button" value="삭제" id="inquiryDelete_btn">
 			</c:if>
 			</div>
 			<br>

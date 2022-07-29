@@ -65,8 +65,9 @@ public class MyWritedListAction implements Action {
 		request.setAttribute("theCnt", theCnt);
 		request.setAttribute("flist", flist);
 		request.setAttribute("tlist", tlist);
-		request.setAttribute("fpage", fpage);
-		request.setAttribute("tpage", tpage);
+		request.setAttribute("fpage", fpage.getPage());
+		request.setAttribute("tpage", tpage.getPage());
+		
 		
 		return "/WEB-INF/views/member/myWritedList.jsp";
 	}
