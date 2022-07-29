@@ -59,6 +59,9 @@
 		</tr>
 		</c:forEach>
 	</table>
+	<div class="align-center">
+			${page}
+	</div>
 	</c:if>
 	<input type="button" value="글쓰기"
 			   onclick="location.href='themeWriteForm.do'">

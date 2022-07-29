@@ -343,7 +343,7 @@ public class ThemeBoardDAO {
 				board.setThe_video(rs.getString("the_video"));
 				board.setThe_url(rs.getString("the_url"));
 				board.setMem_num(rs.getInt("mem_num"));
-				board.setId(rs.getString("id"));
+				board.setNick(rs.getString("nick"));
 				board.setPhoto(rs.getString("photo"));
 			}
 		}catch(Exception e) {
