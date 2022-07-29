@@ -1,10 +1,36 @@
 @charset "UTF-8";
 .page-main{
 	margin-left: 100px;
+	margin-right:100px;
 }
 #main_logo{
 	padding-top:20px;
 }
 ul{
 	list-style:none;
+}
+.noticeDetail_Date_Delete_Update_Button{
+	float:right;
+}
+.noticeDetail_Content{
+	margin-top: 90px;
+	margin-bottom: 90px;
+}
+.noticeDetail_preBoard_nextBoard{
+	text-align:center;
+	margin-bottom: 90px;
+	margin-top: 90px;
+}
+.noticeDetail_title{
+	margin-top: 110px;
+}
+.noticeDetail_am{	
+    color:#6e4e39;
+	font-weight:bold;
+	text-decoration-line: none;
+}
+.noticeDetail_pre_next_title{
+	color:black;
+	font-weight:bold;
+	text-decoration-line: none;
 }

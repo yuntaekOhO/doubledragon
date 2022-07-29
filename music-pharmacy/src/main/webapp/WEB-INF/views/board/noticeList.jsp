@@ -79,7 +79,7 @@
  	<!-- 공지사항에 글이 있을때 -->
 	<c:forEach var="board" items="${list}">
 		<div style="width:90%;margin:0 auto;">
-		<div>
+		<div class="noticeList_title_content">
 			<input type="hidden" id="not_num" value="${board.not_num}">
 			
 			<strong></strong>  <a href="detail.do?not_num=${board.not_num}" class="noticeList_title">${board.not_title}</a>

@@ -116,11 +116,11 @@ public class ThemeBoardDAO {
 			
 			if(keyword!=null && !"".equals(keyword)) {
 				if(keyfield.equals("1")) sub_sql = "WHERE b.the_title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql = "WHERE m.id LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "WHERE d.nick LIKE ?";
 				else if(keyfield.equals("3")) sub_sql = "WHERE b.the_content LIKE ?";
 			}
 			
-			sql = "SELECT COUNT(*) FROM theme_board b JOIN member m USING(mem_num) " + sub_sql;
+			sql = "SELECT COUNT(*) FROM theme_board b JOIN member m USING(mem_num) JOIN member_detail d USING(mem_num) " + sub_sql;
 			
 			//JDBC 수행 3단계 : PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
@@ -141,6 +141,49 @@ public class ThemeBoardDAO {
 		return count;
 	}
 	
+	//게시판별 총 레코드 수(검색 레코드 수)
+		public int getSubBoardCount(String keyfield, String keyword, int code) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			String sub_sql = "";
+			String sub_sql1 = "WHERE b.the_code=? ";
+			int count = 0;
+			int cnt = 0;
+			//code = 0;
+			
+			try {
+				//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				
+				if(keyword!=null && !"".equals(keyword)) {
+					if(keyfield.equals("1")) sub_sql = "AND b.the_title LIKE ?";
+					else if(keyfield.equals("2")) sub_sql = "AND d.nick LIKE ?";
+					else if(keyfield.equals("3")) sub_sql = "AND b.the_content LIKE ?";
+				}
+				
+				sql = "SELECT COUNT(*) FROM theme_board b JOIN member m USING(mem_num) JOIN member_detail d USING(mem_num) " + sub_sql1 + sub_sql;
+				
+				//JDBC 수행 3단계 : PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(++cnt, code);
+				if(keyword!=null && !"".equals(keyword)) {
+					pstmt.setString(++cnt, "%"+keyword+"%");
+				}
+				
+				//JDBC 수행 4단계
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return count;
+		}
 	
 	//글목록(검색글 목록)
 	public List<ThemeBoardVO> getListBoard(int start, int end, String keyfield,String keyword) throws Exception{
@@ -158,7 +201,7 @@ public class ThemeBoardDAO {
 			
 			if(keyword!=null && !"".equals(keyword)) {
 				if(keyfield.equals("1")) sub_sql = "WHERE b.the_title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql = "WHERE m.id LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "WHERE d.nick LIKE ?";
 				else if(keyfield.equals("3")) sub_sql = "WHERE b.the_content LIKE ?";
 			}
 			
@@ -187,7 +230,7 @@ public class ThemeBoardDAO {
 				board.setThe_date(rs.getDate("the_date"));
 				board.setThe_modify_date(rs.getDate("the_modify_date"));
 				board.setMem_num(rs.getInt("mem_num"));
-				board.setId(rs.getString("id"));
+				board.setNick(rs.getString("nick"));
 				board.setPhoto(rs.getString("photo"));
 				
 				list.add(board);
@@ -200,6 +243,69 @@ public class ThemeBoardDAO {
 		}
 		return list;
 	}
+	
+	//게시판별 글목록(검색글 목록)
+		public List<ThemeBoardVO> getSubListBoard(int start, int end, String keyfield,String keyword, int code) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<ThemeBoardVO> list = null;
+			String sql = null;
+			String sub_sql = "";
+			String sub_sql1 = "WHERE b.the_code=? ";
+			int cnt = 0;
+			//code = 0;
+			
+			try {
+				//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				
+				if(keyword!=null && !"".equals(keyword)) {
+					if(keyfield.equals("1")) sub_sql = "AND b.the_title LIKE ?";
+					else if(keyfield.equals("2")) sub_sql = "AND d.nick LIKE ?";
+					else if(keyfield.equals("3")) sub_sql = "AND b.the_content LIKE ?";
+				}
+				
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum "
+						+ "FROM (SELECT * FROM theme_board b JOIN member m "
+						+ "USING (mem_num) JOIN member_detail d "
+						+ "USING (mem_num) "+ sub_sql1 + sub_sql
+						+ " ORDER BY b.the_num DESC)a) "
+						+ "WHERE rnum >= ? AND rnum <= ?";
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(++cnt, code);
+				if(keyword!=null && !"".equals(keyword)) {
+					pstmt.setString(++cnt, "%"+keyword+"%");
+				}
+				pstmt.setInt(++cnt, start);
+				pstmt.setInt(++cnt, end);
+				
+				rs = pstmt.executeQuery();
+				list = new ArrayList<ThemeBoardVO>();
+				while(rs.next()) {
+					ThemeBoardVO board = new ThemeBoardVO();
+					board.setThe_num(rs.getInt("the_num"));
+					board.setThe_title(StringUtil.useNoHtml(rs.getString("the_title")));
+					board.setThe_hits(rs.getInt("the_hits"));
+					board.setThe_date(rs.getDate("the_date"));
+					board.setThe_modify_date(rs.getDate("the_modify_date"));
+					board.setMem_num(rs.getInt("mem_num"));
+					board.setThe_code(rs.getInt("the_code"));
+					board.setNick(rs.getString("nick"));
+					board.setPhoto(rs.getString("photo"));
+					
+					list.add(board);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return list;
+		}
 	
 // 글 상세
 	public ThemeBoardVO getBoard(int the_num) throws Exception{
@@ -237,13 +343,54 @@ public class ThemeBoardDAO {
 				board.setThe_video(rs.getString("the_video"));
 				board.setThe_url(rs.getString("the_url"));
 				board.setMem_num(rs.getInt("mem_num"));
-				board.setId(rs.getString("id"));
+				board.setNick(rs.getString("nick"));
 				board.setPhoto(rs.getString("photo"));
 			}
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
 			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return board;
+	}
+	
+	//회원번호로 글 조회하기
+	public ThemeBoardVO getBoardByMemNum(int mem_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ThemeBoardVO board = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "SELECT * FROM theme_board b JOIN member m "
+					+ "USING(mem_num) JOIN member_detail d "
+					+ "USING(mem_num) WHERE mem_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mem_num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				board = new ThemeBoardVO();
+				board.setThe_num(rs.getInt("the_num"));
+				board.setThe_title(rs.getString("the_title"));
+				board.setNick(rs.getString("nick"));
+				board.setThe_content(rs.getString("the_content"));
+				board.setThe_date(rs.getDate("the_date"));
+				board.setThe_modify_date(rs.getDate("the_modify_date"));
+				board.setThe_code(rs.getInt("the_code"));
+				board.setThe_video(rs.getString("the_video"));
+				board.setThe_url(rs.getString("the_url"));
+				board.setMem_num(rs.getInt("mem_num"));
+				board.setId(rs.getString("id"));
+				board.setPhoto(rs.getString("photo"));
+				board.setThe_img(rs.getString("the_img"));
+				board.setThe_hits(rs.getInt("the_hits"));
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
 			DBUtil.executeClose(rs, pstmt, conn);
 		}
 		return board;
@@ -607,11 +754,11 @@ public class ThemeBoardDAO {
 		}
 		
 		//내가 선택한 좋아요 목록
-		public List<ThemeBoardVO> getListBoardFav(int start,int end, int mem_num) throws Exception{
+		public List<MusicVO> getListBoardFav(int start,int end, int mem_num) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
-			List<ThemeBoardVO> list = null;
+			List<MusicVO> list = null;
 			String sql = null;
 			
 			try {
@@ -619,7 +766,9 @@ public class ThemeBoardDAO {
 				
 				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
 						+ "(SELECT * FROM theme_board b JOIN member m USING(mem_num) "
-						+ "JOIN board_fav f USING(the_num) WHERE f.mem_num=? "
+						+ "JOIN board_fav f USING(the_num) "
+						+ "JOIN music m USING(the_num) "
+						+ "WHERE f.mem_num=? "
 						+ "ORDER BY the_num DESC)a) WHERE rnum >= ? AND rnum<=?";
 				
 				pstmt = conn.prepareStatement(sql);
@@ -629,13 +778,17 @@ public class ThemeBoardDAO {
 				pstmt.setInt(3, end);
 				
 				rs = pstmt.executeQuery();
-				list = new ArrayList<ThemeBoardVO>();
+				list = new ArrayList<MusicVO>();
 				while(rs.next()) {
-					ThemeBoardVO board = new ThemeBoardVO();
+					MusicVO board = new MusicVO();
+					board.setMus_num(rs.getInt("mus_num"));
+					board.setMus_title(rs.getString("mus_title"));
+					board.setMus_singer(rs.getString("mus_singer"));
+					board.setMus_album(rs.getString("mus_album"));
+					board.setMus_date(rs.getString("mus_date"));
 					board.setThe_num(rs.getInt("the_num"));
-					board.setThe_title(StringUtil.useNoHtml(rs.getString("the_title")));
-					board.setThe_date(rs.getDate("the_date"));
 					board.setId(rs.getString("id"));
+					
 					
 					list.add(board);
 				}

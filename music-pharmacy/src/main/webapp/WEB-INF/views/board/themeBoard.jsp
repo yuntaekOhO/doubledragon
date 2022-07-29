@@ -22,11 +22,13 @@
  	<div>
  	<!-- 검색 -->
 	<div class="search-bar">
-		<form id="inq_search_form" action="inquiryBoard.do" method="get">
+		<form id="the_search_form" action="themeBoard${code}.do" method="get">
+		   
 			<input type="search" class="input-search" id="keyword" name="keyword" value="${param.keyword}">
 			<select id="keyfield" name="keyfield" style="float:right;height:35px;">
-				<option value="1">질문</option>
-				<option value="2">답변</option>
+				<option value="1">제목</option>
+				<option value="2">닉네임</option>
+				<option value="3">글 내용</option>
 			</select>
 			<input type="submit" class="input-search-submit" value="검색">
 		</form>
@@ -51,19 +53,21 @@
 		<tr>
 			<td>${board.the_num}</td>
 			<td><a href="themeDetail.do?the_num=${board.the_num}">${board.the_title}</a></td>
+			<td>${board.nick}</td>
 			<td>${board.the_date}</td>
 			<td>${board.the_hits}</td>
 		</tr>
 		</c:forEach>
 	</table>
+	<div class="align-center">
+			${page}
+	</div>
 	</c:if>
 	<input type="button" value="글쓰기"
 			   onclick="location.href='themeWriteForm.do'">
 
 </div>
 <div class="list-space align-right">  
-			<input type="button" value="목록"
-			       onclick="location.href='themeList.do'"> 
 			<input type="button" value="홈으로"
 			 onclick="location.href='${pageContext.request.contextPath}/main/main.do'">         
 </div>

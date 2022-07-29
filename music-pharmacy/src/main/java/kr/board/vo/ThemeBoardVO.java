@@ -18,6 +18,7 @@ public class ThemeBoardVO {
 	private int mem_num;
 	
 	private String id;//회원 아이디
+	private String nick;
 	private String photo;//회원 프로필 사진
 	
 	
@@ -110,6 +111,12 @@ public class ThemeBoardVO {
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 
 	

@@ -326,7 +326,33 @@ public class NoticeBoardDAO {
 				DBUtil.executeClose(null, pstmt, conn);
 			}
 		}
-				
+		
+		//한건의 게시글의 앞 뒤 게시글 알아내기
+		public int[] getPreOrNextBoard(int not_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int[] numArray = new int[2];
+			
+			try {
+				conn = DBUtil.getConnection();
+				sql = "select lag, lead from (select not_num,lag(not_num,1,0) over (order by not_num) as lag, lead(not_num,1,0) over (order by not_num) as lead from notice_board) where not_num=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, not_num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					numArray[0] = rs.getInt(1);
+					numArray[1] = rs.getInt(2);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			
+			return numArray;
+		}		
 				
 				
 }

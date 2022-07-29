@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.board.dao.ThemeBoardDAO;
-import kr.board.vo.ThemeBoardVO;
 import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
@@ -30,7 +29,7 @@ public class MyPlaylistAction implements Action{
 		MemberVO member = dao.getMember(user_num);
 		
 		ThemeBoardDAO boardDao = ThemeBoardDAO.getInstance();
-		List<ThemeBoardVO> boardList = boardDao.getListBoardFav(1, 10, user_num);
+		List<MusicVO> boardList = boardDao.getListBoardFav(1, 10, user_num);
 		
 		MusicVO music = boardDao.getMusicFav(user_num);
 		

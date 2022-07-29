@@ -118,6 +118,7 @@
 		<!-- 댓글 끝 -->
 		<!-- 이전글 다음글 시작 -->
 		<div class="align-center">
+		<input type="hidden" name="the_code" value="${board.the_code}" id="the_code">
 		<c:if test="${!empty pre_board.the_num}">
 		<div style="border-top:1px solid #eee;border-bottom:1px solid #eee;">
 			<div>

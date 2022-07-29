@@ -33,10 +33,10 @@
 				<div><a href="${pageContext.request.contextPath}/board/themeBoard.do"><b>동의보감</b></a></div>
 				<!-- 하위 메뉴 -->
 				<ul class="submenu">
-					<li><a href="#">희</a></li>
-					<li><a href="#">노</a></li>
-					<li><a href="#">애</a></li>
-					<li><a href="#">락</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/themeBoard1.do">희</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/themeBoard2.do">노</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/themeBoard3.do">애</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/themeBoard4.do">락</a></li>
 				</ul>
 			</li>
 			<li>
