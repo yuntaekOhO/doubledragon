@@ -15,7 +15,14 @@ public class MusicVO {
 	private String mus_songwriter;
 	private int mus_recommend;
 	private int mus_hits;
+	private String id;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getMus_num() {
 		return mus_num;
 	}

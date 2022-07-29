@@ -30,7 +30,7 @@ public class MyPlaylistAction implements Action{
 		MemberVO member = dao.getMember(user_num);
 		
 		ThemeBoardDAO boardDao = ThemeBoardDAO.getInstance();
-		List<ThemeBoardVO> boardList = boardDao.getListBoardFav(1, 10, user_num);
+		List<MusicVO> boardList = boardDao.getListBoardFav(1, 10, user_num);
 		
 		MusicVO music = boardDao.getMusicFav(user_num);
 		

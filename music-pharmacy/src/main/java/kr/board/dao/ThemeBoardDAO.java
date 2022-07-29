@@ -607,11 +607,11 @@ public class ThemeBoardDAO {
 		}
 		
 		//내가 선택한 좋아요 목록
-		public List<ThemeBoardVO> getListBoardFav(int start,int end, int mem_num) throws Exception{
+		public List<MusicVO> getListBoardFav(int start,int end, int mem_num) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
-			List<ThemeBoardVO> list = null;
+			List<MusicVO> list = null;
 			String sql = null;
 			
 			try {
@@ -619,7 +619,9 @@ public class ThemeBoardDAO {
 				
 				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
 						+ "(SELECT * FROM theme_board b JOIN member m USING(mem_num) "
-						+ "JOIN board_fav f USING(the_num) WHERE f.mem_num=? "
+						+ "JOIN board_fav f USING(the_num) "
+						+ "JOIN music m USING(the_num) "
+						+ "WHERE f.mem_num=? "
 						+ "ORDER BY the_num DESC)a) WHERE rnum >= ? AND rnum<=?";
 				
 				pstmt = conn.prepareStatement(sql);
@@ -629,13 +631,16 @@ public class ThemeBoardDAO {
 				pstmt.setInt(3, end);
 				
 				rs = pstmt.executeQuery();
-				list = new ArrayList<ThemeBoardVO>();
+				list = new ArrayList<MusicVO>();
 				while(rs.next()) {
-					ThemeBoardVO board = new ThemeBoardVO();
-					board.setThe_num(rs.getInt("the_num"));
-					board.setThe_title(StringUtil.useNoHtml(rs.getString("the_title")));
-					board.setThe_date(rs.getDate("the_date"));
+					MusicVO board = new MusicVO();
+					board.setMus_num(rs.getInt("mus_num"));
+					board.setMus_title(rs.getString("mus_title"));
+					board.setMus_singer(rs.getString("mus_singer"));
+					board.setMus_album(rs.getString("mus_album"));
+					board.setMus_date(rs.getString("mus_date"));
 					board.setId(rs.getString("id"));
+					
 					
 					list.add(board);
 				}

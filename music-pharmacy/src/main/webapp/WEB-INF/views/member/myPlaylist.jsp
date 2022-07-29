@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>My Playlist</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPage.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPlaylist.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 </head>
@@ -17,43 +17,42 @@
 </div>
 
 <div class="page">
-	<button class="prev_btn" onclick="location.href='myPage.do'"> &lt; 마이페이지</button>
+		<button class="prev_btn" onclick="location.href='myPage.do'"> &lt; 마이페이지</button>
 		<h3 id="font-c">My Playlist</h3>
 		
 		<div class="mypage-div">
 			<div class="profile-image2 float">
 			<c:if test="${empty member.photo}">
-			<img src="${pageContext.request.contextPath}/images/face.png" width="120" height="120" class="my-photo">
+			<img src="${pageContext.request.contextPath}/images/face.png" class="my-photo">
 			</c:if>
 			<c:if test="${!empty member.photo}">
-			<img src="${pageContext.request.contextPath}/upload/${member.photo}" width="120" height="120" class="my-photo">
+			<img src="${pageContext.request.contextPath}/upload/${member.photo}" class="my-photo">
 			</c:if>
 			</div>
 		</div>
 		
-		<div>
-			<p id="font-b"> <b>${member.nick}</b> 님이 좋아요한 <b>Playlist</b> </p>
-		</div>
-		<table>
-			
+		<div style="width:40%; float:left;">
+			<p id="font-b"> <b>${member.nick}</b> 님이 좋아요한 <b>Playlist</b> </p><br> 
 			<c:forEach var="playlist" items="${boardList}">
-			<tr class="musicform-align">
-				<td class="the-img">
-					<div>
-						<c:if test="${empty music.mus_img}">
-						<img src="${pageContext.request.contextPath}/images/album.png" width="100" height="100">
-						</c:if>
-						<c:if test="${!empty music.mus_img}">
-						<img src="${pageContext.request.contextPath}/upload/${music.mus_img}" width="100" height="100">
-						</c:if>
-					</div>
-				</td>
-				<td>${music.mus_title}</td><br>
-				<td>${music.mus_singer} - ${music.mus_album} </td>
-			</tr>
-			</c:forEach>
 			
-		</table>
+			<div>
+			
+				<div class="floating-left">
+					<c:if test="${empty music.mus_img}">
+					<img src="${pageContext.request.contextPath}/images/album.png" width="100" height="100">
+					</c:if>
+					<c:if test="${!empty music.mus_img}">
+					<img src="${pageContext.request.contextPath}/upload/${music.mus_img}" width="100" height="100">
+					</c:if>
+				</div>
+				<div class="floating-left">
+				<a href="detail.do?the_num=${theme_board.the_num}" id="font-b"><b>${playlist.mus_title}</b></a>
+				<p>${playlist.mus_singer} - ${playlist.mus_album} </p> <br>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+			</c:forEach>
+		</div>
 </div>
 </body>
 </html>
