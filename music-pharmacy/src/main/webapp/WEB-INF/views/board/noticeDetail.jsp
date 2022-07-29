@@ -27,45 +27,67 @@
 				</c:if>
 				${board.id}님
 			</li> 
+			<div class="noticeDetail_Date_Delete_Update_Button">
+				<li>
+					<c:if test="${!empty board.not_modify_date}">
+					수정일 : ${board.not_modify_date}
+					</c:if>
+				</li>
+				<li>
+					작성일 : ${board.not_date}
+					<%-- 로그인한 회원번호와 작성자 회원번호가 일치해야 수정,삭제 가능 --%>
+					<c:if test="${user_num == board.mem_num}"> <!-- 관리자만 글 쓸수있으니깐 관리자만 수정삭제버튼 보여요 -->
+					<input type="button" value="수정" 
+					 onclick="location.href='noticeUpdateForm.do?not_num=${board.not_num}'">
+					<input type="button" value="삭제" id="delete_btn">
+					<script type="text/javascript">
+						let delete_btn = document.getElementById('delete_btn');
+						//이벤트 연결
+						delete_btn.onclick=function(){
+							let choice = confirm('삭제하시겠습니까?');
+							if(choice){
+								location.replace('noticeDelete.do?not_num=${board.not_num}');
+							}
+						};
+					</script>
+					</c:if>
+				</li>
+			</div>
 		</ul>
 		<c:if test="${!empty board.not_img}">
 		<div class="align-center">
 			<img src="${pageContext.request.contextPath}/upload/${board.not_img}" class="detail-img">
 		</div>
 		</c:if>
-		<p>
+		<div class="noticeDetail_Content">
 			${board.not_content}
-		</p>
+		</div>
 		<hr size="1" noshade="noshade" width="100%">
 
 		<ul class="detail-sub">
-			<li>
-				<c:if test="${!empty board.not_modify_date}">
-				최근 수정일 : ${board.not_modify_date}
-				</c:if>
-				작성일 : ${board.not_date}
-				<%-- 로그인한 회원번호와 작성자 회원번호가 일치해야 수정,삭제 가능 --%>
-				<c:if test="${user_num == board.mem_num}"> <!-- 관리자만 글 쓸수있으니깐 관리자만 수정삭제버튼 보여요 -->
-				<input type="button" value="수정" 
-				 onclick="location.href='noticeUpdateForm.do?not_num=${board.not_num}'">
-				<input type="button" value="삭제" id="delete_btn">
-				<script type="text/javascript">
-					let delete_btn = document.getElementById('delete_btn');
-					//이벤트 연결
-					delete_btn.onclick=function(){
-						let choice = confirm('삭제하시겠습니까?');
-						if(choice){
-							location.replace('noticeDelete.do?not_num=${board.not_num}');
-						}
-					};
-				</script>
-				</c:if>
-			</li>
 			
-	
-	
 		</ul>
-		
+		<!-- 이전 다음 글 -->
+		<div class="noticeDetail_preBoard_nextBoard">
+		<c:if test="${!empty pre_board.not_num}">
+		<div style="border-top:1px solid #999;border-bottom:1px solid #999;">
+			<div>
+				<span class="floating-left">이전글</span>
+				<span><a href="detail.do?not_num=${pre_board.not_num}">${pre_board.not_title}</a></span>
+				<span class="floating-right">${pre_board.not_writer}</span>
+			</div>
+		</div>
+		</c:if>
+		<c:if test="${!empty next_board.not_num}">
+		<div style="border-top:1px solid #999;border-bottom:1px solid #999;">
+			<div>
+				<span class="floating-left">다음글</span>
+				<span><a href="detail.do?not_num=${next_board.not_num}">${next_board.not_title}</a></span>
+				<span class="floating-right">${next_board.not_writer}</span>
+			</div>
+		</div>
+		</c:if>
+		</div>
 	</div>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
