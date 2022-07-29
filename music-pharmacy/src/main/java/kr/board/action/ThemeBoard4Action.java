@@ -24,9 +24,9 @@ public class ThemeBoard4Action implements Action {
 		
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
 		int count = dao.getSubBoardCount(keyfield, keyword,4);
-		
+		int code = 4;
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 20,10,"themeBoard.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 20,10,"themeBoard4.do");
 		
 		List<ThemeBoardVO> list = null;
 		if(count > 0) {
@@ -35,7 +35,7 @@ public class ThemeBoard4Action implements Action {
 		request.setAttribute("count", count);
 		request.setAttribute("list", list);
 		request.setAttribute("page", page.getPage());
-		
+		request.setAttribute("code", code);
 		
 		return "/WEB-INF/views/board/themeBoard.jsp";
 	}

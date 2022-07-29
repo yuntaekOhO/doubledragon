@@ -116,7 +116,7 @@ public class ThemeBoardDAO {
 			
 			if(keyword!=null && !"".equals(keyword)) {
 				if(keyfield.equals("1")) sub_sql = "WHERE b.the_title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql = "WHERE m.id LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "WHERE m.nick LIKE ?";
 				else if(keyfield.equals("3")) sub_sql = "WHERE b.the_content LIKE ?";
 			}
 			
@@ -159,7 +159,7 @@ public class ThemeBoardDAO {
 				
 				if(keyword!=null && !"".equals(keyword)) {
 					if(keyfield.equals("1")) sub_sql = "AND b.the_title LIKE ?";
-					else if(keyfield.equals("2")) sub_sql = "AND m.id LIKE ?";
+					else if(keyfield.equals("2")) sub_sql = "AND m.nick LIKE ?";
 					else if(keyfield.equals("3")) sub_sql = "AND b.the_content LIKE ?";
 				}
 				
@@ -175,7 +175,7 @@ public class ThemeBoardDAO {
 				//JDBC 수행 4단계
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
-					count = rs.getInt(cnt);
+					count = rs.getInt(1);
 				}
 			}catch(Exception e) {
 				throw new Exception(e);
@@ -201,7 +201,7 @@ public class ThemeBoardDAO {
 			
 			if(keyword!=null && !"".equals(keyword)) {
 				if(keyfield.equals("1")) sub_sql = "WHERE b.the_title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql = "WHERE m.id LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "WHERE m.nick LIKE ?";
 				else if(keyfield.equals("3")) sub_sql = "WHERE b.the_content LIKE ?";
 			}
 			
@@ -230,7 +230,7 @@ public class ThemeBoardDAO {
 				board.setThe_date(rs.getDate("the_date"));
 				board.setThe_modify_date(rs.getDate("the_modify_date"));
 				board.setMem_num(rs.getInt("mem_num"));
-				board.setId(rs.getString("id"));
+				board.setNick(rs.getString("nick"));
 				board.setPhoto(rs.getString("photo"));
 				
 				list.add(board);
@@ -262,7 +262,7 @@ public class ThemeBoardDAO {
 				
 				if(keyword!=null && !"".equals(keyword)) {
 					if(keyfield.equals("1")) sub_sql = "AND b.the_title LIKE ?";
-					else if(keyfield.equals("2")) sub_sql = "AND m.id LIKE ?";
+					else if(keyfield.equals("2")) sub_sql = "AND m.nick LIKE ?";
 					else if(keyfield.equals("3")) sub_sql = "AND b.the_content LIKE ?";
 				}
 				
@@ -293,7 +293,7 @@ public class ThemeBoardDAO {
 					board.setThe_modify_date(rs.getDate("the_modify_date"));
 					board.setMem_num(rs.getInt("mem_num"));
 					board.setThe_code(rs.getInt("the_code"));
-					board.setId(rs.getString("id"));
+					board.setNick(rs.getString("nick"));
 					board.setPhoto(rs.getString("photo"));
 					
 					list.add(board);
