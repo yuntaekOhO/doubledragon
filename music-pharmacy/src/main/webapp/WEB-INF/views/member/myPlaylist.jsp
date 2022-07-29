@@ -46,7 +46,7 @@
 					</c:if>
 				</div>
 				<div class="floating-left">
-				<a href="${pageContext.request.contextPath}/board/themeDetail.do?the_num=${music.the_num}" id="font-b"><b>${playlist.mus_title}</b></a>
+				<a href="${pageContext.request.contextPath}/board/themeDetail.do?the_num=${playlist.the_num}" id="font-b"><b>${playlist.mus_title}</b></a>
 				<p>${playlist.mus_singer} - ${playlist.mus_album} </p> <br>
 				</div>
 			</div>

@@ -1,6 +1,5 @@
 package kr.music.vo;
 
-import java.sql.Date;
 
 public class MusicVO {
 	private int mus_num;
