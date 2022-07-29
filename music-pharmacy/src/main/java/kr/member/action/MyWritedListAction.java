@@ -35,24 +35,30 @@ public class MyWritedListAction implements Action {
 		
 		MemberVO member = dao.getMember(user_num);
 		
-		String keyfield = "3";
-		String keyword = member.getNick();
+		String fkeyfield = "3";
+		String tkeyfield = "2";
+		String fkeyword = member.getNick();
+		
+		//themeBaord에 저장된 닉네임 반환
+		ThemeBoardVO tboard = tDAO.getBoard(user_num);
+		String tkeyword = tboard.getNick();
+
 		//저잣거리,동의보감 로그인한 회원번호와 일치하는 id로 글의 갯수 반환 
-		int freeCnt = fDAO.getBoardCount(keyfield, keyword);
-		int theCnt = tDAO.getBoardCount(keyfield, keyword);
+		int freeCnt = fDAO.getBoardCount(fkeyfield, fkeyword);
+		int theCnt = tDAO.getBoardCount(tkeyfield, tkeyword);
 		//페이지처리
-		PagingUtil fpage = new PagingUtil(keyfield,keyword,Integer.parseInt(pageNum),freeCnt,10,10,"myWritedList.do");
-		PagingUtil tpage = new PagingUtil(keyfield,keyword,Integer.parseInt(pageNum),theCnt,10,10,"myWritedList.do");
+		PagingUtil fpage = new PagingUtil(fkeyfield,fkeyword,Integer.parseInt(pageNum),freeCnt,10,10,"myWritedList.do");
+		PagingUtil tpage = new PagingUtil(tkeyfield,tkeyword,Integer.parseInt(pageNum),theCnt,10,10,"myWritedList.do");
 		
 		List<FreeBoardVO> flist = null;
 		List<ThemeBoardVO> tlist = null;
 		
 		//회원 id로 저잣거리,동의보감 게시글 검색해서 나온 결과를 list에 담음
 		if(freeCnt>0) {
-			flist = fDAO.getListBoard(fpage.getStartRow(), fpage.getEndRow(), keyfield, keyword);
+			flist = fDAO.getListBoard(fpage.getStartRow(), fpage.getEndRow(), fkeyfield, fkeyword);
 		}
 		if(theCnt>0) {
-			tlist = tDAO.getListBoard(tpage.getStartRow(), tpage.getEndRow(), keyfield, keyword);
+			tlist = tDAO.getListBoard(tpage.getStartRow(), tpage.getEndRow(), tkeyfield, tkeyword);
 		}
 		
 		request.setAttribute("freeCnt", freeCnt);
