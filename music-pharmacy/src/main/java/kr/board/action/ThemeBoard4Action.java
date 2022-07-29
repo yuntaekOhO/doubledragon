@@ -12,6 +12,7 @@ import kr.util.PagingUtil;
 
 public class ThemeBoard4Action implements Action {
 
+
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
@@ -22,14 +23,14 @@ public class ThemeBoard4Action implements Action {
 		String keyword = request.getParameter("keyword");
 		
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
-		int count = dao.getBoardCount(keyfield, keyword);
+		int count = dao.getSubBoardCount(keyfield, keyword,4);
 		
 		//페이지 처리
 		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 20,10,"themeBoard.do");
 		
 		List<ThemeBoardVO> list = null;
 		if(count > 0) {
-			list = dao.getListBoard(page.getStartRow(), page.getEndRow(), keyfield, keyword);
+			list = dao.getSubListBoard(page.getStartRow(), page.getEndRow(), keyfield, keyword, 4);
 		}
 		request.setAttribute("count", count);
 		request.setAttribute("list", list);
