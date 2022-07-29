@@ -81,6 +81,7 @@
 						<option value="힙합">힙합</option>
 						<option value="인디">인디</option>
 						<option value="etc">etc</option>
+					</select>
 				</li>
 				<li>
 					<label for="mus_img">앨범 이미지</label>
