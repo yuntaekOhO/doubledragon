@@ -72,12 +72,12 @@ public class FreeBoardDAO {
 			conn = DBUtil.getConnection();
 
 			if(keyword!=null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql = "WHERE b.title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql = "WHERE m.id LIKE ?";
-				else if(keyfield.equals("3")) sub_sql = "WHERE b.content LIKE ?";
+				if(keyfield.equals("1")) sub_sql = "WHERE b.free_title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "WHERE b.free_content LIKE ?";
+				else if(keyfield.equals("3")) sub_sql = "WHERE d.nick LIKE ?";
 			}
 
-			sql = "SELECT COUNT(*) FROM free_board " + sub_sql;
+			sql = "SELECT COUNT(*) FROM free_board b JOIN member m USING (mem_num) JOIN member_detail d USING (mem_num) " + sub_sql;
 
 			//JDBC 수행 3단계 : PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
@@ -115,9 +115,9 @@ public class FreeBoardDAO {
 		conn = DBUtil.getConnection();
 		
 		if(keyword!=null && !"".equals(keyword)) {
-		if(keyfield.equals("1")) sub_sql = "WHERE b.title LIKE ?";
-		else if(keyfield.equals("2")) sub_sql = "WHERE m.id LIKE ?";
-		else if(keyfield.equals("3")) sub_sql = "WHERE b.content LIKE ?";
+		if(keyfield.equals("1")) sub_sql = "WHERE b.free_title LIKE ?";
+		else if(keyfield.equals("2")) sub_sql = "WHERE b.free_content LIKE ?";
+		else if(keyfield.equals("3")) sub_sql = "WHERE d.nick LIKE ?";
 		}
 		
 		
