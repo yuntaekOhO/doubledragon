@@ -53,6 +53,7 @@
 		<tr>
 			<td>${board.the_num}</td>
 			<td><a href="themeDetail.do?the_num=${board.the_num}">${board.the_title}</a></td>
+			<td>${board.nick}</td>
 			<td>${board.the_date}</td>
 			<td>${board.the_hits}</td>
 		</tr>
@@ -64,8 +65,6 @@
 
 </div>
 <div class="list-space align-right">  
-			<input type="button" value="목록"
-			       onclick="location.href='themeList.do'"> 
 			<input type="button" value="홈으로"
 			 onclick="location.href='${pageContext.request.contextPath}/main/main.do'">         
 </div>
