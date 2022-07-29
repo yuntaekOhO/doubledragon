@@ -606,6 +606,7 @@ public class FreeBoardDAO {
 					reply.setFree_num(rs.getInt("free_num"));
 					reply.setMem_num(rs.getInt("mem_num"));
 					reply.setId(rs.getString("id"));
+					reply.setNick(rs.getString("nick"));
 					
 					
 					list.add(reply);

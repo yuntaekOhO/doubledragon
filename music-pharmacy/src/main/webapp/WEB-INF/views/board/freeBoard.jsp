@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/freeboard.fav.js"></script>
 </head>
 <body>
 <div>
@@ -59,7 +59,7 @@
 				</c:if>
 				</td>
 				<td align="left"><a href="freeDetail.do?free_num=${board.free_num}">${board.free_title}</a></td>
-				<!-- <td><span id="output_fcount"></span></td> -->
+				<td><span id="output_fcount"></span></td>
 				<td align="right">view : ${board.free_hits}</td>
 			</tr>
 			<tr>	
