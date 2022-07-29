@@ -14,11 +14,14 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/noticeHeader.jsp"/>
-<div class="page-main"><br><br><br><br>
+<div class="page-main"><br><br><br><br><br>
 	<div class="content-main">
+	<a href="${pageContext.request.contextPath}/board/noticeList.do" class="noticeDetail_am">어명이오</a>
+ 	<p>공지사항 게시판</p><br>
+ 	<hr class="noticeList_hr">
 		<ul class="detail-info">
 			<li>
-				<h4>${board.not_title}</h4><br>
+				<h4 class="noticeDetail_title">${board.not_title}</h4><br>
 				<c:if test="${!empty member.photo}">
 				<img src="${pageContext.request.contextPath}/upload/${member.photo}" width="40" height="40" class="my-photo">
 				</c:if>
@@ -73,7 +76,7 @@
 		<div style="border-top:1px solid #999;border-bottom:1px solid #999;">
 			<div>
 				<span class="floating-left">이전글</span>
-				<span><a href="detail.do?not_num=${pre_board.not_num}">${pre_board.not_title}</a></span>
+				<span><a href="detail.do?not_num=${pre_board.not_num}" class="noticeDetail_pre_next_title">${pre_board.not_title}</a></span>
 				<span class="floating-right">${pre_board.not_writer}</span>
 			</div>
 		</div>
@@ -82,7 +85,7 @@
 		<div style="border-top:1px solid #999;border-bottom:1px solid #999;">
 			<div>
 				<span class="floating-left">다음글</span>
-				<span><a href="detail.do?not_num=${next_board.not_num}">${next_board.not_title}</a></span>
+				<span><a href="detail.do?not_num=${next_board.not_num}" class="noticeDetail_pre_next_title">${next_board.not_title}</a></span>
 				<span class="floating-right">${next_board.not_writer}</span>
 			</div>
 		</div>

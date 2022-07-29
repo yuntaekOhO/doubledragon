@@ -19,4 +19,18 @@ ul{
 .noticeDetail_preBoard_nextBoard{
 	text-align:center;
 	margin-bottom: 90px;
+	margin-top: 90px;
+}
+.noticeDetail_title{
+	margin-top: 110px;
+}
+.noticeDetail_am{	
+    color:#6e4e39;
+	font-weight:bold;
+	text-decoration-line: none;
+}
+.noticeDetail_pre_next_title{
+	color:black;
+	font-weight:bold;
+	text-decoration-line: none;
 }
