@@ -73,7 +73,7 @@
 				
 				<div class="mypage-information float">
 				<br>
-					<a id="font-a">작성한 댓글</a>
+					<a href="${pageContext.request.contextPath}/member/myWritedReplyList.do" id="font-a">작성한 댓글</a>
 					<p>환자분이 작성한 댓글의 목록을 <br> 확인할 수 있는 공간입니다.</p>
 				</div>
 				

@@ -355,47 +355,6 @@ public class ThemeBoardDAO {
 		return board;
 	}
 	
-	//회원번호로 글 조회하기
-	public ThemeBoardVO getBoardByMemNum(int mem_num)throws Exception{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		ThemeBoardVO board = null;
-		String sql = null;
-		
-		try {
-			conn = DBUtil.getConnection();
-			sql = "SELECT * FROM theme_board b JOIN member m "
-					+ "USING(mem_num) JOIN member_detail d "
-					+ "USING(mem_num) WHERE mem_num=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, mem_num);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				board = new ThemeBoardVO();
-				board.setThe_num(rs.getInt("the_num"));
-				board.setThe_title(rs.getString("the_title"));
-				board.setNick(rs.getString("nick"));
-				board.setThe_content(rs.getString("the_content"));
-				board.setThe_date(rs.getDate("the_date"));
-				board.setThe_modify_date(rs.getDate("the_modify_date"));
-				board.setThe_code(rs.getInt("the_code"));
-				board.setThe_video(rs.getString("the_video"));
-				board.setThe_url(rs.getString("the_url"));
-				board.setMem_num(rs.getInt("mem_num"));
-				board.setId(rs.getString("id"));
-				board.setPhoto(rs.getString("photo"));
-				board.setThe_img(rs.getString("the_img"));
-				board.setThe_hits(rs.getInt("the_hits"));
-			}
-		}catch(Exception e) {
-			throw new Exception(e);
-		}finally {
-			DBUtil.executeClose(rs, pstmt, conn);
-		}
-		return board;
-	}
-	
 	// music 상세
 	public MusicVO getMusic(int the_num) throws Exception{
 		Connection conn = null;
@@ -950,6 +909,10 @@ public class ThemeBoardDAO {
 				if(rs.next()) {
 					reply = new ThemeBoardReVO();
 					reply.setTreply_num(rs.getInt("treply_num"));
+					reply.setThe_num(rs.getInt("the_num"));
+					reply.setTreply_content(rs.getString("treply_content"));
+					reply.setTreply_date(rs.getString("treply_date"));
+					reply.setTreply_modify_date(rs.getString("treply_modify_date"));
 					reply.setMem_num(rs.getInt("mem_num"));
 				}
 			}catch(Exception e) {

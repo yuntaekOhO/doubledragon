@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.board.dao.FreeBoardDAO;
+import kr.board.dao.MyWriteDAO;
 import kr.board.dao.ThemeBoardDAO;
 import kr.board.vo.FreeBoardVO;
 import kr.board.vo.ThemeBoardVO;
@@ -32,15 +33,17 @@ public class MyWritedListAction implements Action {
 		MemberDAO dao = MemberDAO.getInstance();
 		FreeBoardDAO fDAO = FreeBoardDAO.getInstance();
 		ThemeBoardDAO tDAO = ThemeBoardDAO.getInstance();
+		MyWriteDAO wDAO = MyWriteDAO.getInstance();
 		
 		MemberVO member = dao.getMember(user_num);
 		
 		String fkeyfield = "3";
 		String tkeyfield = "2";
+		
 		String fkeyword = member.getNick();
 		
 		//themeBaord에 저장된 닉네임 반환
-		ThemeBoardVO tboard = tDAO.getBoardByMemNum(user_num);
+		ThemeBoardVO tboard = wDAO.getBoardByMemNum(user_num);
 		String tkeyword = tboard.getNick();
 
 		//저잣거리,동의보감 로그인한 회원번호와 일치하는 id로 글의 갯수 반환 
