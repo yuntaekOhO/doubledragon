@@ -21,10 +21,10 @@
 	<form id="write_form" action="noticeWrite.do" method="post" enctype="multipart/form-data">
 	<ul>
 		<li>
-			<input type="text" name="not_title" id="not_title" maxlength="70">
+			<input type="text" name="not_title" id="not_title" maxlength="100"  placeholder="제목을 입력하세요.">
 		</li>
 		<li><br>
-			<textarea rows="20" cols="100" name="not_content" id="not_content"></textarea>
+			<textarea rows="20" cols="100" name="not_content" id="not_content" placeholder="내용을 입력하세요."></textarea>
 		</li>
 		<li><br>
 			<input type="file" name="not_img" id="not_img" accept="image/gif,image/png,image/jpeg">

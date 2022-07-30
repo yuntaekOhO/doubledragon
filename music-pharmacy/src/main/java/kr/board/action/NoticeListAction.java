@@ -25,7 +25,7 @@ public class NoticeListAction implements Action{
 		int count = dao.getNoticeCount(keyfield, keyword);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 20,10,"noticeList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 10,10,"noticeList.do");
 		
 		List<NoticeBoardVO> list = null;
 		if(count > 0) {
