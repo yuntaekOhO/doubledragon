@@ -24,7 +24,7 @@
 	<div id="main2_nav">
 		<ul class="myMenu">
 			<li>
-				<a href="${pageContext.request.contextPath}/board/noticeList.do"><b>공지사항</b></a>
+				<a href="${pageContext.request.contextPath}/board/noticeList.do"><b>어명이오</b></a>
 			</li>
 			<li>
 				<a href="${pageContext.request.contextPath}/board/freeBoard.do"><b>저잣거리</b></a>
