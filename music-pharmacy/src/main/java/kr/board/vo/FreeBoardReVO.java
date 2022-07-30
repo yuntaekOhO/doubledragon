@@ -14,7 +14,7 @@ public class FreeBoardReVO {
 	private String freply_date;
 	private String freply_modify_date;
 	private int mem_num;
-	private String id;
+	//private String id;
 	private String nick;
 	
 	public int getFreply_num() {
@@ -60,12 +60,7 @@ public class FreeBoardReVO {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	
 	public String getNick() {
 		return nick;
 	}
@@ -73,6 +68,8 @@ public class FreeBoardReVO {
 		this.nick = nick;
 	}
 	
+
+	 
 
 	
 }

@@ -574,11 +574,8 @@ public class FreeBoardDAO {
 				//커넥션풀로부터 커넥션을 할당
 				conn = DBUtil.getConnection();
 				//SQL문 작성
-				sql = "SELECT * FROM (SELECT a.*, rownum rnum "
-					+ "FROM (SELECT * FROM free_comment b "
-					+ "JOIN member m USING (mem_num) "
-					+ "WHERE b.free_num=? ORDER BY b.freply_num "
-					+ "DESC)a) WHERE rnum >= ? AND rnum <= ?";
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM free_comment b JOIN member m USING (mem_num) "
+						+ "JOIN member_detail d USING (mem_num) WHERE b.free_num=? ORDER BY b.freply_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터 바인딩
@@ -605,7 +602,7 @@ public class FreeBoardDAO {
 								    rs.getString("freply_content")));
 					reply.setFree_num(rs.getInt("free_num"));
 					reply.setMem_num(rs.getInt("mem_num"));
-					reply.setId(rs.getString("id"));
+					
 					reply.setNick(rs.getString("nick"));
 					
 					
