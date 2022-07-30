@@ -19,8 +19,6 @@ public class InquiryDetailAction implements Action {
 		int board_num = Integer.parseInt(request.getParameter("inq_num"));
 		InquiryBoardDAO dao = InquiryBoardDAO.getInstance();
 		
-		
-		
 		//이전 글, 다음 글 번호 저장
 		arr = dao.getPreOrNextBoard(board_num);
 		
@@ -33,14 +31,7 @@ public class InquiryDetailAction implements Action {
 		
 		MemberDAO memberDao = MemberDAO.getInstance();
 		MemberVO member = memberDao.getMember(mem_num);
-		
-		
-		
-		//board.setInq_img(board.getInq_img());
-		//MultipartRequest multi = FileUtil.createFile(request);
-		
-		//board.setInq_img(multi.getFilesystemName(board.getInq_img()));
-		
+
 		//이전,다음글 정보 반환
 		InquiryBoardVO preBoard = dao.getBoard(arr[0]);
 		if(preBoard!=null) {

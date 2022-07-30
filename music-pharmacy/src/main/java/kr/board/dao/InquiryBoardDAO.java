@@ -27,14 +27,13 @@ public class InquiryBoardDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "INSERT INTO inquiry_board (inq_num,inq_writer,inq_question,inq_answer,inq_date,mem_num,inq_img) "
-					+ "VALUES (inq_seq.nextval,?,?,?,SYSDATE,?,?)";
+			sql = "INSERT INTO inquiry_board (inq_num,inq_question,inq_answer,inq_date,mem_num,inq_img) "
+					+ "VALUES (inq_seq.nextval,?,?,SYSDATE,?,?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, board.getInq_writer());
-			pstmt.setString(2, board.getInq_question());
-			pstmt.setString(3, board.getInq_answer());
-			pstmt.setInt(4, board.getMem_num());
-			pstmt.setString(5, board.getInq_img());
+			pstmt.setString(1, board.getInq_question());
+			pstmt.setString(2, board.getInq_answer());
+			pstmt.setInt(3, board.getMem_num());
+			pstmt.setString(4, board.getInq_img());
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			throw new Exception(e);
@@ -110,12 +109,15 @@ public class InquiryBoardDAO {
 			while(rs.next()) {
 				InquiryBoardVO board = new InquiryBoardVO();
 				board.setInq_num(rs.getInt("inq_num"));
-				board.setInq_writer(rs.getString("inq_writer"));
 				board.setInq_question(StringUtil.shortWords(30,rs.getString("inq_question")));
 				board.setInq_answer(StringUtil.shortWords(30,rs.getString("inq_answer")));
 				board.setInq_date(rs.getDate("inq_date"));
 				board.setInq_modify_date(rs.getDate("inq_modify_date"));
 				board.setInq_img(rs.getString("inq_img"));
+				
+				board.setId(rs.getString("id"));
+				board.setNick(rs.getString("nick"));
+				board.setPhoto(rs.getString("photo"));
 				
 				list.add(board);
 			}
@@ -136,7 +138,7 @@ public class InquiryBoardDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "UPDATE inquiry_board set filename='' WHERE inq_num=?";
+			sql = "UPDATE inquiry_board set inq_img='' WHERE inq_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, inq_num);
 			pstmt.executeUpdate();
@@ -156,20 +158,23 @@ public class InquiryBoardDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "SELECT * FROM inquiry_board where inq_num=?";
+			sql = "SELECT * FROM inquiry_board b JOIN member m USING(mem_num) JOIN member_detail d USING(mem_num) where inq_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, inq_num);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				board = new InquiryBoardVO();
 				board.setInq_num(rs.getInt("inq_num"));
-				board.setInq_writer(rs.getString("inq_writer"));
 				board.setInq_question(rs.getString("inq_question"));
 				board.setInq_answer(rs.getString("inq_answer"));
 				board.setInq_date(rs.getDate("inq_date"));
 				board.setInq_modify_date(rs.getDate("inq_modify_date"));
 				board.setInq_img(rs.getString("inq_img"));
 				board.setMem_num(rs.getInt("mem_num"));
+				
+				board.setId(rs.getString("id"));
+				board.setNick(rs.getString("nick"));
+				board.setPhoto(rs.getString("photo"));
 			}
 		}catch(Exception e) {
 			throw new Exception(e);
@@ -236,6 +241,7 @@ public class InquiryBoardDAO {
 			conn = DBUtil.getConnection();
 			
 			if(board.getInq_img()!=null) {
+				//업로드한 파일이 있는 경우
 				sub_sql = ",inq_img=?";
 			}
 			

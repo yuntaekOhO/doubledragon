@@ -55,9 +55,14 @@
 		<div>
 			<input type="hidden" id="inq_num" value="${board.inq_num}">
 			<strong>Q</strong>  <a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_question}</a>
-			<span class="floating-right">${board.inq_writer}</span><br><br>
+			<span class="floating-right">${board.nick}</span><br><br>
 			<strong>A</strong>  <a href="inqDetail.do?inq_num=${board.inq_num}">${board.inq_answer}</a>
-			<span class="floating-right">${board.inq_date}</span>
+			<c:if test="${empty board.inq_modify_date}">
+			<span class="floating-right">작성일 ${board.inq_date}</span>
+			</c:if>
+			<c:if test="${!empty board.inq_modify_date}">
+			<span class="floating-right">수정됨 ${board.inq_modify_date}</span>
+			</c:if>
 		</div>
 			<div class="floating-right">
 			<c:if test="${!empty user_num && user_auth==3}">

@@ -40,7 +40,7 @@
 								$.ajax({
 									url:'deleteInqFile.do',
 									type:'post',
-									data:{board_num:${board.inq_num}},
+									data:{inq_num:${board.inq_num}},
 									dataType:'json',
 									cache:false,
 									timeout:30000,

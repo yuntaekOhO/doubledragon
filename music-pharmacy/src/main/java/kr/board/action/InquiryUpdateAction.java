@@ -19,6 +19,9 @@ public class InquiryUpdateAction implements Action {
 		Integer user_num = (Integer)session.getAttribute("user_num");
 		Integer user_auth = (Integer)session.getAttribute("user_auth");
 		
+		//인코딩
+		request.setCharacterEncoding("utf-8");
+		
 		if(user_num==null) {
 			return "redirect:/member/loginForm.do";
 		}else if(user_num!=null&&user_auth<3) {
@@ -31,10 +34,10 @@ public class InquiryUpdateAction implements Action {
 		String inq_img = multi.getFilesystemName("inq_img");
 		
 		InquiryBoardDAO dao = InquiryBoardDAO.getInstance();
-		InquiryBoardVO db_board = dao.getBoard(inq_num);
+		InquiryBoardVO db_board = dao.getBoard(user_num);
 		
-		if(user_num!=db_board.getMem_num()) {
-			//로그인한 회원번호와 작성자 회원번호가 불일치
+		if(user_auth<3) {
+			//관리자가 아니면
 			//업로드된 파일이 있으면 파일 삭제
 			FileUtil.removeFile(request, inq_img);
 			return "/WEB-INF/views/common/notice.jsp";
@@ -43,14 +46,15 @@ public class InquiryUpdateAction implements Action {
 		//로그인한 회원번호와 글 작성 회원번호가 같음
 		InquiryBoardVO board = new InquiryBoardVO();
 		board.setInq_num(inq_num);
-		board.setInq_writer(multi.getParameter("inq_writer"));
 		board.setInq_question(multi.getParameter("inq_question"));
 		board.setInq_answer(multi.getParameter("inq_answer"));
 		board.setInq_img(inq_img);
+		board.setMem_num(user_num);
 		
 		dao.updateInqBoard(board);
 		
 		if(inq_img!=null) {
+			//수정시 원래 파일 삭제
 			FileUtil.removeFile(request, db_board.getInq_img());
 		}
 		

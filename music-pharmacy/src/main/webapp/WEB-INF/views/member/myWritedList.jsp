@@ -88,6 +88,9 @@
 					[락 樂]
 				</c:if>
 			</div>
+			<div>
+				
+			</div>
 			<div style="float:left;position:relative;left:20%;display:inline-block;">
 				<input type="hidden" id="the_num" value="${board.the_num}">
 				<span><a href="${pageContext.request.contextPath}/board/themeDetail.do?the_num=${board.the_num}">${board.the_title}</a></span>

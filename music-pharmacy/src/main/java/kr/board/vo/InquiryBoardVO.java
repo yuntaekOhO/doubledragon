@@ -12,6 +12,28 @@ public class InquiryBoardVO {
 	private String inq_img;
 	private int mem_num;
 	
+	private String id;//회원 아이디
+	private String nick;//닉네임
+	private String photo;//회원 프로필 사진
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	public int getInq_num() {
 		return inq_num;
 	}
