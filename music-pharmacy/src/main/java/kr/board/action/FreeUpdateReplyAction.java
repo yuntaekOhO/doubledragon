@@ -21,11 +21,11 @@ public class FreeUpdateReplyAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		
 		//댓글 번호
-		int frely_num = Integer.parseInt(
-				request.getParameter("frely_num"));
+		int freply_num = Integer.parseInt(
+				request.getParameter("freply_num"));
 		
 		FreeBoardDAO dao = FreeBoardDAO.getInstance();
-		FreeBoardReVO db_reply = dao.getReplyBoard(frely_num);
+		FreeBoardReVO db_reply = dao.getReplyBoard(freply_num);
 		
 		HttpSession session = request.getSession();
 		Integer user_num = 
@@ -39,9 +39,9 @@ public class FreeUpdateReplyAction implements Action{
 				&& user_num == db_reply.getMem_num()) {
 			//로그인한 회원번호와 작성자 회원번호 일치
 			FreeBoardReVO reply = new FreeBoardReVO();
-			reply.setFreply_num(frely_num);
+			reply.setFreply_num(freply_num);
 			reply.setFreply_content(
-					request.getParameter("frely_content"));
+					request.getParameter("freply_content"));
 			
 			dao.updateReplyBoard(reply);
 			

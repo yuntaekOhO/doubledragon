@@ -86,8 +86,8 @@
 			<span class="re-title"><h4>댓글</h4></span>
 			<form id="re_form">
 				<input type="hidden" name="free_num" value="${board.free_num}" id="free_num">
-				<textarea style="width:99%;" rows="3" cols="50" name="frely_content" 
-				  id="frely_content" class="rep-content"  placeholder="댓글을 입력하세요."
+				<textarea style="width:99%;" rows="3" cols="50" name="freply_content" 
+				  id="freply_content" class="rep-content"  placeholder="댓글을 입력하세요."
 				  <c:if test="${empty user_num}">disabled="disabled"</c:if>
 				  ><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea>
 				<c:if test="${!empty user_num}">

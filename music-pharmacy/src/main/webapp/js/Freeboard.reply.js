@@ -79,9 +79,9 @@ $(function(){
 	
 	//댓글 등록
 	$('#re_form').submit(function(event){
-		if($('#frely_content').val().trim()==''){
+		if($('#freply_content').val().trim()==''){
 			alert('내용을 입력하세요!');
-			$('#frely_content').val('').focus();
+			$('#freply_content').val('').focus();
 			return false;
 		}
 		
@@ -132,7 +132,7 @@ $(function(){
 		}else{//300자 이하인 경우
 			let remain = 300 - inputLength;
 			remain += '/300';
-			if($(this).attr('id') == 'frely_content'){//등록
+			if($(this).attr('id') == 'freply_content'){//등록
 				//등록폼 글자수 처리
 				$('#re_first .letter-count').text(remain);
 			}else{//수정
@@ -145,15 +145,15 @@ $(function(){
 	//댓글 수정 버튼 클릭시 수정폼 노출
 	$(document).on('click','.modify-btn',function(){
 		//댓글 번호
-		let frely_num = $(this).attr('data-renum');
+		let freply_num = $(this).attr('data-renum');
 		
 		//댓글 내용
-		let frely_content = $(this).parent().find('p').html().replace(/<br>/gi,'\n');
+		let freply_content = $(this).parent().find('p').html().replace(/<br>/gi,'\n');
 		                                          //g:지정문자열 모두,i:대소문자 무시
 		//댓글 수정폼 UI
 		let modifyUI = '<form id="mre_form">';
-		modifyUI += '<input type="hidden" name="frely_num" id="mfrely_num" value="'+frely_num+'">';
-		modifyUI += '<textarea rows="3" cols="50" name="frely_content" id="mfrely_content" class="rep-content">'+frely_content+'</textarea>';
+		modifyUI += '<input type="hidden" name="freply_num" id="mfreply_num" value="'+freply_num+'">';
+		modifyUI += '<textarea rows="3" cols="50" name="freply_content" id="mfreply_content" class="rep-content">'+freply_content+'</textarea>';
 		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mre_second" class="align-right">';
 		modifyUI += ' <input type="submit" value="수정">';
@@ -174,7 +174,7 @@ $(function(){
 		$(this).parents('.item').append(modifyUI);
 		
 		//입력한 글자수 셋팅
-		let inputLength = $('#mfrely_content').val().length;
+		let inputLength = $('#mfreply_content').val().length;
 		let remain = 300 - inputLength;
 		remain += '/300';
 		
@@ -196,9 +196,9 @@ $(function(){
 	
 	//댓글 수정
 	$(document).on('submit','#mre_form',function(event){
-		if($('#mfrely_content').val().trim()==''){
+		if($('#mfreply_content').val().trim()==''){
 			alert('내용을 입력하세요!');
-			$('#mfrely_content').val('').focus();
+			$('#mfreply_content').val('').focus();
 			return false;
 		}
 		
@@ -217,7 +217,7 @@ $(function(){
 				if(param.result == 'logout'){
 					alert('로그인해야 수정할 수 있습니다.');
 				}else if(param.result == 'success'){
-					$('#mre_form').parent().find('p').html($('#mfrely_content').val().replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>'));
+					$('#mre_form').parent().find('p').html($('#mfreply_content').val().replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>'));
 					$('#mre_form').parent().find('.modify-date').text('최근 수정일 : 5초미만');
 					//수정폼 삭제 및 초기화
 					initModifyForm();
@@ -239,12 +239,12 @@ $(function(){
 	//댓글 삭제
 	$(document).on('click','.delete-btn',function(){
 		//댓글 번호
-		let frely_num = $(this).attr('data-renum');
+		let freply_num = $(this).attr('data-renum');
 		
 		$.ajax({
 			url:'FreeDeleteReply.do',
 			type:'post',
-			data:{frely_num:frely_num},
+			data:{freply_num:freply_num},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
