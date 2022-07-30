@@ -19,12 +19,12 @@
  	<br>
  	<div style="width:100%;block-size:fit-content;display:inline-block;">
  	<div style="height:30px;">
-	<span class="floating-left"><b>저잣거리</b> total - ${freeCnt} 건</span>
-	<span class="floating-right"><b>동의보감</b> total - ${theCnt} 건</span>
+ 	<span class="floating-left"><b>저잣거리</b> total - ${freeCnt} 건</span>
+ 	<span class="floating-left"><b>동의보감</b> total - ${theCnt} 건</span>
 	</div>
 	<!-- 저잣거리 -->
 	<div class="floating-left" style="width:48%;display:inline-block;block-size:fit-content;">
-		<c:if test="${freeCnt==0}">
+		<c:if test="${empty flist || freeCnt==0}">
 		<div>
 			표시할 게시물이 없습니다.
 		</div>
@@ -65,7 +65,7 @@
 	
 	<!-- 동의보감 -->
 	<div class="floating-right" style="width:48%;display:inline-block;block-size:fit-content;">
-		<c:if test="${theCnt==0}">
+		<c:if test="${empty tlist || theCnt==0}">
 		<div>
 			표시할 게시물이 없습니다.
 		</div>
@@ -89,7 +89,6 @@
 				</c:if>
 			</div>
 			<div>
-				
 			</div>
 			<div style="float:left;position:relative;left:20%;display:inline-block;">
 				<input type="hidden" id="the_num" value="${board.the_num}">

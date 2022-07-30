@@ -40,37 +40,36 @@ public class MyWritedListAction implements Action {
 		String fkeyfield = "3";
 		String tkeyfield = "2";
 		
-		String fkeyword = member.getNick();
+		String keyword = member.getNick();
 		
-		//themeBaord에 저장된 닉네임 반환
-		ThemeBoardVO tboard = wDAO.getTboardByMemNum(user_num);
-		String tkeyword = tboard.getNick();
-
 		//저잣거리,동의보감 로그인한 회원번호와 일치하는 id로 글의 갯수 반환 
-		int freeCnt = fDAO.getBoardCount(fkeyfield, fkeyword);
-		int theCnt = tDAO.getBoardCount(tkeyfield, tkeyword);
+		int freeCnt = fDAO.getBoardCount(fkeyfield, keyword);
+		int theCnt = tDAO.getBoardCount(tkeyfield, keyword);
 		//페이지처리
-		PagingUtil fpage = new PagingUtil(fkeyfield,fkeyword,Integer.parseInt(pageNum),freeCnt,10,10,"myWritedList.do");
-		PagingUtil tpage = new PagingUtil(tkeyfield,tkeyword,Integer.parseInt(pageNum),theCnt,10,10,"myWritedList.do");
+		PagingUtil fpage = new PagingUtil(fkeyfield,keyword,Integer.parseInt(pageNum),freeCnt,10,10,"myWritedList.do");
+		PagingUtil tpage = new PagingUtil(tkeyfield,keyword,Integer.parseInt(pageNum),theCnt,10,10,"myWritedList.do");
 		
 		List<FreeBoardVO> flist = null;
 		List<ThemeBoardVO> tlist = null;
 		
 		//회원 id로 저잣거리,동의보감 게시글 검색해서 나온 결과를 list에 담음
 		if(freeCnt>0) {
-			flist = fDAO.getListBoard(fpage.getStartRow(), fpage.getEndRow(), fkeyfield, fkeyword);
+			flist = fDAO.getListBoard(fpage.getStartRow(), fpage.getEndRow(), fkeyfield, keyword);
 		}
 		if(theCnt>0) {
-			tlist = tDAO.getListBoard(tpage.getStartRow(), tpage.getEndRow(), tkeyfield, tkeyword);
+			tlist = tDAO.getListBoard(tpage.getStartRow(), tpage.getEndRow(), tkeyfield, keyword);
 		}
-		
+	
 		request.setAttribute("freeCnt", freeCnt);
 		request.setAttribute("theCnt", theCnt);
-		request.setAttribute("flist", flist);
-		request.setAttribute("tlist", tlist);
+		//if(flist!=null) {
+			request.setAttribute("flist", flist);
+		//}
+		//if(tlist!=null) {
+			request.setAttribute("tlist", tlist);
+		//}
 		request.setAttribute("fpage", fpage.getPage());
 		request.setAttribute("tpage", tpage.getPage());
-		
 		
 		return "/WEB-INF/views/member/myWritedList.jsp";
 	}

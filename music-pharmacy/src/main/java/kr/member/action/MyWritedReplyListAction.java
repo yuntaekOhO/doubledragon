@@ -62,19 +62,26 @@ public class MyWritedReplyListAction implements Action {
 		//내가 쓴 댓글이 달린 글 제목 알아내기
 		List<ThemeBoardVO> tBoardList = new ArrayList<ThemeBoardVO>();
 		List<FreeBoardVO> fBoardList = new ArrayList<FreeBoardVO>();
-		for(ThemeBoardReVO treBoard : trelist) {
-			tBoardList.add(tDao.getBoard(treBoard.getThe_num()));
+
+		if(trelist!=null && tBoardList!=null) {
+			for(ThemeBoardReVO treBoard : trelist) {
+				tBoardList.add(tDao.getBoard(treBoard.getThe_num()));
+			}
+			request.setAttribute("trelist", trelist);
+			request.setAttribute("tBoardList", tBoardList);
 		}
-		for(FreeBoardReVO freeBoard : frelist) {
-			fBoardList.add(fDao.getBoard(freeBoard.getFree_num()));
+		
+		if(frelist!=null && fBoardList!=null) {
+			for(FreeBoardReVO freeBoard : frelist) {
+				fBoardList.add(fDao.getBoard(freeBoard.getFree_num()));
+			}
+			request.setAttribute("frelist", frelist);
+			request.setAttribute("fBoardList", fBoardList);
 		}
+		
 		
 		request.setAttribute("theCnt", theCnt);
 		request.setAttribute("freeCnt", freeCnt);
-		request.setAttribute("trelist", trelist);
-		request.setAttribute("frelist", frelist);
-		request.setAttribute("tBoardList", tBoardList);
-		request.setAttribute("fBoardList", fBoardList);
 		request.setAttribute("tpage", tpage.getPage());
 		request.setAttribute("fpage", fpage.getPage());
 		
