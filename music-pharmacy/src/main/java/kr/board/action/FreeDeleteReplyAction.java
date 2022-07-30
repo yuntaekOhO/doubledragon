@@ -22,14 +22,14 @@ public class FreeDeleteReplyAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		
 		//전송된 데이터 반환
-		int frely_num = Integer.parseInt(
-				          request.getParameter("frely_num"));
+		int freply_num = Integer.parseInt(
+				          request.getParameter("freply_num"));
 		
 		Map<String,String> mapAjax = 
 				          new HashMap<String,String>();
 		
 		FreeBoardDAO dao = FreeBoardDAO.getInstance();
-		FreeBoardReVO db_reply = dao.getReplyBoard(frely_num);
+		FreeBoardReVO db_reply = dao.getReplyBoard(freply_num);
 		
 		HttpSession session = request.getSession();
 		Integer user_num = 
@@ -39,7 +39,7 @@ public class FreeDeleteReplyAction implements Action{
 		}else if(user_num!=null 
 				&& user_num == db_reply.getMem_num()) {
 			//로그인 회원번호와 작성자 회원번호 일치
-			dao.deleteReplyBoard(frely_num);
+			dao.deleteReplyBoard(freply_num);
 			
 			mapAjax.put("result", "success");
 			

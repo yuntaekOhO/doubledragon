@@ -508,8 +508,8 @@ public class FreeBoardDAO {
 				//커넥션풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();
 				//SQL문 작성
-				sql = "INSERT INTO free_comment (frely_num,"
-					+ "frely_content,mem_num,free_num) "
+				sql = "INSERT INTO free_comment (freply_num,"
+					+ "freply_content,mem_num,free_num) "
 					+ "VALUES (freecomment_seq.nextval,?,?,?)";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
@@ -577,7 +577,7 @@ public class FreeBoardDAO {
 				sql = "SELECT * FROM (SELECT a.*, rownum rnum "
 					+ "FROM (SELECT * FROM free_comment b "
 					+ "JOIN member m USING (mem_num) "
-					+ "WHERE b.free_num=? ORDER BY b.frely_num "
+					+ "WHERE b.free_num=? ORDER BY b.freply_num "
 					+ "DESC)a) WHERE rnum >= ? AND rnum <= ?";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
@@ -590,19 +590,19 @@ public class FreeBoardDAO {
 				list = new ArrayList<FreeBoardReVO>();
 				while(rs.next()) {
 					FreeBoardReVO reply = new FreeBoardReVO();
-					reply.setFreply_num(rs.getInt("frely_num"));
+					reply.setFreply_num(rs.getInt("freply_num"));
 					//날짜 -> 1분전, 1시간전, 1일전 형식의 문자열로 변환
 					reply.setFreply_date(
 						DurationFromNow.getTimeDiffLabel(
-									rs.getString("frely_date")));
-					if(rs.getString("frely_modify_date")!=null) {
+									rs.getString("freply_date")));
+					if(rs.getString("freply_modify_date")!=null) {
 						reply.setFreply_modify_date(
 						 DurationFromNow.getTimeDiffLabel(
-								  rs.getString("frely_modify_date")));
+								  rs.getString("freply_modify_date")));
 					}
 					reply.setFreply_content(
 							StringUtil.useBrNoHtml(
-								    rs.getString("frely_content")));
+								    rs.getString("freply_content")));
 					reply.setFree_num(rs.getInt("free_num"));
 					reply.setMem_num(rs.getInt("mem_num"));
 					reply.setId(rs.getString("id"));
@@ -633,7 +633,7 @@ public class FreeBoardDAO {
 				//커넥션풀로부터 커넥션을 할당
 				conn = DBUtil.getConnection();
 				//SQL문 작성
-				sql = "SELECT * FROM free_comment WHERE frely_num=?";
+				sql = "SELECT * FROM free_comment WHERE freply_num=?";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터를 바인딩
@@ -642,7 +642,7 @@ public class FreeBoardDAO {
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					reply = new FreeBoardReVO();
-					reply.setFreply_num(rs.getInt("frely_num"));
+					reply.setFreply_num(rs.getInt("freply_num"));
 					reply.setMem_num(rs.getInt("mem_num"));
 				}
 			}catch(Exception e) {
@@ -665,7 +665,7 @@ public class FreeBoardDAO {
 			//커넥션풀로부터 커넥션을 할당
 			conn = DBUtil.getConnection();
 			//SQL문 작성
-			sql = "UPDATE free_comment SET frely_content=?, frely_modify_date=SYSDATE WHERE frely_num=?";
+			sql = "UPDATE free_comment SET freply_content=?, freply_modify_date=SYSDATE WHERE freply_num=?";
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			//?에 데이터를 바인딩
@@ -692,7 +692,7 @@ public class FreeBoardDAO {
 				//커넥션풀로부터 커넥션을 할당
 				conn = DBUtil.getConnection();
 				//SQL문 작성
-				sql = "DELETE FROM free_comment WHERE frely_num=?";
+				sql = "DELETE FROM free_comment WHERE freply_num=?";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터 바인딩
