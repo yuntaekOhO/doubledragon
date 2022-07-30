@@ -619,7 +619,7 @@ public class FreeBoardDAO {
 			return list;
 		}
 		//댓글 상세
-		public FreeBoardReVO getReplyBoard(int frely_num)
+		public FreeBoardReVO getReplyBoard(int freply_num)
 		                                   throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -635,12 +635,16 @@ public class FreeBoardDAO {
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터를 바인딩
-				pstmt.setInt(1, frely_num);
+				pstmt.setInt(1, freply_num);
 				//SQL문 실행
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					reply = new FreeBoardReVO();
 					reply.setFreply_num(rs.getInt("freply_num"));
+					reply.setFree_num(rs.getInt("free_num"));
+					reply.setFreply_content(rs.getString("freply_content"));
+					reply.setFreply_date(rs.getString("freply_date"));
+					reply.setFreply_modify_date(rs.getString("freply_modify_date"));
 					reply.setMem_num(rs.getInt("mem_num"));
 				}
 			}catch(Exception e) {

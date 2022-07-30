@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.board.vo.FreeBoardReVO;
 import kr.board.vo.ThemeBoardReVO;
 import kr.board.vo.ThemeBoardVO;
 import kr.util.DBUtil;
@@ -18,7 +19,7 @@ public class MyWriteDAO {
 	private MyWriteDAO() {}
 	
 	//회원번호로 글 조회하기
-	public ThemeBoardVO getBoardByMemNum(int mem_num)throws Exception{
+	public ThemeBoardVO getTboardByMemNum(int mem_num)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -58,14 +59,13 @@ public class MyWriteDAO {
 		return board;
 	}
 	
-	//회원번호를 이용해 내가 쓴 댓글 조회 후 댓글번호로 댓글목록 반환
-	public List<ThemeBoardReVO> getReplyListByMemNum(int start, int end, int mem_num)throws Exception{
+	//동의보감 - 회원번호를 이용해 내가 쓴 댓글 조회 후 댓글번호로 댓글목록 반환
+	public List<ThemeBoardReVO> getTreplyListByMemNum(int start, int end, int mem_num)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<ThemeBoardReVO> list = null;
 		ThemeBoardReVO reply = null;
-		int treply_num = 0;
 		String sql = null;
 		
 		try {
@@ -91,8 +91,8 @@ public class MyWriteDAO {
 		}
 		return list;
 	}
-	//내가 쓴 댓글 갯수
-	public int getMyReplyBoardCount(int mem_num)throws Exception{
+	//동의보감 - 내가 쓴 댓글 갯수
+	public int getMyTreplyBoardCount(int mem_num)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -123,4 +123,70 @@ public class MyWriteDAO {
 		}
 		return count;
 	}
+	
+	//========================저잣거리==========================//
+	//저잣거리 - 회원번호를 이용해 내가 쓴 댓글 조회 후 댓글번호로 댓글목록 반환
+		public List<FreeBoardReVO> getFreplyListByMemNum(int start, int end, int mem_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<FreeBoardReVO> list = null;
+			FreeBoardReVO reply = null;
+			String sql = null;
+			
+			try {
+				conn = DBUtil.getConnection();
+				//로그인한 회원번호로 댓글이 작성된 게시글 번호를 구함
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT freply_num FROM free_comment WHERE mem_num=? ORDER BY freply_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, mem_num);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+				rs = pstmt.executeQuery();
+				
+				list = new ArrayList<FreeBoardReVO>();
+				FreeBoardDAO fDao = FreeBoardDAO.getInstance();
+				while(rs.next()) {
+					reply = fDao.getReplyBoard(rs.getInt("freply_num"));
+					list.add(reply);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return list;
+		}
+		//저잣거리 - 내가 쓴 댓글 갯수
+		public int getMyFreplyBoardCount(int mem_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int count = 0;
+
+			try {
+				//커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = "SELECT COUNT(*) FROM free_comment b "
+						+ "JOIN member m ON b.mem_num=m.mem_num "
+						+ "WHERE b.mem_num=?";
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터 바인딩
+				pstmt.setInt(1, mem_num);
+				//SQL문 실행
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return count;
+		}
 }

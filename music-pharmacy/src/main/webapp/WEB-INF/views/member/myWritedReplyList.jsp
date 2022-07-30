@@ -18,27 +18,32 @@
  	<hr>
  	<br>
  	<div style="width:100%;">
-	<!-- 저잣거리 
+	<!-- 저잣거리 -->
 	<div class="floating-left" style="width:48%;">
-		<span style="float:left;"><b>저잣거리</b> total - ${freeCnt} 건</span><br>
+		<span style="float:left;"><b>저잣거리</b> total - ${freeCnt} 건</span>	<br>
 		<c:if test="${freeCnt==0}">
 		<div>
 			표시할 게시물이 없습니다.
 		</div>
 		</c:if>
+		
 		<c:if test="${freeCnt > 0}">
-		<c:forEach var="board" items="${flist}">
+		<c:forEach var="reboard" items="${frelist}" varStatus="status">
 		<div style="margin:0 auto;">
 			<div>
-				<input type="hidden" id="free_num" value="${board.free_num}">
-				<a href="${pageContext.request.contextPath}/board/freeDetail.do?free_num=${board.free_num}">${board.free_title}</a>
-				<span class="floating-right">${board.nick}</span><br><br>
-			</div>
-			<div class="floating-right">
-				<c:if test="${!empty user_num && user_num==board.mem_num && user_auth>=2}">
-				<input type="button" value="수정" onclick="location.href='${pageContext.request.contextPath}/board/freeUpdateForm.do?free_num=${board.free_num}'"> 
-				<input type="button" value="삭제" id="fDelete_btn">
+				<input type="hidden" id="free_num" value="${reboard.free_num}">
+				<br>
+				<%-- 댓글 단 게시글 제목 --%>
+				${fBoardList[status.index].free_title}
+				<%-- 댓글 내용 --%>
+				<a href="${pageContext.request.contextPath}/board/freeDetail.do?free_num=${reboard.free_num}">${reboard.freply_content}</a>
+				<c:if test="${empty reboard.freply_modify_date}">
+				<span class="floating-right">작성일 ${reboard.freply_date}</span>
 				</c:if>
+				<c:if test="${!empty reboard.freply_modify_date}">
+				<span class="floating-right">수정일 ${reboard.freply_modify_date}</span>
+				</c:if>
+				<br>
 			</div>
 			<br>
 			<hr width="100%" size="3">
@@ -81,7 +86,6 @@
 			<hr width="100%" size="3">
 		</div>
 		</c:forEach>
-
 		<div class="align-center">
 			${tpage}
 		</div>

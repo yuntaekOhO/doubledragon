@@ -43,7 +43,7 @@ public class MyWritedListAction implements Action {
 		String fkeyword = member.getNick();
 		
 		//themeBaord에 저장된 닉네임 반환
-		ThemeBoardVO tboard = wDAO.getBoardByMemNum(user_num);
+		ThemeBoardVO tboard = wDAO.getTboardByMemNum(user_num);
 		String tkeyword = tboard.getNick();
 
 		//저잣거리,동의보감 로그인한 회원번호와 일치하는 id로 글의 갯수 반환 
