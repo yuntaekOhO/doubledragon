@@ -232,6 +232,7 @@ public class ThemeBoardDAO {
 				board.setMem_num(rs.getInt("mem_num"));
 				board.setNick(rs.getString("nick"));
 				board.setPhoto(rs.getString("photo"));
+				board.setThe_code(rs.getInt("the_code"));
 				
 				list.add(board);
 			}
