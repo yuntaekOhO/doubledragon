@@ -33,14 +33,11 @@
 	</div>
 	<!-- 검색 끝 -->
 	<%-- 관리자 전용 글작성 버튼 --%>
+	<div class="align-right">
 	<c:if test="${!empty user_num && user_auth==3}">
-		<div>
-			<form class="floating-right">
-				<input type="button" value="글작성" onclick="location.href='writeInqForm.do'">
-			</form>
-		</div>
+		<input type="button" value="글쓰기" onclick="location.href='writeInqForm.do'">
 	</c:if>
-	
+	</div>
 	<div>
 	</div>
 	<div>

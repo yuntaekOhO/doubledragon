@@ -15,9 +15,11 @@
 		<div class="left">
 				<img src="${pageContext.request.contextPath}/images/musicpharmacy.png" width="80" height="80" hspace="5">
 		</div>
+		<div>
 		<h3 class="left"> 
 			<a href="${pageContext.request.contextPath}/main/main.do">음약방</a>
 		</h3>
+		</div>
 	</div>
 	<div id="main2_nav">
 		<ul class="myMenu">
