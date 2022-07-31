@@ -92,7 +92,10 @@
 		
 		</table>
 		<!-- 뮤직테이블 끝 -->
+		<c:if test="${!empty board.the_url}">
 		<br><iframe src="${board.the_url}" width="700px" height="500px"></iframe><br>
+		</c:if>
+		
 		<c:if test="${!empty board.the_img}">
 		<div class="align-center">
 			<img src="${pageContext.request.contextPath}/upload/${board.the_img}" class="detail-img">
