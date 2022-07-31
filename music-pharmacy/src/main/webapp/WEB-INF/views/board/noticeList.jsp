@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
 <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jiho/noticeList.css" type="text/css"> --%>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jiho/noticsListTitleContentFont.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jiho/footer.css" type="text/css">
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jiho/noticsListTitleContentFont.css" type="text/css"> --%>
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jiho/footer.css" type="text/css"> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/noticeList.js"></script>
@@ -80,6 +80,7 @@
 			${page}
 		</div>
  	</c:if>
+</div>
 </div>
 <div>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
