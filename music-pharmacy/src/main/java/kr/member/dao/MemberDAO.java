@@ -289,6 +289,27 @@ public class MemberDAO {
 		}
 	}
 	
+	//관리자가 회원의 권한 변경
+	public void updateMemberByAdmin(int auth, int mem_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "UPDATE member SET auth=? WHERE mem_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, auth);
+			pstmt.setInt(2, mem_num);
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	
 	//비밀번호수정
 	public void updatePassword(String passwd,int mem_num)throws Exception{
 		

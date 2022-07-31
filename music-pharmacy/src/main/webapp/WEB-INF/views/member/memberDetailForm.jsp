@@ -18,8 +18,8 @@
 	<h3 id="font-c">회원정보</h3>
 	
 	<div class="mypage-div">
-		<form id="modify_form" action="modifyUser.do" method="post">
-
+		<form id="modify_form" action="memberDetail.do" method="post">
+				<input type="hidden" name="mem_num" value="${member.mem_num}">
 				<div class="mypage-div5">
 					<div class="profile-image3">
 						<c:if test="${empty member.photo}">
@@ -92,17 +92,14 @@
 					<li>
 						<label>가입경로</label><br>
 						<div id="align-center">
-						<label><input type="radio" name="route" id="route" value="인터넷">인터넷 검색</label>
-						<label><input type="radio" name="route" id="route" value="인터넷 커뮤니티">인터넷 커뮤니티</label>
-						<label><input type="radio" name="route" id="route" value="친구 추천">친구 추천</label>
-						<label><input type="radio" name="route" id="route" value="기타">기타</label><br>
+						${member.route}
 						</div>
 					</li>
 				</ul><br>
 				
 					<div>
 					<div class="float2">	
-					<button class="correction_btn" value="수정">완료</button>
+					<input type="submit" class="correction_btn" value="완료">
 					</div>
 					</div>	
 			</div>		
