@@ -48,7 +48,7 @@
 		<hr size="1" noshade="noshade" width="100%">
 		<table class="free_table" cellpadding="10" width="100%">
 		<c:forEach var="board" items="${list}">
-			<tr >
+			<tr>
 				<td class="free_theme" rowspan="2" width="15%" style="border-bottom:1px solid #423207;">
 					<c:if test = "${board.free_code==1}">
 					자유게시판
@@ -58,13 +58,12 @@
 					음악추천받아요
 				</c:if>
 				</td>
-				<td align="left"><a href="freeDetail.do?free_num=${board.free_num}">${board.free_title}</a></td>
-				<!-- <td><span id="output_fcount"></span></td> -->
-				<td align="right">view : ${board.free_hits}</td>
+				<td align="left" width="70%"><a href="freeDetail.do?free_num=${board.free_num}">${board.free_title}</a></td>
+				<td align="right" width="15%">view : ${board.free_hits}</td>
 			</tr>
 			<tr>	
-				<td align="left"  style="border-bottom:1px solid #423207;">${board.free_content}</td>
-				<td align="right" style="border-bottom:1px solid #423207;">${board.nick}님 작성</td>
+				<td align="left" width="70%" style="border-bottom:1px solid #423207;">${board.free_content}</td>
+				<td align="right" width="15%" style="border-bottom:1px solid #423207;">${board.nick}님 작성</td>
 			</tr>
 			
 			</c:forEach>
