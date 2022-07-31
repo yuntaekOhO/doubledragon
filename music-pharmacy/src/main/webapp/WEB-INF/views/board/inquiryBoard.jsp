@@ -70,12 +70,7 @@
 		</tr>
 		</c:forEach>
 		</table>
-			<div class="floating-right">
-			<c:if test="${!empty user_num && user_auth==3}">
-				<input type="button" value="수정" onclick="location.href='inquiryUpdateForm.do?inq_num=${board.inq_num}'"> 
-				 <input type="button" value="삭제" id="inquiryDelete_btn">
-			</c:if>
-			</div>
+		
 		<div class="align-center">
 			${page}
 		</div>
