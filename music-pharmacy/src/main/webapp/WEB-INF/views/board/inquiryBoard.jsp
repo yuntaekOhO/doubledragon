@@ -18,7 +18,7 @@
 	<div>
 	<div class="page">
  	<a href="${pageContext.request.contextPath}/board/inquiryBoard.do">상소문</a>
- 	<p>문의사항</p>
+ 	<p>자주 묻는 질문</p>
  	<p style="float:left;">총 ${count}건</p>
 	<!-- 검색 -->
 	<div class="search-bar">
@@ -45,7 +45,6 @@
 	</div>
 	<div>
 	<hr size="1" noshade="noshade" width="100%">
-		<h5>자주 묻는 질문</h5>
 		<c:if test="${count==0}">
 		<div>
 				표시할 게시물이 없습니다.
