@@ -92,17 +92,21 @@
 		
 		</table>
 		<!-- 뮤직테이블 끝 -->
+		
+		<!-- url 영상 시작 -->
 		<c:if test="${!empty board.the_url}">
 		<br><iframe src="${board.the_url}" width="700px" height="500px"></iframe><br>
 		</c:if>
+		<!-- url 영상 끝 -->
 		
+		<!-- 이미지 + 내용 시작 -->
 		<c:if test="${!empty board.the_img}">
 		<div class="align-center">
 			<img src="${pageContext.request.contextPath}/upload/${board.the_img}" class="detail-img">
 		</div>
 		</c:if>
 		${board.the_content}
-			
+		<!-- 이미지 + 내용 끝 -->	
 		
 		<hr size="1" noshade="noshade" width="100%">
 
