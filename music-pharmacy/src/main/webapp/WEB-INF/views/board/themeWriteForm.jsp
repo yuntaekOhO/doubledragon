@@ -18,50 +18,35 @@
 </div>
 
 <div class="page">
-	
-	<h4>동의보감 글쓰기</h4>
+	<a href="${pageContext.request.contextPath}/board/themeBoard.do">동의보감</a>
+ 	<p>음악추천게시판</p>
+ 		<div class="content-main">
+		<h4>글쓰기</h4>
 		<form id="write_form" action="themeWrite.do" 
 		   method="post" enctype="multipart/form-data">
 			<ul>
 				<li>
-					<label for="the_title">제목</label>
-					<input type="text" name="the_title" 
-					      id="the_title" maxlength="50">
-				</li>
-				<li>
-					<label for="the_content">내용</label>
-					<textarea rows="5" cols="30" name="the_content"
-					     id="the_content"></textarea>
-				</li>
-				<li>
-					<label for="the_img">image</label>
-					<input type="file" name="the_img" 
-					 id="the_img" 
-					 accept="image/gif,image/png,image/jpeg">
-				</li>
-				<li>
-					<label for="the_code">게시판 선택</label>
+					<label for="the_code"></label>
 					<select name="the_code" id="the_code">
-
 					      <option value="1">희喜</option>
 					      <option value="2">노怒</option>
 					      <option value="3">애哀</option>
 					      <option value="4">락樂</option>
 					</select>
+					<label for="the_title"></label>
+					<input type="text" name="the_title" 
+					      id="the_title" maxlength="100" placeholder="제목을 입력하세요.">
 				</li>
+				<br>
 				<li>
-					<label for="the_video">관련 영상</label>
-					<input type="file" name="the_video" 
-					 id="the_video" 
-					 accept="video/mp4,video/avi,video/wmv">
-				</li>
-				<li>
-					<label for="the_url">영상 링크</label>
-					<input type="url" name="the_url" id="the_url">
-				</li>
-				<li>
-					<label for="mus_album">앨범명</label>
-					<input type="mus_album" name="mus_album" id="mus_album">
+					<label for="mus_img">앨범 이미지</label>
+					<c:if test="${empty music.mus_img}">
+					<img src="${pageContext.request.contextPath}/images/face.png" width="200" height="200" class="my-photo">
+					</c:if>
+					<c:if test="${!empty music.mus_img}">
+					<img src="${pageContext.request.contextPath}/upload/${music.mus_img}" width="200" height="200" class="my-photo">
+					</c:if>
+					<input type="file" name="mus_img" id="mus_img" accept="image/gif,image/png,image/jpeg,image/jpg">
 				</li>
 				<li>
 					<label for="mus_title">곡 제목</label>
@@ -70,6 +55,10 @@
 				<li>
 					<label for="mus_singer">가수</label>
 					<input type="mus_singer" name="mus_singer" id="mus_singer">
+				</li>
+				<li>
+					<label for="mus_album">앨범명</label>
+					<input type="mus_album" name="mus_album" id="mus_album">
 				</li>
 				<li>
 					<label for="mus_genre">장르</label>
@@ -84,12 +73,6 @@
 					</select>
 				</li>
 				<li>
-					<label for="mus_img">앨범 이미지</label>
-					<input type="file" name="mus_img" 
-					 id="mus_img" 
-					 accept="image/gif,image/png,image/jpeg">
-				</li>
-				<li>
 					<label for="mus_date">발매일</label>
 					<input type="date" name="mus_date" id="mus_date">
 				</li>
@@ -101,16 +84,37 @@
 					<label for="mus_songwiter">작사가</label>
 					<input type="mus_songwiter" name="mus_songwiter" id="mus_songwiter">
 				</li>
+				<li>
+					<label for="the_url">영상 링크</label>
+					<input type="url" name="the_url" id="the_url">
+				</li>
+				<br>
+				<li>
+					<label for="the_content"></label>
+					<textarea rows="30" cols="185" name="the_content"
+					     id="the_content" placeholder="내용을 입력하세요."></textarea>
+				</li>
+				<li>
+					<label for="the_img"></label>
+					<input type="file" name="the_img" 
+					 id="the_img" 
+					 accept="image/gif,image/png,image/jpeg">
+				</li>
+				<!-- <li>
+					<label for="the_video">관련 영상</label>
+					<input type="file" name="the_video" 
+					 id="the_video" 
+					 accept="video/mp4,video/avi,video/wmv">
+				</li> -->
+				
 				
 			</ul>
-			<div class="align-center">
+			<div class="align-right">
 				<input type="submit" value="등록">
 				<input type="button" value="목록" 
 				             onclick="location.href='themeBoard.do'">
 			</div>
 		</form>
-	<div>
-	
 	</div>
 </div>
 <div>

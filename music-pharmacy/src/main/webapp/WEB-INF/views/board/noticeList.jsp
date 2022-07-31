@@ -62,7 +62,7 @@
 	<table class="notice_table" cellpadding="10" width="100%">
 	<c:forEach var="board" items="${list}">
 			<tr>
-			<td rowspan="2" width="15%" style="border-bottom:1px solid #423207;">${board.not_num}</td>
+			<td align="left" rowspan="2" width="15%" style="border-bottom:1px solid #423207;">${board.not_num}</td>
 			<%-- <input type="hidden" id="not_num" value="${board.not_num}"> --%>
 		    <td align="left" width="70%"><a href="detail.do?not_num=${board.not_num}" class="noticeList_title">${board.not_title}</a>
 			<td align="right" width="15%">view : ${board.not_hits}</td>

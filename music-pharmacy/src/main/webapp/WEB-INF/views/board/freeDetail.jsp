@@ -58,8 +58,8 @@
 					};
 				</script>
 				</c:if><br>
-			<c:if test="${!empty board.free_modify_date}">
-				최근 수정일 : ${board.free_modify_date}
+			    <c:if test="${!empty board.free_modify_date}">
+				최근 수정일 : ${board.free_modify_date}<br>
 				</c:if>
 				작성일 : ${board.free_date}<br>
 				view : ${board.free_hits}<br>
