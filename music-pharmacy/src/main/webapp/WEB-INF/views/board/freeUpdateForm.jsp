@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글수정</title>
-<<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<title>저잣거리 글수정</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
@@ -21,12 +21,12 @@
  	<a href="${pageContext.request.contextPath}/board/freeBoard.do">저잣거리</a>
  	<p>자유게시판/음악추천받아요</p><br>
 	<div class="content-main">
-		<h4>게시판 글수정</h4>
+		<h4>글수정</h4>
 		<form action="freeUpdate.do" method="post"
 		      enctype="multipart/form-data" id="write_form">
 			<input type="hidden" name="free_num" 
 			                       value="${board.free_num}">
-		<ul>
+	     	<ul>
 				<li>
 					<label for="free_code"></label>
 					<select name="free_code" id="free_code">

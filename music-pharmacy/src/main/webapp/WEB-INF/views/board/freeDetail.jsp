@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글상세</title>
+<title>저잣거리 글상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
@@ -32,10 +32,10 @@
 				음악추천받아요>
 				</c:if>
 				<h4>${board.free_title}</h4> 
-				<c:if test="${!empty board.photo}">
-				<img src="${pageContext.request.contextPath}/upload/${board.photo}" width="40" height="40" class="my-photo">
+				<c:if test="${!empty member.photo}">
+				<img src="${pageContext.request.contextPath}/upload/${member.photo}" width="40" height="40" class="my-photo">
 				</c:if>
-				<c:if test="${empty board.photo}">
+				<c:if test="${empty member.photo}">
 				<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
 				</c:if>
 				${board.nick}님

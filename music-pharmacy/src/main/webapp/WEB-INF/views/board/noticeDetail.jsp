@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 글 상세</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jiho/noticeDetail.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jiho/noticeList.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jiho/footer.css" type="text/css">
@@ -13,12 +16,14 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/noticeHeader.jsp"/>
-<div class="page-main"><br><br><br><br><br>
-	<div class="content-main">
-	<a href="${pageContext.request.contextPath}/board/noticeList.do" class="noticeDetail_am">어명이오</a>
- 	<p>공지사항 게시판</p><br>
- 	<hr class="noticeList_hr">
+<div>
+	<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
+</div>
+<div class="page">
+	<a href="${pageContext.request.contextPath}/board/noticeList.do">어명이오</a>
+ 	<p>공지사항 게시판</p>
+ 	
+ 	<div class="content-main">
 		<ul class="detail-info">
 			<li>
 				<h4 class="noticeDetail_title">${board.not_title}</h4><br>
@@ -30,15 +35,9 @@
 				</c:if>
 				${board.id}님
 			</li> 
-			<div class="noticeDetail_Date_Delete_Update_Button">
-				<li>
-					<c:if test="${!empty board.not_modify_date}">
-					수정일 : ${board.not_modify_date}
-					</c:if>
-				</li>
-				<li>
-					작성일 : ${board.not_date}
-					<%-- 로그인한 회원번호와 작성자 회원번호가 일치해야 수정,삭제 가능 --%>
+			<li>
+			<div class="align-right">
+				<%-- 로그인한 회원번호와 작성자 회원번호가 일치해야 수정,삭제 가능 --%>
 					<c:if test="${user_num == board.mem_num}"> <!-- 관리자만 글 쓸수있으니깐 관리자만 수정삭제버튼 보여요 -->
 					<input type="button" value="수정" 
 					 onclick="location.href='noticeUpdateForm.do?not_num=${board.not_num}'">
@@ -54,9 +53,15 @@
 						};
 					</script>
 					</c:if>
-				</li>
+					<br>
+					<c:if test="${!empty board.not_modify_date}">
+					수정일 : ${board.not_modify_date}<br>
+					</c:if>
+					작성일 : ${board.not_date}
 			</div>
+			</li>
 		</ul>
+		<hr size="1" noshade="noshade" width="100%">
 		<c:if test="${!empty board.not_img}">
 		<div class="align-center">
 			<img src="${pageContext.request.contextPath}/upload/${board.not_img}" class="detail-img">

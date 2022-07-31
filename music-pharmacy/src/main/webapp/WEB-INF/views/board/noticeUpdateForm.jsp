@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>공지사항 글수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/noticeWrite.js"></script>
@@ -17,7 +18,7 @@
 <div class="page">
 	<a href="${pageContext.request.contextPath}/board/noticeList.do">어명이오</a>
 	<p>공지사항 글수정</p><br>
-	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;글쓰기</p>
+	<h4>글수정</h4>
 	<form id="write_form" action="noticeUpdate.do" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="not_num" value="${board.not_num}">
 	<ul>
