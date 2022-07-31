@@ -7,6 +7,9 @@
 <title>메인</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header1.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/noticeList.js"></script>
 </head>
 <body>
 
@@ -90,11 +93,13 @@
 		<h5>어명이오</h5>
 		<div></div>
 		<br>
-		<a>text1</a><br>
-		<a>text2</a><br>
-		<a>text3</a><br>
-		<a>text4</a><br>
-		<a>text5</a>
+		<ul>
+		<li><a href="http://localhost:8080/music-pharmacy/board/detail.do?not_num=201">테스트1</a></li>
+		<li><a href="http://localhost:8080/music-pharmacy/board/detail.do?not_num=201">테스트2</a></li>
+		<li><a href="http://localhost:8080/music-pharmacy/board/detail.do?not_num=201">테스트3</a></li>
+		<li><a href="http://localhost:8080/music-pharmacy/board/detail.do?not_num=201">테스트4</a></li>
+		<li><a href="http://localhost:8080/music-pharmacy/board/detail.do?not_num=201">테스트5</a></li>		
+		</ul>
 	</div>
 	<div class="mini-content-square1">
 		<h5>고객센터</h5>
