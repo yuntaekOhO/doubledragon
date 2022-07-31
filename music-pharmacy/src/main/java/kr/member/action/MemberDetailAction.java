@@ -28,6 +28,10 @@ public class MemberDetailAction implements Action {
 		int auth = Integer.parseInt(request.getParameter("auth"));
 		
 		MemberDAO dao = MemberDAO.getInstance();
+		
+		if(auth==0) {
+			dao.deleteMember(mem_num);
+		}
 		dao.updateMemberByAdmin(auth, mem_num);
 		
 		request.setAttribute("mem_num", mem_num);
