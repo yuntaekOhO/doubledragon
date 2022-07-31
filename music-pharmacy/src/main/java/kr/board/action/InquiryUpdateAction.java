@@ -34,7 +34,7 @@ public class InquiryUpdateAction implements Action {
 		String inq_img = multi.getFilesystemName("inq_img");
 		
 		InquiryBoardDAO dao = InquiryBoardDAO.getInstance();
-		InquiryBoardVO db_board = dao.getBoard(user_num);
+		InquiryBoardVO db_board = dao.getBoard(inq_num);
 		
 		if(user_auth<3) {
 			//관리자가 아니면

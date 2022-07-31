@@ -23,8 +23,7 @@ public class FreeUpdateAction implements Action{
 		}
 		MultipartRequest multi = 
 				FileUtil.createFile(request);
-		int free_num = Integer.parseInt(
-				multi.getParameter("free_num"));
+		int free_num = Integer.parseInt(multi.getParameter("free_num"));
 		String free_img = multi.getFilesystemName("free_img");
 		FreeBoardDAO dao = FreeBoardDAO.getInstance();
 		//수정전 데이터
