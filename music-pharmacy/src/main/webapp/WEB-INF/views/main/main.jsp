@@ -92,7 +92,6 @@
 	<div class="mini-notice">
 		<h5>어명이오</h5>
 		<div></div>
-		<br>
 		<ul>
 		<li><a href="http://localhost:8080/music-pharmacy/board/detail.do?not_num=201">테스트1</a></li>
 		<li><a href="http://localhost:8080/music-pharmacy/board/detail.do?not_num=201">테스트2</a></li>

@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시판</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+</head>
 <!-- header 시작 -->
 <div class="header">
 	<div class="banner-btns">
@@ -26,7 +33,7 @@
 		<div class="title-align">
 		   <ul>
 		     <li>
-		     	<img src="${pageContext.request.contextPath}/images/musicpharmacy.png" class="icon-align">
+		     <img src="${pageContext.request.contextPath}/images/musicpharmacy.png" width="80" height="80" hspace="5">
 		     </li>
 		     <li>
 		     	<a href="${pageContext.request.contextPath}/main/main.do" class="align"><b>음약방</b></a>
@@ -127,7 +134,8 @@
 </div>
 <!-- header 끝 -->
 <!-- 커밋용 -->
-
+</body>
+</html>
 
 
 

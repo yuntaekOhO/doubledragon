@@ -21,6 +21,15 @@ body{
 #main_logo{
 	padding-top:20px;
 }
+.title-align{
+	color:#6e4e39;
+	text-decoration-line: none;
+	font-family:"궁서";
+
+}
+#banner-text{
+	font-size:15px;
+}
 /*회원가입*/
 input[type="text"],input[type="password"],input[type="email"]{
 	width:200px;
@@ -216,6 +225,9 @@ a:hover{
 	height:2px;
 	background-color:white;
 	font-size:small;
+}
+.mini-notice ul li a{
+	color:white;
 }
 footer h4{
 	line-height:0.5em;
