@@ -35,30 +35,44 @@
 	</div>
 	<!-- 검색 끝 -->
  	<c:if test="${count == 0}">
-		<div class="result-display">
+		<div>
 			표시할 게시물이 없습니다.
 		</div>
 	</c:if>
 	<c:if test="${count > 0}">
-	<br>
-	<table>
-		<tr>
-			<th>글번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회</th>
-		</tr>
+	
+	
+	<hr size="1" noshade="noshade" width="100%">
+	<table class="free_table" cellpadding="10" width="100%">
+
 		<c:forEach var="board" items="${list}">
 		<tr>
-			<td>${board.the_num}</td>
-			<td><a href="themeDetail.do?the_num=${board.the_num}">${board.the_title}</a></td>
-			<td>${board.nick}</td>
-			<td>${board.the_date}</td>
-			<td>${board.the_hits}</td>
+		<td class="free_theme" rowspan="2" width="15%" style="border-bottom:1px solid #423207;">
+					<c:if test = "${board.the_code==1}">
+					희
+					</c:if>
+					<c:if test = "${board.the_code==2}">
+					노
+					</c:if>
+					<c:if test = "${board.the_code==3}">
+					애
+					</c:if>
+					<c:if test = "${board.the_code==4}">
+					락
+					</c:if>
+		</td>
+			<td align="left" width="70%"><a href="themeDetail.do?the_num=${board.the_num}">${board.the_title}</a></td>
+			<td align="right" width="15%">view : ${board.the_hits}</td>
+		</tr>
+		<tr>
+			<td align="left" width="70%" style="border-bottom:1px solid #423207;">${board.the_content}</td>
+			<td align="left" width="15%" style="border-bottom:1px solid #423207;">${board.nick} 님 작성</td>
+			
 		</tr>
 		</c:forEach>
 	</table>
+	<hr size="1" noshade="noshade" width="100%">
+	
 	<div class="align-center">
 			${page}
 	</div>
