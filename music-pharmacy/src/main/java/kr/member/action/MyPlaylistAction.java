@@ -11,6 +11,7 @@ import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
 import kr.music.vo.MusicVO;
+import kr.util.PagingUtil;
 
 
 public class MyPlaylistAction implements Action{
@@ -25,8 +26,18 @@ public class MyPlaylistAction implements Action{
 			return "redirect:/member/loginForm.do";
 		}
 		
+		//String pageNum = request.getParameter("pageNum");
+		//if(pageNum==null) pageNum = "1";
+		
+		//String keyfield = request.getParameter("keyfield");
+		//String keyword = request.getParameter("keyword");
+		
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberVO member = dao.getMember(user_num);
+		//int count = dao.getBoardCount(keyfield, keyword);
+		
+		//페이지 처리
+		//PagingUtil page = new PagingUtil(keyfield,keyword,Integer.parseInt(pageNum),count,20,10,"myPlaylist.do");
 		
 		ThemeBoardDAO boardDao = ThemeBoardDAO.getInstance();
 		List<MusicVO> boardList = boardDao.getListBoardFav(1, 10, user_num);
