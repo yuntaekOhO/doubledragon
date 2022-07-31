@@ -60,7 +60,7 @@
 				<td class="free_theme" width="15%">
 					${member.id}
 				</td>
-				<td width="15%"><a href="memberDetail.do?mem_num=${member.mem_num}">${member.nick}</a></td>
+				<td width="15%"><a href="memberDetailForm.do?mem_num=${member.mem_num}">${member.nick}</a></td>
 				<td width="15%">${member.email}</td>
 				<td width="15%">
 				<c:if test="${member.auth==0}">
