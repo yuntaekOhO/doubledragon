@@ -59,7 +59,7 @@ public class ThemeWriteAction implements Action {
 		music.setMus_singer(multi.getParameter("mus_singer"));
 		music.setMus_title(multi.getParameter("mus_title"));
 		music.setMus_genre(multi.getParameter("mus_genre"));
-		music.setMus_img(multi.getParameter("mus_img"));
+		music.setMus_img(multi.getFilesystemName("mus_img"));
 		music.setMus_date(multi.getParameter("mus_date"));
 		music.setMus_composer(multi.getParameter("mus_composer"));
 		music.setMus_songwriter(multi.getParameter("mus_songwriter"));

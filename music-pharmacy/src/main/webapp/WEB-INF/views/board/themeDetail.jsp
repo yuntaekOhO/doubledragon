@@ -79,7 +79,7 @@
 		<!-- 뮤직테이블 시작-->
 		<table>
 		<tr>
-		<td rowspan="8"><img src="${pageContext.request.contextPath}/upload/${music.mus_img}" class="detail-img"></td>
+		<td rowspan="8"> <c:if test="${!empty music.mus_img}"> <img src="${pageContext.request.contextPath}/upload/${music.mus_img}" width="200" height="200" class="detail-img"></c:if></td>
 		<td>노래 : ${music.mus_title}</td>
 		</tr>
 		<tr><td>가수 : ${music.mus_singer}</td></tr>
