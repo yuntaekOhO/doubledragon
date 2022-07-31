@@ -68,13 +68,14 @@
 			<td style="border-bottom:1px solid #423207;"><strong>A </strong>${board.inq_answer}</a></td>
 			<td align="right" width="15%" style="border-bottom:1px solid #423207;"><span class="floating-right">${board.nick}님 작성</span></td>
 		</tr>
+		</c:forEach>
+		</table>
 			<div class="floating-right">
 			<c:if test="${!empty user_num && user_auth==3}">
 				<input type="button" value="수정" onclick="location.href='inquiryUpdateForm.do?inq_num=${board.inq_num}'"> 
 				 <input type="button" value="삭제" id="inquiryDelete_btn">
 			</c:if>
-		</c:forEach>
-		</table>
+			</div>
 		<div class="align-center">
 			${page}
 		</div>
