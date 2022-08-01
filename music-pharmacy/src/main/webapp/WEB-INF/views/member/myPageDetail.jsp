@@ -35,13 +35,13 @@
 				</div>
 		
 			<div class="mypage-div2">
-				<ul>
+				<ul id="font-size">
 					<li>이름 : ${member.name}</li>
 					<li>전화번호 : ${member.cell}</li>
 					<li>이메일 : ${member.email}</li>
 					<li>우편번호 : ${member.zipcode}</li>
 					<li>주소 : ${member.addr1} ${member.addr2}</li>
-					<li>생일 : ${member.birthday}</li><br>
+					<li>생일 : ${member.birthday}</li>
 					<li>가입일 : ${member.reg_date}</li>
 					<li>선호하는 음악 장르 : ${member.music}</li>
 					<li>가입경로 : ${member.route}</li>
