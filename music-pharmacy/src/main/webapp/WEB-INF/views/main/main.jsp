@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,76 +17,26 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div id="content">
 	
-	<div class="best-boyak">
-			<span>BEST보약</span>
-	</div>
-	
-	<div style="float:left;width:50%;">
-	
-	<div class="month-rank">
-		<div class="rank-detail">
-			<a>
-				<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
-				<br>
-				이달의 소리꾼1<!-- 이름 -->
-				<br>
-				1<!-- 순위 -->
-			</a>
+		<div class="best-boyak">
+				<span>BEST보약</span>
 		</div>
 		
-		<div class="rank-detail">
-			<a>
-				<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
-				<br>
-				이달의 소리꾼2
-				<br>
-				2
-			</a>
-		</div>
+		<div style="float:left;width:50%;">
 		
-		<div class="rank-detail">
-			<a>
-				<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
-				<br>
-				이달의 소리꾼3
-				<br>
-				3
-			</a>
+		<div class="month-rank">
+		    <c:forEach var="theme" items="${theme}">
+			<div class="rank-detail">
+				<a href="${pageContext.request.contextPath}/board/themeDetail.do?the_num=${theme.the_num}">
+					<img src="/music-pharmacy/upload/${theme.mus_img}" width="140" height="140" vspace="10" hspace="20"/></a>
+					<br>
+					<b>[${theme.mus_title}]</b><br>
+					<b>${theme.mus_singer}</b><br>
+					${theme.nick}님<!-- 순위 -->
+				</div>
+			</c:forEach>
 		</div>
-	</div>
 	
-	<div class="month-rank">
-		<div class="rank-detail">
-		<a>
-			<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
-			<br>
-			이달의 명의1
-			<br>
-			1
-		</a>
-		</div>
 		
-		<div class="rank-detail">
-		<a>
-			<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
-			<br>
-			이달의 명의2
-			<br>
-			2
-		</a>
-		</div>
-		
-		<div class="rank-detail">
-		<a>
-			<img src=".jpg" width="120" height="120" vspace="10" hspace="20"/>
-			<br>
-			이달의 명의3
-			<br>
-			3
-		</a>
-		</div>
-	</div>
-	
 	</div>
 	
 	<div style="float:right;width:50%;">
@@ -93,11 +44,9 @@
 		<h5>어명이오</h5>
 		<div></div>
 		<ul>
-		<li><a href="http://localhost:8080/music-pharmacy/board/detail.do?not_num=201">테스트1</a></li>
-		<li><a href="http://localhost:8080/music-pharmacy/board/detail.do?not_num=201">테스트2</a></li>
-		<li><a href="http://localhost:8080/music-pharmacy/board/detail.do?not_num=201">테스트3</a></li>
-		<li><a href="http://localhost:8080/music-pharmacy/board/detail.do?not_num=201">테스트4</a></li>
-		<li><a href="http://localhost:8080/music-pharmacy/board/detail.do?not_num=201">테스트5</a></li>		
+		<c:forEach var="notice" items="${notice}">
+		<li><a href="${pageContext.request.contextPath}/board/detail.do?not_num=${notice.not_num}">${notice.not_title}</a></li>
+		</c:forEach>
 		</ul>
 	</div>
 	<div class="mini-content-square1">
