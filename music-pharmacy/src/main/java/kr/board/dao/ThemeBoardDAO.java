@@ -311,7 +311,7 @@ public class ThemeBoardDAO {
 				DBUtil.executeClose(rs, pstmt, conn);
 			}
 			return list;
-		}
+		}  
 	
 // 글 상세
 	public ThemeBoardVO getBoard(int the_num) throws Exception{
