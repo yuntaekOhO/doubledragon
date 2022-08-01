@@ -14,7 +14,7 @@
 </head>
 <body>
    
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>  
 	<div id="content">
 	
 		<div class="best-boyak">
