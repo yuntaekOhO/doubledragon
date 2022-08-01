@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@
 		</div>
 		
 		<div style="width:40%; float:left;">
-			<p id="font-b"> <b>${member.nick}</b> 님의 등급은 <b>천민</b> </p><br> 
+			<p id="font-b"> <b>${member.nick}</b> 님의 등급은 <b>천민</b> 입니다. </p><br> 
 		</div>
 		<table class="levelInformation_table">
 			<tr>
