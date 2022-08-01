@@ -55,9 +55,12 @@
 			<div style="clear:both;"></div>
 			</c:forEach>
 			<div class="align-center">
-				${page}
+				${page}<br><br><br>
 			</div>
 		</div>
+</div>
+<div>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </div>
 </body>
 </html>

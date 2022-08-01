@@ -38,7 +38,7 @@
 				</div> 
 				
 				<div class="mypoint-div">
-					<p id="font"> <b>My Point</b></p> <p id="font">${member.mem_point}</p>
+					<p id="font"> <b>My Point</b></p> <p id="font">${member.point}</p>
 				</div>
 				
 				<div class="mypoint-div">
