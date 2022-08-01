@@ -54,6 +54,9 @@
 			</div>
 			<div style="clear:both;"></div>
 			</c:forEach>
+			<div class="align-center">
+				${page}
+			</div>
 		</div>
 </div>
 </body>

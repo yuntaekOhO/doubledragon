@@ -731,6 +731,42 @@ public class ThemeBoardDAO {
 			}
 		}
 		
+
+		//플레이리스트 수
+		public int getListBoardFavCount(int mem_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int count = 0;
+			
+			try {
+				//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				
+				sql = "SELECT COUNT(*) FROM theme_board b JOIN member m USING(mem_num) "
+						+ "JOIN board_fav f USING(the_num) "
+						+ "JOIN music m USING(the_num) "
+						+ "WHERE f.mem_num=?";
+				
+				//JDBC 수행 3단계 : PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, mem_num);
+				
+				//JDBC 수행 4단계
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return count;
+		}
+		
 		//내가 선택한 좋아요 목록
 		public List<MusicVO> getListBoardFav(int start,int end, int mem_num) throws Exception{
 			Connection conn = null;
