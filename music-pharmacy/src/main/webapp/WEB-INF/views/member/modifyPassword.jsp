@@ -4,10 +4,10 @@
 <c:if test="${check}">
 	<script>
 		alert('비밀번호를 수정했습니다.');
-		location.href='myPage.do';
+		location.href='myPageDetail.do';
 	</script>
 </c:if>
-<c:if test="${check}">
+<c:if test="${!check}">
 	<script>
 		alert('아이디 또는 비밀번호 불일치');
 		history.go(-1);

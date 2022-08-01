@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>회원정보 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPage.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
@@ -35,11 +37,10 @@
 						<button class="photo_reset" id="photo_reset">취소</button>
 					</div>
 				</div>
+				
 				<div class="mypage-div4">
+					<p id="font-c"><b>회원정보 수정</b></p>
 					<ul>
-					<li>
-						<p id="font-c"><b>회원정보 수정</b></p>
-					</li>
 					<li>
 						<label for="name">이름</label>
 						<input type="text" value="${member.name}" name="name" id="name" maxlength="10">
