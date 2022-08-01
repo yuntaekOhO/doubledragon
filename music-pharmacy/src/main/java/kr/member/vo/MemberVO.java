@@ -23,7 +23,7 @@ public class MemberVO {
 	private String photo;
 	//member_level 테이블 컬럼
 	private int mem_level;
-	private int mem_point;
+	private int point;
 	private String icon;
 	
 	public boolean isCheckedPassword(String userPasswd) {
@@ -136,11 +136,11 @@ public class MemberVO {
 	public void setMem_level(int mem_level) {
 		this.mem_level = mem_level;
 	}
-	public int getMem_point() {
-		return mem_point;
+	public int getPoint() {
+		return point;
 	}
-	public void setMem_point(int mem_point) {
-		this.mem_point = mem_point;
+	public void setPoint(int point) {
+		this.point = point;
 	}
 	public String getIcon() {
 		return icon;

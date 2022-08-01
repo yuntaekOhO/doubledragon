@@ -10,6 +10,7 @@ import kr.board.vo.BoardFavVO;
 import kr.board.vo.ThemeBoardReVO;
 import kr.board.vo.ThemeBoardVO;
 import kr.music.vo.MusicVO;
+import kr.member.vo.MemberVO;
 import kr.util.DBUtil;
 import kr.util.DurationFromNow;
 import kr.util.StringUtil;
@@ -99,6 +100,33 @@ public class ThemeBoardDAO {
 			DBUtil.executeClose(rs, pstmt, conn);
 		}
 	
+	}
+	
+	// 포인트 증가
+	public void updatePoint(int user_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성 
+			sql = "UPDATE member_detail SET point=point+100 WHERE mem_num=?";
+			
+			//JDBC 수행 3단계 : PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setInt(1, user_num);
+			//JDBC 수행 4단계
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt, conn);
+		}
 	}
 	
 	//총 레코드 수(검색 레코드 수)

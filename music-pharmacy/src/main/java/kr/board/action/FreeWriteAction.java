@@ -9,6 +9,8 @@ import com.oreilly.servlet.MultipartRequest;
 import kr.board.dao.FreeBoardDAO;
 import kr.board.vo.FreeBoardVO;
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 import kr.util.FileUtil;
 
 public class FreeWriteAction implements Action{
@@ -25,6 +27,10 @@ public class FreeWriteAction implements Action{
 		
 		//로그인이 된 경우
 		MultipartRequest multi = FileUtil.createFile(request);
+		
+		MemberDAO memberDAO = MemberDAO.getInstance();
+		MemberVO member = memberDAO.getMember(user_num);
+		
 		FreeBoardVO board = new FreeBoardVO();
 		board.setFree_title(multi.getParameter("free_title"));
 		board.setFree_content(multi.getParameter("free_content"));
@@ -32,8 +38,11 @@ public class FreeWriteAction implements Action{
 		board.setFree_code(Integer.parseInt(multi.getParameter("free_code")));
 		board.setMem_num(user_num);
 		
+		member.setMem_num(user_num);
+		
 		FreeBoardDAO dao = FreeBoardDAO.getInstance();
 		dao.insertBoard(board);
+		dao.updatePoint(user_num);
 		
 		return "/WEB-INF/views/board/freeWrite.jsp";
 	}

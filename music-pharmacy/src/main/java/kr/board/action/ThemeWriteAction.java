@@ -64,8 +64,11 @@ public class ThemeWriteAction implements Action {
 		music.setMus_composer(multi.getParameter("mus_composer"));
 		music.setMus_songwriter(multi.getParameter("mus_songwriter"));
 		
+		member.setMem_num(user_num);
+		
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
 		dao.insertBoard(board, music);
+		dao.updatePoint(user_num);
 		
 		return "/WEB-INF/views/board/themeWrite.jsp";
 	}
