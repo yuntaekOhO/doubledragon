@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.board.dao.ThemeBoardDAO;
 import kr.board.vo.ThemeBoardVO;
+import kr.music.vo.MusicVO;
 import kr.controller.Action;
 import kr.util.FileUtil;
 
@@ -25,6 +26,7 @@ public class ThemeDeleteAction implements Action {
 				        request.getParameter("the_num"));
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
 		ThemeBoardVO db_board = dao.getBoard(the_num);
+		MusicVO music = dao.getMusic(the_num);
 		if(user_num != db_board.getMem_num()) {
 			//로그인한 회원번호와 작성자 회원번호가 불일치
 			return "/WEB-INF/views/common/noticeList.jsp";
@@ -34,7 +36,7 @@ public class ThemeDeleteAction implements Action {
 		dao.deleteBoard(the_num);
 		//파일 삭제
 		FileUtil.removeFile(request, db_board.getThe_img());
-		
+		FileUtil.removeFile(request, music.getMus_img());
 		return "redirect:/board/themeBoard.do";
 	}
 
