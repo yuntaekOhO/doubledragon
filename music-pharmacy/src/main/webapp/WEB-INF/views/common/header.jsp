@@ -108,8 +108,8 @@
 				<!-- 메뉴바 우측 검색창 -->
 				<li class="other-li floating-right">
 					<div class="search">
-						<form>
-							<input type="button" value="O" id=""><input type="text" name="" id="">
+						<form id="search_form" action="mainSearch.do" method="get">
+							<input type="submit" value="검색" id="searchbtn"><input style="width:80%" type="search" name="keyword" id="keyword" value="${param.keyword}">
 						</form>
 					</div>
 				</li>
