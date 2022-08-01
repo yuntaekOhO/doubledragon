@@ -13,7 +13,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/noticeList.js"></script>
 </head>
 <body>
-
+   
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div id="content">
 	
