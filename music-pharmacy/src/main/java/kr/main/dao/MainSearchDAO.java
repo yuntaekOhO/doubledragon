@@ -148,6 +148,9 @@ public class MainSearchDAO {
 							result = new MainVO();
 							result.setFree_num(rs.getInt("free_num"));
 							list.add(result);
+							if(result!=null) {
+								System.out.println("자유 조회");
+							}
 						}
 					}else if(i==1) {
 						pstmt1 = conn.prepareStatement(sql);
@@ -157,6 +160,9 @@ public class MainSearchDAO {
 							result = new MainVO();
 							result.setThe_num(rs.getInt("the_num"));
 							list.add(result);
+							if(result!=null) {
+								System.out.println("테마 조회");
+							}
 						}
 					}else if(i==2) {
 						pstmt2 = conn.prepareStatement(sql);
@@ -166,6 +172,9 @@ public class MainSearchDAO {
 							result = new MainVO();
 							result.setMus_num(rs.getInt("mus_num"));
 							list.add(result);
+							if(result!=null) {
+								System.out.println("음악 조회");
+							}
 						}
 					}else if(i==3) {
 						pstmt3 = conn.prepareStatement(sql);
@@ -175,6 +184,9 @@ public class MainSearchDAO {
 							result = new MainVO();
 							result.setInq_num(rs.getInt("inq_num"));
 							list.add(result);
+							if(result!=null) {
+								System.out.println("질답 조회");
+							}
 						}
 					}else if(i==4) {
 						pstmt4 = conn.prepareStatement(sql);
@@ -184,16 +196,24 @@ public class MainSearchDAO {
 							result = new MainVO();
 							result.setNot_num(rs.getInt("not_num"));
 							list.add(result);
+							if(result!=null) {
+								System.out.println("공지 조회");
+							}
 						}
 					}
 					
 				}//end of for
 			}//end of if keyword
-			
+			conn.commit();
 		}catch(Exception e) {
+			conn.rollback();
 			throw new Exception(e);
 		}finally {
-			DBUtil.executeClose(rs, pstmt4, conn);
+			DBUtil.executeClose(null, pstmt4, null);
+			DBUtil.executeClose(null, pstmt3, null);
+			DBUtil.executeClose(null, pstmt2, null);
+			DBUtil.executeClose(null, pstmt1, null);
+			DBUtil.executeClose(rs, pstmt0, conn);
 		}
 		
 		return list;

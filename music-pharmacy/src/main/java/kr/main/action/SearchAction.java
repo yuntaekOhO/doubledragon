@@ -39,12 +39,12 @@ public class SearchAction implements Action {
 		MainSearchDAO dao = MainSearchDAO.getInstance();
 		int count = dao.getSearchCount(keyword);
 		
-		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,10,10,"searchList.do");
+		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,10,10,"/main/searchList.do");
 		
 		List<MainVO> list = null;
 		if(count>0) {
 			list = dao.getSearchList(page.getStartRow(), page.getEndRow(), keyword);
-		}
+		
 		
 		FreeBoardDAO fDao = FreeBoardDAO.getInstance();
 		FreeBoardVO fBoard = null;
@@ -57,10 +57,10 @@ public class SearchAction implements Action {
 		NoticeBoardVO nBoard = null;
 		
 		List<FreeBoardVO> flist = new ArrayList<FreeBoardVO>();
-		List<ThemeBoardVO> tlist = new ArrayList<ThemeBoardVO>();;
-		List<MusicVO> mlist = new ArrayList<MusicVO>();;
-		List<NoticeBoardVO> nlist = new ArrayList<NoticeBoardVO>();;
-		List<InquiryBoardVO> ilist = new ArrayList<InquiryBoardVO>();;
+		List<ThemeBoardVO> tlist = new ArrayList<ThemeBoardVO>();
+		List<MusicVO> mlist = new ArrayList<MusicVO>();
+		List<NoticeBoardVO> nlist = new ArrayList<NoticeBoardVO>();
+		List<InquiryBoardVO> ilist = new ArrayList<InquiryBoardVO>();
 		
 		for(MainVO num : list) {
 			if(num.getFree_num()!=0) {
@@ -90,9 +90,9 @@ public class SearchAction implements Action {
 		request.setAttribute("mlist", mlist);
 		request.setAttribute("ilist", ilist);
 		request.setAttribute("nlist", nlist);
-		
-		request.setAttribute("count", count);
 		request.setAttribute("list", list);
+		}
+		request.setAttribute("count", count);
 		request.setAttribute("page", page.getPage());
 		
 		return "/WEB-INF/views/main/searchList.jsp";

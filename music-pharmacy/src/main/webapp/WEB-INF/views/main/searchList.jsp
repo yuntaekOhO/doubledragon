@@ -62,7 +62,7 @@
 					</c:if>
 				</td>
 				<td class="free_theme" rowspan="" width="15%" style="border-bottom:1px solid #423207;">
-					<c:if test = "${board.free_num>0}">
+					<c:if test="${board.free_num>0}">
 					<c:if test="${flist[status.index].free_code==1}">
 					자유
 					</c:if>
@@ -71,7 +71,7 @@
 					</c:if>
 					</c:if>
 					
-					<c:if test = "${board.the_num>0}">
+					<c:if test="${board.the_num>0}">
 					<c:if test="${tlist[status.index].the_code==1}">
 					희
 					</c:if>
