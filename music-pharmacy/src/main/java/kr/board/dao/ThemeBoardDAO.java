@@ -206,10 +206,12 @@ public class ThemeBoardDAO {
 			}
 			
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum "
-					+ "FROM (SELECT * FROM theme_board b JOIN member m "
+					+ "FROM (SELECT * FROM theme_board b "
+					+" JOIN music m USING(the_num) "
+					+ "JOIN member m "
 					+ "USING (mem_num) JOIN member_detail d "
 					+ "USING (mem_num) "+ sub_sql
-					+ " ORDER BY b.the_num DESC)a) "
+					+ " ORDER BY the_num DESC)a) "
 					+ "WHERE rnum >= ? AND rnum <= ?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -233,6 +235,9 @@ public class ThemeBoardDAO {
 				board.setNick(rs.getString("nick"));
 				board.setPhoto(rs.getString("photo"));
 				board.setThe_code(rs.getInt("the_code"));
+				board.setMus_title(rs.getString("mus_title"));
+				board.setMus_img(rs.getString("mus_img"));
+				board.setMus_singer(rs.getString("mus_singer"));
 				
 				list.add(board);
 			}
@@ -275,7 +280,7 @@ public class ThemeBoardDAO {
 						+ "WHERE rnum >= ? AND rnum <= ?";
 				
 				pstmt = conn.prepareStatement(sql);
-				
+				  
 				pstmt.setInt(++cnt, code);
 				if(keyword!=null && !"".equals(keyword)) {
 					pstmt.setString(++cnt, "%"+keyword+"%");
@@ -306,7 +311,7 @@ public class ThemeBoardDAO {
 				DBUtil.executeClose(rs, pstmt, conn);
 			}
 			return list;
-		}
+		}  
 	
 // 글 상세
 	public ThemeBoardVO getBoard(int the_num) throws Exception{

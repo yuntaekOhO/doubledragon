@@ -19,6 +19,8 @@
 
 <div class="page">
  	<a href="${pageContext.request.contextPath}/board/themeBoard.do">동의보감</a>
+ 	<p>음악추천게시판</p>
+ 	<p style="float:left;">총 ${count}건</p>
  	<div>
  	<!-- 검색 -->
 	<div class="search-bar">
@@ -66,7 +68,7 @@
 		</tr>
 		<tr>
 			<td align="left" width="70%" style="border-bottom:1px solid #423207;">${board.the_content}</td>
-			<td align="left" width="15%" style="border-bottom:1px solid #423207;">${board.nick} 님 작성</td>
+			<td align="right" width="15%" style="border-bottom:1px solid #423207;">${board.nick} 님 작성</td>
 			
 		</tr>
 		</c:forEach>

@@ -20,7 +20,9 @@ public class ThemeBoardVO {
 	private String id;//회원 아이디
 	private String nick;
 	private String photo;//회원 프로필 사진
-	
+	private String mus_title; 
+	private String mus_img;
+	private String mus_singer;
 	
 	public int getThe_num() {
 		return the_num;
@@ -118,7 +120,23 @@ public class ThemeBoardVO {
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
-
-	
+	public String getMus_title() {
+		return mus_title;
+	}
+	public void setMus_title(String mus_title) {
+		this.mus_title = mus_title;
+	}
+	public String getMus_img() {
+		return mus_img;
+	}
+	public void setMus_img(String mus_img) {
+		this.mus_img = mus_img;
+	}
+	public String getMus_singer() {
+		return mus_singer;
+	}
+	public void setMus_singer(String mus_singer) {
+		this.mus_singer = mus_singer;
+	}
 	
 }

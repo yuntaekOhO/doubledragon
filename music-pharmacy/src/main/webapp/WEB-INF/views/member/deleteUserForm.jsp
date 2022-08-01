@@ -40,12 +40,12 @@
 					<input type="password" name="cpasswd" id="cpasswd" maxlength="12">
 					<span id="message_id"></span>
 				</li>
-			</ul>
+			</ul>	
+		</form>
 			<div class="btn_align">
 				<button class="prev_btn" onclick="location.href='myPageDetail.do'">취소</button>
 				<button class="prev_btn" type="submit" value="회원탈퇴">회원탈퇴</button>
 			</div>
-		</form>
 	</div>
 	</div>
 </div>
