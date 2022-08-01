@@ -25,7 +25,17 @@ public class RegisterUserAction implements Action{
 		member.setZipcode(request.getParameter("zipcode"));
 		member.setAddr1(request.getParameter("addr1"));
 		member.setAddr2(request.getParameter("addr2"));
-		member.setMusic(request.getParameter("music"));
+		
+		String[] musicArr = request.getParameterValues("music");
+		String output = "";
+		for(int i=0;i<musicArr.length;i++) {
+			if(i < musicArr.length-1) {
+				output += musicArr[i]+",";
+			}else {
+				output += musicArr[i];
+			}
+		}
+		member.setMusic(output);
 		member.setRoute(request.getParameter("route"));
 		member.setBirthday(request.getParameter("birthday"));
 		
