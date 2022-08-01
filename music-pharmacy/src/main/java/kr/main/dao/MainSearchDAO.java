@@ -31,7 +31,7 @@ public class MainSearchDAO {
 			"not_title || not_content"};
 	
 	//레코드 수
-	public int getSearchCount(String keyfield, String keyword)throws Exception{
+	public int getSearchCount(String keyword)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt0 = null;
 		PreparedStatement pstmt1 = null;
@@ -109,7 +109,7 @@ public class MainSearchDAO {
 	}
 	
 	//통합검색 목록
-	public List<MainVO> getSearchList(int start, int end, String keyfield, String keyword)throws Exception{
+	public List<MainVO> getSearchList(int start, int end, String keyword)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt0 = null;
 		PreparedStatement pstmt1 = null;
