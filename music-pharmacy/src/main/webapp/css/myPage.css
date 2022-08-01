@@ -183,8 +183,6 @@ input[type=file]::file-selector-button:hover {
 	text-align:center;
 }
 
-
-
 .mypage-div4 ul li{
 	font-size:15px;
 }
@@ -205,6 +203,43 @@ input[type=file]::file-selector-button:hover {
 	font-size:20px;
 	vertical-align:middle;
 }
+#font-d{
+	color:#6e4e39;
+	font-size:18px;
+}
 ul li{
 	margin-top:10px;
+}
+.levelInformation_table{
+	width:76%;
+	
+	border-collapse:collapse;
+	margin-top:20px;
+	
+}
+table td{
+	border:1px solid #e8e8e8;
+	padding:5px;
+	text-align: center;
+}
+table th{
+	border:1px solid #fff;
+	padding:5px;
+	text-align: center;
+	background-color:#e1d5bf;
+}
+.margin{
+	margin-left:300px;
+	margin-top:100px;
+}
+.align_center{
+	margin-left:110px;
+}
+.banner-img{
+	display:inline-block;
+	margin-top:30px;
+	margin-left:30px;
+	width:150px;
+	height:180px;
+	
 }
