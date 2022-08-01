@@ -559,6 +559,7 @@ public class ThemeBoardDAO {
 			PreparedStatement pstmt = null;
 			PreparedStatement pstmt2 = null;
 			PreparedStatement pstmt3 = null;
+			PreparedStatement pstmt4 = null;
 			String sql = null;
 			
 			try {
@@ -572,13 +573,24 @@ public class ThemeBoardDAO {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, the_num);
 				pstmt.executeUpdate();
-				//댓글 삭제
 				
-				//부모글 삭제
-				sql = "DELETE FROM theme_board WHERE the_num=?";
+				//music 테이블 삭제
+				sql = "DELETE FROM music WHERE the_num=?";
+				pstmt2 = conn.prepareStatement(sql);
+				pstmt2.setInt(1, the_num);
+				pstmt2.executeUpdate();
+				
+				//댓글 삭제
+				sql = "DELETE FROM theme_comment WHERE the_num=?";
 				pstmt3 = conn.prepareStatement(sql);
 				pstmt3.setInt(1, the_num);
 				pstmt3.executeUpdate();
+				
+				//부모글 삭제
+				sql = "DELETE FROM theme_board WHERE the_num=?";
+				pstmt4 = conn.prepareStatement(sql);
+				pstmt4.setInt(1, the_num);
+				pstmt4.executeUpdate();
 				
 				//예외 발생이 없이 정상적으로 SQL문 실행
 				conn.commit();
@@ -588,6 +600,7 @@ public class ThemeBoardDAO {
 				throw new Exception(e);
 			}finally {
 				//자원정리
+				DBUtil.executeClose(null, pstmt4, null);
 				DBUtil.executeClose(null, pstmt3, null);
 				DBUtil.executeClose(null, pstmt2, null);
 				DBUtil.executeClose(null, pstmt, conn);
