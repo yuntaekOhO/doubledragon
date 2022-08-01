@@ -18,7 +18,7 @@
 <button class="prev_btn" onclick="location.href='myPage.do'"> &lt; 마이페이지</button>
 	<div>
 	<h3 id="font-c">비밀번호 수정</h3>
-	<form action="modifyPassword.do" method="post" id="password)form">
+	<form action="modifyPassword.do" method="post" id="password_form">
 		<ul id="font-size">
 			<li>
 				<label for="id">아이디</label>
@@ -38,11 +38,12 @@
 				<span id="message_cpasswd"></span>
 			</li>
 		</ul>
-		<div class="btn_align">
-				<button class="prev_btn" onclick="location.href='myPage.do'">취소</button>
-				<button class="prev_btn" type="submit" value="회원탈퇴">회원탈퇴</button>
-		</div>
+		
 	</form>
+	<div class="btn_align">
+				<button class="prev_btn" onclick="location.href='myPageDetail.do'">취소</button>
+				<button class="prev_btn" type="submit" value="비밀번호수정">비밀번호 수정</button>
+		</div>
 	</div>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

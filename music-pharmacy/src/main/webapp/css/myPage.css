@@ -1,4 +1,7 @@
 @charset "UTF-8";
+h3{
+	 font-size: 46px;
+}
 .total{
 	margin: 30px 220px;
 }
@@ -180,8 +183,10 @@ input[type=file]::file-selector-button:hover {
 	text-align:center;
 }
 
-ul li #font-size{
-	font-size:20px;
+
+
+.mypage-div4 ul li{
+	font-size:15px;
 }
 #font-a{
 	color:black;
