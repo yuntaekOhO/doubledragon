@@ -37,19 +37,58 @@
 					<label for="the_title"></label>
 					<input type="text" name="the_title" id="the_title" value="${board.the_title}" maxlength="50">
 				</li>
-				<br>
+
 				
 				<li>
 					<label for="mus_img">앨범 이미지</label>
+					<input type="file" name="mus_img" 
+					 id="mus_img" 
+					 accept="image/gif,image/png,image/jpeg,image/jpg">
 					<c:if test="${empty music.mus_img}">
 					<img src="${pageContext.request.contextPath}/images/face.png" width="200" height="200" class="my-photo">
 					</c:if>
 					<c:if test="${!empty music.mus_img}">
 					<img src="${pageContext.request.contextPath}/upload/${music.mus_img}" width="200" height="200" class="my-photo">
+					<br>
+					<span id="file_detail">
+						(${music.mus_img})파일이 등록되어 있습니다.
+						다시 파일을 업로드하면 기존 파일은 삭제됩니다.
+						<input type="button" class="correction_btn" value="파일삭제" id="file_del"><%--ajax--%>
+					</span>
+					<script type="text/javascript">
+					$(function(){
+						//이벤트 연결
+						$('#file_del').click(function(){
+							let choice = confirm('삭제하시겠습니까?');
+							if(choice){
+								$.ajax({
+									url:'themeDeleteFile.do',
+									type:'post',
+									data:{the_num:${board.the_num}},
+									dataType:'json',
+									cache:false,
+									timeout:30000,
+									success:function(param){
+										if(param.result=='logout'){
+											alert('로그인 후 사용하세요');
+										}else if(param.result=='success'){
+											$('#file_detail').hide();
+										}else if(param.result=='wrongAccess'){
+											alert('잘못된 접속입니다');
+										}else{
+											alert('파일 삭제 오류 발생');
+										}
+									},
+									error:function(){
+										alert('네트워크 오류 발생');
+									}
+								});
+							}
+						});
+					});
+					</script>
 					</c:if>
-					<input type="file" name="mus_img" 
-					 id="mus_img" 
-					 accept="image/gif,image/png,image/jpeg,image/jpg">
+					
 				</li>
 				<li>
 					<label for="mus_title">곡 제목</label>

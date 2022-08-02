@@ -557,8 +557,8 @@ public class ThemeBoardDAO {
 					sub_sql = ",mus_img=?";
 				}
 				
-				sql = "UPDATE music SET mus_album=?,mus_singer=?,mus_title=?,mus_genre=?,"
-						+ sub_sql + "mus_composer=?,mus_songwriter=? WHERE the_num=?";
+				sql = "UPDATE music SET mus_album=?,mus_singer=?,mus_title=?,mus_genre=?"
+						+ sub_sql + ",mus_composer=?,mus_songwriter=? WHERE the_num=?";
 						
 				pstmt2 = conn.prepareStatement(sql);
 				pstmt2.setString(++cnt1, music.getMus_album());
@@ -640,6 +640,30 @@ public class ThemeBoardDAO {
 			}
 		}
 
+		//이미지 삭제
+		public void deleteImg(int the_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			PreparedStatement pstmt1 = null;
+			String sql = null;
+			
+			try {
+				conn = DBUtil.getConnection();
+				
+				sql = "UPDATE music set mus_img='' WHERE the_num=?";
+				pstmt1 = conn.prepareStatement(sql);
+				
+				pstmt1.setInt(1, the_num);
+				pstmt1.executeUpdate();
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt1, null);
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+		}
+		
 		// 좋아요 등록 
 		public void insertFav(int the_num, int mem_num) throws Exception{
 			Connection conn = null;
