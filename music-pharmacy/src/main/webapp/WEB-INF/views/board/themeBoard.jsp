@@ -74,7 +74,7 @@
 			<td align="right" width="15%">view : ${board.the_hits}</td>
 		</tr>
 		<tr>
-			<td align="left" width="70%" style="border-bottom:1px solid #423207;">${board.the_content}</td>
+			<td align="left" width="70%" style="border-bottom:1px solid #423207;">${board.mus_title}, ${board.mus_singer}</td>
 			<td align="right" width="15%" style="border-bottom:1px solid #423207;">${board.nick} 님 작성</td>
 			
 		</tr>
