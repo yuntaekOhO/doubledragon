@@ -136,11 +136,12 @@
 					<textarea rows="30" cols="185" name="the_content"
 					     id="the_content">${board.the_content}</textarea>
 				</li>
+				<!--
 				<li>
 					<label for="the_img"></label>
 					<input type="file" name="the_img" id="the_img" accept="image/gif,image/png,image/jpeg" value="${board.the_img}">
 				</li>
-			<!-- 	<li>
+			 	<li>
 					<label for="the_video">관련 영상</label>
 					<input type="file" name="the_video" 
 					 id="the_video" 
