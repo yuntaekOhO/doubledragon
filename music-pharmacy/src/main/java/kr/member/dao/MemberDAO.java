@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.board.vo.FreeBoardVO;
+import kr.board.vo.ThemeBoardVO;
+import kr.main.vo.MainVO;
+import kr.member.vo.MemberPointVO;
 import kr.member.vo.MemberVO;
 import kr.util.DBUtil;
 
@@ -145,6 +149,7 @@ public class MemberDAO {
 				member.setAddr2(rs.getString("addr2"));
 				member.setPhoto(rs.getString("photo"));
 				member.setMusic(rs.getString("music"));
+				member.setPoint(rs.getInt("point"));
 				member.setRoute(rs.getString("route"));
 				member.setBirthday(rs.getString("birthday"));
 				member.setReg_date(rs.getDate("reg_date"));
@@ -391,5 +396,35 @@ public class MemberDAO {
 			DBUtil.executeClose(null, pstmt, conn);
 		}
 	}
+	
+	//회원번호로 글 조회하기
+	public List<MemberPointVO> getdateByMemNum(int mem_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<MemberPointVO> list = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "SELECT * FROM (SELECT free_date board_date, mem_num FROM free_board union all select the_date, mem_num FROM theme_board) WHERE mem_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mem_num);
+			rs = pstmt.executeQuery();
+			list = new ArrayList<>();
+			while(rs.next()) {
+				MemberPointVO point = new MemberPointVO();
+				point.setBoard_date(rs.getDate("board_date"));
+				point.setMem_num(rs.getInt("mem_num"));
+				list.add(point);
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
 	
 }
