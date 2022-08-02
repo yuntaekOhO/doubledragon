@@ -31,7 +31,7 @@
 				<b>노(怒)</b><br> #짜증 #스트레스해소 #우울
 				</c:if>
 				<c:if test = "${board.the_code==3}">
-				<b>에(哀)</b><br> #짝사랑 #썸 #연애
+				<b>애(哀)</b><br> #짝사랑 #썸 #연애
 				</c:if>
 				<c:if test = "${board.the_code==4}">
 				<b>락(樂)</b><br> #운동 #락앤롤
