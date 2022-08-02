@@ -26,13 +26,14 @@ public class FreeDeleteAction implements Action{
 				        request.getParameter("free_num"));
 		FreeBoardDAO dao = FreeBoardDAO.getInstance();
 		FreeBoardVO db_board = dao.getBoard(free_num);
-		if(user_num != db_board.getMem_num()) {
-			//로그인한 회원번호와 작성자 회원번호가 불일치
+		if(user_auth==3) {
+			dao.deleteBoard(db_board.getFree_num());
+			System.out.println("글 삭제 완료");
+			return "redirect:/board/freeBoard.do";
+		}else if(user_num != db_board.getMem_num()) {
 			return "/WEB-INF/views/common/notice.jsp";
 		}
-		if(user_num!=null && user_auth==3) {
-			return "redirect:/board/freeBoard.do";
-		}
+	
 		
 		//로그인한 회원번호와 작성자 회원번호가 일치
 		dao.deleteBoard(free_num);

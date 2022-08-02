@@ -347,7 +347,17 @@ public class FreeBoardDAO {
 			//오토커밋 해제
 			conn.setAutoCommit(false);
 			
+			//좋아요 삭제
+			sql = "DELETE FROM board_fav WHERE free_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, free_num);
+			pstmt.executeUpdate();
+			
 			//댓글 삭제
+			sql = "DELETE FROM free_comment WHERE free_num=?";
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setInt(1, free_num);
+			pstmt2.executeUpdate();
 			
 			//부모글 삭제
 			sql = "DELETE FROM free_board WHERE free_num=?";
