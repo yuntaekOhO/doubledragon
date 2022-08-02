@@ -54,7 +54,7 @@ public class MyWritedListAction implements Action {
 		
 		//회원 id로 저잣거리,동의보감 게시글 검색해서 나온 결과를 list에 담음
 		if(freeCnt>0) {
-			flist = fDAO.getListBoard(fpage.getStartRow(), fpage.getEndRow(), fkeyfield, keyword);
+			flist = fDAO.getListFreeBoard(fpage.getStartRow(), fpage.getEndRow(), fkeyfield, keyword);
 		}
 		if(theCnt>0) {
 			tlist = tDAO.getListBoard(tpage.getStartRow(), tpage.getEndRow(), tkeyfield, keyword);
