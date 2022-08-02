@@ -38,7 +38,7 @@
       <!-- 로그인되어있으면 글쓰기가보임, 나중에 관리자 로그인시에만으로 바꿔야함 -->
  	    <div class="align-right">
  		   <c:if test="${!empty user_num}">
-			<input type="button" value="글쓰기" 
+			<input type="button" class="correction_btn" value="글쓰기" 
 			   onclick="location.href='freeWriteForm.do'">
 			</c:if>  
 		</div>

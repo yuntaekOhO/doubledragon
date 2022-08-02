@@ -35,7 +35,7 @@
 	<%-- 관리자 전용 글작성 버튼 --%>
 	<div class="align-right">
 	<c:if test="${!empty user_num && user_auth==3}">
-		<input type="button" value="글쓰기" onclick="location.href='writeInqForm.do'">
+		<input type="button" class="correction_btn" value="글쓰기" onclick="location.href='writeInqForm.do'">
 	</c:if>
 	</div>
 	<div>

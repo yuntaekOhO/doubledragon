@@ -110,8 +110,8 @@
 				
 			</ul>
 			<div class="align-right">
-				<input type="submit" value="수정">
-				<input type="button" value="목록" 
+				<input type="submit" class="correction_btn" value="수정">
+				<input type="button" class="correction_btn" value="목록" 
 				             onclick="location.href='themeBoard.do'">
 			</div>
 		</form>

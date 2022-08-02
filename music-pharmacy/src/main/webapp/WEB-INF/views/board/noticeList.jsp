@@ -46,7 +46,7 @@
  	<!-- 관리자만 글쓰기 가능 , 글쓰기버튼ㅇ ㅐㅗㅇㄹ냐-->
  	<div class="align-right">
  		<c:if test="${!empty user_num && user_auth==3}">
-		<input type="button" value="글쓰기" onclick="location.href='noticeWriteForm.do'">
+		<input type="button" class="correction_btn" value="글쓰기" onclick="location.href='noticeWriteForm.do'">
  		</c:if>
  	</div>
  	

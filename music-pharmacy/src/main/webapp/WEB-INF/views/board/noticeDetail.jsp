@@ -39,9 +39,9 @@
 			<div class="align-right">
 				<%-- 로그인한 회원번호와 작성자 회원번호가 일치해야 수정,삭제 가능 --%>
 					<c:if test="${user_num == board.mem_num}"> <!-- 관리자만 글 쓸수있으니깐 관리자만 수정삭제버튼 보여요 -->
-					<input type="button" value="수정" 
+					<input type="button" class="correction_btn" value="수정" 
 					 onclick="location.href='noticeUpdateForm.do?not_num=${board.not_num}'">
-					<input type="button" value="삭제" id="delete_btn">
+					<input type="button" class="correction_btn" value="삭제" id="delete_btn">
 					<script type="text/javascript">
 						let delete_btn = document.getElementById('delete_btn');
 						//이벤트 연결

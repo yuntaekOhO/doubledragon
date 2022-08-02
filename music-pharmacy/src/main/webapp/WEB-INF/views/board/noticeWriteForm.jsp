@@ -31,8 +31,8 @@
 		</li>
 	</ul>
 	<div class="align-right">
-			<input type="submit" value="등록">
-			<input type="button" value="취소" onclick="location.href='noticeList.do'">
+			<input type="submit" class="correction_btn" value="등록">
+			<input type="button" class="correction_btn" value="취소" onclick="location.href='noticeList.do'">
 	</div>	
 	</form>
 	<div>

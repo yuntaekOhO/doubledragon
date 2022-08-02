@@ -79,12 +79,12 @@
 			${page}
 	</div>
 	</c:if>
-	<input type="button" value="글쓰기"
+	<input type="button" class="correction_btn" value="글쓰기"
 			   onclick="location.href='themeWriteForm.do'">
 
 </div>
 <div class="list-space align-right">  
-			<input type="button" value="홈으로"
+			<input type="button" class="correction_btn" value="홈으로"
 			 onclick="location.href='${pageContext.request.contextPath}/main/main.do'">         
 </div>
 

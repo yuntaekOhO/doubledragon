@@ -267,4 +267,26 @@ footer{
 	background:#d4c09f;
 	color:#fff;
 }
+/*버튼*/
+.correction{
+  background:#9e8d71;
+  color:#fff;
+  display: inline-block;
+  margin-top:320px;
+  margin-left:-50px;
+}
+.correction_btn{
+  background:#ae9d92;
+  color:#fff;
+  border: 0;
+  outline: 0;
+  display: inline-block;
+}
+.correction2_btn{
+  background:#e1d5bf;
+  color:#fff;
+  border: 0;
+  outline: 0;
+  display: inline-block;
+}
 /*커밋용*/

@@ -29,7 +29,7 @@
 					<span id="file_detail">
 						(${board.inq_img})파일이 등록되어 있습니다.
 						다시 파일을 업로드하면 기존 파일은 삭제됩니다.
-						<input type="button" value="파일삭제" id="file_del"><%--ajax--%>
+						<input type="button" class="correction_btn" value="파일삭제" id="file_del"><%--ajax--%>
 					</span>
 					<script type="text/javascript">
 					$(function(){
@@ -71,8 +71,8 @@
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="수정">
-			<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/board/inquiryBoard.do'">
+			<input type="submit" class="correction_btn" value="수정">
+			<input type="button" class="correction_btn" value="목록" onclick="location.href='${pageContext.request.contextPath}/board/inquiryBoard.do'">
 		</div>
 	</form>
 </div>

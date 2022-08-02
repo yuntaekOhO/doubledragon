@@ -48,9 +48,9 @@
 			    
 			</ul>
 			<div class="align-right">
-				<input type="button" value="취소" 
+				<input type="button" class="correction_btn" value="취소" 
 				             onclick="location.href='freeBoard.do'">
-				<input type="submit" value="등록">
+				<input type="submit" class="correction_btn" value="등록">
 			</div>
 		</form>
 	</div>

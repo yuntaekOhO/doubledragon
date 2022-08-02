@@ -34,8 +34,8 @@
 			</div>
 
 		<div class="align-center" style="margin-top:50px;">
-			<input type="submit" value="글쓰기">
-			<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/board/inquiryBoard.do'">
+			<input type="submit" class="correction2_btn" value="글쓰기">
+			<input type="button" class="correction2_btn" value="목록" onclick="location.href='${pageContext.request.contextPath}/board/inquiryBoard.do'">
 		</div>
 		
 	</form>

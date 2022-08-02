@@ -18,7 +18,7 @@
 	<div id="content">
 	
 		<div class="best-boyak">
-				<span>BEST보약</span>
+				<span>최신 보약</span>
 		</div>
 		
 		<div style="float:left;width:50%;">
