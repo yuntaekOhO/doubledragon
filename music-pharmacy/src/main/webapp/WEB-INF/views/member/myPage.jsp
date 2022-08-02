@@ -42,7 +42,16 @@
 				</div>
 				
 				<div class="mypoint-div">
-					<p id="font"> <b>My Level</b></p> <p id="font">${member.mem_level}</p>
+					<p id="font"> <b>My Level</b></p> 
+						<c:if test="${member.mem_level == 0}">
+						<p id="font">평민</p>
+						</c:if>
+						<c:if test="${member.mem_level == 1}">
+						<p id="font"> 양반 </p>
+						</c:if>
+						<c:if test="${member.mem_level == 2}">
+						<p id="font">왕</p>
+						</c:if>
 				</div>
 			</div><br><br>
 			
@@ -61,7 +70,7 @@
 				
 				<div class="mypage-information float">
 				<br>
-					<a id="font-a">My point</a>
+					<a href="${pageContext.request.contextPath}/member/myPoint.do" id="font-a">My point</a>
 					<p>환자분의 포인트 적립/차감 <br> 내역을 확인할 수 있는 공간입니다.</p>
 				</div>
 				</div>

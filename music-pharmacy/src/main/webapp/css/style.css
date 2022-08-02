@@ -251,10 +251,12 @@ footer a{
 }
 #logo{
 	margin-left:50px;
+	margin-top:20px;
 	padding:0px 0px 10px 0px;
 	float:left;
 }
 #category{
+	margin-top:20px;
 	float:right;
 	margin-right:50px;
 }
