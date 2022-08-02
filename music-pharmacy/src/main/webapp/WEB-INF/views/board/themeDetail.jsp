@@ -49,9 +49,9 @@
 			<div class="align-right">
 			<%-- 로그인한 회원번호와 작성자 회원번호가 일치해야 수정,삭제 가능 --%>
 				<c:if test="${user_num == board.mem_num}">
-				<input type="button" value="수정" 
+				<input type="button" class="correction2_btn" value="수정" 
 				 onclick="location.href='themeUpdateForm.do?the_num=${board.the_num}'">
-				<input type="button" value="삭제" id="delete_btn">
+				<input type="button" class="correction2_btn" value="삭제" id="delete_btn">
 				<script type="text/javascript">
 					let delete_btn = document.getElementById('delete_btn');
 					//이벤트 연결
@@ -66,7 +66,7 @@
 				
 				<!-- 관리자 로그인시 삭제 가능  -->
 				<c:if test="${!empty user_num && user_auth==3}">
-				<input type="button" value="삭제" id="delete_btn">
+				<input type="button" value="삭제" class="correction2_btn" id="delete_btn">
 				<script type="text/javascript"> 
 					let delete_btn = document.getElementById('delete_btn');
 					//이벤트 연결
@@ -141,7 +141,7 @@
 					<span class="letter-count">300/300</span>
 				</div>
 				<div id="re_second" class="align-right">
-					<input type="submit" value="등록">
+					<input type="submit" class="correction_btn" value="등록">
 				</div>
 				</c:if>
 			</form>
