@@ -1,24 +1,14 @@
 package kr.main.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.board.dao.FreeBoardDAO;
-import kr.board.dao.InquiryBoardDAO;
-import kr.board.dao.NoticeBoardDAO;
-import kr.board.dao.ThemeBoardDAO;
-import kr.board.vo.FreeBoardVO;
-import kr.board.vo.InquiryBoardVO;
-import kr.board.vo.NoticeBoardVO;
-import kr.board.vo.ThemeBoardVO;
 import kr.controller.Action;
 import kr.main.dao.MainSearchDAO;
 import kr.main.vo.MainVO;
-import kr.music.vo.MusicVO;
 import kr.util.PagingUtil;
 
 public class SearchAction implements Action {
@@ -39,7 +29,7 @@ public class SearchAction implements Action {
 		MainSearchDAO dao = MainSearchDAO.getInstance();
 		int count = dao.getSearchCount(keyword);
 		
-		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,10,10,"/main/searchList.do");
+		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,10,10,"mainSearch.do");
 		
 		List<MainVO> list = null;
 		if(count>0) {
