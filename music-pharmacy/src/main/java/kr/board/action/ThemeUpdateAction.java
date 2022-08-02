@@ -59,7 +59,7 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 		music.setMus_singer(multi.getParameter("mus_singer"));
 		music.setMus_title(multi.getParameter("mus_title"));
 		music.setMus_genre(multi.getParameter("mus_genre"));
-		music.setMus_img(multi.getParameter(filename2));
+		music.setMus_img(filename2);
 		music.setMus_composer(multi.getParameter("mus_composer"));
 		music.setMus_songwriter(multi.getParameter("mus_songwriter"));
 		music.setThe_num(the_num);

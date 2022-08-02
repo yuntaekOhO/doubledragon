@@ -60,7 +60,7 @@
 				</c:if><br>
 				<!-- 관리자 로그인시 삭제 가능  -->
 				<c:if test="${!empty user_num && user_auth==3}">
-				<input type="button" value="삭제" id="delete_btn">
+				<input type="button" class="correction2_btn" value="삭제" id="delete_btn">
 				<script type="text/javascript">
 					let delete_btn = document.getElementById('delete_btn');
 					//이벤트 연결
