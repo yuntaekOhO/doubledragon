@@ -22,7 +22,7 @@
 		</c:if>
 		<%-- 로그인 된 경우 --%>
 		<c:if test="${!empty user_num}">
-		<li class="menu-logout">
+		<li class="menu-logout" style="list-style:none;">
 			[<span>${user_id}</span>]
 			<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
 		</li>
