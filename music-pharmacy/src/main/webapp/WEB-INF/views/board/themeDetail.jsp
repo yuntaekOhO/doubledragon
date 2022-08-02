@@ -25,16 +25,16 @@
 		<ul class="detail-info">
 			<li>
 				<c:if test = "${board.the_code==1}">
-				희>
+				<b>희(喜)</b><br> #기쁨 #희망 #신남
 				</c:if>
 				<c:if test = "${board.the_code==2}">
-				노>
+				<b>노(怒)</b><br> #짜증 #스트레스해소 #우울
 				</c:if>
 				<c:if test = "${board.the_code==3}">
-				애>
+				<b>에(哀)</b><br> #짝사랑 #썸 #연애
 				</c:if>
 				<c:if test = "${board.the_code==4}">
-				락>
+				<b>락(樂)</b><br> #운동 #락앤롤
 				</c:if>
 				<h4>${board.the_title}</h4> 
 				<c:if test="${!empty board.photo}">
@@ -115,7 +115,7 @@
 		<br><iframe src="${board.the_url}" width="700px" height="500px"></iframe><br>
 		</c:if>
 		<!-- url 영상 끝 -->
-		
+		<br>
 		<!-- 이미지 + 내용 시작 -->
 		<c:if test="${!empty board.the_img}">
 		<div class="align-center">
@@ -129,7 +129,7 @@
 
 		<!-- 댓글 시작 -->
 		<div id="reply_div">
-			<span class="re-title">댓글</span>
+			<span class="re-title"><h4>댓글</h4></span>
 			<form id="re_form">
 				<input type="hidden" name="the_num" value="${board.the_num}" id="the_num">
 				<textarea style="width:99%;" rows="3" cols="50" name="treply_content" 
