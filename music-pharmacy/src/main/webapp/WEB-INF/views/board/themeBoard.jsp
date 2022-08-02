@@ -36,6 +36,13 @@
 		</form>
 	</div>
 	<!-- 검색 끝 -->
+	   <div class="align-right">
+ 		   <c:if test="${!empty user_num}">
+			<input type="button" class="correction_btn" value="글쓰기"
+			   onclick="location.href='themeWriteForm.do'">
+			 </c:if>  
+		</div>
+			   
  	<c:if test="${count == 0}">
 		<div>
 			표시할 게시물이 없습니다.
@@ -79,13 +86,8 @@
 			${page}
 	</div>
 	</c:if>
-	<input type="button" class="correction_btn" value="글쓰기"
-			   onclick="location.href='themeWriteForm.do'">
 
-</div>
-<div class="list-space align-right">  
-			<input type="button" class="correction_btn" value="홈으로"
-			 onclick="location.href='${pageContext.request.contextPath}/main/main.do'">         
+
 </div>
 
 
