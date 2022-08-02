@@ -80,7 +80,6 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<hr size="1" noshade="noshade" width="100%">
 	
 	<div class="align-center">
 			${page}

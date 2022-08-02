@@ -74,7 +74,6 @@
 			
 			</c:forEach>
 		</table>
-		<hr size="1" noshade="noshade" width="100%">
 		<!-- 게시글 끝 -->
 		<div class="align-center">
 			${page}
