@@ -28,7 +28,7 @@
 			<input type="button" class="correction2_btn" value="수정" onclick="location.href='inquiryUpdateForm.do?inq_num=${board.inq_num}'">
 			<input id="inquiryDelete_btn" class="correction2_btn" type="button" value="삭제">
 		</div>
-		</c:if>
+		</c:if> 
 		<input type="hidden" id="inq_num" value="${board.inq_num}">
 		
 		<!-- 프로필 사진 시작 -->
