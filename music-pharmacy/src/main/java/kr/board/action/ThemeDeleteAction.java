@@ -18,6 +18,7 @@ public class ThemeDeleteAction implements Action {
 		HttpSession session = request.getSession();
 		Integer user_num = 
 				(Integer)session.getAttribute("user_num");
+		Integer user_auth = (Integer)session.getAttribute("user_auth");
 		if(user_num==null) {//로그인이 되지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
@@ -27,9 +28,12 @@ public class ThemeDeleteAction implements Action {
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
 		ThemeBoardVO db_board = dao.getBoard(the_num);
 		MusicVO music = dao.getMusic(the_num);
-		if(user_num != db_board.getMem_num()) {
-			//로그인한 회원번호와 작성자 회원번호가 불일치
-			return "/WEB-INF/views/common/noticeList.jsp";
+		if(user_auth==3) {
+			dao.deleteBoard(db_board.getThe_num());
+			System.out.println("글 삭제 완료");
+			return "redirect:/board/themeBoard.do";
+		}else if(user_num != db_board.getMem_num()) {
+			return "/WEB-INF/views/common/notice.jsp";
 		}
 		
 		//로그인한 회원번호와 작성자 회원번호가 일치

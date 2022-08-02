@@ -63,6 +63,23 @@
 					};
 				</script>
 				</c:if><br>
+				
+				<!-- 관리자 로그인시 삭제 가능  -->
+				<c:if test="${!empty user_num && user_auth==3}">
+				<input type="button" value="삭제" id="delete_btn">
+				<script type="text/javascript">
+					let delete_btn = document.getElementById('delete_btn');
+					//이벤트 연결
+					delete_btn.onclick=function(){
+						let choice = confirm('삭제하시겠습니까?');
+						if(choice){
+							location.replace('themeDelete.do?the_num=${board.the_num}');
+						}
+					};
+				</script>
+				</c:if>
+				
+				
 				<c:if test="${!empty board.the_modify_date}">
 				최근 수정일 : ${board.the_modify_date}<br>
 				</c:if>
