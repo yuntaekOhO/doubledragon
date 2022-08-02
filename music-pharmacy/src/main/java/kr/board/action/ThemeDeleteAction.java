@@ -26,7 +26,7 @@ public class ThemeDeleteAction implements Action {
 		int the_num = Integer.parseInt(
 				        request.getParameter("the_num"));
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
-		ThemeBoardVO db_board = dao.getBoard(the_num);
+		ThemeBoardVO db_board = dao.getBoard(the_num); 
 		MusicVO music = dao.getMusic(the_num);
 		if(user_auth==3) {
 			dao.deleteBoard(db_board.getThe_num());
