@@ -263,6 +263,9 @@ footer a{
 #category a{
 	color:white;
 }
+#footersize{
+	font-size:18px;
+}
 footer{
 	clear:both;
 	height:200px;
