@@ -37,7 +37,7 @@
 			<div class="floating-left">
 				<input type="hidden" id="free_num" value="${reboard.free_num}">
 				${fBoardList[status.index].free_title}
-			</div>
+			</div><br><br>
 			<%-- 댓글 내용 --%>
 			<div style="float:left;position:relative;left:20%;display:inline-block;">
 				<span><a href="${pageContext.request.contextPath}/board/freeDetail.do?free_num=${reboard.free_num}">${reboard.freply_content}</a></span>
@@ -75,7 +75,7 @@
 			<div class="floating-left">
 				<input type="hidden" id="the_num" value="${reboard.the_num}">
 				${tBoardList[status.index].the_title}
-			</div>
+			</div><br><br>
 			<%-- 댓글 내용 --%>
 			<div style="float:left;position:relative;left:20%;display:inline-block;">
 				<span><a href="${pageContext.request.contextPath}/board/themeDetail.do?the_num=${reboard.the_num}">${reboard.treply_content}</a></span>
