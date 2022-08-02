@@ -43,7 +43,7 @@
 	<div class="mini-content-square1">
 	</div>
 	<div class="mini-content-square3">
-		<h5>어명이오</h5>
+		<h3>어명이오</h3>
 		<div></div>
 		<ul>
 		<c:forEach var="notice" items="${notice}">
@@ -55,7 +55,7 @@
 	</div>
 	
 	<div class="mini-content-square2">
-		<h5>저잣거리</h5>
+		<h3>저잣거리</h3>
 		<div></div>
 		<ul>
 		<c:forEach var="free" items="${free}">
