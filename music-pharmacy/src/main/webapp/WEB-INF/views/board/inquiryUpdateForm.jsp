@@ -7,13 +7,17 @@
 <meta charset="UTF-8">
 <title>상소문수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/inquiryBoard.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header2.jsp"/>
-<div class="content-main">
-	<h2>상소문 글수정</h2>
+<div>
+	<div class="page">
+ 	<a href="${pageContext.request.contextPath}/board/inquiryBoard.do">상소문</a>
+ 	<p>자주 묻는 질문</p>
 	<form id="inq_write_form"  action="updateInq.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="inq_num" value="${board.inq_num}">
 		<ul>
@@ -75,6 +79,7 @@
 			<input type="button" class="correction_btn" value="목록" onclick="location.href='${pageContext.request.contextPath}/board/inquiryBoard.do'">
 		</div>
 	</form>
+</div>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>

@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>상소문상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style3.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPage.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/inquiryBoard.js"></script>
@@ -15,6 +17,8 @@
 <jsp:include page="/WEB-INF/views/common/header2.jsp"/>
 <div>
 	<div class="page">
+	 	<a href="${pageContext.request.contextPath}/board/inquiryBoard.do">상소문</a>
+ 	<p>자주 묻는 질문</p>
 		<c:if test="${empty board.inq_modify_date}">
 		<span class="floating-right">작성일 ${board.inq_date}</span><br>
 		</c:if>
