@@ -17,6 +17,7 @@ public class FreeDeleteAction implements Action{
 		HttpSession session = request.getSession();
 		Integer user_num = 
 				(Integer)session.getAttribute("user_num");
+		Integer user_auth = (Integer)session.getAttribute("user_auth");
 		if(user_num==null) {//로그인이 되지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
@@ -28,6 +29,9 @@ public class FreeDeleteAction implements Action{
 		if(user_num != db_board.getMem_num()) {
 			//로그인한 회원번호와 작성자 회원번호가 불일치
 			return "/WEB-INF/views/common/notice.jsp";
+		}
+		if(user_num!=null && user_auth==3) {
+			return "redirect:/board/freeBoard.do";
 		}
 		
 		//로그인한 회원번호와 작성자 회원번호가 일치
