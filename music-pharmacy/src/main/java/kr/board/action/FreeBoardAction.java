@@ -30,7 +30,7 @@ public class FreeBoardAction implements Action {
 		
 		List<FreeBoardVO> list = null;
 		if(count > 0) {
-			list = dao.getListBoard(page.getStartRow(),
+			list = dao.getListFreeBoard(page.getStartRow(),
 					       page.getEndRow(), keyfield, keyword);
 		}
 		
