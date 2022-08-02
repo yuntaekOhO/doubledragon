@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import kr.board.dao.NoticeBoardDAO;
 import kr.board.vo.NoticeBoardVO;
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 import kr.util.StringUtil;
 
 public class NoticeDetailAction implements Action {
@@ -25,6 +27,11 @@ public class NoticeDetailAction implements Action {
 		//HTML을 허용하지 않으면서 줄바꿈 처리
 		board.setNot_content(StringUtil.useBrNoHtml(board.getNot_content()));
 		
+		int mem_num = board.getMem_num();
+		
+		MemberDAO memberDao = MemberDAO.getInstance();
+		MemberVO member = memberDao.getMember(mem_num);
+		
 		int[] arr = null;
 		//이전 글, 다음 글 번호 저장
 		arr = dao.getPreOrNextBoard(not_num);
@@ -40,6 +47,7 @@ public class NoticeDetailAction implements Action {
 		}
 		
 		request.setAttribute("board", board);
+		request.setAttribute("member", member);
 		request.setAttribute("pre_board", preBoard);
 		request.setAttribute("next_board", nextBoard);
 		

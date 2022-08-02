@@ -14,12 +14,12 @@
 <body>
 	<jsp:include page="/WEB-INF/views/common/header2.jsp"/>
 	<div class="page">
- 		<h2><a href="${pageContext.request.contextPath}/member/myWritedList.do">내가 쓴 글</a></h2>
+ 		<h2><a href="${pageContext.request.contextPath}/member/myWritedList.do">내가 쓴 게시물</a></h2>
  	<hr>
  	<br>
  	<div style="width:100%;block-size:fit-content;display:inline-block;">
  	<div style="height:30px;">
- 	<span class="floating-left"><b>저잣거리</b> total - ${freeCnt} 건</span>
+ 	<span class="floating-left"><b>저잣거리</b> total - ${freeCnt} 건&ensp;&ensp;</span>
  	<span class="floating-left"><b>동의보감</b> total - ${theCnt} 건</span>
 	</div>
 	<!-- 저잣거리 -->
@@ -56,7 +56,7 @@
 			<br>
 			<hr width="100%" size="3">
 		</div>
-		</c:forEach>
+		</c:forEach><br><br><br><br>
 		<div class="align-center" style="display:block;">
 			${fpage}
 		</div>
@@ -107,7 +107,7 @@
 			<hr width="100%" size="3">
 		</div>
 		
-		</c:forEach>
+		</c:forEach><br><br><br><br>
 		<div class="align-center">
 			${tpage}
 		</div>

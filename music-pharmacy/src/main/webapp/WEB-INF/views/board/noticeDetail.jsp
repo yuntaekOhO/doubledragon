@@ -33,7 +33,7 @@
 				<c:if test="${empty member.photo}">
 				<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
 				</c:if>
-				${board.id}님
+				${member.nick}
 			</li> 
 			<li>
 			<div class="align-right">
