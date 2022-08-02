@@ -6,7 +6,16 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.board.dao.FreeBoardDAO;
+import kr.board.dao.InquiryBoardDAO;
+import kr.board.dao.NoticeBoardDAO;
+import kr.board.dao.ThemeBoardDAO;
+import kr.board.vo.FreeBoardVO;
+import kr.board.vo.InquiryBoardVO;
+import kr.board.vo.NoticeBoardVO;
+import kr.board.vo.ThemeBoardVO;
 import kr.main.vo.MainVO;
+import kr.music.vo.MusicVO;
 import kr.util.DBUtil;
 
 public class MainSearchDAO {
@@ -128,6 +137,11 @@ public class MainSearchDAO {
 		String sql = "";
 		String sub_sql = "";
 		
+		FreeBoardDAO fdao = FreeBoardDAO.getInstance();
+		ThemeBoardDAO tdao = ThemeBoardDAO.getInstance();
+		NoticeBoardDAO ndao = NoticeBoardDAO.getInstance();
+		InquiryBoardDAO idao = InquiryBoardDAO.getInstance();
+		
 		try {
 			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
@@ -146,11 +160,9 @@ public class MainSearchDAO {
 						rs = pstmt0.executeQuery();
 						while(rs.next()) {
 							result = new MainVO();
-							result.setFree_num(rs.getInt("free_num"));
+							FreeBoardVO fvo = fdao.getBoard(rs.getInt("free_num"));
+							result.setFree(fvo);
 							list.add(result);
-							if(result!=null) {
-								System.out.println("자유 조회");
-							}
 						}
 					}else if(i==1) {
 						pstmt1 = conn.prepareStatement(sql);
@@ -158,35 +170,31 @@ public class MainSearchDAO {
 						rs = pstmt1.executeQuery();
 						while(rs.next()) {
 							result = new MainVO();
-							result.setThe_num(rs.getInt("the_num"));
+							ThemeBoardVO tvo = tdao.getBoard(rs.getInt("the_num"));
+							MusicVO mvo = tdao.getMusic(rs.getInt("the_num"));
+							result.setThe(tvo);
+							result.setMus(mvo);
 							list.add(result);
-							if(result!=null) {
-								System.out.println("테마 조회");
-							}
 						}
-					}else if(i==2) {
+					/*}else if(i==2) {
 						pstmt2 = conn.prepareStatement(sql);
 						pstmt2.setString(1, "%"+keyword+"%");
 						rs = pstmt2.executeQuery();
 						while(rs.next()) {
 							result = new MainVO();
-							result.setMus_num(rs.getInt("mus_num"));
+							MusicVO mvo = tdao.getMusic(rs.getInt("the_num"));
+							result.setMus(mvo);
 							list.add(result);
-							if(result!=null) {
-								System.out.println("음악 조회");
-							}
-						}
+						}*/
 					}else if(i==3) {
 						pstmt3 = conn.prepareStatement(sql);
 						pstmt3.setString(1, "%"+keyword+"%");
 						rs = pstmt3.executeQuery();
 						while(rs.next()) {
 							result = new MainVO();
-							result.setInq_num(rs.getInt("inq_num"));
+							InquiryBoardVO ivo = idao.getBoard(rs.getInt("inq_num"));
+							result.setInq(ivo);
 							list.add(result);
-							if(result!=null) {
-								System.out.println("질답 조회");
-							}
 						}
 					}else if(i==4) {
 						pstmt4 = conn.prepareStatement(sql);
@@ -194,11 +202,9 @@ public class MainSearchDAO {
 						rs = pstmt4.executeQuery();
 						while(rs.next()) {
 							result = new MainVO();
-							result.setNot_num(rs.getInt("not_num"));
+							NoticeBoardVO nvo = ndao.getBoard(rs.getInt("not_num"));
+							result.setNotice(nvo);
 							list.add(result);
-							if(result!=null) {
-								System.out.println("공지 조회");
-							}
 						}
 					}
 					

@@ -48,65 +48,46 @@
 			<c:forEach var="board" items="${list}" varStatus="status">
 			<tr>
 				<td class="free_theme" rowspan="" width="15%" style="border-bottom:1px solid #423207;">
-					<c:if test = "${board.free_num>0}">
+					<c:if test = "${!empty board.free}">
 					저잣거리
 					</c:if>
-					<c:if test = "${board.the_num>0}">
+					<c:if test = "${!empty board.the}">
 					동의보감
 					</c:if>
-					<c:if test = "${board.not_num>0}">
+					<c:if test = "${!empty board.notice}">
 					어명이오
 					</c:if>
-					<c:if test = "${board.inq_num>0}">
+					<c:if test = "${!empty board.inq}">
 					상소문
 					</c:if>
 				</td>
+				
 				<td class="free_theme" rowspan="" width="15%" style="border-bottom:1px solid #423207;">
-					<c:if test="${board.free_num>0}">
-					<c:if test="${flist[status.index].free_code==1}">
+				<c:choose>
+				<c:when test="${!empty board.free}">
+					<c:if test="${board.free.free_code == 1}">
 					자유
 					</c:if>
-					<c:if test="${flist[status.index].free_code==2}">
+					<c:if test="${board.free.free_code == 2}">
 					추천
 					</c:if>
-					</c:if>
-					
-					<c:if test="${board.the_num>0}">
-					<c:if test="${tlist[status.index].the_code==1}">
+				</c:when>
+				<c:when test="${!empty board.the}">
+					<c:if test="${board.the.the_code == 1}">
 					희
 					</c:if>
-					<c:if test="${tlist[status.index].the_code==2}">
+					<c:if test="${board.the.the_code == 2}">
 					노
 					</c:if>
+					<c:if test="${board.the.the_code == 3}">
+					애
 					</c:if>
+					<c:if test="${board.the.the_code == 4}">
+					락
+					</c:if>
+				</c:when>
+				</c:choose>
 				</td>
-				<c:if test = "${board.mus_num>0}">
-				<td>
-					<c:if test="${mlist[status.index].mus_genre eq '발라드'}">
-					발라드
-					</c:if>
-					<c:if test="${mlist[status.index].mus_genre eq 'pop'}">
-					pop
-					</c:if>
-					<c:if test="${mlist[status.index].mus_genre eq '댄스'}">
-					댄스
-					</c:if>
-					<c:if test="${mlist[status.index].mus_genre eq '힙합'}">
-					힙합
-					</c:if>
-					<c:if test="${mlist[status.index].mus_genre eq '인디'}">
-					인디
-					</c:if>
-					<c:if test="${mlist[status.index].mus_genre eq 'etc'}">
-					etc
-					</c:if>
-				</td>
-				</c:if>
-				<c:if test = "${board.mus_num>0}">
-				<td>
-					
-				</td>
-				</c:if>
 			</tr>
 			</c:forEach>
 

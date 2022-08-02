@@ -44,53 +44,8 @@ public class SearchAction implements Action {
 		List<MainVO> list = null;
 		if(count>0) {
 			list = dao.getSearchList(page.getStartRow(), page.getEndRow(), keyword);
-		
-		
-		FreeBoardDAO fDao = FreeBoardDAO.getInstance();
-		FreeBoardVO fBoard = null;
-		ThemeBoardDAO tDao = ThemeBoardDAO.getInstance();
-		ThemeBoardVO tBoard = null;
-		MusicVO music = null;
-		InquiryBoardDAO iDao = InquiryBoardDAO.getInstance();
-		InquiryBoardVO iBoard = null;
-		NoticeBoardDAO nDao = NoticeBoardDAO.getInstance();
-		NoticeBoardVO nBoard = null;
-		
-		List<FreeBoardVO> flist = new ArrayList<FreeBoardVO>();
-		List<ThemeBoardVO> tlist = new ArrayList<ThemeBoardVO>();
-		List<MusicVO> mlist = new ArrayList<MusicVO>();
-		List<NoticeBoardVO> nlist = new ArrayList<NoticeBoardVO>();
-		List<InquiryBoardVO> ilist = new ArrayList<InquiryBoardVO>();
-		
-		for(MainVO num : list) {
-			if(num.getFree_num()!=0) {
-				fBoard = fDao.getBoard(num.getFree_num());
-				flist.add(fBoard);
-			}
-			else if(num.getThe_num()!=0) {
-				tBoard = tDao.getBoard(num.getThe_num());
-				tlist.add(tBoard);
-			}
-			else if(num.getMus_num()!=0) {
-				music = tDao.getMusic(num.getThe_num());
-				mlist.add(music);
-			}
-			else if(num.getInq_num()!=0) {
-				iBoard = iDao.getBoard(num.getInq_num());
-				ilist.add(iBoard);
-			}
-			else if(num.getNot_num()!=0) {
-				nBoard = nDao.getBoard(num.getNot_num());
-				nlist.add(nBoard);
-			}
-		}
-		
-		request.setAttribute("flist", flist);
-		request.setAttribute("tlist", tlist);
-		request.setAttribute("mlist", mlist);
-		request.setAttribute("ilist", ilist);
-		request.setAttribute("nlist", nlist);
-		request.setAttribute("list", list);
+
+			request.setAttribute("list", list);
 		}
 		request.setAttribute("count", count);
 		request.setAttribute("page", page.getPage());
