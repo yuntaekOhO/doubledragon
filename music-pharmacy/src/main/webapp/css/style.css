@@ -191,42 +191,51 @@ a:hover{
 	width:33%;
 	text-align:center;
 }
-.mini-notice{
-	padding:15px;
-	background-color:#684f3c;
-	color:white;
-	line-height:150%;
-}
-.mini-notice div{
+.mini-content-square2 div{
 	width:100%;
 	height:2px;
 	background-color:white;
+	color:white;
+}
+.mini-content-square3 div{
+	width:100%;
+	height:2px;
+	background-color:white;
+	color:white;
 }
 .mini-content-square1 {
 	float:right;
-	width:50%;
+	width:10%;
 	height:190px;
 	padding:15px;
-	background-color:#d0c2a8;
+	background-color:white;
 	color:white;
 	line-height:150%;
 }
 .mini-content-square2 {
 	/*float:right;*/
-	width:50%;
+	width:90%;
 	height:190px;
 	padding:15px;
-	background-color:#e3dbcc;
+	background-color:#9e8d71;
 	color:white;
-	line-height:150%;
+	line-height:130%;
+	
 }
-.mini-content-square div{
+.mini-content-square3 {
+	/*float:right;*/
 	width:90%;
-	height:2px;
-	background-color:white;
-	font-size:small;
+	height:190px;
+	padding:15px;
+	background-color:#684f3c;
+	color:white;
+	line-height:130%;
 }
-.mini-notice ul li a{
+
+.mini-content-square2 ul li a{
+	color:white;
+}
+.mini-content-square3 ul li a{
 	color:white;
 }
 footer h4{

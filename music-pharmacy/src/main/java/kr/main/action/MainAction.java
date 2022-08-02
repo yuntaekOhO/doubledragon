@@ -5,8 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.board.dao.FreeBoardDAO;
 import kr.board.dao.NoticeBoardDAO;
 import kr.board.dao.ThemeBoardDAO;
+import kr.board.vo.FreeBoardVO;
 import kr.board.vo.NoticeBoardVO;
 import kr.board.vo.ThemeBoardVO;
 import kr.controller.Action;
@@ -22,8 +24,12 @@ public class MainAction implements Action{
 		NoticeBoardDAO noticeBoardDao = NoticeBoardDAO.getInstance();
 		List<NoticeBoardVO> noticeBoardList = noticeBoardDao.getListNoticeBoard(1, 5, null, null);
 		
+		FreeBoardDAO freeBoardDao = FreeBoardDAO.getInstance();
+		List<FreeBoardVO> freeBoardList = freeBoardDao.getListFreeBoard(1, 5, null, null);
+		
 		request.setAttribute("notice", noticeBoardList);
 		request.setAttribute("theme", themeBoardList);
+		request.setAttribute("free", freeBoardList);
 		
 		return "/WEB-INF/views/main/main.jsp";
 	}

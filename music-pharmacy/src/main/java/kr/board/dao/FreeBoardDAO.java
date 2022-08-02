@@ -128,7 +128,7 @@ public class FreeBoardDAO {
 		return count;
 	}
 	//글목록(검색글 목록)
-		public List<FreeBoardVO> getListBoard(int start, int end,
+		public List<FreeBoardVO> getListFreeBoard(int start, int end,
 			          String keyfield,String keyword)
 		                             throws Exception{
 		Connection conn = null;

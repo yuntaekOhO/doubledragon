@@ -40,7 +40,9 @@
 	</div>
 	
 	<div style="float:right;width:50%;">
-	<div class="mini-notice">
+	<div class="mini-content-square1">
+	</div>
+	<div class="mini-content-square3">
 		<h5>어명이오</h5>
 		<div></div>
 		<ul>
@@ -50,23 +52,18 @@
 		</ul>
 	</div>
 	<div class="mini-content-square1">
-		<h5>고객센터</h5>
-		<div></div>
-		<h5>kakao ID |<br>musicpharamacy
-		<br>
-		Mail | musicpharamacy@naver.com
-		</h5>
 	</div>
 	
 	<div class="mini-content-square2">
-		<h5>고객센터</h5>
+		<h5>저잣거리</h5>
 		<div></div>
-		<h5>kakao ID |<br>musicpharamacy
-		<br>
-		Mail | musicpharamacy@naver.com
-		</h5>
+		<ul>
+		<c:forEach var="free" items="${free}">
+		<li><a href="${pageContext.request.contextPath}/board/freeDetail.do?free_num=${free.free_num}">${free.free_title}</a></li>
+		</c:forEach>
+		</ul>
 	</div>
-	</div>
+
 	
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
