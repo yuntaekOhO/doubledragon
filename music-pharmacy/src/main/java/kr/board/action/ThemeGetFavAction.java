@@ -31,6 +31,7 @@ public class ThemeGetFavAction implements Action {
 				(Integer)session.getAttribute("user_num");
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
 		if(user_num==null) {//로그인 되지 않은 경우
+			
 			mapAjax.put("status", "noFav");
 			mapAjax.put("count", 
 					dao.selectFavCount(the_num));

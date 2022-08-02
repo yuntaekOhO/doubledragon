@@ -26,7 +26,7 @@ public class ThemeBoard1Action implements Action {
 		int count = dao.getSubBoardCount(keyfield, keyword,code);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 20,10,"themeBoard1.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 10,10,"themeBoard1.do");
 		
 		List<ThemeBoardVO> list = null;
 		if(count > 0) {
