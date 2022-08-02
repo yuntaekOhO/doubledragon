@@ -34,7 +34,7 @@
 				</div>
 				
 				<div class="mypage-div">
-					<p id="font"> <b>${member.nick}</b> 님의 등급은 <b>${member.mem_level}</b>입니다.</p>
+					<p id="font"> <b>${member.nick}</b> 님의 마이페이지 입니다.</p>
 				</div> 
 				
 				<div class="mypoint-div">
