@@ -37,7 +37,7 @@ public class MyPlaylistAction implements Action{
 		System.out.println("count : " + count);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,20,10,"myPlaylist.do");
+		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,10,10,"myPlaylist.do");
 		
 		ThemeBoardDAO boardDao = ThemeBoardDAO.getInstance();
 		List<MusicVO> boardList = boardDao.getListBoardFav(page.getStartRow(), page.getEndRow(), user_num);
