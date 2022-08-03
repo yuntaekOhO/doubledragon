@@ -130,7 +130,7 @@ public class MainSearchDAO {
 		MainVO result = null;
 		String[] numArr = {" free_num ",
 							 " the_num ",
-							 " mus_num ",
+							 " mus_num, the_num ",
 							 " inq_num ",
 							 " not_num "};
 		
@@ -176,16 +176,18 @@ public class MainSearchDAO {
 							result.setMus(mvo);
 							list.add(result);
 						}
-					/*}else if(i==2) {
+					}else if(i==2) {
 						pstmt2 = conn.prepareStatement(sql);
 						pstmt2.setString(1, "%"+keyword+"%");
 						rs = pstmt2.executeQuery();
 						while(rs.next()) {
 							result = new MainVO();
 							MusicVO mvo = tdao.getMusic(rs.getInt("the_num"));
+							ThemeBoardVO tvo = tdao.getBoard(rs.getInt("the_num"));
 							result.setMus(mvo);
+							result.setThe(tvo);
 							list.add(result);
-						}*/
+						}
 					}else if(i==3) {
 						pstmt3 = conn.prepareStatement(sql);
 						pstmt3.setString(1, "%"+keyword+"%");
