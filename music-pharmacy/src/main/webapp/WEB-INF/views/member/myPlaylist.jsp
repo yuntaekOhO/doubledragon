@@ -40,11 +40,11 @@
 			<div>
 			
 				<div class="floating-left">
-					<c:if test="${empty theme.mus_img}">
+					<c:if test="${empty music.mus_img}">
 					<img src="${pageContext.request.contextPath}/images/album.png" width="100" height="100">
 					</c:if>
-					<c:if test="${!empty theme.mus_img}">
-					<img src="/music-pharmacy/upload/${theme.mus_img}" width="100" height="100">
+					<c:if test="${!empty music.mus_img}">
+					<img src="${pageContext.request.contextPath}/upload/${music.mus_img}" width="100" height="100">
 					</c:if>
 				</div>
 				<div class="floating-left">
