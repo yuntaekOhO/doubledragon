@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import kr.board.dao.ThemeBoardDAO;
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 import kr.music.vo.MusicVO;
 import kr.util.PagingUtil;
 
@@ -28,7 +30,8 @@ public class MyPlaylistAction implements Action{
 		if(pageNum==null) pageNum = "1";
 		
 		ThemeBoardDAO dao = ThemeBoardDAO.getInstance();
-		MusicVO member = dao.getMusic(user_num);
+		MemberDAO memberDao = MemberDAO.getInstance();
+		MemberVO member = memberDao.getMember(user_num);
 		int count = dao.getListBoardFavCount(user_num);
 		
 		System.out.println("count : " + count);
