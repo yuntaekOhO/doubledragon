@@ -34,7 +34,7 @@
 					      <option value="3">애哀</option>
 					      <option value="4">락樂</option>
 					</select>
-					<label for="the_title"></label>
+					<label for="the title"></label>
 					<input type="text" name="the_title" id="the_title" value="${board.the_title}" maxlength="50">
 				</li>
 

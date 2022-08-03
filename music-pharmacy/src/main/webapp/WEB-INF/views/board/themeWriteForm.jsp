@@ -65,7 +65,7 @@
 						<option value="인디">인디</option>
 						<option value="etc">etc</option>
 					</select>
-				</li>
+				</li> 
 				<li>
 					<label for="mus_date">발매일</label>
 					<input type="date" name="mus_date" id="mus_date">
