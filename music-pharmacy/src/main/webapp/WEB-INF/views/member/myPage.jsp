@@ -43,13 +43,13 @@
 				
 				<div class="mypoint-div">
 					<p id="font"> <b>My Level</b></p> 
-						<c:if test="${member.mem_level == 0}">
+						<c:if test="${member.point < 6000}">
 						<p id="font">평민</p>
 						</c:if>
-						<c:if test="${member.mem_level == 1}">
+						<c:if test="${member.point>=6000 and member.point<10000}">
 						<p id="font"> 양반 </p>
 						</c:if>
-						<c:if test="${member.mem_level == 2}">
+						<c:if test="${member.point>=10000}">
 						<p id="font">왕</p>
 						</c:if>
 				</div>
