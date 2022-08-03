@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,25 +78,37 @@
 					<li>
 						<label for="music">선호하는 음악 장르</label><br>
 						<div id="align-center">
-						<label><input type="checkbox" name="music" id="music1" value="댄스">댄스</label>
-						<label><input type="checkbox" name="music" id="music2" value="발라드">발라드</label>
-						<label><input type="checkbox" name="music" id="music3" value="K-pop">K-pop</label>
-						<label><input type="checkbox" name="music" id="music4" value="트로트">트로트</label>
+						<label><input type="checkbox" name="music" id="music1" value="댄스"
+						<c:if test="${fn:contains(member.music, '댄스')}">checked</c:if>>댄스</label>
+						<label><input type="checkbox" name="music" id="music2" value="발라드"
+						<c:if test="${fn:contains(member.music, '발라드')}">checked</c:if>>발라드</label>
+						<label><input type="checkbox" name="music" id="music3" value="K-pop"
+						<c:if test="${fn:contains(member.music, 'K-pop')}">checked</c:if>>K-pop</label>
+						<label><input type="checkbox" name="music" id="music4" value="트로트"
+						<c:if test="${fn:contains(member.music, '트로트')}">checked</c:if>>트로트</label>
 						</div>
 						<div id="align-center">
-						<label><input type="checkbox" name="music" id="music5" value="재즈">재즈</label>
-						<label><input type="checkbox" name="music" id="music6" value="힙합">힙합</label>
-						<label><input type="checkbox" name="music" id="music7" value="락">락</label>
-						<label><input type="checkbox" name="music" id="music8" value="인디">인디</label><br><br>
+						<label><input type="checkbox" name="music" id="music5" value="재즈"
+						<c:if test="${fn:contains(member.music, '재즈')}">checked</c:if>>재즈</label>
+						<label><input type="checkbox" name="music" id="music6" value="힙합"
+						<c:if test="${fn:contains(member.music, '힙합')}">checked</c:if>>힙합</label>
+						<label><input type="checkbox" name="music" id="music7" value="락"
+						<c:if test="${fn:contains(member.music, '락')}">checked</c:if>>락</label>
+						<label><input type="checkbox" name="music" id="music8" value="인디"
+						<c:if test="${fn:contains(member.music, '인디')}">checked</c:if>>인디</label><br><br>
 						</div><br>
 					</li>
 					<li>
 						<label for="route">가입경로</label><br>
 						<div id="align-center">
-						<label><input type="radio" name="route" id="route" value="인터넷">인터넷 검색</label>
-						<label><input type="radio" name="route" id="route" value="인터넷 커뮤니티">인터넷 커뮤니티</label>
-						<label><input type="radio" name="route" id="route" value="친구 추천">친구 추천</label>
-						<label><input type="radio" name="route" id="route" value="기타">기타</label><br>
+						<label><input type="radio" name="route" id="route" value="인터넷"
+						<c:if test="${fn:contains(member.route, '검색')}">checked</c:if>>인터넷 검색</label>
+						<label><input type="radio" name="route" id="route" value="인터넷 커뮤니티"
+						<c:if test="${fn:contains(member.route, '커뮤니티')}">checked</c:if>>인터넷 커뮤니티</label>
+						<label><input type="radio" name="route" id="route" value="친구 추천"
+						<c:if test="${fn:contains(member.route, '친구')}">checked</c:if>>친구 추천</label>
+						<label><input type="radio" name="route" id="route" value="기타"
+						<c:if test="${fn:contains(member.route, '기타')}">checked</c:if>>기타</label><br>
 						</div>
 					</li>
 				</ul><br>
