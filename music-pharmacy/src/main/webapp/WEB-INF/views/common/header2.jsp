@@ -52,12 +52,12 @@
 				<div><a href="${pageContext.request.contextPath}/member/myPage.do"><b>마이페이지</b></a></div>
 				<!-- 하위 메뉴 -->
 				<ul class="submenu">
-					<li><a href="#">회원정보</a></li>
-					<li><a href="#">My Playlist</a></li>
-					<li><a href="#">My Point</a></li>
-					<li><a href="#">작성한 글</a></li>
-					<li><a href="#">작성한 댓글</a></li>
-					<li><a href="#">등급안내</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/myPageDetail.do">회원정보</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/myPlaylist.do">My Playlist</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/myPoint.do">My Point</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/myWritedList.do">작성한 글</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/myWritedReplyList.do">작성한 댓글</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/levelInformation.do">등급안내</a></li>
 				</ul>
 			</li>
 			</c:if>
