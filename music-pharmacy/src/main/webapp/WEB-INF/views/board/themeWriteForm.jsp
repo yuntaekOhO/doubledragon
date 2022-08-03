@@ -40,12 +40,6 @@
 				<br>
 				<li>
 					<label for="mus_img">앨범 이미지</label>
-					<c:if test="${empty music.mus_img}">
-					<img src="${pageContext.request.contextPath}/images/face.png" width="200" height="200" class="my-photo">
-					</c:if>
-					<c:if test="${!empty music.mus_img}">
-					<img src="${pageContext.request.contextPath}/upload/${music.mus_img}" width="200" height="200" class="my-photo">
-					</c:if>
 					<input type="file" name="mus_img" id="mus_img" accept="image/gif,image/png,image/jpeg,image/jpg">
 				</li>
 				<li>

@@ -44,11 +44,6 @@
 					<input type="file" name="mus_img" 
 					 id="mus_img" 
 					 accept="image/gif,image/png,image/jpeg,image/jpg">
-					<c:if test="${empty music.mus_img}">
-					<img src="${pageContext.request.contextPath}/images/face.png" width="200" height="200" class="my-photo">
-					</c:if>
-					<c:if test="${!empty music.mus_img}">
-					<img src="${pageContext.request.contextPath}/upload/${music.mus_img}" width="200" height="200" class="my-photo">
 					<br>
 					<span id="file_detail">
 						(${music.mus_img})파일이 등록되어 있습니다.
@@ -87,7 +82,6 @@
 						});
 					});
 					</script>
-					</c:if>
 					
 				</li>
 				<li>
