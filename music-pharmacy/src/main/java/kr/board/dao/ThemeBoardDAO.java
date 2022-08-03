@@ -301,10 +301,11 @@ public class ThemeBoardDAO {
 				}
 				
 				sql = "SELECT * FROM (SELECT a.*, rownum rnum "
-						+ "FROM (SELECT * FROM theme_board b JOIN member m "
+						+ "FROM (SELECT * FROM theme_board b JOIN music USING (the_num) "
+						+ "JOIN member m "
 						+ "USING (mem_num) JOIN member_detail d "
 						+ "USING (mem_num) "+ sub_sql1 + sub_sql
-						+ " ORDER BY b.the_num DESC)a) "
+						+ " ORDER BY the_num DESC)a) "
 						+ "WHERE rnum >= ? AND rnum <= ?";
 				
 				pstmt = conn.prepareStatement(sql);
@@ -329,6 +330,9 @@ public class ThemeBoardDAO {
 					board.setThe_code(rs.getInt("the_code"));
 					board.setNick(rs.getString("nick"));
 					board.setPhoto(rs.getString("photo"));
+					board.setMus_title(rs.getString("mus_title"));
+					board.setMus_img(rs.getString("mus_img"));
+					board.setMus_singer(rs.getString("mus_singer"));
 					
 					list.add(board);
 				}
