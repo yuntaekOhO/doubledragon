@@ -31,7 +31,18 @@ public class ModifyUserAction implements Action {
 		member.setAddr1(request.getParameter("addr1"));
 		member.setAddr2(request.getParameter("addr2"));
 		member.setBirthday(request.getParameter("birthday"));
-		member.setMusic(request.getParameter("music"));
+
+		String[] musicArr = request.getParameterValues("music");
+		String output = "";
+		for(int i=0;i<musicArr.length;i++) {
+			if(i < musicArr.length-1) {
+				output += musicArr[i]+",";
+			}else {
+				output += musicArr[i];
+			}
+		}
+		member.setMusic(output);
+		
 		member.setRoute(request.getParameter("route"));
 		
 		MemberDAO dao = MemberDAO.getInstance();
