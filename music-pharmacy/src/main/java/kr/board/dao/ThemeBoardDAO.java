@@ -856,6 +856,7 @@ public class ThemeBoardDAO {
 					board.setMus_singer(rs.getString("mus_singer"));
 					board.setMus_album(rs.getString("mus_album"));
 					board.setMus_date(rs.getString("mus_date"));
+					board.setMus_img(rs.getString("mus_img"));
 					board.setThe_num(rs.getInt("the_num"));
 					board.setId(rs.getString("id"));
 					
